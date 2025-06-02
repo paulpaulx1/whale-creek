@@ -21,7 +21,7 @@ const Footer = () => {
             />
           </div>
           <h2 className={styles.heroTitle}>Whale Creek Co</h2>
-          <p className={styles.heroSubtitle}>Indianapolis' Premier Millwork & Construction</p>
+          <p className={styles.heroSubtitle}>Indianapolis&apos; Premier Millwork & Construction</p>
         </div>
 
         {/* Simple contact grid */}
