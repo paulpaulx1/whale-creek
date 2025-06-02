@@ -1,0 +1,16 @@
+.socialIcons {
+    display: flex;
+    gap: 15px;
+    /* adjust as needed */
+    align-items: center;
+    justify-content: center;
+    margin-right: 50px;
+}
+
+.social-icon {
+    margin-right: 15px;
+}
+
+.social-icon:last-child {
+    margin-right: 0;
+}

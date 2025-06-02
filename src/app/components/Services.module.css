@@ -1,0 +1,202 @@
+/* Blueprint-Style Services Section */
+.services {
+    padding: 6rem 2rem;
+    background: var(--blueprint-blue);
+    color: var(--warm-white);
+    position: relative;
+  }
+  
+  .services::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: 
+      linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px),
+      linear-gradient(rgba(255,255,255,0.05) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,0.05) 1px, transparent 1px);
+    background-size: 100px 100px, 100px 100px, 20px 20px, 20px 20px;
+    background-position: -1px -1px, -1px -1px, -1px -1px, -1px -1px;
+  }
+  
+  .servicesContainer {
+    max-width: 1200px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 2;
+  }
+  
+  .sectionHeader {
+    text-align: center;
+    margin-bottom: 4rem;
+  }
+  
+  .sectionHeader h2 {
+    font-family: 'SF Pro Display', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--warm-white);
+    margin-bottom: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+  }
+  
+  .sectionHeader h2::before {
+    content: '';
+    position: absolute;
+    top: -25px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 4px;
+    background: var(--primary-yellow);
+    border-radius: 2px;
+  }
+  
+  .sectionHeader h2::after {
+    content: 'DRAWING_001';
+    position: absolute;
+    top: -15px;
+    right: 0;
+    font-size: 0.6rem;
+    opacity: 0.7;
+    font-family: 'SF Pro Display', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  }
+  
+  .sectionHeader p {
+    font-size: 1.2rem;
+    max-width: 600px;
+    margin: 0 auto;
+    background: rgba(255, 255, 255, 0.1);
+    padding: 2rem;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    border-radius: 0;
+    font-family: 'SF Pro Display', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    backdrop-filter: blur(10px);
+  }
+  
+  .servicesGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 3rem;
+  }
+  
+  .serviceCard {
+    background: rgba(255, 255, 255, 0.05);
+    padding: 2.5rem;
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(10px);
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .serviceCard:nth-child(odd) {
+    transform: rotate(-1deg);
+  }
+  
+  .serviceCard:nth-child(even) {
+    transform: rotate(1deg);
+  }
+  
+  .serviceCard::before {
+    content: '';
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    width: 20px;
+    height: 20px;
+    border: 2px solid var(--primary-yellow);
+    border-radius: 50%;
+  }
+  
+  .serviceCard::after {
+    content: attr(data-blueprint);
+    position: absolute;
+    bottom: 10px;
+    right: 15px;
+    font-family: 'SF Pro Display', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    font-size: 0.7rem;
+    opacity: 0.6;
+  }
+  
+  .serviceCard:hover {
+    transform: rotate(0deg) scale(1.03);
+    border-color: var(--primary-yellow);
+    background: rgba(255, 255, 255, 0.1);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+  }
+  
+  .serviceIcon {
+    width: 80px;
+    height: 80px;
+    background: var(--warm-white);
+    color: var(--blueprint-blue);
+    border: 3px solid var(--primary-yellow);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 2rem;
+    font-size: 2rem;
+    position: relative;
+    transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  
+  .serviceIcon::after {
+    content: '';
+    position: absolute;
+    top: -8px;
+    right: -8px;
+    width: 16px;
+    height: 16px;
+    background: var(--primary-red);
+    border-radius: 50%;
+  }
+  
+  .serviceCard:hover .serviceIcon {
+    transform: scale(1.1) rotate(360deg);
+  }
+  
+  .serviceCard h3 {
+    font-family: 'SF Pro Display', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    font-size: 1.4rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    color: var(--warm-white);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+  
+  .serviceCard p {
+    line-height: 1.6;
+    opacity: 0.9;
+    font-family: 'SF Pro Display', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  }
+  
+  /* Mobile Responsive */
+  @media (max-width: 768px) {
+    .services {
+      padding: 4rem 1rem;
+    }
+  
+    .sectionHeader h2 {
+      font-size: 2rem;
+    }
+  
+    .servicesGrid {
+      grid-template-columns: 1fr;
+      gap: 2rem;
+    }
+  
+    .serviceCard {
+      padding: 2rem;
+      transform: rotate(0deg);
+    }
+  
+    .serviceCard:hover {
+      transform: rotate(0deg) scale(1.02);
+    }
+  }

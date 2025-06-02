@@ -1,0 +1,91 @@
+.floatingElement {
+    position: absolute;
+    pointer-events: none;
+    opacity: 0.4;
+  }
+  
+  .triangle {
+    width: 0;
+    height: 0;
+    border-left: 25px solid transparent;
+    border-right: 25px solid transparent;
+    border-bottom: 35px solid var(--primary-yellow);
+  }
+  
+  .circle {
+    width: 50px;
+    height: 50px;
+    background: var(--sage-green);
+    border-radius: 50%;
+  }
+  
+  .square {
+    width: 30px;
+    height: 30px;
+    background: var(--primary-red);
+    transform: rotate(45deg);
+  }
+  
+  .beam {
+    width: 80px;
+    height: 8px;
+    background: var(--primary-blue);
+  }
+  
+  .oval {
+    width: 40px;
+    height: 20px;
+    background: var(--accent-coral);
+    border-radius: 50%;
+  }
+  
+  .triangle {
+    animation: triangleFloat 12s ease-in-out infinite;
+  }
+  
+  .circle {
+    animation: circleFloat 12s ease-in-out infinite;
+  }
+  
+  .square {
+    animation: squareFloat 12s ease-in-out infinite;
+  }
+  
+  .beam {
+    animation: beamRotate 12s ease-in-out infinite;
+  }
+  
+  .oval {
+    animation: ovalFloat 12s ease-in-out infinite;
+  }
+  
+  @keyframes triangleFloat {
+    0%, 100% { transform: translateY(0) rotate(0deg); }
+    50% { transform: translateY(-30px) rotate(15deg); }
+  }
+  
+  @keyframes circleFloat {
+    0%, 100% { transform: translateX(0) scale(1); }
+    50% { transform: translateX(40px) scale(1.2); }
+  }
+  
+  @keyframes squareFloat {
+    0%, 100% { transform: rotate(45deg) translateY(0); }
+    50% { transform: rotate(225deg) translateY(-25px); }
+  }
+  
+  @keyframes beamRotate {
+    0%, 100% { transform: rotate(0deg); }
+    50% { transform: rotate(180deg); }
+  }
+  
+  @keyframes ovalFloat {
+    0%, 100% { transform: translateY(0) rotate(0deg) scale(1); }
+    50% { transform: translateY(-20px) rotate(180deg) scale(1.1); }
+  }
+  
+  @media (max-width: 768px) {
+    .floatingElement {
+      opacity: 0.2;
+    }
+  }
