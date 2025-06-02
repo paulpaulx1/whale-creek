@@ -1,4 +1,3 @@
-// components/ui/StatCard.js
 'use client';
 
 import { useEffect, useRef, useState } from 'react';
@@ -57,11 +56,7 @@ const StatCard = ({ number, label, index }) => {
   };
 
   return (
-    <div 
-      ref={statRef}
-      className={`${styles.statCard} ${styles[`statCard${index + 1}`]}`}
-    >
-      <div className={styles.statAccent} />
+    <div ref={statRef} className={styles.statCard}>
       <span className={styles.statNumber}>
         {displayNumber}
       </span>

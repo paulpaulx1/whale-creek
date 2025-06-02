@@ -1,10 +1,9 @@
 'use client';
 
 import { useRef } from 'react';
-import Image from 'next/image';
-import StatCard from './/StatCard';
-import CircleAccent from './/CircleAccent';
-import FloatingElement from './/FloatingElement';
+import StatCard from './StatCard';
+import CircleAccent from './CircleAccent';
+import FloatingElement from './FloatingElement';
 import useIntersectionObserver from '../hooks/useIntersectionObserver';
 import styles from './AboutSection.module.css';
 
@@ -24,7 +23,7 @@ const AboutSection = () => {
 
   return (
     <section className={styles.aboutSection} ref={aboutRef}>
-      {/* Kinetic Background Elements */}
+      {/* Keep the kinetic background - you liked this */}
       <div className={styles.kineticBackground}>
         <FloatingElement type="triangle" className={styles.floatingTriangle} />
         <FloatingElement type="circle" className={styles.floatingCircle} />
@@ -40,69 +39,50 @@ const AboutSection = () => {
           data-element="content"
         >
           <h2 className={styles.title}>
-            <span className={styles.titleAccent1}></span>
-            Indianapolis'{' '}
-            <span className={styles.heroAccent}>
-              Trusted
-            </span>{' '}
-            Craftsmen
-            <span className={styles.titleAccent2}></span>
+            Indianapolis' <span className={styles.highlight}>Trusted</span> Craftsmen
           </h2>
 
-          <div className={styles.paragraphs}>
-            <p className={`${styles.paragraph} ${styles.paragraph1}`}>
-              <span className={styles.paragraphAccent}></span>
+          {/* Single content block instead of separate cards */}
+          <div className={styles.contentBlock}>
+            <p>
               With decades of combined experience, Whale Creek Construction has established itself as Indianapolis' premier destination for custom millwork and construction excellence.
             </p>
-
-            <p className={`${styles.paragraph} ${styles.paragraph2}`}>
-              <span className={styles.paragraphAccent}></span>
+            <p>
               Our team combines traditional woodworking techniques with modern technology and project management systems to deliver projects on time, within budget, and beyond expectations.
             </p>
-
-            <p className={`${styles.paragraph} ${styles.paragraph3}`}>
-              <span className={styles.paragraphAccent}></span>
+            <p>
               Every project begins with understanding your vision and ends with results that exceed your expectations.
             </p>
           </div>
 
-          {/* About Circle Accent */}
+          {/* Keep circle accent but simplified */}
           <CircleAccent 
             colors={aboutCircleColors} 
             className={styles.aboutCircles}
           />
         </div>
 
-        {/* Image */}
+        {/* Simplified image section */}
         <div 
           className={`${styles.imageSection} ${visibleElements.image ? styles.visible : ''}`}
           data-element="image"
         >
           <div className={styles.imageContainer}>
-            <div className={styles.imageAccent1}></div>
-            <div className={styles.imageAccent2}></div>
-            
-            <Image
+            <img
               src="https://images.unsplash.com/photo-1581092160562-40aa08e78837?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
               alt="Indianapolis construction team at work"
-              width={600}
-              height={500}
               className={styles.image}
             />
           </div>
         </div>
 
-        {/* Stats Section */}
+        {/* Stats section - cleaned up */}
         <div 
           className={`${styles.statsSection} ${visibleElements.stats ? styles.visible : ''}`}
           data-element="stats"
         >
           <div className={styles.statsHeader}>
-            <h3 className={styles.statsTitle}>
-              <span className={styles.statsTitleAccent1}></span>
-              Our Track Record
-              <span className={styles.statsTitleAccent2}></span>
-            </h3>
+            <h3 className={styles.statsTitle}>Our Track Record</h3>
           </div>
 
           <div className={styles.statsGrid}>
@@ -116,7 +96,6 @@ const AboutSection = () => {
             ))}
           </div>
 
-          {/* Stats Circle Accent */}
           <CircleAccent 
             colors={statsCircleColors} 
             className={styles.statsCircles}

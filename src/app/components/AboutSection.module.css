@@ -11,6 +11,7 @@
     overflow: hidden;
   }
   
+  /* Keep the kinetic background */
   .kineticBackground {
     position: absolute;
     top: 0;
@@ -69,116 +70,43 @@
     transform: translateY(0);
   }
   
+  /* Simplified title - Bauhaus clean */
   .title {
     font-size: 3rem;
     font-weight: 700;
     margin-bottom: 2.5rem;
     color: var(--charcoal);
-    text-transform: uppercase;
-    line-height: 0.9;
-    letter-spacing: -0.03em;
-    position: relative;
+    line-height: 1.1;
+    letter-spacing: -0.02em;
   }
   
-  .titleAccent1 {
-    position: absolute;
-    top: -20px;
-    left: 0;
-    width: 60px;
-    height: 6px;
-    background: var(--primary-yellow);
-    transform: skew(-15deg);
-  }
-  
-  .titleAccent2 {
-    position: absolute;
-    bottom: -15px;
-    right: 0;
-    width: 80px;
-    height: 4px;
-    background: var(--accent-coral);
-    transform: skew(15deg);
-  }
-  
-  .heroAccent {
+  .highlight {
     color: var(--primary-red);
-    position: relative;
-    display: inline-block;
-    transform: rotate(-1deg);
   }
   
-  .heroAccent::after {
-    content: '';
-    position: absolute;
-    bottom: -8px;
-    left: 0;
-    width: 100%;
-    height: 6px;
-    background: var(--primary-blue);
-    transform: skew(-10deg);
-    z-index: -1;
-    opacity: 0.7;
-  }
-  
-  .paragraphs {
-    margin-bottom: 2rem;
-  }
-  
-  .paragraph {
-    font-size: 1.1rem;
-    margin-bottom: 2rem;
-    padding: 2rem;
+  /* Single content block instead of cards */
+  .contentBlock {
     background: var(--soft-cream);
-    border: 3px solid var(--charcoal);
-    position: relative;
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    padding: 2.5rem;
+    border-radius: 8px;
+    margin-bottom: 2rem;
+    border-left: 4px solid var(--primary-blue);
   }
   
-  .paragraph1 {
-    border-radius: 15px 0 15px 0;
-    transform: rotate(-0.5deg);
+  .contentBlock p {
+    font-size: 1.1rem;
+    margin-bottom: 1.5rem;
   }
   
-  .paragraph2 {
-    border-radius: 0 15px 0 15px;
-    border-color: var(--primary-blue);
-    transform: rotate(0.5deg);
-  }
-  
-  .paragraph3 {
-    border-radius: 15px 0 15px 0;
-    border-color: var(--sage-green);
-    transform: rotate(-0.3deg);
-  }
-  
-  .paragraphAccent {
-    position: absolute;
-    top: -8px;
-    right: -8px;
-    width: 16px;
-    height: 16px;
-    background: var(--primary-red);
-    border-radius: 50%;
-    border: 2px solid var(--charcoal);
-  }
-  
-  .paragraph2 .paragraphAccent {
-    background: var(--primary-yellow);
-  }
-  
-  .paragraph3 .paragraphAccent {
-    background: var(--accent-coral);
-  }
-  
-  .paragraph:hover {
-    transform: rotate(0deg) scale(1.02);
-    box-shadow: 8px 8px 0 var(--primary-yellow);
+  .contentBlock p:last-child {
+    margin-bottom: 0;
   }
   
   .aboutCircles {
     margin-top: 2rem;
   }
   
+  /* Simplified image section */
   .imageSection {
     opacity: 0;
     transform: translateY(30px);
@@ -191,54 +119,30 @@
   }
   
   .imageContainer {
-    position: relative;
-    border: 4px solid var(--charcoal);
-    border-radius: 25px 0 25px 0;
+    border-radius: 8px;
     overflow: hidden;
-    transform: rotate(2deg);
-    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
   }
   
   .imageContainer:hover {
-    transform: rotate(-1deg) scale(1.03);
-    box-shadow: 15px 15px 0 var(--primary-red);
-  }
-  
-  .imageAccent1 {
-    position: absolute;
-    top: -20px;
-    left: -20px;
-    width: 40px;
-    height: 40px;
-    background: var(--primary-yellow);
-    border: 3px solid var(--charcoal);
-    border-radius: 50% 0 50% 0;
-    z-index: 2;
-  }
-  
-  .imageAccent2 {
-    position: absolute;
-    bottom: -15px;
-    right: -15px;
-    width: 0;
-    height: 0;
-    border-left: 25px solid transparent;
-    border-right: 25px solid transparent;
-    border-top: 30px solid var(--sage-green);
-    z-index: 2;
+    transform: translateY(-5px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
   }
   
   .image {
     width: 100%;
     height: 500px;
     object-fit: cover;
-    transition: transform 0.4s ease;
+    transition: transform 0.3s ease;
+    display: block;
   }
   
   .imageContainer:hover .image {
-    transform: scale(1.1);
+    transform: scale(1.05);
   }
   
+  /* Stats section - cleaned up */
   .statsSection {
     grid-column: 1 / -1;
     margin-top: 6rem;
@@ -258,36 +162,11 @@
   }
   
   .statsTitle {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 1.8rem;
+    font-size: 2rem;
     font-weight: 600;
     color: var(--charcoal);
     text-transform: uppercase;
-    letter-spacing: 3px;
-    position: relative;
-    display: inline-block;
-  }
-  
-  .statsTitleAccent1 {
-    position: absolute;
-    top: -12px;
-    left: -20px;
-    width: 16px;
-    height: 16px;
-    background: var(--primary-red);
-    border: 2px solid var(--charcoal);
-    transform: rotate(45deg);
-  }
-  
-  .statsTitleAccent2 {
-    position: absolute;
-    top: -12px;
-    right: -20px;
-    width: 16px;
-    height: 16px;
-    background: var(--primary-blue);
-    border: 2px solid var(--charcoal);
-    border-radius: 50%;
+    letter-spacing: 2px;
   }
   
   .statsGrid {
@@ -332,20 +211,13 @@
       order: 2;
     }
   
-    .imageContainer {
-      transform: rotate(0deg);
-      margin-top: 2rem;
-    }
-  
     .title {
       font-size: 2.2rem;
       text-align: center;
     }
   
-    .paragraph {
-      transform: rotate(0deg);
-      font-size: 1rem;
-      padding: 1.5rem;
+    .contentBlock {
+      padding: 2rem;
     }
   
     .statsGrid {
@@ -370,4 +242,9 @@
     .statsTitle {
       font-size: 1.4rem;
     }
+  
+    .contentBlock {
+      padding: 1.5rem;
+    }
   }
+  
