@@ -246,7 +246,7 @@ export default function GalleryClient({ projects }) {
             <div className={styles.ctaContent}>
               <h2>Ready to Start Your Project?</h2>
               <p>
-                Let's bring your vision to life with our award-winning 
+                Let&apos;s bring your vision to life with our award-winning 
                 craftsmanship and geometric design expertise.
               </p>
               <div className={styles.ctaButtons}>
