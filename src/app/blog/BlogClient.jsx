@@ -10,6 +10,8 @@ export default function BlogClient({ posts }) {
   const [filteredPosts, setFilteredPosts] = useState(posts);
   const [activeFilter, setActiveFilter] = useState('all');
 
+  console.log(posts);
+
   const categories = [
     { id: 'all', label: 'All Posts', icon: 'newspaper' },
     { id: 'millwork', label: 'Custom Millwork', icon: 'hammer' },
