@@ -65,7 +65,7 @@ export default function BlogClient({ posts }) {
               </h1>
               <p>
                 Expert tips, project spotlights, and behind-the-scenes looks at 
-                Indianapolis' most geometrically excellent construction projects. 
+                Indianapolis&apos; most geometrically excellent construction projects. 
                 From precision millwork to advanced building techniques.
               </p>
               <div className={styles.heroStats}>
@@ -258,7 +258,7 @@ export default function BlogClient({ posts }) {
             <div className={styles.ctaContent}>
               <h2>Ready to Start Your Project?</h2>
               <p>
-                Get inspired by our articles? Let's discuss how we can bring 
+                Get inspired by our articles? Let&apos;s discuss how we can bring 
                 that same level of geometric excellence to your construction project.
               </p>
               <div className={styles.ctaButtons}>
