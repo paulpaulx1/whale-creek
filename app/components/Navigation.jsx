@@ -30,24 +30,40 @@ export default function Navigation() {
     <nav className={`${styles.nav} ${isScrolled ? styles.navScrolled : ''}`}>
       <div className={styles.navContainer}>
         {/* Logo */}
-        <Link href="/" className={styles.logo}>
+        <Link href='/' className={styles.logo}>
           <div className={styles.logoIcon}>
-            <Image className={styles.logoImage} width="70" height="70" src="/images/whaleCreek.png" alt="Whale Creek Logo" />
+            <Image
+              className={styles.logoImage}
+              width='70'
+              height='70'
+              src='/images/whaleCreek.png'
+              alt='Whale Creek Logo'
+            />
           </div>
           <span className={styles.logoText}>Whale Creek Co</span>
         </Link>
 
         {/* Desktop Navigation */}
         <ul className={styles.navLinks}>
-          <li><Link href="/">About</Link></li>
-          <li><Link href="indianapolis-general-contractor">Services</Link></li>
-          <li><Link href="project-gallery">Gallery</Link></li>
-          <li><Link href="/blog">Blog</Link></li>
-          <li><Link href="indianapolis-woodworker-contact">Contact</Link></li>
+          <li>
+            <Link href='/'>About</Link>
+          </li>
+          <li>
+            <Link href='indianapolis-general-contractor'>Services</Link>
+          </li>
+          <li>
+            <Link href='project-gallery'>Gallery</Link>
+          </li>
+          <li>
+            <Link href='blog'>Blog</Link>
+          </li>
+          <li>
+            <Link href='indianapolis-woodworker-contact'>Contact</Link>
+          </li>
         </ul>
 
         {/* Mobile Menu Button */}
-        <div 
+        <div
           className={`${styles.hamburger} ${isMobileMenuOpen ? styles.hamburgerOpen : ''}`}
           onClick={toggleMobileMenu}
         >
@@ -57,21 +73,52 @@ export default function Navigation() {
         </div>
 
         {/* Mobile Navigation */}
-        <div className={`${styles.mobileMenu} ${isMobileMenuOpen ? styles.mobileMenuOpen : ''}`}>
+        <div
+          className={`${styles.mobileMenu} ${isMobileMenuOpen ? styles.mobileMenuOpen : ''}`}
+        >
           <ul className={styles.mobileNavLinks}>
-            <li><Link href="#about" onClick={closeMobileMenu}>About</Link></li>
-            <li><Link href="#services" onClick={closeMobileMenu}>Services</Link></li>
-            <li><Link href="#gallery" onClick={closeMobileMenu}>Gallery</Link></li>
-            <li><Link href="/blog" onClick={closeMobileMenu}>Blog</Link></li>
-            <li><Link href="#contact" onClick={closeMobileMenu}>Contact</Link></li>
+            <li>
+              <Link href='/' onClick={closeMobileMenu}>
+                About
+              </Link>
+            </li>
+            <li>
+              <Link
+                href='indianapolis-general-contractor'
+                onClick={closeMobileMenu}
+              >
+                Services
+              </Link>
+            </li>
+            <li>
+              <Link href='project-gallery' onClick={closeMobileMenu}>
+                Gallery
+              </Link>
+            </li>
+            <li>
+              <Link href='blog' onClick={closeMobileMenu}>
+                Blog
+              </Link>
+            </li>
+            <li>
+              <Link
+                href='indianapolis-woodworker-contact'
+                onClick={closeMobileMenu}
+              >
+                Contact
+              </Link>
+            </li>
           </ul>
         </div>
       </div>
 
       {/* Mobile Menu Overlay */}
       {isMobileMenuOpen && (
-        <div className={styles.mobileMenuOverlay} onClick={closeMobileMenu}></div>
+        <div
+          className={styles.mobileMenuOverlay}
+          onClick={closeMobileMenu}
+        ></div>
       )}
     </nav>
-  )
+  );
 }
