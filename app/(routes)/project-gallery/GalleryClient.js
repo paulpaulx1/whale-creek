@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import Image from 'next/image';
-import { urlFor } from '../lib/sanity';
+import { urlFor } from '../../lib/sanity';
 import styles from './Gallery.module.css';
 
 export default function GalleryClient({ projects }) {

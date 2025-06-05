@@ -1,0 +1,692 @@
+/* app/contact/Contact.module.css */
+
+/* Kinetic Background with Construction Tools */
+.kineticBg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: -1;
+    overflow: hidden;
+    background: linear-gradient(135deg, #F8F6F0 0%, #FAFAFA 100%);
+  }
+  
+  .floatingElement {
+    position: absolute;
+    animation-duration: 25s;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in-out;
+    opacity: 0.1;
+  }
+  
+  .floatSaw {
+    font-size: 2rem;
+    top: 20%;
+    right: 10%;
+    animation-name: sawFloat;
+  }
+  
+  .floatRuler {
+    font-size: 1.8rem;
+    top: 60%;
+    left: 5%;
+    animation-name: rulerFloat;
+  }
+  
+  .floatHammer {
+    font-size: 2.2rem;
+    bottom: 30%;
+    right: 15%;
+    animation-name: hammerFloat;
+  }
+  
+  .floatSquare {
+    width: 40px;
+    height: 40px;
+    background: var(--primary-red);
+    transform: rotate(45deg);
+    top: 80%;
+    left: 20%;
+    animation-name: squareFloat;
+  }
+  
+  .floatTriangle {
+    width: 0;
+    height: 0;
+    border-left: 30px solid transparent;
+    border-right: 30px solid transparent;
+    border-bottom: 45px solid var(--primary-yellow);
+    top: 15%;
+    left: 80%;
+    animation-name: triangleFloat;
+  }
+  
+  .constructionElement {
+    position: absolute;
+    background: var(--primary-red);
+    border-radius: 3px;
+    animation-duration: 12s;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in-out;
+    opacity: 0.15;
+  }
+  
+  .beam {
+    width: 120px;
+    height: 12px;
+    top: 20%;
+    right: 15%;
+    transform-origin: center;
+    animation-name: rotate;
+  }
+  
+  .beam:nth-child(2) {
+    background: var(--primary-blue);
+    width: 100px;
+    height: 10px;
+    top: 60%;
+    left: 10%;
+    animation-delay: -4s;
+  }
+  
+  .screw {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--primary-yellow);
+    animation-name: bounce;
+  }
+  
+  .screw:nth-child(3) { 
+    top: 30%; 
+    left: 25%; 
+    animation-delay: -1s; 
+  }
+  
+  .screw:nth-child(4) { 
+    top: 70%; 
+    right: 30%; 
+    animation-delay: -3s; 
+  }
+  
+  .plank {
+    width: 80px;
+    height: 8px;
+    background: var(--sage-green);
+    animation-name: slide;
+  }
+  
+  .plank:nth-child(5) { 
+    top: 40%; 
+    left: 5%; 
+    animation-delay: -2s; 
+  }
+  
+  .plank:nth-child(6) { 
+    bottom: 30%; 
+    right: 10%; 
+    animation-delay: -7s; 
+  }
+  
+  @keyframes sawFloat {
+    0%, 100% { transform: translateY(0) rotate(0deg); }
+    50% { transform: translateY(-40px) rotate(15deg); }
+  }
+  
+  @keyframes rulerFloat {
+    0%, 100% { transform: translateX(0) rotate(0deg); }
+    50% { transform: translateX(60px) rotate(5deg); }
+  }
+  
+  @keyframes hammerFloat {
+    0%, 100% { transform: translateY(0) rotate(0deg); }
+    50% { transform: translateY(-30px) rotate(-10deg); }
+  }
+  
+  @keyframes squareFloat {
+    0%, 100% { transform: rotate(45deg) translateY(0); }
+    50% { transform: rotate(225deg) translateY(-25px); }
+  }
+  
+  @keyframes triangleFloat {
+    0%, 100% { transform: translateY(0) rotate(0deg); }
+    50% { transform: translateY(-35px) rotate(20deg); }
+  }
+  
+  @keyframes rotate {
+    0%, 100% { transform: rotate(0deg); }
+    50% { transform: rotate(180deg); }
+  }
+  
+  @keyframes bounce {
+    0%, 100% { transform: translateY(0) scale(1); }
+    50% { transform: translateY(-20px) scale(1.2); }
+  }
+  
+  @keyframes slide {
+    0%, 100% { transform: translateX(0); }
+    50% { transform: translateX(60px); }
+  }
+  
+  /* Main Layout */
+  .main {
+    padding-top: 100px;
+    background: var(--soft-cream);
+    min-height: 100vh;
+    font-family: 'Space Grotesk', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  }
+  
+  .contactContainer {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 6rem 2rem 4rem;
+    position: relative;
+    z-index: 2;
+  }
+  
+  .contactContainer::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: 
+      repeating-linear-gradient(
+        45deg,
+        transparent,
+        transparent 50px,
+        rgba(139, 69, 19, 0.03) 50px,
+        rgba(139, 69, 19, 0.03) 100px
+      );
+    pointer-events: none;
+    z-index: -1;
+  }
+  
+  /* Memphis Shapes */
+  .memphisShape {
+    position: absolute;
+    z-index: 1;
+    opacity: 0.6;
+  }
+  
+  .memphisCircle {
+    width: 80px;
+    height: 80px;
+    background: var(--accent-coral);
+    border-radius: 50%;
+    top: 10%;
+    right: 5%;
+    border: 4px solid var(--charcoal);
+    animation: memphisFloat 8s ease-in-out infinite;
+  }
+  
+  .memphisTriangle {
+    width: 0;
+    height: 0;
+    border-left: 40px solid transparent;
+    border-right: 40px solid transparent;
+    border-bottom: 60px solid var(--sage-green);
+    bottom: 20%;
+    left: 8%;
+    border-bottom-color: var(--sage-green);
+    animation: memphisFloat 10s ease-in-out infinite reverse;
+  }
+  
+  @keyframes memphisFloat {
+    0%, 100% { transform: translateY(0) rotate(0deg); }
+    50% { transform: translateY(-20px) rotate(5deg); }
+  }
+  
+  /* Header Section */
+  .contactHeader {
+    text-align: center;
+    margin-bottom: 5rem;
+    position: relative;
+  }
+  
+  .contactTitle {
+    font-size: 4rem;
+    font-weight: 700;
+    line-height: 0.9;
+    margin-bottom: 2rem;
+    color: var(--charcoal);
+    text-transform: uppercase;
+    letter-spacing: -0.02em;
+  }
+  
+  .titleAccent {
+    color: var(--primary-red);
+    position: relative;
+    display: inline-block;
+    transform: rotate(-1deg);
+  }
+  
+  .titleAccent::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 0;
+    width: 100%;
+    height: 8px;
+    background: var(--primary-yellow);
+    transform: skew(-8deg);
+    z-index: -1;
+  }
+  
+  .contactIntro {
+    font-size: 1.4rem;
+    margin-bottom: 3rem;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+    background: var(--warm-white);
+    padding: 2.5rem;
+    border: 4px solid var(--charcoal);
+    border-radius: 0 25px 0 25px;
+    position: relative;
+    color: var(--charcoal);
+  }
+  
+  .contactIntro::before {
+    content: '';
+    position: absolute;
+    top: -15px;
+    right: -15px;
+    width: 30px;
+    height: 30px;
+    background: var(--sage-green);
+    border: 3px solid var(--charcoal);
+    border-radius: 50% 0 50% 0;
+  }
+  
+  .headerCircles {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    margin-top: 2rem;
+    opacity: 0;
+    animation: circlesAppear 1s ease-out 0.5s forwards;
+  }
+  
+  .headerCircle {
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  
+  .headerCircle:nth-child(1) { background: var(--primary-red); }
+  .headerCircle:nth-child(2) { background: var(--primary-blue); }
+  .headerCircle:nth-child(3) { background: var(--primary-yellow); }
+  .headerCircle:nth-child(4) { background: var(--sage-green); }
+  .headerCircle:nth-child(5) { background: var(--accent-coral); }
+  
+  @keyframes circlesAppear {
+    from {
+      opacity: 0;
+      transform: translateY(20px) scale(0);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+  }
+  
+  .contactHeader:hover .headerCircle {
+    transform: scale(1.4) translateY(-10px);
+  }
+  
+  /* Contact Form */
+  .contactForm {
+    background: var(--warm-white);
+    padding: 4rem;
+    border: 5px solid var(--charcoal);
+    border-radius: 25px 0 25px 0;
+    position: relative;
+    margin-bottom: 5rem;
+    transform: rotate(-0.5deg);
+    transition: all 0.4s ease;
+  }
+  
+  .contactForm::before {
+    content: '🔧';
+    position: absolute;
+    top: -25px;
+    left: -25px;
+    font-size: 2rem;
+    background: var(--primary-yellow);
+    border: 4px solid var(--charcoal);
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .contactForm:hover {
+    transform: rotate(0deg);
+    box-shadow: 15px 15px 0 var(--primary-red);
+  }
+  
+  .formGrid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2.5rem;
+    margin-bottom: 3rem;
+  }
+  
+  .formGroup {
+    position: relative;
+  }
+  
+  .formGroupFull {
+    grid-column: 1 / -1;
+  }
+  
+  .formLabel {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    font-weight: 700;
+    font-size: 1rem;
+    color: var(--charcoal);
+    margin-bottom: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+  
+  .labelIcon {
+    font-size: 1.2rem;
+  }
+  
+  .formInput,
+  .formTextarea {
+    width: 100%;
+    padding: 1.5rem;
+    border: 3px solid var(--charcoal);
+    border-radius: 8px 0 8px 0;
+    background: var(--soft-cream);
+    font-size: 1rem;
+    font-family: 'Space Grotesk', sans-serif;
+    color: var(--charcoal);
+    transition: all 0.3s ease;
+    resize: vertical;
+  }
+  
+  .formInput:focus,
+  .formTextarea:focus {
+    outline: none;
+    border-color: var(--primary-blue);
+    background: var(--warm-white);
+    transform: translateY(-2px);
+    box-shadow: 5px 5px 0 var(--primary-yellow);
+  }
+  
+  .formInput::placeholder,
+  .formTextarea::placeholder {
+    color: #78909C;
+    opacity: 0.8;
+  }
+  
+  .submitBtn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    width: 100%;
+    padding: 2rem;
+    background: var(--primary-red);
+    color: var(--warm-white);
+    border: 4px solid var(--charcoal);
+    border-radius: 12px 0 12px 0;
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 700;
+    font-size: 1.2rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    cursor: pointer;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+    transform: rotate(-1deg);
+  }
+  
+  .submitBtn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: var(--primary-yellow);
+    transition: left 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    z-index: 1;
+  }
+  
+  .submitBtn:hover::before {
+    left: 0;
+  }
+  
+  .submitBtn:hover {
+    color: var(--charcoal);
+    transform: rotate(1deg) scale(1.02);
+    box-shadow: 12px 12px 0 var(--charcoal);
+  }
+  
+  .btnIcon,
+  .submitBtn span {
+    position: relative;
+    z-index: 2;
+  }
+  
+  .btnIcon {
+    font-size: 1.4rem;
+  }
+  
+  .submitBtn:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+    transform: rotate(-1deg);
+  }
+  
+  .spinner {
+    width: 20px;
+    height: 20px;
+    border: 2px solid transparent;
+    border-top: 2px solid currentColor;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+  }
+  
+  @keyframes spin {
+    to { transform: rotate(360deg); }
+  }
+  
+  .result {
+    margin-top: 2rem;
+    padding: 1.5rem;
+    border: 3px solid;
+    border-radius: 8px 0 8px 0;
+    font-weight: 600;
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+  
+  .result.success {
+    background: #E8F5E8;
+    border-color: var(--sage-green);
+    color: #2E7D32;
+  }
+  
+  .result.error {
+    background: #FFEBEE;
+    border-color: var(--primary-red);
+    color: #C62828;
+  }
+  
+  /* Contact Info */
+  .contactInfo {
+    margin-top: 6rem;
+  }
+  
+  .infoGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 3rem;
+  }
+  
+  .infoCard {
+    background: var(--warm-white);
+    padding: 3rem 2rem;
+    border: 4px solid var(--charcoal);
+    border-radius: 15px 0 15px 0;
+    text-align: center;
+    position: relative;
+    transform: rotate(0.5deg);
+    transition: all 0.4s ease;
+  }
+  
+  .infoCard:nth-child(even) {
+    transform: rotate(-0.5deg);
+  }
+  
+  .infoCard::before {
+    content: '';
+    position: absolute;
+    top: -12px;
+    right: -12px;
+    width: 24px;
+    height: 24px;
+    background: var(--primary-blue);
+    border: 3px solid var(--charcoal);
+    border-radius: 50%;
+  }
+  
+  .infoCard:hover {
+    transform: rotate(0deg) translateY(-5px);
+    box-shadow: 10px 10px 0 var(--sage-green);
+  }
+  
+  .infoIcon {
+    font-size: 2.5rem;
+    margin-bottom: 1.5rem;
+    background: var(--soft-cream);
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: auto;
+    margin-right: auto;
+    border: 3px solid var(--charcoal);
+  }
+  
+  .infoCard h3 {
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: var(--charcoal);
+    margin-bottom: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+  
+  .infoCard p {
+    color: #546E7A;
+    line-height: 1.6;
+    font-weight: 500;
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    .contactTitle {
+      font-size: 2.8rem;
+    }
+    
+    .contactIntro {
+      font-size: 1.2rem;
+      padding: 2rem;
+    }
+    
+    .contactForm {
+      padding: 2.5rem;
+      transform: rotate(0deg);
+    }
+    
+    .formGrid {
+      grid-template-columns: 1fr;
+      gap: 2rem;
+    }
+    
+    .submitBtn {
+      padding: 1.5rem;
+      font-size: 1rem;
+      transform: rotate(0deg);
+    }
+    
+    .infoGrid {
+      grid-template-columns: 1fr;
+      gap: 2rem;
+    }
+    
+    .infoCard {
+      transform: rotate(0deg);
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .contactContainer {
+      padding: 4rem 1rem 2rem;
+    }
+    
+    .contactTitle {
+      font-size: 2.2rem;
+    }
+    
+    .contactForm {
+      padding: 2rem;
+    }
+    
+    .formGrid {
+      gap: 1.5rem;
+    }
+    
+    .headerCircles {
+      gap: 8px;
+    }
+    
+    .headerCircle {
+      width: 14px;
+      height: 14px;
+    }
+  }
+  
+  /* Accessibility */
+  .submitBtn:focus,
+  .formInput:focus,
+  .formTextarea:focus {
+    outline: 4px solid var(--primary-yellow);
+    outline-offset: 2px;
+  }
+  
+  /* Reduced motion */
+  @media (prefers-reduced-motion: reduce) {
+    .floatingElement,
+    .constructionElement,
+    .memphisShape,
+    .headerCircle {
+      animation: none;
+    }
+    
+    .contactForm,
+    .infoCard,
+    .submitBtn {
+      transition: none;
+    }
+  }
+  

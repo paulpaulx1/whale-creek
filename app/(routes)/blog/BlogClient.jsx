@@ -3,9 +3,9 @@
 import { useState, useEffect } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { urlFor } from '../lib/sanity';
+import { urlFor } from '../../lib/sanity';
 import styles from './Blog.module.css';
-import BlogPostCard from '../components/BlogPostCard';
+import BlogPostCard from '../../components/BlogPostCard';
 
 export default function BlogClient({ posts }) {
   const [filteredPosts, setFilteredPosts] = useState(posts);

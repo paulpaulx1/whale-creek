@@ -3,7 +3,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { urlFor } from '../lib/sanity';
-import styles from '../blog/Blog.module.css';
+import styles from '../(routes)/blog/Blog.module.css';
 
 // New BlogPostCard component that handles individual post rendering
 export default function BlogPostCard({ post }) {

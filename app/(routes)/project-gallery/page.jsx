@@ -1,6 +1,6 @@
 // src/app/project-gallery/page.js
 import GalleryClient from './GalleryClient';
-import { client } from '../lib/sanity';
+import { client } from '../../lib/sanity';
 
 const galleryQuery = `
   *[_type == "project"] | order(featured desc, completedDate desc) {

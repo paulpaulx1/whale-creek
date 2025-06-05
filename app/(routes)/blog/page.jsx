@@ -1,6 +1,6 @@
 // src/app/blog/page.js
 import BlogClient from './BlogClient';
-import { client } from '../lib/sanity';
+import { client } from '../../lib/sanity';
 
 const blogQuery = `
   *[_type == "blogPost"] | order(publishedAt desc) {

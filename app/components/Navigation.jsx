@@ -39,11 +39,11 @@ export default function Navigation() {
 
         {/* Desktop Navigation */}
         <ul className={styles.navLinks}>
-          <li><Link href="#about">About</Link></li>
-          <li><Link href="#services">Services</Link></li>
-          <li><Link href="#gallery">Gallery</Link></li>
+          <li><Link href="/">About</Link></li>
+          <li><Link href="indianapolis-general-contractor">Services</Link></li>
+          <li><Link href="project-gallery">Gallery</Link></li>
           <li><Link href="/blog">Blog</Link></li>
-          <li><Link href="#contact">Contact</Link></li>
+          <li><Link href="indianapolis-woodworker-contact">Contact</Link></li>
         </ul>
 
         {/* Mobile Menu Button */}
