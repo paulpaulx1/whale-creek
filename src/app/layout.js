@@ -1,12 +1,12 @@
-import { Inter, Raleway } from "next/font/google";
-import "./globals.css";
-import Navigation from "./components/Navigation";
-import KineticBackground from "./components/KineticBackground";
+import { Inter, Raleway } from 'next/font/google';
+import './globals.css';
+import Navigation from './components/Navigation';
+import KineticBackground from './components/KineticBackground';
 
 const raleway = Raleway({
-  subsets: ["latin"],
-  weight: ["300", "400", "500", "600", "700"],
-  variable: "--font-raleway",
+  subsets: ['latin'],
+  weight: ['300', '400', '500', '600', '700'],
+  variable: '--font-raleway',
 });
 const inter = Inter({
   subsets: ['latin'],
@@ -17,17 +17,23 @@ const inter = Inter({
 export const metadata = {
   title: {
     default:
-      'Whale Creek Construction & Millwork | Indianapolis Premier Builders',
+      '  Whale Creek Construction & Millwork | Custom Homes, Renovations & Commercial Projects in Indianapolis',
     template: '%s | Whale Creek Co',
   },
   description:
-    "Indianapolis' trusted construction and millwork experts since 2019. Custom millwork, home construction, commercial projects, and renovation services in Indiana.",
+    'Whale Creek Co provides expert construction, custom millwork, home renovations, and commercial building services in Indianapolis and Central Indiana. Trusted since 2019 for quality craftsmanship and exceptional service.',
   keywords: [
     'construction Indianapolis',
     'custom millwork',
+    'custom cabinetry',
     'home renovation',
     'commercial construction',
     'Indiana builders',
+    'kitchen remodeling',
+    'bathroom renovation',
+    'commercial millwork',
+    'Indianapolis construction company',
+    'general contractor Indianapolis',
   ],
   authors: [{ name: 'Pax Media' }],
   openGraph: {
