@@ -44,8 +44,7 @@ export default function BlogClient({ posts }) {
     });
   };
 
-  const featuredPosts = filteredPosts.filter(post => post.featured);
-  const regularPosts = filteredPosts.filter(post => !post.featured);
+  const featuredPosts = posts.filter(post => post.featured);
 
   return (
     <>
