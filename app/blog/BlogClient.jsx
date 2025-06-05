@@ -5,6 +5,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { urlFor } from '../lib/sanity';
 import styles from './Blog.module.css';
+import BlogPostCard from '../components/BlogPostCard';
 
 export default function BlogClient({ posts }) {
   const [filteredPosts, setFilteredPosts] = useState(posts);
@@ -51,10 +52,18 @@ export default function BlogClient({ posts }) {
       {/* Kinetic Background with Woodgrain */}
       <div className={styles.kineticBg}>
         <div className={`${styles.floatingElement} ${styles.floatSaw}`}>🪚</div>
-        <div className={`${styles.floatingElement} ${styles.floatRuler}`}>📐</div>
-        <div className={`${styles.floatingElement} ${styles.floatHammer}`}>🔨</div>
-        <div className={`${styles.floatingElement} ${styles.floatSquare}`}></div>
-        <div className={`${styles.floatingElement} ${styles.floatTriangle}`}></div>
+        <div className={`${styles.floatingElement} ${styles.floatRuler}`}>
+          📐
+        </div>
+        <div className={`${styles.floatingElement} ${styles.floatHammer}`}>
+          🔨
+        </div>
+        <div
+          className={`${styles.floatingElement} ${styles.floatSquare}`}
+        ></div>
+        <div
+          className={`${styles.floatingElement} ${styles.floatTriangle}`}
+        ></div>
       </div>
 
       <main className={styles.main}>
@@ -66,9 +75,10 @@ export default function BlogClient({ posts }) {
                 CONSTRUCTION <span className={styles.heroAccent}>INSIGHTS</span>
               </h1>
               <p>
-                Expert tips, project spotlights, and behind-the-scenes looks at 
-                Indianapolis&apos; most geometrically excellent construction projects. 
-                From precision millwork to advanced building techniques.
+                Expert tips, project spotlights, and behind-the-scenes looks at
+                Indianapolis&apos; most geometrically excellent construction
+                projects. From precision millwork to advanced building
+                techniques.
               </p>
               <div className={styles.heroStats}>
                 <div className={styles.stat}>
@@ -76,7 +86,9 @@ export default function BlogClient({ posts }) {
                   <span className={styles.statLabel}>Expert Articles</span>
                 </div>
                 <div className={styles.stat}>
-                  <span className={styles.statNumber}>{featuredPosts.length}</span>
+                  <span className={styles.statNumber}>
+                    {featuredPosts.length}
+                  </span>
                   <span className={styles.statLabel}>Featured Stories</span>
                 </div>
                 <div className={styles.stat}>
@@ -94,6 +106,59 @@ export default function BlogClient({ posts }) {
             </div>
           </div>
         </section>
+
+        {/* Featured Posts */}
+        {featuredPosts.length > 0 && (
+          <section className={styles.featuredSection}>
+            <div className={styles.container}>
+              <h2 className={styles.sectionTitle}>Featured Articles</h2>
+              <div className={styles.featuredGrid}>
+                {featuredPosts.slice(0, 2).map((post) => (
+                  <Link
+                    key={post._id}
+                    href={`/blog/${post.slug.current}`}
+                    className={styles.featuredCard}
+                  >
+                    <div className={styles.featuredImage}>
+                      {post.featuredImage && (
+                        <Image
+                          src={urlFor(post.featuredImage.asset)
+                            .width(800)
+                            .height(500)
+                            .url()}
+                          alt={post.featuredImage.alt || post.title}
+                          fill
+                          style={{ objectFit: 'cover' }}
+                        />
+                      )}
+                      <div className={styles.featuredOverlay}>
+                        <div className={styles.categoryBadge}>
+                          {post.category}
+                        </div>
+                        <div className={styles.featuredInfo}>
+                          <h3>{post.title}</h3>
+                          <p>{post.excerpt}</p>
+                          <div className={styles.postMeta}>
+                            <span className={styles.date}>
+                              <i className='ph ph-calendar'></i>
+                              {formatDate(post.publishedAt)}
+                            </span>
+                            {post.readingTime && (
+                              <span className={styles.readTime}>
+                                <i className='ph ph-clock'></i>
+                                {post.readingTime} min read
+                              </span>
+                            )}
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </Link>
+                ))}
+              </div>
+            </div>
+          </section>
+        )}
 
         {/* Filter Section */}
         <section className={styles.filterSection}>
@@ -116,75 +181,31 @@ export default function BlogClient({ posts }) {
           </div>
         </section>
 
-        {/* Featured Posts */}
-        {featuredPosts.length > 0 && (
-          <section className={styles.featuredSection}>
-            <div className={styles.container}>
-              <h2 className={styles.sectionTitle}>Featured Articles</h2>
-              <div className={styles.featuredGrid}>
-                {featuredPosts.slice(0, 2).map((post) => (
-                  <Link 
-                    key={post._id} 
-                    href={`/blog/${post.slug.current}`}
-                    className={styles.featuredCard}
-                  >
-                    <div className={styles.featuredImage}>
-                      {post.featuredImage && (
-                        <Image
-                          src={urlFor(post.featuredImage.asset).width(800).height(500).url()}
-                          alt={post.featuredImage.alt || post.title}
-                          fill
-                          style={{ objectFit: 'cover' }}
-                        />
-                      )}
-                      <div className={styles.featuredOverlay}>
-                        <div className={styles.categoryBadge}>{post.category}</div>
-                        <div className={styles.featuredInfo}>
-                          <h3>{post.title}</h3>
-                          <p>{post.excerpt}</p>
-                          <div className={styles.postMeta}>
-                            <span className={styles.date}>
-                              <i className="ph ph-calendar"></i>
-                              {formatDate(post.publishedAt)}
-                            </span>
-                            {post.readingTime && (
-                              <span className={styles.readTime}>
-                                <i className="ph ph-clock"></i>
-                                {post.readingTime} min read
-                              </span>
-                            )}
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </Link>
-                ))}
-              </div>
-            </div>
-          </section>
-        )}
-
         {/* All Posts Grid */}
         <section className={styles.postsSection}>
           <div className={styles.container}>
             <h2 className={styles.sectionTitle}>
-              {activeFilter === 'all' ? 'All Articles' : `${categories.find(c => c.id === activeFilter)?.label} Articles`}
+              {activeFilter === 'all'
+                ? 'All Articles'
+                : `${categories.find((c) => c.id === activeFilter)?.label} Articles`}
             </h2>
-            
+
             {filteredPosts.length === 0 ? (
               <div className={styles.emptyState}>
                 <div className={styles.emptyIcon}>
-                  <i className="ph ph-file-text" style={{ fontSize: '4rem', color: '#37474F', opacity: 0.5 }}></i>
+                  <i
+                    className='ph ph-file-text'
+                    style={{ fontSize: '4rem', color: '#37474F', opacity: 0.5 }}
+                  ></i>
                 </div>
                 <h3>No articles found</h3>
                 <p>
-                  {activeFilter === 'all' 
+                  {activeFilter === 'all'
                     ? "We haven't published any articles yet. Check back soon for expert construction insights!"
-                    : `No articles found in the ${activeFilter} category.`
-                  }
+                    : `No articles found in the ${activeFilter} category.`}
                 </p>
                 {activeFilter !== 'all' && (
-                  <button 
+                  <button
                     onClick={() => setActiveFilter('all')}
                     className={styles.btnSecondary}
                   >
@@ -195,59 +216,7 @@ export default function BlogClient({ posts }) {
             ) : (
               <div className={styles.postsGrid}>
                 {filteredPosts.map((post) => (
-                  <Link 
-                    key={post._id} 
-                    href={`/blog/${post.slug.current}`}
-                    className={styles.postCard}
-                  >
-                    <div className={styles.postImage}>
-                      {post.featuredImage ? (
-                        <Image
-                          src={urlFor(post.featuredImage.asset).width(600).height(300).url()}
-                          alt={post.featuredImage.alt || post.title}
-                          fill
-                          style={{ objectFit: 'cover' }}
-                        />
-                      ) : (
-                        <div className={styles.placeholderImage}>
-                          <i className="ph ph-file-text" style={{ fontSize: '3rem', color: '#37474F', opacity: 0.3 }}></i>
-                          <p>Construction Article</p>
-                        </div>
-                      )}
-                      <div className={styles.categoryBadge}>{post.category}</div>
-                    </div>
-                    
-                    <div className={styles.postContent}>
-                      <h3 className={styles.postTitle}>{post.title}</h3>
-                      <p className={styles.postExcerpt}>{post.excerpt}</p>
-                      
-                      <div className={styles.postMeta}>
-                        <span className={styles.date}>
-                          <i className="ph ph-calendar"></i>
-                          {formatDate(post.publishedAt)}
-                        </span>
-                        {post.readingTime && (
-                          <span className={styles.readTime}>
-                            <i className="ph ph-clock"></i>
-                            {post.readingTime} min read
-                          </span>
-                        )}
-                      </div>
-
-                      {post.tags && post.tags.length > 0 && (
-                        <div className={styles.tags}>
-                          {post.tags.slice(0, 3).map((tag, index) => (
-                            <span key={index} className={styles.tag}>{tag}</span>
-                          ))}
-                        </div>
-                      )}
-
-                      <div className={styles.readMore}>
-                        <span>Read Article</span>
-                        <i className="ph ph-arrow-right"></i>
-                      </div>
-                    </div>
-                  </Link>
+                  <BlogPostCard key={post._id} post={post} />
                 ))}
               </div>
             )}
@@ -260,14 +229,18 @@ export default function BlogClient({ posts }) {
             <div className={styles.ctaContent}>
               <h2>Ready to Start Your Project?</h2>
               <p>
-                Get inspired by our articles? Let&apos;s discuss how we can bring 
-                that same level of geometric excellence to your construction project.
+                Get inspired by our articles? Let&apos;s discuss how we can
+                bring that same level of geometric excellence to your
+                construction project.
               </p>
               <div className={styles.ctaButtons}>
-                <Link href="/indianapolis-woodworker-contact" className={styles.btnPrimary}>
+                <Link
+                  href='/indianapolis-woodworker-contact'
+                  className={styles.btnPrimary}
+                >
                   Get Free Estimate
                 </Link>
-                <Link href="/project-gallery" className={styles.btnSecondary}>
+                <Link href='/project-gallery' className={styles.btnSecondary}>
                   View Our Projects
                 </Link>
               </div>
