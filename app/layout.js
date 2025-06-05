@@ -2,6 +2,7 @@ import { Inter, Raleway } from 'next/font/google';
 import './globals.css';
 import Navigation from './components/Navigation';
 import KineticBackground from './components/KineticBackground';
+import Footer from './components/Footer';
 
 const raleway = Raleway({
   subsets: ['latin'],
@@ -53,9 +54,10 @@ export default function RootLayout({ children }) {
   return (
     <html lang='en' className={`${raleway.variable} ${inter.variable}`}>
       <body>
-        <Navigation></Navigation>
-        <KineticBackground></KineticBackground>
+        <Navigation />
+        <KineticBackground />
         {children}
+        <Footer />
       </body>
     </html>
   );
