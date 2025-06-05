@@ -1,14 +1,3 @@
-/* Import Fonts FIRST */
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Raleway:wght@300;400;500;600;700&display=swap');
-
-body {
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-}
-
-.font-brand {
-  font-family: 'Raleway', serif;
-}
-
 :root {
   /* Mondrian Classic Palette */
   --primary-red: #D32F2F;
@@ -36,14 +25,7 @@ body {
   overflow-x: hidden;
 }
 
-/* Typography Classes */
-.font-brand {
-  font-family: 'Raleway', sans-serif;
-}
 
-.font-body {
-  font-family: 'SF Pro Display', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-}
 
 /* Smooth scrolling */
 html {
@@ -63,6 +45,12 @@ html {
 }
 
 /* Kinetic Background Elements - Used across components */
+@media (prefers-reduced-motion: reduce) {
+  .construction-element {
+    animation: none;
+  }
+}
+
 .kinetic-bg {
   position: fixed;
   top: 0;
@@ -72,6 +60,11 @@ html {
   pointer-events: none;
   z-index: -1;
   opacity: 0.3;
+  animation-play-state: running;
+}
+
+.kinetic-bg:not(:hover) {
+  animation-play-state: paused;
 }
 
 .construction-element {

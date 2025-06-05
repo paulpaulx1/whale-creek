@@ -67,7 +67,7 @@
 }
 
 .navLinks a {
-  font-family: var(--font-body);
+  font-family: 'SF Pro Display', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   text-decoration: none;
   color: var(--charcoal);
   font-weight: 500;

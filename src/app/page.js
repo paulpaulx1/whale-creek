@@ -6,11 +6,11 @@ import Footer from "./components/Footer";
 
 export default function Home() {
   return (
-    <main className={styles.main}>
-      <Hero></Hero>
-      <Services></Services>
-      <AboutSection></AboutSection>
-      <Footer></Footer>
+    <main className={styles.main} role='main'>
+      <Hero/>
+      <Services/>
+      <AboutSection/>
+      <Footer/>
     </main>
   );
 }
