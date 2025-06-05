@@ -6,6 +6,8 @@ import { notFound } from 'next/navigation';
 const blogPostQuery = `
   *[_type == "blogPost" && slug.current == $slug][0] {
     _id,
+    _createdAt,
+    _updatedAt,
     title,
     slug,
     category,
@@ -25,28 +27,9 @@ const blogPostQuery = `
     featured,
     tags,
     readingTime,
-    body,
-    author-> {
-      name,
-      bio,
-      image {
-        asset-> {
-          _id,
-          url
-        }
-      }
-    },
-    relatedProjects[]-> {
-      _id,
-      title,
-      slug,
-      featuredImage {
-        asset-> {
-          _id,
-          url
-        }
-      }
-    },
+    content,
+    seoTitle,
+    seoDescription,
     "relatedPosts": *[_type == "blogPost" && slug.current != $slug && category == ^.category][0...3] {
       _id,
       title,
@@ -59,7 +42,8 @@ const blogPostQuery = `
         }
       },
       publishedAt,
-      readingTime
+      readingTime,
+      category
     }
   }
 `;
@@ -85,13 +69,14 @@ export async function generateMetadata({ params }) {
   }
 
   return {
-    title: `${post.title} | Whale Creek Construction Blog`,
+    title: post.seoTitle || `${post.title} | Whale Creek Construction Blog`,
     description:
+      post.seoDescription ||
       post.excerpt ||
       `Read about ${post.title} on the Whale Creek Construction blog.`,
     openGraph: {
-      title: post.title,
-      description: post.excerpt,
+      title: post.seoTitle || post.title,
+      description: post.seoDescription || post.excerpt,
       images: post.featuredImage
         ? [
             {
@@ -102,6 +87,15 @@ export async function generateMetadata({ params }) {
             },
           ]
         : [],
+      type: 'article',
+      publishedTime: post.publishedAt,
+      tags: post.tags,
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: post.seoTitle || post.title,
+      description: post.seoDescription || post.excerpt,
+      images: post.featuredImage ? [post.featuredImage.asset.url] : [],
     },
   };
 }

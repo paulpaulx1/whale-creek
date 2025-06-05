@@ -1191,6 +1191,19 @@
   border-radius: 15px 0 15px 0;
 }
 
+.metaItem {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: #455A64;
+  font-weight: 500;
+}
+
+.metaItem i {
+  color: #D32F2F;
+  font-size: 1.1rem;
+}
+
 .shareSection {
   margin-top: 2rem;
   padding-top: 2rem;
@@ -1289,6 +1302,15 @@
   font-size: 1.1rem;
 }
 
+.contentMainHeading {
+  font-size: 2.8rem;
+  font-weight: 700;
+  color: #263238;
+  margin: 2rem 0 1.5rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
 .contentHeading {
   font-size: 2.2rem;
   font-weight: 700;
@@ -1320,6 +1342,15 @@
   letter-spacing: 0.5px;
 }
 
+.contentSubSubheading {
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: #263238;
+  margin: 2rem 0 1rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
 .contentParagraph {
   margin-bottom: 1.5rem;
   color: #37474F;
@@ -1329,6 +1360,11 @@
 .contentBold {
   font-weight: 700;
   color: #263238;
+}
+
+.contentItalic {
+  font-style: italic;
+  color: #455A64;
 }
 
 .contentLink {
@@ -1343,6 +1379,18 @@
   background: #D32F2F;
   color: #FAFAFA;
   padding: 2px 4px;
+}
+
+.contentList,
+.contentOrderedList {
+  margin: 2rem 0;
+  padding-left: 2rem;
+}
+
+.contentListItem {
+  margin-bottom: 0.8rem;
+  color: #37474F;
+  line-height: 1.6;
 }
 
 .postImageContent {
@@ -1374,41 +1422,43 @@
   letter-spacing: 1px;
 }
 
-.authorSection {
-  margin-top: 4rem;
-  padding: 3rem;
+.articleMeta {
+  margin-top: 3rem;
+}
+
+.metaCard {
   background: #F8F6F0;
   border: 4px solid #263238;
   border-radius: 20px 0 20px 0;
+  padding: 2rem;
 }
 
-.authorCard {
-  display: flex;
-  gap: 2rem;
-  align-items: flex-start;
-}
-
-.authorImage {
-  flex-shrink: 0;
-}
-
-.authorAvatar {
-  border: 3px solid #263238;
-  border-radius: 50%;
-}
-
-.authorName {
+.metaTitle {
   font-size: 1.4rem;
   font-weight: 700;
   color: #263238;
-  margin-bottom: 1rem;
+  margin-bottom: 1.5rem;
   text-transform: uppercase;
   letter-spacing: 1px;
 }
 
-.authorBio {
-  color: #37474F;
-  line-height: 1.6;
+.metaGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+}
+
+.metaLabel {
+  font-weight: 600;
+  color: #455A64;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  font-size: 0.9rem;
+}
+
+.metaValue {
+  color: #263238;
+  font-weight: 500;
 }
 
 .postSidebar {
@@ -1475,55 +1525,56 @@
   font-weight: 500;
   transition: color 0.3s ease;
   padding: 0.5rem 0;
+  border-left: 3px solid transparent;
+  padding-left: 1rem;
 }
 
 .tocLink:hover {
   color: #D32F2F;
+  border-left-color: #D32F2F;
 }
 
-.relatedProjects {
+.tocH2 {
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+
+.tocH3 {
+  padding-left: 2rem;
+  font-size: 0.9rem;
+}
+
+.tocH4 {
+  padding-left: 3rem;
+  font-size: 0.85rem;
+}
+
+.quickActions {
   display: flex;
   flex-direction: column;
   gap: 1rem;
 }
 
-.relatedProjectCard {
-  display: block;
-  text-decoration: none;
-  color: inherit;
-  border: 3px solid #263238;
-  border-radius: 10px 0 10px 0;
-  overflow: hidden;
-  transition: all 0.3s ease;
-  background: #FAFAFA;
-}
-
-.relatedProjectCard:hover {
-  transform: translateY(-3px);
-  box-shadow: 8px 8px 0 #F57C00;
-}
-
-.relatedProjectImage {
-  position: relative;
-  width: 100%;
-  height: 120px;
-  overflow: hidden;
-}
-
-.relatedProjectImage img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-.relatedProjectTitle {
+.actionBtn {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
   padding: 1rem;
-  font-size: 0.9rem;
-  font-weight: 600;
+  border: 3px solid #263238;
+  background: #FAFAFA;
   color: #263238;
-  margin: 0;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border-radius: 8px 0 8px 0;
   text-transform: uppercase;
   letter-spacing: 0.5px;
+  font-size: 0.9rem;
+}
+
+.actionBtn:hover {
+  background: #263238;
+  color: #FAFAFA;
 }
 
 .relatedPostsSection {
@@ -1578,13 +1629,22 @@
 
 .relatedPostContent {
   padding: 2rem;
+  position: relative;
+}
+
+.relatedPostContent .categoryBadge {
+  position: absolute;
+  top: -15px;
+  left: 1rem;
+  font-size: 0.7rem;
+  padding: 0.5rem 1rem;
 }
 
 .relatedPostTitle {
   font-size: 1.3rem;
   font-weight: 700;
   color: #263238;
-  margin-bottom: 1rem;
+  margin: 1rem 0;
   text-transform: uppercase;
   letter-spacing: 1px;
   line-height: 1.2;
@@ -1641,12 +1701,6 @@
     padding: 2rem;
   }
   
-  .authorCard {
-    flex-direction: column;
-    text-align: center;
-    gap: 1rem;
-  }
-  
   .relatedPostsGrid {
     grid-template-columns: 1fr;
   }
@@ -1657,6 +1711,10 @@
   
   .shareButtons {
     flex-wrap: wrap;
+  }
+  
+  .metaGrid {
+    grid-template-columns: 1fr;
   }
 }
 
