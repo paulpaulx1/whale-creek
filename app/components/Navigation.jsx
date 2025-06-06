@@ -49,16 +49,16 @@ export default function Navigation() {
             <Link href='/'>About</Link>
           </li>
           <li>
-            <Link href='indianapolis-general-contractor'>Services</Link>
+            <Link href='/indianapolis-general-contractor'>Services</Link>
           </li>
           <li>
-            <Link href='project-gallery'>Gallery</Link>
+            <Link href='/project-gallery'>Gallery</Link>
           </li>
           <li>
-            <Link href='blog'>Blog</Link>
+            <Link href='/blog'>Blog</Link>
           </li>
           <li>
-            <Link href='indianapolis-woodworker-contact'>Contact</Link>
+            <Link href='/indianapolis-woodworker-contact'>Contact</Link>
           </li>
         </ul>
 
@@ -84,25 +84,25 @@ export default function Navigation() {
             </li>
             <li>
               <Link
-                href='indianapolis-general-contractor'
+                href='/indianapolis-general-contractor'
                 onClick={closeMobileMenu}
               >
                 Services
               </Link>
             </li>
             <li>
-              <Link href='project-gallery' onClick={closeMobileMenu}>
+              <Link href='/project-gallery' onClick={closeMobileMenu}>
                 Gallery
               </Link>
             </li>
             <li>
-              <Link href='blog' onClick={closeMobileMenu}>
+              <Link href='/blog' onClick={closeMobileMenu}>
                 Blog
               </Link>
             </li>
             <li>
               <Link
-                href='indianapolis-woodworker-contact'
+                href='/indianapolis-woodworker-contact'
                 onClick={closeMobileMenu}
               >
                 Contact
