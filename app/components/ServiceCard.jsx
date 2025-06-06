@@ -1,5 +1,5 @@
 import ServiceIcon from './ServiceIcon'
-import styles from '../(routes)/indianapolis-general-contractor/Services.module.css'
+import styles from './ServiceCard.module.css'
 
 export default function ServiceCard({ iconType, blueprint, title, description }) {
   return (

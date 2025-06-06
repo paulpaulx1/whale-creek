@@ -1,11 +1,16 @@
 import styles from "./page.module.css";
 import Hero from "./components/Hero";
-import AboutSection from "./components/AboutSection";
+import ServiceCardsSection from "./components/ServiceCardsSection";
+import AboutContent from "./components/AboutContent";
+import ClientInteractions from "./components/ClientInteractions";
+
 export default function Home() {
   return (
     <main className={styles.main} role='main'>
       <Hero/>
-      <AboutSection/>
+      <ServiceCardsSection />
+      <AboutContent />
+      <ClientInteractions />
     </main>
   );
 }
