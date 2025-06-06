@@ -16,7 +16,7 @@ const StatCard = ({ number, label, index }) => {
           animateNumber();
         }
       },
-      { threshold: 0.5 }
+      { threshold: 0.2 }
     );
 
     if (statRef.current) {

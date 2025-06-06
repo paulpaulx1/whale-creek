@@ -1,56 +1,132 @@
 .statCard {
-    text-align: center;
-    padding: 2.5rem 2rem;
-    background: var(--soft-cream);
-    border-radius: 8px;
-    border-left: 4px solid var(--primary-blue);
-    transition: all 0.3s ease;
-    cursor: pointer;
+  text-align: center;
+  padding: 2.5rem 2rem;
+  background: var(--soft-cream);
+  border: 3px solid var(--charcoal);
+  transition: all 0.3s ease;
+  cursor: pointer;
+  position: relative;
+}
+
+/* Different asymmetrical border radius for each card */
+.statCard:nth-child(1) {
+  border-radius: 30px 8px 30px 8px;
+  border-left-color: var(--primary-red);
+}
+
+.statCard:nth-child(2) {
+  border-radius: 8px 25px 8px 25px;
+  border-left-color: var(--primary-blue);
+}
+
+.statCard:nth-child(3) {
+  border-radius: 35px 0 20px 12px;
+  border-left-color: var(--sage-green);
+}
+
+.statCard:nth-child(4) {
+  border-radius: 12px 40px 0 18px;
+  border-left-color: var(--accent-coral);
+}
+
+.statCard::before {
+  content: '';
+  position: absolute;
+  top: -8px;
+  right: -8px;
+  width: 16px;
+  height: 16px;
+  border: 2px solid var(--charcoal);
+  transition: all 0.3s ease;
+}
+
+.statCard:nth-child(1)::before {
+  background: var(--primary-red);
+  border-radius: 50% 0 50% 0;
+}
+
+.statCard:nth-child(2)::before {
+  background: var(--primary-blue);
+  border-radius: 0 50% 0 50%;
+}
+
+.statCard:nth-child(3)::before {
+  background: var(--sage-green);
+  border-radius: 50% 50% 0 0;
+}
+
+.statCard:nth-child(4)::before {
+  background: var(--accent-coral);
+  border-radius: 0 0 50% 50%;
+}
+
+.statCard:hover {
+  transform: translateY(-5px) rotate(1deg);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+}
+
+.statCard:nth-child(even):hover {
+  transform: translateY(-5px) rotate(-1deg);
+}
+
+.statCard:hover::before {
+  transform: scale(1.2) rotate(45deg);
+}
+
+.statNumber {
+  display: block;
+  font-size: 3rem;
+  font-weight: 700;
+  color: var(--charcoal);
+  font-family: 'JetBrains Mono', monospace;
+  margin-bottom: 0.5rem;
+  transition: all 0.3s ease;
+}
+
+.statCard:hover .statNumber {
+  transform: scale(1.05);
+}
+
+.statCard:nth-child(1):hover .statNumber { color: var(--primary-red); }
+.statCard:nth-child(2):hover .statNumber { color: var(--primary-blue); }
+.statCard:nth-child(3):hover .statNumber { color: var(--sage-green); }
+.statCard:nth-child(4):hover .statNumber { color: var(--accent-coral); }
+
+.statLabel {
+  font-size: 1rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  opacity: 0.8;
+}
+
+@media (max-width: 768px) {
+  .statCard {
+    padding: 2rem 1.5rem;
+  }
+  
+  .statCard:nth-child(1),
+  .statCard:nth-child(2),
+  .statCard:nth-child(3),
+  .statCard:nth-child(4) {
+    border-radius: 20px 6px 20px 6px;
   }
   
   .statCard:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    transform: translateY(-3px) rotate(0deg);
   }
   
   .statNumber {
-    display: block;
-    font-size: 3rem;
-    font-weight: 700;
-    color: var(--charcoal);
-    font-family: 'JetBrains Mono', monospace;
-    margin-bottom: 0.5rem;
-    transition: all 0.3s ease;
+    font-size: 2.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .statCard {
+    padding: 1.5rem;
   }
   
-  .statCard:hover .statNumber {
-    color: var(--primary-blue);
+  .statNumber {
+    font-size: 2rem;
   }
-  
-  .statLabel {
-    font-size: 1rem;
-    font-weight: 500;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    opacity: 0.8;
-  }
-  
-  @media (max-width: 768px) {
-    .statCard {
-      padding: 2rem 1.5rem;
-    }
-    
-    .statNumber {
-      font-size: 2.5rem;
-    }
-  }
-  
-  @media (max-width: 480px) {
-    .statCard {
-      padding: 1.5rem;
-    }
-    
-    .statNumber {
-      font-size: 2rem;
-    }
-  }
+}
