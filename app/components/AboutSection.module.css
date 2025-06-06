@@ -27,6 +27,7 @@
   align-items: start;
   margin-bottom: 8rem;
   margin-top: 4rem;
+  margin: 4rem 2rem 6rem 2rem;
 }
 
 /* Minimal Content Section */
@@ -156,6 +157,7 @@
   grid-template-columns: repeat(4, 1fr);
   gap: 3rem;
   margin-bottom: 4rem;
+  padding: 0 1rem;
 }
 
 /* Minimal Circle Accents - Very Subtle */
@@ -243,6 +245,7 @@
   .statsGrid {
     grid-template-columns: repeat(2, 1fr);
     gap: 2rem;
+    padding: 0 2rem;
   }
 
   .image {
@@ -274,6 +277,7 @@
   .statsGrid {
     grid-template-columns: 1fr;
     gap: 1.5rem;
+    padding: 0 1.5rem;
   }
 
   .circle {
