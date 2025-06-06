@@ -51,7 +51,7 @@ const Footer = () => {
               <h4>Quick Links</h4>
               <div className={styles.linksList}>
                 <Link href="/about">About</Link>
-                <Link href="/services">Services</Link>
+                <Link href="/indianapolis-general-contractor">Services</Link>
                 <Link href="/project-gallery">Gallery</Link>
                 <Link href="/contact">Contact</Link>
                 <Link href="/blog">Blog</Link>
