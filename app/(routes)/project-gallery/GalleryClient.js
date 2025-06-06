@@ -63,14 +63,6 @@ export default function GalleryClient({ projects }) {
   return (
     <main className={styles.main}>
       {/* Hero Section */}
-      <section className={styles.hero}>
-        <div className={styles.heroContainer}>
-          <div className={styles.heroContent}>
-            <h1>Project <span className={styles.heroAccent}>Gallery</span></h1>
-          </div>
-        </div>
-      </section>
-
       {/* Filter Section */}
       <section className={styles.filterSection}>
         <div className={styles.container}>
