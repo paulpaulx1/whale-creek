@@ -98,7 +98,7 @@ export default function Services() {
           <div className={styles.ctaContent}>
             <h2>Ready to Transform Your <span className={styles.ctaAccent}>Home or Business?</span></h2>
             <p>
-              Contact Whale Creek Co today for a free consultation, and let's discuss how we can bring your dream space to life. 
+              Contact Whale Creek Co today for a free consultation, and let&apos;s discuss how we can bring your dream space to life. 
               Experience the best in construction and design in Indianapolis—quality, creativity, and customer satisfaction await!
             </p>
             <div className={styles.ctaButtons}>
