@@ -277,7 +277,7 @@
   /* Filter Section */
   .filterSection {
     padding: 5rem 0;
-    background: #FAFAFA;
+    /* background: #FAFAFA; */
     border-top: 6px solid #263238;
     border-bottom: 6px solid #263238;
     position: relative;
