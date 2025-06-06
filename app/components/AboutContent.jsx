@@ -1,6 +1,7 @@
 import styles from "./AboutContent.module.css";
 import Reviews from "./Reviews";
 import Image from "next/image";
+import StatCard from "./StatCard";
 
 const AboutContent = () => {
   const stats = [
@@ -27,12 +28,11 @@ const AboutContent = () => {
           {/* Content Section - Left Column */}
           <div className={styles.content} data-element="content">
             <h2 className={styles.title}>
-              <span className={styles.titleAccent1}></span>
+
               Indianapolis&apos; <span className={styles.heroAccent}>
                 Trusted
               </span>{" "}
               Craftsmen
-              <span className={styles.titleAccent2}></span>
             </h2>
 
             <div className={styles.contentBlock}>
@@ -98,18 +98,13 @@ const AboutContent = () => {
           </div>
 
           <div className={styles.statsGrid}>
-            {stats.map((stat, index) => (
-              <div
-                key={index}
-                className={`${styles.statCard} ${styles[`statCard${index + 1}`]}`}
-                data-stat-final={stat.number}
-              >
-                <div className={styles.statAccent} />
-                <span className={styles.statNumber} data-number={stat.number}>
-                  {stat.number}
-                </span>
-                <span className={styles.statLabel}>{stat.label}</span>
-              </div>
+            {stats.map((statObj, i) => (
+              <StatCard
+                key={i}
+                number={statObj.number}
+                label={statObj.label}
+                index={statObj.index}
+              />
             ))}
           </div>
           
