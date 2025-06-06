@@ -1,4 +1,4 @@
-/* AboutSection.module.css - Clean Scandinavian-Memphis Style */
+/* AboutSection.module.css - Minimal & Spacious Design */
 
 .aboutSection {
   font-family: 'Space Grotesk', sans-serif;
@@ -6,8 +6,8 @@
   color: var(--charcoal);
   line-height: 1.6;
   position: relative;
-  padding: 8rem 2rem;
-  margin: 4rem 0;
+  padding: 12rem 2rem;
+  margin: 8rem 0;
   overflow: hidden;
 }
 
@@ -23,19 +23,18 @@
 .aboutContent {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 5rem;
-  align-items: center;
-  margin-bottom: 6rem;
+  gap: 8rem;
+  align-items: start;
+  margin-bottom: 8rem;
+  margin-top: 4rem;
 }
 
-/* Content Section */
+/* Minimal Content Section */
 .content {
-  background: var(--warm-white);
-  padding: 3rem;
-  border: 3px solid var(--charcoal);
-  border-radius: 40px 8px 40px 8px;
+  background: transparent;
+  padding: 0;
+  border: none;
   position: relative;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
   
   /* Animation states */
   opacity: 1;
@@ -48,64 +47,39 @@
   transform: translateY(40px);
 }
 
-/* Title */
+/* Clean Typography */
 .title {
-  font-size: 2.8rem;
-  font-weight: 700;
-  margin-bottom: 2.5rem;
+  font-size: 3.2rem;
+  font-weight: 300;
+  margin-bottom: 3rem;
   color: var(--charcoal);
   line-height: 1.1;
-  letter-spacing: -0.02em;
-  text-transform: uppercase;
+  letter-spacing: -0.03em;
 }
 
 .heroAccent {
   color: var(--primary-red);
-  position: relative;
+  font-weight: 400;
 }
 
-.heroAccent::after {
-  content: '';
-  position: absolute;
-  bottom: -4px;
-  left: 0;
-  width: 100%;
-  height: 4px;
-  background: var(--primary-yellow);
-  opacity: 0.8;
-}
-
-/* Content blocks */
+/* Minimal Content Blocks */
 .contentBlock {
-  background: var(--soft-cream);
-  padding: 2rem;
-  border-left: 4px solid var(--primary-blue);
-  border-radius: 0 25px 0 15px;
-  margin-bottom: 2rem;
+  background: transparent;
+  padding: 0;
+  border: none;
+  margin-bottom: 2.5rem;
   position: relative;
-}
-
-.contentBlock::before {
-  content: '';
-  position: absolute;
-  top: 15px;
-  right: 15px;
-  width: 8px;
-  height: 8px;
-  background: var(--accent-coral);
-  border-radius: 50%;
 }
 
 .contentBlock p {
-  font-size: 1.1rem;
-  margin-bottom: 1.5rem;
+  font-size: 1.2rem;
+  margin-bottom: 2rem;
+  line-height: 1.7;
+  color: var(--scandinavian-gray);
+  font-weight: 300;
 }
 
-.contentBlock p:last-child {
-  margin-bottom: 0;
-}
-
-/* Image Section */
+/* Simple Image Section */
 .imageSection {
   opacity: 1;
   transform: translateY(0);
@@ -119,17 +93,17 @@
 
 .imageContainer {
   border: 3px solid var(--charcoal);
-  border-radius: 45px 0 30px 8px;
+  border-radius: 0;
   overflow: hidden;
-  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+  box-shadow: none;
   transition: all 0.3s ease;
   position: relative;
   background: var(--warm-white);
 }
 
 .imageContainer:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+  transform: translateY(-8px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
 }
 
 .image {
@@ -141,18 +115,17 @@
 }
 
 .imageContainer:hover .image {
-  transform: scale(1.05);
+  transform: scale(1.02);
 }
 
-/* Stats Section */
+/* Minimal Stats Section */
 .statsSection {
-  background: var(--warm-white);
-  padding: 4rem 2rem;
-  border: 3px solid var(--charcoal);
-  border-radius: 50px 12px 35px 0px;
+  background: transparent;
+  padding: 0;
+  border: none;
   position: relative;
-  margin: 4rem 0 4rem 0;
-  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+  margin: 8rem 0;
+  box-shadow: none;
   
   /* Animation states */
   opacity: 1;
@@ -167,174 +140,109 @@
 
 .statsHeader {
   text-align: center;
-  margin-bottom: 4rem;
+  margin-bottom: 6rem;
 }
 
 .statsTitle {
-  font-size: 2.5rem;
-  font-weight: 700;
+  font-size: 2.8rem;
+  font-weight: 300;
   color: var(--charcoal);
-  text-transform: uppercase;
   letter-spacing: -0.02em;
   position: relative;
 }
 
-.statsTitle::before {
-  content: '';
-  position: absolute;
-  top: -15px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 60px;
-  height: 4px;
-  background: var(--primary-yellow);
-  border-radius: 2px;
-}
-
 .statsGrid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 2rem;
-  margin-bottom: 3rem;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 3rem;
+  margin-bottom: 4rem;
 }
 
-/* Clean circle accents */
+/* Minimal Circle Accents - Very Subtle */
 .aboutCircles,
 .statsCircles {
   display: flex;
   justify-content: center;
-  gap: 12px;
-  margin-top: 2rem;
+  gap: 16px;
+  margin-top: 3rem;
   cursor: pointer;
 }
 
 .circle {
-  width: 16px;
-  height: 16px;
+  width: 12px;
+  height: 12px;
   border-radius: 50%;
   transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   cursor: pointer;
-  border: 2px solid var(--charcoal);
-  opacity: 0.8;
+  opacity: 0.6;
 }
 
 .aboutCircles:hover .circle,
 .statsCircles:hover .circle {
-  transform: scale(1.2) translateY(-4px);
+  transform: scale(1.3);
   opacity: 1;
 }
 
-/* Subtle kinetic background */
+/* Remove All Kinetic Background */
 .kineticBackground {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  pointer-events: none;
-  overflow: hidden;
-  z-index: 1;
+  display: none;
 }
 
-.floatingElement {
-  position: absolute;
-  animation-duration: 20s;
-  animation-iteration-count: infinite;
-  animation-timing-function: ease-in-out;
-  opacity: 0.15;
-}
-
-.floatingTriangle {
-  width: 0;
-  height: 0;
-  border-left: 15px solid transparent;
-  border-right: 15px solid transparent;
-  border-bottom: 20px solid var(--primary-yellow);
-  top: 20%;
-  right: 15%;
-  animation-name: triangleFloat;
-}
-
-.floatingCircle {
-  width: 30px;
-  height: 30px;
-  background: var(--sage-green);
-  border-radius: 50%;
-  top: 70%;
-  left: 10%;
-  animation-name: circleFloat;
-}
-
-.floatingSquare {
-  width: 20px;
-  height: 20px;
-  background: var(--primary-red);
-  transform: rotate(45deg);
-  bottom: 30%;
-  right: 20%;
-  animation-name: squareFloat;
-}
-
-@keyframes triangleFloat {
-  0%, 100% { transform: translateY(0) rotate(0deg); }
-  50% { transform: translateY(-20px) rotate(10deg); }
-}
-
-@keyframes circleFloat {
-  0%, 100% { transform: translateX(0) scale(1); }
-  50% { transform: translateX(30px) scale(1.1); }
-}
-
-@keyframes squareFloat {
-  0%, 100% { transform: rotate(45deg) translateY(0); }
-  50% { transform: rotate(135deg) translateY(-15px); }
-}
-
-/* Responsive design */
+/* Spacious responsive design */
 @media (max-width: 1024px) {
   .title {
-    font-size: 2.5rem;
+    font-size: 2.8rem;
   }
   
   .aboutContent {
-    gap: 3rem;
+    gap: 6rem;
+    margin-top: 3rem;
   }
 
   .statsTitle {
-    font-size: 2.2rem;
+    font-size: 2.4rem;
+  }
+
+  .aboutSection {
+    padding: 10rem 2rem;
+  }
+
+  .statsGrid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2.5rem;
   }
 }
 
 @media (max-width: 768px) {
   .aboutSection {
-    padding: 4rem 1rem;
+    padding: 8rem 1rem;
   }
 
   .aboutContent {
     grid-template-columns: 1fr;
-    gap: 3rem;
+    gap: 4rem;
+    margin-top: 2rem;
   }
 
   .content {
     text-align: center;
-    padding: 2rem;
   }
 
   .title {
-    font-size: 2rem;
+    font-size: 2.4rem;
   }
 
-  .contentBlock {
-    padding: 1.5rem;
+  .contentBlock p {
+    font-size: 1.1rem;
   }
 
   .statsSection {
-    padding: 3rem 1.5rem;
+    margin: 6rem 0;
   }
 
   .statsGrid {
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 1.5rem;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
   }
 
   .image {
@@ -344,40 +252,42 @@
   .statsTitle {
     font-size: 2rem;
   }
-
-  .floatingElement {
-    opacity: 0.1;
-  }
 }
 
 @media (max-width: 480px) {
   .aboutSection {
-    padding: 3rem 1rem;
+    padding: 6rem 1rem;
+  }
+
+  .aboutContent {
+    margin-top: 1rem;
   }
 
   .title {
-    font-size: 1.8rem;
+    font-size: 2rem;
   }
 
   .statsTitle {
-    font-size: 1.6rem;
+    font-size: 1.8rem;
   }
 
-  .content {
-    padding: 1.5rem;
-  }
-
-  .statsSection {
-    padding: 2rem 1rem;
+  .statsGrid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
   }
 
   .circle {
-    width: 12px;
-    height: 12px;
+    width: 10px;
+    height: 10px;
   }
 
   .aboutCircles,
   .statsCircles {
-    gap: 8px;
+    gap: 12px;
+  }
+
+  .contentBlock p {
+    font-size: 1rem;
+    line-height: 1.6;
   }
 }
