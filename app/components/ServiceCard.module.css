@@ -1,19 +1,6 @@
 /* ServiceCard.module.css - Blueprint themed service cards */
 
-:root {
-    --primary-red: #D32F2F;
-    --primary-blue: #1976D2;
-    --primary-yellow: #F57C00;
-    --sage-green: #66BB6A;
-    --accent-coral: #FF7043;
-    --scandinavian-gray: #37474F;
-    --muted-navy: #455A64;
-    --charcoal: #263238;
-    --warm-white: #FAFAFA;
-    --soft-cream: #F8F6F0;
-    --blueprint-blue: #1e3a5f;
-  }
-  
+
   .serviceCard {
     background: rgba(255, 255, 255, 0.05);
     padding: 2.5rem;
