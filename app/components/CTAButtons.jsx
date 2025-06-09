@@ -13,7 +13,7 @@ export default function CTAButtons() {
         <HardHatIcon size={32} className={styles.btnIcon} />
         <span className={styles.btnText}>Get Free Estimate</span>
       </a>
-      <a href="#gallery" className={`${styles.btn} ${styles.btnSecondary}`}>
+      <a href="/project-gallery" className={`${styles.btn} ${styles.btnSecondary}`}>
         <ShovelIcon size={32} className={styles.btnIcon} />
         <span className={styles.btnText}>View Our Work</span>
       </a>
