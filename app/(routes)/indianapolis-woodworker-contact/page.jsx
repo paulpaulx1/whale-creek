@@ -3,6 +3,7 @@
 
 import { useState } from 'react';
 import styles from './Contact.module.css';
+import { PhoneIcon, AtIcon  } from '@phosphor-icons/react';
 
 export default function ContactPage() {
   const [formData, setFormData] = useState({
@@ -76,7 +77,8 @@ export default function ContactPage() {
               Contact <span className={styles.heroAccent}>Whale Creek</span>
             </h1>
             <p className={styles.heroSubtext}>
-              Ready to bring your vision to life? <br/> Get in touch with us through email, phone, or by filling our the form below.
+              Ready to bring your vision to life? <br /> Get in touch with us
+              through email, phone, or by filling our the form below.
             </p>
           </div>
         </div>
@@ -91,8 +93,8 @@ export default function ContactPage() {
               <div className={styles.formHeader}>
                 <h2>Get Your Free Estimate</h2>
                 <p>
-                  Tell us about your project and we will get back to you within 24
-                  hours.
+                  Tell us about your project and we will get back to you within
+                  24 hours.
                 </p>
               </div>
 
@@ -222,15 +224,16 @@ export default function ContactPage() {
             <div className={styles.infoSection}>
               <div className={styles.contactInfo}>
                 <h3>Get In Touch</h3>
-                <p>Contact us today for a free
-                  consultation and estimate.
-                </p>
+                <p>Contact us today for a free consultation and estimate.</p>
 
                 <div className={styles.infoCards}>
                   <div className={styles.infoCard}>
                     <div className={styles.infoIcon}>
-                      <i className='ph ph-phone'></i>
+                      <i className='ph ph-phone'>
+                        <PhoneIcon size={32} />
+                      </i>
                     </div>
+
                     <div className={styles.infoContent}>
                       <h4>Phone</h4>
                       <p>+1 (555) 123-4567</p>
@@ -239,7 +242,9 @@ export default function ContactPage() {
 
                   <div className={styles.infoCard}>
                     <div className={styles.infoIcon}>
-                      <i className='ph ph-envelope'></i>
+                      <i className='ph ph-envelope'>
+                        <AtIcon size={32} />
+                      </i>
                     </div>
                     <div className={styles.infoContent}>
                       <h4>Email</h4>
