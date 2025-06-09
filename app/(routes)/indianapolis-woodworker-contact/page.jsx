@@ -8,10 +8,21 @@ export default function ContactPage() {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
+    phone: '',
+    service: '',
     message: '',
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [result, setResult] = useState('');
+
+  const services = [
+    'Custom Millwork',
+    'Residential Construction',
+    'Commercial Projects',
+    'Kitchen Cabinetry',
+    'Home Renovation',
+    'General Contracting',
+  ];
 
   const handleChange = (e) => {
     setFormData({
@@ -38,7 +49,13 @@ export default function ContactPage() {
 
       if (response.ok) {
         setResult('Thank you! Your message has been sent successfully.');
-        setFormData({ name: '', email: '', message: '' });
+        setFormData({
+          name: '',
+          email: '',
+          phone: '',
+          service: '',
+          message: '',
+        });
       } else {
         setResult('Something went wrong. Please try again.');
       }
@@ -50,175 +67,223 @@ export default function ContactPage() {
   };
 
   return (
-    <>
-      {/* Kinetic Background */}
-      <div className={styles.kineticBg}>
-        <div className={`${styles.floatingElement} ${styles.floatSaw}`}>🪚</div>
-        <div className={`${styles.floatingElement} ${styles.floatRuler}`}>
-          📏
-        </div>
-        <div className={`${styles.floatingElement} ${styles.floatHammer}`}>
-          🔨
-        </div>
-        <div
-          className={`${styles.floatingElement} ${styles.floatSquare}`}
-        ></div>
-        <div
-          className={`${styles.floatingElement} ${styles.floatTriangle}`}
-        ></div>
-
-        {/* Construction elements */}
-        <div className={`${styles.constructionElement} ${styles.beam}`}></div>
-        <div className={`${styles.constructionElement} ${styles.beam}`}></div>
-        <div className={`${styles.constructionElement} ${styles.screw}`}></div>
-        <div className={`${styles.constructionElement} ${styles.screw}`}></div>
-        <div className={`${styles.constructionElement} ${styles.plank}`}></div>
-        <div className={`${styles.constructionElement} ${styles.plank}`}></div>
-      </div>
-
-      <main className={styles.main}>
-        <div className={styles.contactContainer}>
-          {/* Memphis Shapes */}
-          <div
-            className={`${styles.memphisShape} ${styles.memphisCircle}`}
-          ></div>
-          <div
-            className={`${styles.memphisShape} ${styles.memphisTriangle}`}
-          ></div>
-
-          {/* Header Section */}
-          <div className={styles.contactHeader}>
-            <h1 className={styles.contactTitle}>
-              Contact <span className={styles.titleAccent}>Whale Creek</span>
+    <main className={styles.main}>
+      {/* Hero Section */}
+      <section className={styles.hero}>
+        <div className={styles.heroContainer}>
+          <div className={styles.heroContent}>
+            <h1>
+              Contact <span className={styles.heroAccent}>Whale Creek</span>
             </h1>
-            <p className={styles.contactIntro}>
-              Have a project in mind? Get in touch with our team.
+            <p className={styles.heroSubtext}>
+              Ready to bring your vision to life? <br/> Get in touch with us through email, phone, or by filling our the form below.
             </p>
-
-            {/* Decorative circles */}
-            <div className={styles.headerCircles}>
-              <div className={styles.headerCircle}></div>
-              <div className={styles.headerCircle}></div>
-              <div className={styles.headerCircle}></div>
-              <div className={styles.headerCircle}></div>
-              <div className={styles.headerCircle}></div>
-            </div>
           </div>
+        </div>
+      </section>
 
-          {/* Contact Form */}
-          <form className={styles.contactForm} onSubmit={handleSubmit}>
-            <div className={styles.formGrid}>
-              <div className={styles.formGroup}>
-                <label htmlFor='name' className={styles.formLabel}>
-                  <i className={styles.labelIcon}>👤</i>
-                  Name
-                </label>
-                <input
-                  type='text'
-                  id='name'
-                  name='name'
-                  value={formData.name}
-                  onChange={handleChange}
-                  className={styles.formInput}
-                  placeholder='Your name'
-                  required
-                />
+      {/* Contact Form Section */}
+      <section className={styles.contactSection}>
+        <div className={styles.container}>
+          <div className={styles.contactGrid}>
+            {/* Contact Form */}
+            <div className={styles.formSection}>
+              <div className={styles.formHeader}>
+                <h2>Get Your Free Estimate</h2>
+                <p>
+                  Tell us about your project and we will get back to you within 24
+                  hours.
+                </p>
               </div>
 
-              <div className={styles.formGroup}>
-                <label htmlFor='email' className={styles.formLabel}>
-                  <i className={styles.labelIcon}>📧</i>
-                  Email
-                </label>
-                <input
-                  type='email'
-                  id='email'
-                  name='email'
-                  value={formData.email}
-                  onChange={handleChange}
-                  className={styles.formInput}
-                  placeholder='your.email@example.com'
-                  required
-                />
-              </div>
+              <form className={styles.contactForm} onSubmit={handleSubmit}>
+                <div className={styles.formGrid}>
+                  <div className={styles.formGroup}>
+                    <label htmlFor='name' className={styles.formLabel}>
+                      <i className='ph ph-user'></i>
+                      Full Name
+                    </label>
+                    <input
+                      type='text'
+                      id='name'
+                      name='name'
+                      value={formData.name}
+                      onChange={handleChange}
+                      className={styles.formInput}
+                      placeholder='Your full name'
+                      required
+                    />
+                  </div>
 
-              <div className={`${styles.formGroup} ${styles.formGroupFull}`}>
-                <label htmlFor='message' className={styles.formLabel}>
-                  <i className={styles.labelIcon}>💬</i>
-                  Message
-                </label>
-                <textarea
-                  id='message'
-                  name='message'
-                  value={formData.message}
-                  onChange={handleChange}
-                  className={styles.formTextarea}
-                  rows='6'
-                  placeholder='Tell us about your project...'
-                  required
-                ></textarea>
-              </div>
+                  <div className={styles.formGroup}>
+                    <label htmlFor='email' className={styles.formLabel}>
+                      <i className='ph ph-envelope'></i>
+                      Email Address
+                    </label>
+                    <input
+                      type='email'
+                      id='email'
+                      name='email'
+                      value={formData.email}
+                      onChange={handleChange}
+                      className={styles.formInput}
+                      placeholder='your.email@example.com'
+                      required
+                    />
+                  </div>
+
+                  <div className={styles.formGroup}>
+                    <label htmlFor='phone' className={styles.formLabel}>
+                      <i className='ph ph-phone'></i>
+                      Phone Number
+                    </label>
+                    <input
+                      type='tel'
+                      id='phone'
+                      name='phone'
+                      value={formData.phone}
+                      onChange={handleChange}
+                      className={styles.formInput}
+                      placeholder='(555) 123-4567'
+                    />
+                  </div>
+
+                  <div className={styles.formGroup}>
+                    <label htmlFor='service' className={styles.formLabel}>
+                      <i className='ph ph-hammer'></i>
+                      Service Needed
+                    </label>
+                    <select
+                      id='service'
+                      name='service'
+                      value={formData.service}
+                      onChange={handleChange}
+                      className={styles.formSelect}
+                      required
+                    >
+                      <option value=''>Select a service</option>
+                      {services.map((service) => (
+                        <option key={service} value={service}>
+                          {service}
+                        </option>
+                      ))}
+                    </select>
+                  </div>
+
+                  <div
+                    className={`${styles.formGroup} ${styles.formGroupFull}`}
+                  >
+                    <label htmlFor='message' className={styles.formLabel}>
+                      <i className='ph ph-chat-text'></i>
+                      Project Details
+                    </label>
+                    <textarea
+                      id='message'
+                      name='message'
+                      value={formData.message}
+                      onChange={handleChange}
+                      className={styles.formTextarea}
+                      rows='6'
+                      placeholder='Tell us about your project, timeline, budget, and any specific requirements...'
+                      required
+                    ></textarea>
+                  </div>
+                </div>
+
+                <button
+                  type='submit'
+                  className={styles.submitBtn}
+                  disabled={isSubmitting}
+                >
+                  {isSubmitting ? (
+                    <>
+                      <span className={styles.spinner}></span>
+                      Sending Message...
+                    </>
+                  ) : (
+                    <>
+                      <i className='ph ph-paper-plane-tilt'></i>
+                      Send Message
+                    </>
+                  )}
+                </button>
+
+                {result && (
+                  <div
+                    className={`${styles.result} ${result.includes('Thank you') ? styles.success : styles.error}`}
+                  >
+                    {result}
+                  </div>
+                )}
+              </form>
             </div>
 
-            <button
-              type='submit'
-              className={styles.submitBtn}
-              disabled={isSubmitting}
-            >
-              {isSubmitting ? (
-                <>
-                  <span className={styles.spinner}></span>
-                  Sending...
-                </>
-              ) : (
-                <>
-                  <i className={styles.btnIcon}>🚀</i>
-                  Send Message
-                </>
-              )}
-            </button>
-
-            {result && (
-              <div
-                className={`${styles.result} ${result.includes('Thank you') ? styles.success : styles.error}`}
-              >
-                {result}
-              </div>
-            )}
-          </form>
-
-          {/* Contact Info */}
-          <div className={styles.contactInfo}>
-            <div className={styles.infoGrid}>
-              <div className={styles.infoCard}>
-                <div className={styles.infoIcon}>📍</div>
-                <h3>Visit Us</h3>
-                <p>
-                  Whale Creek
-                  <br />
-                  Location TBD
+            {/* Contact Info */}
+            <div className={styles.infoSection}>
+              <div className={styles.contactInfo}>
+                <h3>Get In Touch</h3>
+                <p>Contact us today for a free
+                  consultation and estimate.
                 </p>
-              </div>
 
-              <div className={styles.infoCard}>
-                <div className={styles.infoIcon}>📞</div>
-                <h3>Call Us</h3>
-                <p>+1 (555) 123-4567</p>
-              </div>
+                <div className={styles.infoCards}>
+                  <div className={styles.infoCard}>
+                    <div className={styles.infoIcon}>
+                      <i className='ph ph-phone'></i>
+                    </div>
+                    <div className={styles.infoContent}>
+                      <h4>Phone</h4>
+                      <p>+1 (555) 123-4567</p>
+                    </div>
+                  </div>
 
-              <div className={styles.infoCard}>
-                <div className={styles.infoIcon}>⏰</div>
-                <h3>Working Hours</h3>
-                <p>
-                  Mon - Fri: 9AM - 6PM
-                  <br />
-                  Sat: 10AM - 4PM
-                </p>
+                  <div className={styles.infoCard}>
+                    <div className={styles.infoIcon}>
+                      <i className='ph ph-envelope'></i>
+                    </div>
+                    <div className={styles.infoContent}>
+                      <h4>Email</h4>
+                      <p>info@whalecreek.com</p>
+                    </div>
+                  </div>
+                </div>
+
+                <div className={styles.ctaNote}>
+                  <h4>Why Choose Whale Creek?</h4>
+                  <ul>
+                    <li>25+ years of experience</li>
+                    <li>Licensed & fully insured</li>
+                    <li>Award-winning craftsmanship</li>
+                    <li>Free estimates & consultations</li>
+                    <li>Local Indianapolis specialists</li>
+                  </ul>
+                </div>
               </div>
             </div>
           </div>
         </div>
-      </main>
-    </>
+      </section>
+
+      {/* CTA Section */}
+      <section className={styles.ctaSection}>
+        <div className={styles.container}>
+          <div className={styles.ctaContent}>
+            <h2>Ready to Start Your Project?</h2>
+            <p>
+              Join hundreds of satisfied customers who trust Whale Creek for
+              their construction and millwork needs.
+            </p>
+            <div className={styles.ctaButtons}>
+              <a href='/project-gallery' className={styles.btnSecondary}>
+                View Our Work
+              </a>
+              <a href='/services' className={styles.btnSecondary}>
+                Our Services
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
   );
 }
