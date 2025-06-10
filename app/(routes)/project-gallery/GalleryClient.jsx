@@ -75,7 +75,6 @@ export default function GalleryClient({ projects }) {
                 }`}
                 onClick={() => handleFilterChange(category.id)}
               >
-                <i className={`ph ph-${category.icon}`}></i>
                 <span>{category.label}</span>
               </button>
             ))}
