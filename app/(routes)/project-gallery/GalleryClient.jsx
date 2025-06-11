@@ -144,6 +144,7 @@ export default function GalleryClient({ projects }) {
   const [activeFilter, setActiveFilter] = useState('all');
   const [lightboxImage, setLightboxImage] = useState(null);
   const [projectImageIndices, setProjectImageIndices] = useState({});
+  const [modalImageIndex, setModalImageIndex] = useState(0);
 
   const categories = [
     { id: 'all', label: 'All Projects', icon: 'squares-four' },
@@ -168,12 +169,18 @@ export default function GalleryClient({ projects }) {
     setActiveFilter(categoryId);
   };
 
-  const openLightbox = (image, project) => {
-    setLightboxImage({ ...image, projectTitle: project.title });
+  const openLightbox = (image, project, imageIndex = 0) => {
+    setLightboxImage({
+      ...image,
+      projectTitle: project.title,
+      fullProject: project,
+    });
+    setModalImageIndex(imageIndex);
   };
 
   const closeLightbox = () => {
     setLightboxImage(null);
+    setModalImageIndex(0);
   };
 
   // Close lightbox on Escape key
@@ -252,6 +259,22 @@ export default function GalleryClient({ projects }) {
     [projectImageIndices, getProjectKey]
   );
 
+  const handleModalPrevImage = () => {
+    if (lightboxImage?.fullProject?.images) {
+      setModalImageIndex((prev) =>
+        prev > 0 ? prev - 1 : lightboxImage.fullProject.images.length - 1
+      );
+    }
+  };
+
+  const handleModalNextImage = () => {
+    if (lightboxImage?.fullProject?.images) {
+      setModalImageIndex((prev) =>
+        prev < lightboxImage.fullProject.images.length - 1 ? prev + 1 : 0
+      );
+    }
+  };
+
   return (
     <main className={styles.main}>
       {/* Hero Section */}
@@ -284,7 +307,20 @@ export default function GalleryClient({ projects }) {
                 .filter((p) => p.featured)
                 .slice(0, 3)
                 .map((project) => (
-                  <div key={project._id} className={styles.featuredCard}>
+                  <div
+                    key={project._id}
+                    className={styles.featuredCard}
+                    onClick={() => {
+                      const currentImageIndex = getCurrentImageIndex(
+                        project._id,
+                        'featured'
+                      );
+                      const currentImage = project.images?.[currentImageIndex];
+                      if (currentImage?.asset?.asset) {
+                        openLightbox(currentImage, project, currentImageIndex);
+                      }
+                    }}
+                  >
                     <div className={styles.featuredImage}>
                       <ImageCarousel
                         project={project}
@@ -349,58 +385,71 @@ export default function GalleryClient({ projects }) {
           ) : (
             <div className={styles.projectsGrid}>
               {filteredProjects.map((project) => (
-                <div key={project._id} className={styles.projectCard}>
-                  <div className={styles.projectImage}>
-                    <ImageCarousel
-                      project={project}
-                      imageIndex={getCurrentImageIndex(project._id, 'grid')}
-                      onPrevImage={handlePrevImage}
-                      onNextImage={handleNextImage}
-                      onSetImageIndex={handleSetImageIndex}
-                      onImageClick={openLightbox}
-                      context='grid' // Add context
-                      imageWidth={600}
-                      imageHeight={400}
-                      showCounter={false}
-                      showIndicators={false}
-                      className={styles.projectImageCarousel}
-                    />
-                  </div>
-                  <div className={styles.projectInfo}>
-                    <div className={styles.projectHeader}>
-                      <h3>{project.title}</h3>
-                      <span className={styles.projectCategory}>
-                        {project.category}
-                      </span>
+                  <div
+                    key={project._id}
+                    className={styles.projectCard}
+                    onClick={() => {
+                      const currentImageIndex = getCurrentImageIndex(
+                        project._id,
+                        'grid'
+                      );
+                      const currentImage = project.images?.[currentImageIndex];
+                      if (currentImage?.asset?.asset) {
+                        openLightbox(currentImage, project, currentImageIndex);
+                      }
+                    }}
+                  >
+                    <div className={styles.projectImage}>
+                      <ImageCarousel
+                        project={project}
+                        imageIndex={getCurrentImageIndex(project._id, 'grid')}
+                        onPrevImage={handlePrevImage}
+                        onNextImage={handleNextImage}
+                        onSetImageIndex={handleSetImageIndex}
+                        onImageClick={openLightbox}
+                        context='grid' // Add context
+                        imageWidth={600}
+                        imageHeight={400}
+                        showCounter={false}
+                        showIndicators={false}
+                        className={styles.projectImageCarousel}
+                      />
                     </div>
-                    <p className={styles.projectDescription}>
-                      {project.description}
-                    </p>
-                    <div className={styles.projectMeta}>
-                      {project.location && (
-                        <span className={styles.location}>
-                          <i className='ph ph-map-pin'></i>
-                          {project.location}
+                    <div className={styles.projectInfo}>
+                      <div className={styles.projectHeader}>
+                        <h3>{project.title}</h3>
+                        <span className={styles.projectCategory}>
+                          {project.category}
                         </span>
-                      )}
-                      {project.completedDate && (
-                        <span className={styles.date}>
-                          <i className='ph ph-calendar'></i>
-                          {new Date(project.completedDate).getFullYear()}
-                        </span>
-                      )}
-                    </div>
-                    {project.tags && project.tags.length > 0 && (
-                      <div className={styles.tags}>
-                        {project.tags.slice(0, 3).map((tag, index) => (
-                          <span key={index} className={styles.tag}>
-                            {tag}
-                          </span>
-                        ))}
                       </div>
-                    )}
+                      <p className={styles.projectDescription}>
+                        {project.description}
+                      </p>
+                      <div className={styles.projectMeta}>
+                        {project.location && (
+                          <span className={styles.location}>
+                            <i className='ph ph-map-pin'></i>
+                            {project.location}
+                          </span>
+                        )}
+                        {project.completedDate && (
+                          <span className={styles.date}>
+                            <i className='ph ph-calendar'></i>
+                            {new Date(project.completedDate).getFullYear()}
+                          </span>
+                        )}
+                      </div>
+                      {project.tags && project.tags.length > 0 && (
+                        <div className={styles.tags}>
+                          {project.tags.slice(0, 3).map((tag, index) => (
+                            <span key={index} className={styles.tag}>
+                              {tag}
+                            </span>
+                          ))}
+                        </div>
+                      )}
+                    </div>
                   </div>
-                </div>
               ))}
             </div>
           )}
@@ -434,31 +483,248 @@ export default function GalleryClient({ projects }) {
         </div>
       </section>
 
-      {/* Lightbox Modal */}
-      {lightboxImage && (
-        <div className={styles.lightbox} onClick={closeLightbox}>
+      {/* Project Details Modal*/}
+      {lightboxImage && lightboxImage.fullProject && (
+        <div className={styles.projectModal} onClick={closeLightbox}>
           <div
-            className={styles.lightboxContent}
+            className={styles.projectModalContent}
             onClick={(e) => e.stopPropagation()}
           >
-            <button className={styles.lightboxClose} onClick={closeLightbox}>
+            {/* Close Button */}
+            <button
+              className={styles.projectModalClose}
+              onClick={closeLightbox}
+            >
               <i className='ph ph-x'></i>
             </button>
-            <div className={styles.lightboxImage}>
-              <Image
-                src={urlFor(lightboxImage.asset.asset)
-                  .width(1200)
-                  .height(900)
-                  .url()}
-                alt={lightboxImage.alt || lightboxImage.projectTitle}
-                fill
-                style={{ objectFit: 'contain' }}
-                priority
-              />
-            </div>
-            <div className={styles.lightboxInfo}>
-              <h3>{lightboxImage.projectTitle}</h3>
-              {lightboxImage.caption && <p>{lightboxImage.caption}</p>}
+
+            <div className={styles.projectModalBody}>
+              {/* Left Side - Image Carousel */}
+              <div className={styles.projectModalImages}>
+                {lightboxImage.fullProject.images &&
+                  lightboxImage.fullProject.images.length > 0 && (
+                    <>
+                      <div className={styles.modalImageContainer}>
+                        <Image
+                          src={urlFor(
+                            lightboxImage.fullProject.images[modalImageIndex]
+                              .asset.asset
+                          )
+                            .width(800)
+                            .height(600)
+                            .url()}
+                          alt={
+                            lightboxImage.fullProject.images[modalImageIndex]
+                              .alt || lightboxImage.fullProject.title
+                          }
+                          fill
+                          style={{ objectFit: 'contain' }}
+                          priority
+                        />
+
+                        {/* Image Navigation */}
+                        {lightboxImage.fullProject.images.length > 1 && (
+                          <>
+                            <button
+                              className={`${styles.modalCarouselControl} ${styles.modalCarouselPrev}`}
+                              onClick={handleModalPrevImage}
+                              aria-label='Previous image'
+                            >
+                              <i className='ph ph-caret-left'></i>
+                            </button>
+                            <button
+                              className={`${styles.modalCarouselControl} ${styles.modalCarouselNext}`}
+                              onClick={handleModalNextImage}
+                              aria-label='Next image'
+                            >
+                              <i className='ph ph-caret-right'></i>
+                            </button>
+                          </>
+                        )}
+                      </div>
+
+                      {/* Image Caption */}
+                      {lightboxImage.fullProject.images[modalImageIndex]
+                        .caption && (
+                        <div className={styles.modalImageCaption}>
+                          {
+                            lightboxImage.fullProject.images[modalImageIndex]
+                              .caption
+                          }
+                        </div>
+                      )}
+
+                      {/* Image Thumbnails */}
+                      {lightboxImage.fullProject.images.length > 1 && (
+                        <div className={styles.modalThumbnails}>
+                          {lightboxImage.fullProject.images.map(
+                            (image, index) => (
+                              <button
+                                key={index}
+                                className={`${styles.modalThumbnail} ${
+                                  index === modalImageIndex ? styles.active : ''
+                                }`}
+                                onClick={() => setModalImageIndex(index)}
+                              >
+                                <Image
+                                  src={urlFor(image.asset.asset)
+                                    .width(100)
+                                    .height(75)
+                                    .url()}
+                                  alt={
+                                    image.alt ||
+                                    `${lightboxImage.fullProject.title} - Image ${index + 1}`
+                                  }
+                                  fill
+                                  style={{ objectFit: 'cover' }}
+                                />
+                              </button>
+                            )
+                          )}
+                        </div>
+                      )}
+
+                      {/* Image Counter */}
+                      {lightboxImage.fullProject.images.length > 1 && (
+                        <div className={styles.modalImageCounter}>
+                          {modalImageIndex + 1} of{' '}
+                          {lightboxImage.fullProject.images.length}
+                        </div>
+                      )}
+                    </>
+                  )}
+              </div>
+
+              {/* Right Side - Project Details */}
+              <div className={styles.projectModalDetails}>
+                <div className={styles.projectModalHeader}>
+                  <h1 className={styles.projectModalTitle}>
+                    {lightboxImage.fullProject.title}
+                  </h1>
+                  {lightboxImage.fullProject.category && (
+                    <span className={styles.projectModalCategory}>
+                      {lightboxImage.fullProject.category}
+                    </span>
+                  )}
+                </div>
+
+                {/* Project Description */}
+                <div className={styles.projectModalDescription}>
+                  <p>{lightboxImage.fullProject.description}</p>
+                  {lightboxImage.fullProject.longDescription && (
+                    <p className={styles.longDescription}>
+                      {lightboxImage.fullProject.longDescription}
+                    </p>
+                  )}
+                </div>
+
+                {/* Project Meta Information */}
+                <div className={styles.projectModalMeta}>
+                  {lightboxImage.fullProject.location && (
+                    <div className={styles.metaItem}>
+                      <i className='ph ph-map-pin'></i>
+                      <span>
+                        <strong>Location:</strong>{' '}
+                        {lightboxImage.fullProject.location}
+                      </span>
+                    </div>
+                  )}
+
+                  {lightboxImage.fullProject.completedDate && (
+                    <div className={styles.metaItem}>
+                      <i className='ph ph-calendar'></i>
+                      <span>
+                        <strong>Completed:</strong>{' '}
+                        {new Date(
+                          lightboxImage.fullProject.completedDate
+                        ).toLocaleDateString()}
+                      </span>
+                    </div>
+                  )}
+
+                  {lightboxImage.fullProject.client && (
+                    <div className={styles.metaItem}>
+                      <i className='ph ph-user'></i>
+                      <span>
+                        <strong>Client:</strong>{' '}
+                        {lightboxImage.fullProject.client}
+                      </span>
+                    </div>
+                  )}
+
+                  {lightboxImage.fullProject.projectValue && (
+                    <div className={styles.metaItem}>
+                      <i className='ph ph-currency-dollar'></i>
+                      <span>
+                        <strong>Project Value:</strong> $
+                        {lightboxImage.fullProject.projectValue.replace(
+                          '-',
+                          ' - $'
+                        )}
+                      </span>
+                    </div>
+                  )}
+                </div>
+
+                {/* Tags */}
+                {lightboxImage.fullProject.tags &&
+                  lightboxImage.fullProject.tags.length > 0 && (
+                    <div className={styles.projectModalSection}>
+                      <h3>Project Tags</h3>
+                      <div className={styles.modalTags}>
+                        {lightboxImage.fullProject.tags.map((tag, index) => (
+                          <span key={index} className={styles.modalTag}>
+                            {tag}
+                          </span>
+                        ))}
+                      </div>
+                    </div>
+                  )}
+
+                {/* Materials */}
+                {lightboxImage.fullProject.materials &&
+                  lightboxImage.fullProject.materials.length > 0 && (
+                    <div className={styles.projectModalSection}>
+                      <h3>Materials Used</h3>
+                      <div className={styles.modalMaterials}>
+                        {lightboxImage.fullProject.materials.map(
+                          (material, index) => (
+                            <span key={index} className={styles.modalMaterial}>
+                              {material}
+                            </span>
+                          )
+                        )}
+                      </div>
+                    </div>
+                  )}
+
+                {/* Client Testimonial */}
+                {lightboxImage.fullProject.testimonial &&
+                  lightboxImage.fullProject.testimonial.quote && (
+                    <div className={styles.projectModalSection}>
+                      <h3>Client Testimonial</h3>
+                      <div className={styles.modalTestimonial}>
+                        <blockquote className={styles.testimonialQuote}>
+                          {lightboxImage.fullProject.testimonial.quote}
+                        </blockquote>
+                        <div className={styles.testimonialAuthor}>
+                          <strong>
+                            {lightboxImage.fullProject.testimonial.author}
+                          </strong>
+                          {lightboxImage.fullProject.testimonial
+                            .authorTitle && (
+                            <span className={styles.testimonialTitle}>
+                              {
+                                lightboxImage.fullProject.testimonial
+                                  .authorTitle
+                              }
+                            </span>
+                          )}
+                        </div>
+                      </div>
+                    </div>
+                  )}
+              </div>
             </div>
           </div>
         </div>
