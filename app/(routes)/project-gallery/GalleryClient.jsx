@@ -2,141 +2,10 @@
 
 import React, { useState, useEffect, useCallback } from 'react';
 import Image from 'next/image';
+import ImageCarousel from '../../components/ImageCarousel';
 import { urlFor } from '../../lib/sanity';
 import styles from './Gallery.module.css';
-import  { ArrowFatLinesLeftIcon, ArrowFatLinesRightIcon, XIcon } from '@phosphor-icons/react'
-
-const ImageCarousel = React.memo(
-  ({
-    project,
-    imageIndex,
-    onPrevImage,
-    onNextImage,
-    onSetImageIndex,
-    onImageClick,
-    context = 'default', // Add context prop
-    imageWidth = 600,
-    imageHeight = 400,
-    showCounter = false,
-    showIndicators = true,
-    className = '',
-  }) => {
-    const currentImage = project.images?.[imageIndex];
-    const hasMultipleImages = project.images && project.images.length > 1;
-
-    // Updated event handlers to include context
-    const handlePrevClick = useCallback(
-      (e) => {
-        e.preventDefault();
-        e.stopPropagation();
-        onPrevImage(project._id, project.images.length, context);
-      },
-      [project._id, project.images.length, onPrevImage, context]
-    );
-
-    const handleNextClick = useCallback(
-      (e) => {
-        e.preventDefault();
-        e.stopPropagation();
-        onNextImage(project._id, project.images.length, context);
-      },
-      [project._id, project.images.length, onNextImage, context]
-    );
-
-    const handleIndicatorClick = useCallback(
-      (e, index) => {
-        e.preventDefault();
-        e.stopPropagation();
-        onSetImageIndex(project._id, index, context);
-      },
-      [project._id, onSetImageIndex, context]
-    );
-
-    if (!currentImage?.asset?.asset) {
-      return (
-        <div className={`${styles.placeholderImage} ${className}`}>
-          <i
-            className='ph ph-image'
-            style={{ fontSize: '3rem', color: '#999', opacity: 0.5 }}
-          ></i>
-          <p>No image available</p>
-        </div>
-      );
-    }
-
-    return (
-      <div className={`${styles.carouselWrapper} ${className}`}>
-        <Image
-          src={urlFor(currentImage.asset.asset)
-            .width(imageWidth)
-            .height(imageHeight)
-            .url()}
-          alt={currentImage.alt || project.title}
-          fill
-          style={{ objectFit: 'cover' }}
-          onClick={() => onImageClick(currentImage, project)}
-          className={styles.clickableImage}
-        />
-
-        {/* Navigation Controls */}
-        {hasMultipleImages && (
-          <>
-            <button
-              className={`${styles.carouselControl} ${styles.carouselPrev}`}
-              onClick={handlePrevClick}
-              aria-label='Previous image'
-              type='button'
-            >
-              <ArrowFatLinesLeftIcon size={28} />
-            </button>
-            <button
-              className={`${styles.carouselControl} ${styles.carouselNext}`}
-              onClick={handleNextClick}
-              aria-label='Next image'
-              type='button'
-            >
-              <ArrowFatLinesRightIcon size={28} />
-            </button>
-
-            {/* Image Indicators */}
-            {showIndicators && (
-              <div className={styles.carouselIndicators}>
-                {project.images.map((_, index) => (
-                  <button
-                    key={`${project._id}-${context}-indicator-${index}`}
-                    className={`${styles.carouselIndicator} ${
-                      index === imageIndex ? styles.active : ''
-                    }`}
-                    onClick={(e) => handleIndicatorClick(e, index)}
-                    aria-label={`Go to image ${index + 1}`}
-                    type='button'
-                  />
-                ))}
-              </div>
-            )}
-
-            {/* Image Counter */}
-            {/* {showCounter && (
-              <div className={styles.imageCounter}>
-                {imageIndex + 1} / {project.images.length}
-              </div>
-            )} */}
-
-            {/* Image Count Badge (for project cards) */}
-            {/* {!showCounter && (
-              <div className={styles.imageCount}>
-                <i className='ph ph-images'></i>
-                <span>{project.images.length}</span>
-              </div>
-            )} */}
-          </>
-        )}
-      </div>
-    );
-  }
-);
-
-ImageCarousel.displayName = 'ImageCarousel';
+import  { XIcon } from '@phosphor-icons/react'
 
 
 export default function GalleryClient({ projects }) {
@@ -258,22 +127,6 @@ export default function GalleryClient({ projects }) {
     },
     [projectImageIndices, getProjectKey]
   );
-
-  const handleModalPrevImage = () => {
-    if (lightboxImage?.fullProject?.images) {
-      setModalImageIndex((prev) =>
-        prev > 0 ? prev - 1 : lightboxImage.fullProject.images.length - 1
-      );
-    }
-  };
-
-  const handleModalNextImage = () => {
-    if (lightboxImage?.fullProject?.images) {
-      setModalImageIndex((prev) =>
-        prev < lightboxImage.fullProject.images.length - 1 ? prev + 1 : 0
-      );
-    }
-  };
 
   return (
     <main className={styles.main}>
@@ -741,10 +594,6 @@ export default function GalleryClient({ projects }) {
             <div className={styles.imageGallerySection}>
               <div className={styles.galleryHeader}>
                 <h3>Project Gallery</h3>
-                {/* <div className={styles.imageCounter}>
-                  {modalImageIndex + 1} of{' '}
-                  {lightboxImage.fullProject.images.length}
-                </div> */}
               </div>
 
               <div className={styles.imageGrid}>
