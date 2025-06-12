@@ -2,7 +2,7 @@ import React from 'react';
 import Image from 'next/image';
 import { XIcon } from '@phosphor-icons/react';
 import { urlFor } from '../lib/sanity'
-import styles from './LightBox.module.css'; 
+import styles from './Lightbox.module.css'; 
 
 const Lightbox = ({
   lightboxImage,
