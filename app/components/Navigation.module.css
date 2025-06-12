@@ -20,7 +20,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 1rem 2rem;
+  padding: 1rem .75rem 1rem 1.2rem;
 }
 
 .logo {
@@ -279,6 +279,11 @@
   }
 
   .logoText {
-    font-size: 28px;
+    font-size: 25px;
+    margin-left: 5px;
+  }
+
+  .nav {
+    padding: 10px 0;
   }
 }

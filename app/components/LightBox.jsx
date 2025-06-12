@@ -1,6 +1,6 @@
 import React from 'react';
 import Image from 'next/image';
-import { XIcon } from '@phosphor-icons/react';
+import { XIcon, MapPinIcon, CalendarIcon, UserIcon, CoinsIcon } from '@phosphor-icons/react';
 import { urlFor } from '../lib/sanity'
 import styles from './Lightbox.module.css'; 
 
@@ -48,7 +48,7 @@ const Lightbox = ({
               {lightboxImage.fullProject.location && (
                 <div className={styles.primaryMetaItem}>
                   <div className={styles.metaIcon}>
-                    <i className='ph ph-map-pin'></i>
+                    <MapPinIcon size={32} />
                   </div>
                   <div>
                     <span className={styles.metaLabel}>Location</span>
@@ -62,7 +62,7 @@ const Lightbox = ({
               {lightboxImage.fullProject.completedDate && (
                 <div className={styles.primaryMetaItem}>
                   <div className={styles.metaIcon}>
-                    <i className='ph ph-calendar'></i>
+                    <CalendarIcon size={32} />
                   </div>
                   <div>
                     <span className={styles.metaLabel}>Year</span>
@@ -78,7 +78,7 @@ const Lightbox = ({
               {lightboxImage.fullProject.client && (
                 <div className={styles.primaryMetaItem}>
                   <div className={styles.metaIcon}>
-                    <i className='ph ph-user'></i>
+                    <UserIcon size={32} />
                   </div>
                   <div>
                     <span className={styles.metaLabel}>Client</span>
@@ -92,7 +92,7 @@ const Lightbox = ({
               {lightboxImage.fullProject.projectValue && (
                 <div className={styles.primaryMetaItem}>
                   <div className={styles.metaIcon}>
-                    <i className='ph ph-currency-dollar'></i>
+                    <CoinsIcon size={32} />
                   </div>
                   <div>
                     <span className={styles.metaLabel}>Value</span>

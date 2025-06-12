@@ -255,6 +255,7 @@
   overflow: hidden;
   transition: all 0.3s ease;
   position: relative;
+  cursor: pointer;
 }
 
 .projectCard:hover {
@@ -290,7 +291,7 @@
 
 .projectCategory {
   display: inline-block;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: linear-gradient(135deg, #263238 0%, #5d5b5b 100%);
   color: white;
   padding: 8px 20px;
   border-radius: 25px;
