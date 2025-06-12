@@ -41,17 +41,6 @@
   display: inline-block;
 }
 
-/* .heroAccent::after {
-  content: '';
-  position: absolute;
-  bottom: -8px;
-  left: 0;
-  width: 100%;
-  height: 6px;
-  background: #F57C00;
-  z-index: -1;
-} */
-
 .heroSubtext {
   font-size: 1.3rem;
   color: #555;
@@ -76,25 +65,6 @@
 /* Form Section */
 .formSection {
   background: #FAFAFA;
-}
-
-.formHeader {
-  margin-bottom: 3rem;
-}
-
-.formHeader h2 {
-  font-size: 2.5rem;
-  font-weight: 600;
-  color: #263238;
-  margin-bottom: 1rem;
-  text-transform: uppercase;
-  letter-spacing: 2px;
-}
-
-.formHeader p {
-  font-size: 1.1rem;
-  color: #555;
-  line-height: 1.6;
 }
 
 .contactForm {

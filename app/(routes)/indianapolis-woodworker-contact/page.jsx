@@ -90,14 +90,6 @@ export default function ContactPage() {
           <div className={styles.contactGrid}>
             {/* Contact Form */}
             <div className={styles.formSection}>
-              <div className={styles.formHeader}>
-                <h2>Get Your Free Estimate</h2>
-                <p>
-                  Tell us about your project and we will get back to you within
-                  24 hours.
-                </p>
-              </div>
-
               <form className={styles.contactForm} onSubmit={handleSubmit}>
                 <div className={styles.formGrid}>
                   <div className={styles.formGroup}>
