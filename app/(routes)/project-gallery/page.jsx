@@ -5,14 +5,11 @@ import { client } from '../../lib/sanity';
 const galleryQuery = `
   *[_type == "project"] | order(featured desc, completedDate desc) {
     _id,
-    title,
-    slug,
     category,
+    client,
+    completedDate,
     description,
     featured,
-    completedDate,
-    location,
-    client,
     images[] {
       _key,
       alt,
@@ -27,7 +24,14 @@ const galleryQuery = `
         }
       }
     },
-    tags[]
+    location,
+    longDescription,
+    materials[],
+    projectValue,
+    slug,
+    tags[],
+    testimonial,
+    title,
   }
 `;
 
