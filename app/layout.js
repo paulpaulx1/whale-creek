@@ -15,35 +15,12 @@ const inter = Inter({
   variable: '--font-inter',
   display: 'swap',
 });
+
 export const metadata = {
   title: {
-    default:
-      '  Whale Creek Construction & Millwork | Custom Homes, Renovations & Commercial Projects in Indianapolis',
-    template: '%s | Whale Creek Co',
+    template: '%s | Whale Creek Construction'
   },
-  description:
-    'Whale Creek Co provides expert construction, custom millwork, home renovations, and commercial building services in Indianapolis and Central Indiana. Trusted since 2019 for quality craftsmanship and exceptional service.',
-  keywords: [
-    'construction Indianapolis',
-    'custom millwork',
-    'custom cabinetry',
-    'home renovation',
-    'commercial construction',
-    'Indiana builders',
-    'kitchen remodeling',
-    'bathroom renovation',
-    'commercial millwork',
-    'Indianapolis construction company',
-    'general contractor Indianapolis',
-  ],
-  authors: [{ name: 'Pax Media' }],
-  openGraph: {
-    title: 'Whale Creek Construction & Millwork',
-    description: "Indianapolis' Premier Construction & Millwork Company",
-    url: 'https://whale-creek.vercel.app',
-    siteName: 'Whale Creek Co',
-    type: 'website',
-  },
+  authors: [{ name: 'Whale Creek Construction' }],
   robots: {
     index: true,
     follow: true,

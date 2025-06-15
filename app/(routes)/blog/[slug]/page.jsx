@@ -1,8 +1,13 @@
 // src/app/blog/[slug]/page.jsx
+
 import BlogPostClient from './BlogPostClient';
+import SchemaMarkup from '../../../components/SEO/SchemaMarkup';
+import { generateBlogMetadata } from '../../../components/SEO/generateMetadata';
 import { client } from '../../../lib/sanity';
 import { notFound } from 'next/navigation';
+import { headers } from 'next/headers';
 
+// Your existing blog post query
 const blogPostQuery = `
   *[_type == "blogPost" && slug.current == $slug][0] {
     _id,
@@ -48,6 +53,9 @@ const blogPostQuery = `
   }
 `;
 
+// Service areas query (reuse from homepage)
+const serviceAreasQuery = `*[_type == "project" && defined(location)].location`;
+
 async function getBlogPost(slug) {
   try {
     const post = await client.fetch(blogPostQuery, { slug });
@@ -58,8 +66,33 @@ async function getBlogPost(slug) {
   }
 }
 
+async function getServiceAreas() {
+  try {
+    const locations = await client.fetch(serviceAreasQuery);
+    const dynamicAreas = [...new Set(locations.filter(Boolean))];
+    
+    const hardcodedAreas = [
+      'Indianapolis, IN',
+      'Meridian Hills, IN', 
+      'Noblesville, IN',
+      'Carmel, IN',
+      'Fishers, IN',
+      'Zionsville, IN',
+      'Westfield, IN'
+    ];
+    
+    return [...new Set([...dynamicAreas, ...hardcodedAreas])];
+  } catch (error) {
+    return ['Indianapolis, IN', 'Meridian Hills, IN', 'Noblesville, IN'];
+  }
+}
+
+// Server-side metadata generation
 export async function generateMetadata({ params }) {
-  const post = await getBlogPost(params.slug);
+  const [post, serviceAreas] = await Promise.all([
+    getBlogPost(params.slug),
+    getServiceAreas()
+  ]);
 
   if (!post) {
     return {
@@ -68,44 +101,32 @@ export async function generateMetadata({ params }) {
     };
   }
 
-  return {
-    title: post.seoTitle || `${post.title} | Whale Creek Construction Blog`,
-    description:
-      post.seoDescription ||
-      post.excerpt ||
-      `Read about ${post.title} on the Whale Creek Construction blog.`,
-    openGraph: {
-      title: post.seoTitle || post.title,
-      description: post.seoDescription || post.excerpt,
-      images: post.featuredImage
-        ? [
-            {
-              url: post.featuredImage.asset.url,
-              width: 1200,
-              height: 630,
-              alt: post.featuredImage.alt || post.title,
-            },
-          ]
-        : [],
-      type: 'article',
-      publishedTime: post.publishedAt,
-      tags: post.tags,
-    },
-    twitter: {
-      card: 'summary_large_image',
-      title: post.seoTitle || post.title,
-      description: post.seoDescription || post.excerpt,
-      images: post.featuredImage ? [post.featuredImage.asset.url] : [],
-    },
-  };
+  return generateBlogMetadata(post, serviceAreas);
 }
 
 export default async function BlogPostPage({ params }) {
-  const post = await getBlogPost(params.slug);
+  const [post, serviceAreas] = await Promise.all([
+    getBlogPost(params.slug),
+    getServiceAreas()
+  ]);
 
-  if (!post) {
-    notFound();
-  }
+  if (!post) notFound();
 
-  return <BlogPostClient post={post} />;
+  // Get current URL dynamically
+  const headersList = headers();
+  const host = headersList.get('host') || 'whalecreek.co';
+  const protocol = process.env.NODE_ENV === 'production' ? 'https' : 'http';
+  const currentUrl = `${protocol}://${host}/blog/${params.slug}`;
+
+  return (
+    <>
+      <SchemaMarkup 
+        type="blog"
+        data={post}
+        serviceAreas={serviceAreas}
+        currentUrl={currentUrl}
+      />
+      <BlogPostClient post={post} />
+    </>
+  );
 }

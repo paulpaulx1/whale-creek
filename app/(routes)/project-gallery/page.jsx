@@ -1,7 +1,12 @@
 // src/app/project-gallery/page.js
-import GalleryClient from './GalleryClient';
-import { client } from '../../lib/sanity';
 
+import GalleryClient from './GalleryClient';
+import SchemaMarkup from '../../components/SEO/SchemaMarkup';
+import { generateGalleryMetadata } from '../../components/SEO/generateMetadata';
+import { client } from '../../lib/sanity';
+import { headers } from 'next/headers';
+
+// Your existing gallery query
 const galleryQuery = `
   *[_type == "project"] | order(featured desc, completedDate desc) {
     _id,
@@ -45,13 +50,49 @@ async function getProjects() {
   }
 }
 
-export const metadata = {
-  title: 'Project Gallery | Whale Creek Construction | Indianapolis',
-  description: 'Explore our portfolio of custom millwork, residential construction, and commercial projects in Indianapolis. Award-winning craftsmanship and geometric design excellence.',
-};
+async function getServiceAreas(projects) {
+  // Extract service areas from project locations + hardcoded areas
+  const projectLocations = [...new Set(projects.map(p => p.location).filter(Boolean))];
+  const hardcodedAreas = [
+    'Indianapolis, IN',
+    'Meridian Hills, IN', 
+    'Noblesville, IN',
+    'Carmel, IN',
+    'Fishers, IN',
+    'Zionsville, IN',
+    'Westfield, IN'
+  ];
+  
+  return [...new Set([...projectLocations, ...hardcodedAreas])];
+}
+
+// Server-side metadata generation
+export async function generateMetadata() {
+  const projects = await getProjects();
+  const serviceAreas = await getServiceAreas(projects);
+  
+  return generateGalleryMetadata(projects, serviceAreas);
+}
 
 export default async function ProjectGallery() {
   const projects = await getProjects();
+  const serviceAreas = await getServiceAreas(projects);
+  
+  // Get current URL dynamically
+  const headersList = headers();
+  const host = headersList.get('host') || 'whalecreek.co';
+  const protocol = process.env.NODE_ENV === 'production' ? 'https' : 'http';
+  const currentUrl = `${protocol}://${host}/project-gallery`;
 
-  return <GalleryClient projects={projects} />;
+  return (
+    <>
+      <SchemaMarkup 
+        type="gallery"
+        data={projects}
+        serviceAreas={serviceAreas}
+        currentUrl={currentUrl}
+      />
+      <GalleryClient projects={projects} />
+    </>
+  );
 }
