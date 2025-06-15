@@ -1,8 +1,8 @@
 // src/app/project-gallery/page.js
 
 import GalleryClient from './GalleryClient';
-import SchemaMarkup from '../../components/SEO/SchemaMarkup';
-import { generateGalleryMetadata } from '../../components/SEO/generateMetadata';
+import SchemaMarkup from '../../components/seo/SchemaMarkup';
+import { generateGalleryMetadata } from '../../components/seo/generateMetadata';
 import { client } from '../../lib/sanity';
 import { headers } from 'next/headers';
 

@@ -5,8 +5,8 @@ import Hero from "./components/Hero";
 import ServiceCardsSection from "./components/ServiceCardsSection";
 import AboutContent from "./components/AboutContent";
 import ClientInteractions from "./components/ClientInteractions";
-import SchemaMarkup from './components/SEO/SchemaMarkup';
-import { generatePageMetadata } from './components/SEO/generateMetadata';
+import SchemaMarkup from './components/seo/SchemaMarkup';
+import { generatePageMetadata } from './components/seo/generateMetadata';
 import { client } from './lib/sanity';  // Fixed path!
 import { headers } from 'next/headers';
 

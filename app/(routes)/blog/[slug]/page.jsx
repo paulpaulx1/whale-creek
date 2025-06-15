@@ -1,8 +1,8 @@
 // src/app/blog/[slug]/page.jsx
 
 import BlogPostClient from './BlogPostClient';
-import SchemaMarkup from '../../../components/SEO/SchemaMarkup';
-import { generateBlogMetadata } from '../../../components/SEO/generateMetadata';
+import SchemaMarkup from '../../../components/seo/SchemaMarkup';
+import { generateBlogMetadata } from '../../../components/seo/generateMetadata';
 import { client } from '../../../lib/sanity';
 import { notFound } from 'next/navigation';
 import { headers } from 'next/headers';
