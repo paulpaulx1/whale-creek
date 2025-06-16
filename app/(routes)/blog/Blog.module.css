@@ -8,7 +8,7 @@
 }
 
 .container {
-  max-width: 1200px;
+  max-width: 1350px;
   margin: 0 auto;
   padding: 0 2rem;
 }
@@ -264,6 +264,12 @@
   text-decoration: none;
   display: block;
   color: inherit;
+}
+
+@media (max-width: 768px) {
+    .postCard {
+        padding: 20px;
+    }
 }
 
 .postCard:hover {
@@ -623,7 +629,7 @@
 }
 
 .postContentSection {
-  padding: 6rem 0;
+  padding: 2rem 0;
   background: #FAFAFA;
 }
 
@@ -1071,7 +1077,7 @@
   }
   
   .postBody {
-    padding: 1.5rem;
+    padding: 1rem;
     font-size: 1rem;
   }
   
@@ -1205,7 +1211,7 @@
   }
   
   .postContent {
-    padding: 1.5rem;
+    padding: 0;
   }
   
   .postTitle {

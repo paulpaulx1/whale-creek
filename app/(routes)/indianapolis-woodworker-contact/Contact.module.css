@@ -151,7 +151,7 @@
 .submitBtn {
   width: 100%;
   padding: 1.5rem 2rem;
-  background: #D32F2F;
+  background: var(--blueprint-blue);
   color: #FAFAFA;
   border: 3px solid #263238;
   border-radius: 8px 0 8px 0;
@@ -170,7 +170,7 @@
 }
 
 .submitBtn:hover:not(:disabled) {
-  background: #B71C1C;
+  background: var(--accent-coral);
   transform: translateY(-2px);
   box-shadow: 0 6px 20px rgba(211, 47, 47, 0.3);
 }
