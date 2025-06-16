@@ -4,7 +4,7 @@ import { useState, useEffect } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { urlFor } from '../../lib/sanity';
-import styles from './Blog.module.css';
+import styles from './BlogClient.module.css';
 import Filter from '../../components/Filter';
 
 export default function BlogClient({ posts }) {

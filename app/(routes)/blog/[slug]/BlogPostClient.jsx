@@ -5,7 +5,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { PortableText } from '@portabletext/react';
 import { urlFor } from '../../../lib/sanity';
-import styles from '../Blog.module.css';
+import styles from './BlogPostClient.module.css';
 
 const portableTextComponents = {
   types: {
