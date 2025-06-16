@@ -4,6 +4,7 @@ import React, { useState, useEffect, useCallback } from 'react';
 import ImageCarousel from '../../components/ImageCarousel';
 import Lightbox from '../../components/LightBox';
 import styles from './Gallery.module.css';
+import Filter from '../../components/Filter';
 
 export default function GalleryClient({ projects }) {
   const [filteredProjects, setFilteredProjects] = useState(projects);
@@ -128,24 +129,11 @@ export default function GalleryClient({ projects }) {
   return (
     <main className={styles.main}>
       {/* Filter Section */}
-      <section className={styles.filterSection}>
-        <div className={styles.container}>
-          <div className={styles.filterGrid}>
-            {categories.map((category) => (
-              <button
-                key={category.id}
-                className={`${styles.filterBtn} ${
-                  activeFilter === category.id ? styles.active : ''
-                }`}
-                onClick={() => handleFilterChange(category.id)}
-              >
-                <span>{category.label}</span>
-              </button>
-            ))}
-          </div>
-        </div>
-      </section>
-
+      <Filter
+        categories={categories}
+        activeFilter={activeFilter}
+        onFilterChange={handleFilterChange}
+      />
       {/* Featured Projects */}
       {filteredProjects.filter((p) => p.featured).length > 0 && (
         <section className={styles.featuredSection}>

@@ -101,26 +101,17 @@ export default function BlogPostClient({ post }) {
 
   return (
     <>
-      {/* Kinetic Background */}
-      <div className={styles.kineticBg}>
-        <div className={`${styles.floatingElement} ${styles.floatSaw}`}>⚡</div>
-        <div className={`${styles.floatingElement} ${styles.floatRuler}`}>📏</div>
-        <div className={`${styles.floatingElement} ${styles.floatHammer}`}>🔨</div>
-        <div className={`${styles.floatingElement} ${styles.floatSquare}`}></div>
-        <div className={`${styles.floatingElement} ${styles.floatTriangle}`}></div>
-      </div>
-
       <main className={styles.main}>
         {/* Breadcrumb Navigation */}
         <section className={styles.breadcrumbSection}>
           <div className={styles.container}>
             <nav className={styles.breadcrumb}>
-              <Link href="/" className={styles.breadcrumbLink}>
-                <i className="ph ph-house"></i>
+              <Link href='/' className={styles.breadcrumbLink}>
+                <i className='ph ph-house'></i>
                 Home
               </Link>
               <span className={styles.breadcrumbSeparator}>→</span>
-              <Link href="/blog" className={styles.breadcrumbLink}>
+              <Link href='/blog' className={styles.breadcrumbLink}>
                 Blog
               </Link>
               <span className={styles.breadcrumbSeparator}>→</span>
@@ -129,93 +120,71 @@ export default function BlogPostClient({ post }) {
           </div>
         </section>
 
-        {/* Post Hero */}
-        <section className={styles.postHero}>
+        {/* Combined Hero and Featured Image Section */}
+        <section className={styles.postHeroWithImage}>
           <div className={styles.container}>
-            <div className={styles.postHeroContent}>
-              <div 
-                className={styles.categoryBadge}
-                style={{ backgroundColor: getCategoryColor(post.category) }}
-              >
-                {post.category}
-              </div>
-              
-              <h1 className={styles.postHeroTitle}>{post.title}</h1>
-              
-              {post.excerpt && (
-                <p className={styles.postHeroExcerpt}>{post.excerpt}</p>
-              )}
-              
-              <div className={styles.postMeta}>
-                <div className={styles.metaItem}>
-                  <i className="ph ph-calendar"></i>
-                  <span>{formatDate(post.publishedAt)}</span>
+            <div className={styles.heroImageGrid}>
+              {/* Hero Content */}
+              <div className={styles.postHeroContent}>
+                <div
+                  className={styles.categoryBadge}
+                  style={{ backgroundColor: getCategoryColor(post.category) }}
+                >
+                  {post.category}
                 </div>
-                {post.readingTime && (
-                  <div className={styles.metaItem}>
-                    <i className="ph ph-clock"></i>
-                    <span>{post.readingTime} min read</span>
-                  </div>
+
+                <h1 className={styles.postHeroTitle}>{post.title}</h1>
+
+                {post.excerpt && (
+                  <p className={styles.postHeroExcerpt}>{post.excerpt}</p>
                 )}
-                {post.featured && (
+
+                <div className={styles.postMeta}>
                   <div className={styles.metaItem}>
-                    <i className="ph ph-star"></i>
-                    <span>Featured Article</span>
+                    <i className='ph ph-calendar'></i>
+                    <span>{formatDate(post.publishedAt)}</span>
                   </div>
-                )}
+                  {post.readingTime && (
+                    <div className={styles.metaItem}>
+                      <i className='ph ph-clock'></i>
+                      <span>{post.readingTime} min read</span>
+                    </div>
+                  )}
+                  {post.featured && (
+                    <div className={styles.metaItem}>
+                      <i className='ph ph-star'></i>
+                      <span>Featured Article</span>
+                    </div>
+                  )}
+                </div>
               </div>
 
-              {/* Share Buttons */}
-              <div className={styles.shareSection}>
-                <span className={styles.shareLabel}>Share this article:</span>
-                <div className={styles.shareButtons}>
-                  <button 
-                    onClick={() => sharePost('twitter')}
-                    className={styles.shareBtn}
-                    aria-label="Share on Twitter"
-                  >
-                    <i className="ph ph-twitter-logo"></i>
-                  </button>
-                  <button 
-                    onClick={() => sharePost('facebook')}
-                    className={styles.shareBtn}
-                    aria-label="Share on Facebook"
-                  >
-                    <i className="ph ph-facebook-logo"></i>
-                  </button>
-                  <button 
-                    onClick={() => sharePost('linkedin')}
-                    className={styles.shareBtn}
-                    aria-label="Share on LinkedIn"
-                  >
-                    <i className="ph ph-linkedin-logo"></i>
-                  </button>
+              {/* Featured Image */}
+              {post.featuredImage && (
+                <div className={styles.heroFeaturedImage}>
+                  <div className={styles.featuredImageWrapper}>
+                    <Image
+                      src={urlFor(post.featuredImage.asset)
+                        .width(800)
+                        .height(600)
+                        .url()}
+                      alt={post.featuredImage.alt || post.title}
+                      width={800}
+                      height={600}
+                      className={styles.featuredImageLarge}
+                      priority
+                    />
+                    {post.featuredImage.caption && (
+                      <p className={styles.imageCaption}>
+                        {post.featuredImage.caption}
+                      </p>
+                    )}
+                  </div>
                 </div>
-              </div>
+              )}
             </div>
           </div>
         </section>
-
-        {/* Featured Image */}
-        {post.featuredImage && (
-          <section className={styles.featuredImageSection}>
-            <div className={styles.container}>
-              <div className={styles.featuredImageWrapper}>
-                <Image
-                  src={urlFor(post.featuredImage.asset).width(1200).height(600).url()}
-                  alt={post.featuredImage.alt || post.title}
-                  width={1200}
-                  height={600}
-                  className={styles.featuredImageLarge}
-                  priority
-                />
-                {post.featuredImage.caption && (
-                  <p className={styles.imageCaption}>{post.featuredImage.caption}</p>
-                )}
-              </div>
-            </div>
-          </section>
-        )}
 
         {/* Post Content */}
         <section className={styles.postContentSection}>
@@ -224,8 +193,8 @@ export default function BlogPostClient({ post }) {
               <article className={styles.postContent}>
                 <div className={styles.postBody}>
                   {post.content && (
-                    <PortableText 
-                      value={post.content} 
+                    <PortableText
+                      value={post.content}
                       components={portableTextComponents}
                     />
                   )}
@@ -252,22 +221,32 @@ export default function BlogPostClient({ post }) {
                     <div className={styles.metaGrid}>
                       <div className={styles.metaItem}>
                         <span className={styles.metaLabel}>Published:</span>
-                        <span className={styles.metaValue}>{formatDate(post.publishedAt)}</span>
+                        <span className={styles.metaValue}>
+                          {formatDate(post.publishedAt)}
+                        </span>
                       </div>
                       <div className={styles.metaItem}>
                         <span className={styles.metaLabel}>Category:</span>
-                        <span className={styles.metaValue}>{post.category}</span>
+                        <span className={styles.metaValue}>
+                          {post.category}
+                        </span>
                       </div>
                       {post.readingTime && (
                         <div className={styles.metaItem}>
-                          <span className={styles.metaLabel}>Reading Time:</span>
-                          <span className={styles.metaValue}>{post.readingTime} minutes</span>
+                          <span className={styles.metaLabel}>
+                            Reading Time:
+                          </span>
+                          <span className={styles.metaValue}>
+                            {post.readingTime} minutes
+                          </span>
                         </div>
                       )}
                       {post.featured && (
                         <div className={styles.metaItem}>
                           <span className={styles.metaLabel}>Status:</span>
-                          <span className={styles.metaValue}>Featured Article</span>
+                          <span className={styles.metaValue}>
+                            Featured Article
+                          </span>
                         </div>
                       )}
                     </div>
@@ -278,23 +257,15 @@ export default function BlogPostClient({ post }) {
               {/* Sidebar */}
               <aside className={styles.postSidebar}>
                 <div className={styles.sidebarContent}>
-                  {/* Back to Blog */}
-                  <div className={styles.sidebarSection}>
-                    <Link href="/blog" className={styles.backToBlog}>
-                      <i className="ph ph-arrow-left"></i>
-                      Back to All Articles
-                    </Link>
-                  </div>
-
                   {/* Table of Contents */}
                   {tableOfContents.length > 0 && (
                     <div className={styles.sidebarSection}>
                       <h3 className={styles.sidebarTitle}>In This Article</h3>
                       <nav className={styles.tableOfContents}>
                         {tableOfContents.map((heading, index) => (
-                          <a 
+                          <a
                             key={index}
-                            href={`#heading-${index}`} 
+                            href={`#heading-${index}`}
                             className={`${styles.tocLink} ${styles[`toc${heading.level.toUpperCase()}`]}`}
                           >
                             {heading.text}
@@ -308,20 +279,13 @@ export default function BlogPostClient({ post }) {
                   <div className={styles.sidebarSection}>
                     <h3 className={styles.sidebarTitle}>Quick Actions</h3>
                     <div className={styles.quickActions}>
-                      <button 
-                        onClick={() => window.print()}
-                        className={styles.actionBtn}
-                      >
-                        <i className="ph ph-printer"></i>
-                        Print Article
-                      </button>
-                      <button 
-                        onClick={() => sharePost('twitter')}
-                        className={styles.actionBtn}
-                      >
-                        <i className="ph ph-share"></i>
-                        Share Article
-                      </button>
+                      {/* Back to Blog */}
+                      <div className={styles.sidebarSection}>
+                        <Link href='/blog' className={styles.backToBlog}>
+                          <i className='ph ph-arrow-left'></i>
+                          Back to All Articles
+                        </Link>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -334,7 +298,9 @@ export default function BlogPostClient({ post }) {
         {post.relatedPosts && post.relatedPosts.length > 0 && (
           <section className={styles.relatedPostsSection}>
             <div className={styles.container}>
-              <h2 className={styles.sectionTitle}>More {post.category} Articles</h2>
+              <h2 className={styles.sectionTitle}>
+                More {post.category} Articles
+              </h2>
               <div className={styles.relatedPostsGrid}>
                 {post.relatedPosts.map((relatedPost) => (
                   <Link
@@ -345,7 +311,10 @@ export default function BlogPostClient({ post }) {
                     {relatedPost.featuredImage && (
                       <div className={styles.relatedPostImage}>
                         <Image
-                          src={urlFor(relatedPost.featuredImage.asset).width(400).height(250).url()}
+                          src={urlFor(relatedPost.featuredImage.asset)
+                            .width(400)
+                            .height(250)
+                            .url()}
                           alt={relatedPost.title}
                           width={400}
                           height={250}
@@ -353,22 +322,30 @@ export default function BlogPostClient({ post }) {
                       </div>
                     )}
                     <div className={styles.relatedPostContent}>
-                      <div 
+                      <div
                         className={styles.categoryBadge}
-                        style={{ backgroundColor: getCategoryColor(relatedPost.category) }}
+                        style={{
+                          backgroundColor: getCategoryColor(
+                            relatedPost.category
+                          ),
+                        }}
                       >
                         {relatedPost.category}
                       </div>
-                      <h3 className={styles.relatedPostTitle}>{relatedPost.title}</h3>
-                      <p className={styles.relatedPostExcerpt}>{relatedPost.excerpt}</p>
+                      <h3 className={styles.relatedPostTitle}>
+                        {relatedPost.title}
+                      </h3>
+                      <p className={styles.relatedPostExcerpt}>
+                        {relatedPost.excerpt}
+                      </p>
                       <div className={styles.relatedPostMeta}>
                         <span className={styles.date}>
-                          <i className="ph ph-calendar"></i>
+                          <i className='ph ph-calendar'></i>
                           {formatDate(relatedPost.publishedAt)}
                         </span>
                         {relatedPost.readingTime && (
                           <span className={styles.readTime}>
-                            <i className="ph ph-clock"></i>
+                            <i className='ph ph-clock'></i>
                             {relatedPost.readingTime} min read
                           </span>
                         )}
@@ -387,17 +364,18 @@ export default function BlogPostClient({ post }) {
             <div className={styles.ctaContent}>
               <h2>Ready to Start Your Project?</h2>
               <p>
-                Inspired by this article? Let&apos;s discuss how we can bring 
-                that same level of geometric excellence to your construction project.
+                Inspired by this article? Let&apos;s discuss how we can bring
+                that same level of geometric excellence to your construction
+                project.
               </p>
               <div className={styles.ctaButtons}>
                 <Link
-                  href="/indianapolis-woodworker-contact"
+                  href='/indianapolis-woodworker-contact'
                   className={styles.btnPrimary}
                 >
                   Get Free Estimate
                 </Link>
-                <Link href="/project-gallery" className={styles.btnSecondary}>
+                <Link href='/project-gallery' className={styles.btnSecondary}>
                   View Our Projects
                 </Link>
               </div>

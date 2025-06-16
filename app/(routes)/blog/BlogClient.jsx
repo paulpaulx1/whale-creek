@@ -5,6 +5,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { urlFor } from '../../lib/sanity';
 import styles from './Blog.module.css';
+import Filter from '../../components/Filter';
 
 export default function BlogClient({ posts }) {
   const [filteredPosts, setFilteredPosts] = useState(posts);
@@ -45,42 +46,12 @@ export default function BlogClient({ posts }) {
 
   return (
     <main className={styles.main}>
-      {/* Hero Section */}
-      <section className={styles.hero}>
-        <div className={styles.heroContainer}>
-          <div className={styles.heroContent}>
-            <h1>
-              Construction <span className={styles.heroAccent}>Insights</span>
-            </h1>
-            <p>
-              Expert tips, project spotlights, and behind-the-scenes looks at 
-              Indianapolis&apos; finest construction projects. From precision millwork 
-              to advanced building techniques.
-            </p>
-          </div>
-        </div>
-      </section>
-
       {/* Filter Section */}
-      <section className={styles.filterSection}>
-        <div className={styles.container}>
-          <div className={styles.filterGrid}>
-            {categories.map((category) => (
-              <button
-                key={category.id}
-                className={`${styles.filterBtn} ${
-                  activeFilter === category.id ? styles.active : ''
-                }`}
-                onClick={() => handleFilterChange(category.id)}
-              >
-                <i className={`ph ph-${category.icon}`}></i>
-                <span>{category.label}</span>
-              </button>
-            ))}
-          </div>
-        </div>
-      </section>
-
+      <Filter
+        categories={categories}
+        activeFilter={activeFilter}
+        onFilterChange={handleFilterChange}
+      />
       {/* Featured Posts */}
       {featuredPosts.length > 0 && (
         <section className={styles.featuredSection}>
@@ -106,13 +77,18 @@ export default function BlogClient({ posts }) {
                       />
                     ) : (
                       <div className={styles.placeholderImage}>
-                        <i className="ph ph-newspaper" style={{ fontSize: '4rem', color: '#999', opacity: 0.5 }}></i>
+                        <i
+                          className='ph ph-newspaper'
+                          style={{
+                            fontSize: '4rem',
+                            color: '#999',
+                            opacity: 0.5,
+                          }}
+                        ></i>
                         <p>Featured Article</p>
                       </div>
                     )}
-                    <div className={styles.categoryBadge}>
-                      {post.category}
-                    </div>
+                    <div className={styles.categoryBadge}>{post.category}</div>
                     <div className={styles.featuredOverlay}>
                       <div className={styles.featuredInfo}>
                         <h3>{post.title}</h3>
@@ -192,13 +168,18 @@ export default function BlogClient({ posts }) {
                       />
                     ) : (
                       <div className={styles.placeholderImage}>
-                        <i className="ph ph-newspaper" style={{ fontSize: '3rem', color: '#999', opacity: 0.5 }}></i>
+                        <i
+                          className='ph ph-newspaper'
+                          style={{
+                            fontSize: '3rem',
+                            color: '#999',
+                            opacity: 0.5,
+                          }}
+                        ></i>
                         <p>No image available</p>
                       </div>
                     )}
-                    <div className={styles.categoryBadge}>
-                      {post.category}
-                    </div>
+                    <div className={styles.categoryBadge}>{post.category}</div>
                   </div>
                   <div className={styles.postContent}>
                     <h3 className={styles.postTitle}>{post.title}</h3>
@@ -218,13 +199,15 @@ export default function BlogClient({ posts }) {
                     {post.tags && post.tags.length > 0 && (
                       <div className={styles.tags}>
                         {post.tags.slice(0, 3).map((tag, index) => (
-                          <span key={index} className={styles.tag}>{tag}</span>
+                          <span key={index} className={styles.tag}>
+                            {tag}
+                          </span>
                         ))}
                       </div>
                     )}
                     <div className={styles.readMore}>
                       <span>Read More</span>
-                      <i className="ph ph-arrow-right"></i>
+                      <i className='ph ph-arrow-right'></i>
                     </div>
                   </div>
                 </Link>
@@ -240,8 +223,8 @@ export default function BlogClient({ posts }) {
           <div className={styles.ctaContent}>
             <h2>Ready to Start Your Project?</h2>
             <p>
-              Get inspired by our articles? Let&apos;s discuss how we can
-              bring that same level of excellence to your construction project.
+              Get inspired by our articles? Let&apos;s discuss how we can bring
+              that same level of excellence to your construction project.
             </p>
             <div className={styles.ctaButtons}>
               <Link
