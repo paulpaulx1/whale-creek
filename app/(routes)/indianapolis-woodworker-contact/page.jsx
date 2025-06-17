@@ -260,27 +260,6 @@ export default function ContactPage() {
           </div>
         </div>
       </section>
-
-      {/* CTA Section */}
-      <section className={styles.ctaSection}>
-        <div className={styles.container}>
-          <div className={styles.ctaContent}>
-            <h2>Ready to Start Your Project?</h2>
-            <p>
-              Join hundreds of satisfied customers who trust Whale Creek for
-              their construction and millwork needs.
-            </p>
-            <div className={styles.ctaButtons}>
-              <a href='/project-gallery' className={styles.btnSecondary}>
-                View Our Work
-              </a>
-              <a href='/services' className={styles.btnSecondary}>
-                Our Services
-              </a>
-            </div>
-          </div>
-        </div>
-      </section>
     </main>
   );
 }

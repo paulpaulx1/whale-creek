@@ -292,33 +292,6 @@ export default function GalleryClient({ projects }) {
           )}
         </div>
       </section>
-
-      {/* CTA Section */}
-      <section className={styles.ctaSection}>
-        <div className={styles.container}>
-          <div className={styles.ctaContent}>
-            <h2>Ready to Start Your Project?</h2>
-            <p>
-              Let&apos;s bring your vision to life with our award-winning
-              craftsmanship and design expertise.
-            </p>
-            <div className={styles.ctaButtons}>
-              <a
-                href='/indianapolis-woodworker-contact'
-                className={styles.btnPrimary}
-              >
-                Get Free Estimate
-              </a>
-              <a
-                href='/indianapolis-general-contractor'
-                className={styles.btnSecondary}
-              >
-                Our Services
-              </a>
-            </div>
-          </div>
-        </div>
-      </section>
       {lightboxImage && (
         <Lightbox
           lightboxImage={lightboxImage}

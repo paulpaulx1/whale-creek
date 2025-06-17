@@ -216,30 +216,6 @@ export default function BlogClient({ posts }) {
           )}
         </div>
       </section>
-
-      {/* CTA Section */}
-      <section className={styles.ctaSection}>
-        <div className={styles.container}>
-          <div className={styles.ctaContent}>
-            <h2>Ready to Start Your Project?</h2>
-            <p>
-              Get inspired by our articles? Let&apos;s discuss how we can bring
-              that same level of excellence to your construction project.
-            </p>
-            <div className={styles.ctaButtons}>
-              <Link
-                href='/indianapolis-woodworker-contact'
-                className={styles.btnPrimary}
-              >
-                Get Free Estimate
-              </Link>
-              <Link href='/project-gallery' className={styles.btnSecondary}>
-                View Our Projects
-              </Link>
-            </div>
-          </div>
-        </div>
-      </section>
     </main>
   );
 }

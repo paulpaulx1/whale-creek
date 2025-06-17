@@ -1,6 +1,3 @@
-import Image from 'next/image';
-import CTAButtons from '../../components/CTAButtons';
-import SocialIcons from '../../components/SocialIcons';
 import styles from './Services.module.css';
 
 export default function Services() {
@@ -89,40 +86,6 @@ export default function Services() {
               </div>
             </div>
           ))}
-        </div>
-      </section>
-
-      {/* CTA Section */}
-      <section className={styles.cta}>
-        <div className={styles.ctaContainer}>
-          <div className={styles.ctaContent}>
-            <h2>Ready to Transform Your <span className={styles.ctaAccent}>Home or Business?</span></h2>
-            <p>
-              Contact Whale Creek Co today for a free consultation, and let&apos;s discuss how we can bring your dream space to life. 
-              Experience the best in construction and design in Indianapolis—quality, creativity, and customer satisfaction await!
-            </p>
-            <div className={styles.ctaButtons}>
-              <CTAButtons />
-            </div>
-            <div className={styles.ctaCircles}>
-              <SocialIcons />
-              <div className={styles.ctaCircle}></div>
-              <div className={styles.ctaCircle}></div>
-              <div className={styles.ctaCircle}></div>
-              <div className={styles.ctaCircle}></div>
-              <div className={styles.ctaCircle}></div>
-            </div>
-            <div className={styles.ctaContact}>
-              <div className={styles.contactItem}>
-                <i className="ph ph-phone"></i>
-                <span>317-431-2449</span>
-              </div>
-              <div className={styles.contactItem}>
-                <i className="ph ph-envelope"></i>
-                <span>dave@whalecreek.co</span>
-              </div>
-            </div>
-          </div>
         </div>
       </section>
     </main>

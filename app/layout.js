@@ -4,6 +4,7 @@ import Navigation from './components/Navigation';
 import KineticBackground from './components/KineticBackground';
 import Footer from './components/Footer';
 import BackToTop from './components/BackToTop';
+import CTASection from './components/CTASection';
 
 const raleway = Raleway({
   subsets: ['latin'],
@@ -35,6 +36,7 @@ export default function RootLayout({ children }) {
         <Navigation />
         <KineticBackground />
         {children}
+        <CTASection/>
         <Footer />
         <BackToTop/>
       </body>
