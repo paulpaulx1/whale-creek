@@ -7,6 +7,26 @@ import { PortableText } from '@portabletext/react';
 import { urlFor } from '../../../lib/sanity';
 import styles from './BlogPostClient.module.css';
 
+// Helper function to generate consistent IDs from heading text
+const generateHeadingId = (text) => {
+  return text
+    .toLowerCase()
+    .replace(/[^\w\s-]/g, '') // Remove special characters
+    .replace(/\s+/g, '-') // Replace spaces with hyphens
+    .trim();
+};
+
+const handleTocClick = (e, headingId) => {
+  e.preventDefault();
+  const element = document.getElementById(headingId);
+  if (element) {
+    element.scrollIntoView({
+      behavior: 'smooth',
+      block: 'start',
+    });
+  }
+};
+
 const portableTextComponents = {
   types: {
     image: ({ value }) => (
@@ -25,79 +45,165 @@ const portableTextComponents = {
     ),
   },
   block: {
-    h1: ({ children }) => <h1 className={styles.contentMainHeading}>{children}</h1>,
-    h2: ({ children }) => <h2 className={styles.contentHeading}>{children}</h2>,
-    h3: ({ children }) => <h3 className={styles.contentSubheading}>{children}</h3>,
-    h4: ({ children }) => <h4 className={styles.contentSubSubheading}>{children}</h4>,
-    normal: ({ children }) => <p className={styles.contentParagraph}>{children}</p>,
+    h1: ({ children, value }) => {
+      const text = value.children.map((child) => child.text).join('');
+      const id = generateHeadingId(text);
+      return (
+        <h1 id={id} className={styles.contentMainHeading}>
+          {children}
+        </h1>
+      );
+    },
+    h2: ({ children, value }) => {
+      const text = value.children.map((child) => child.text).join('');
+      const id = generateHeadingId(text);
+      return (
+        <h2 id={id} className={styles.contentHeading}>
+          {children}
+        </h2>
+      );
+    },
+    h3: ({ children, value }) => {
+      const text = value.children.map((child) => child.text).join('');
+      const id = generateHeadingId(text);
+      return (
+        <h3 id={id} className={styles.contentSubheading}>
+          {children}
+        </h3>
+      );
+    },
+    h4: ({ children, value }) => {
+      const text = value.children.map((child) => child.text).join('');
+      const id = generateHeadingId(text);
+      return (
+        <h4 id={id} className={styles.contentSubSubheading}>
+          {children}
+        </h4>
+      );
+    },
+    normal: ({ children }) => (
+      <p className={styles.contentParagraph}>{children}</p>
+    ),
   },
   marks: {
-    strong: ({ children }) => <strong className={styles.contentBold}>{children}</strong>,
+    strong: ({ children }) => (
+      <strong className={styles.contentBold}>{children}</strong>
+    ),
     em: ({ children }) => <em className={styles.contentItalic}>{children}</em>,
     link: ({ value, children }) => (
-      <a href={value.href} className={styles.contentLink} target="_blank" rel="noopener noreferrer">
+      <a
+        href={value.href}
+        className={styles.contentLink}
+        target='_blank'
+        rel='noopener noreferrer'
+      >
         {children}
       </a>
     ),
   },
   list: {
-    bullet: ({ children }) => <ul className={styles.contentList}>{children}</ul>,
-    number: ({ children }) => <ol className={styles.contentOrderedList}>{children}</ol>,
+    bullet: ({ children }) => (
+      <ul className={styles.contentList}>{children}</ul>
+    ),
+    number: ({ children }) => (
+      <ol className={styles.contentOrderedList}>{children}</ol>
+    ),
   },
   listItem: {
-    bullet: ({ children }) => <li className={styles.contentListItem}>{children}</li>,
-    number: ({ children }) => <li className={styles.contentListItem}>{children}</li>,
+    bullet: ({ children }) => (
+      <li className={styles.contentListItem}>{children}</li>
+    ),
+    number: ({ children }) => (
+      <li className={styles.contentListItem}>{children}</li>
+    ),
   },
 };
 
 export default function BlogPostClient({ post }) {
   const [tableOfContents, setTableOfContents] = useState([]);
-
-  useEffect(() => {
-    // Generate table of contents from content blocks
-    if (post.content) {
-      const headings = post.content
-        .filter(block => ['h2', 'h3', 'h4'].includes(block.style))
-        .map((block, index) => ({
-          id: `heading-${index}`,
-          text: block.children.map(child => child.text).join(''),
-          level: block.style
-        }));
-      setTableOfContents(headings);
-    }
-  }, [post.content]);
+  const [activeId, setActiveId] = useState('');
 
   const formatDate = (dateString) => {
     return new Date(dateString).toLocaleDateString('en-US', {
       year: 'numeric',
       month: 'long',
-      day: 'numeric'
+      day: 'numeric',
     });
-  };
-
-  const sharePost = (platform) => {
-    const url = window.location.href;
-    const title = post.title;
-    
-    const shareUrls = {
-      twitter: `https://twitter.com/intent/tweet?text=${encodeURIComponent(title)}&url=${encodeURIComponent(url)}`,
-      facebook: `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}`,
-      linkedin: `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(url)}`
-    };
-
-    window.open(shareUrls[platform], '_blank', 'width=600,height=400');
   };
 
   const getCategoryColor = (category) => {
     const colors = {
-      'tips': '#4CAF50',
-      'millwork': '#2196F3',
-      'spotlights': '#FF9800',
-      'tools': '#9C27B0',
-      'behind-scenes': '#607D8B'
+      tips: '#4CAF50',
+      millwork: '#2196F3',
+      spotlights: '#FF9800',
+      tools: '#9C27B0',
+      'behind-scenes': '#607D8B',
     };
     return colors[category] || '#263238';
   };
+
+  useEffect(() => {
+    // Generate table of contents from content blocks
+    if (post.content) {
+      const headings = post.content
+        .filter((block) => ['h2', 'h3', 'h4'].includes(block.style))
+        .map((block) => {
+          const text = block.children.map((child) => child.text).join('');
+          return {
+            id: generateHeadingId(text),
+            text: block.children.map((child) => child.text).join(''),
+            level: block.style,
+          };
+        });
+      setTableOfContents(headings);
+    }
+  }, [post.content]);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        //Find all currently intersecting entries
+        const intersecting = entries.filter((entry) => entry.isIntersecting);
+
+        if (intersecting.length > 0) {
+          //Sort by their position in the document (top to bottom)
+          const sorted = intersecting.sort((a, b) => {
+            return a.boundingClientRect.top - b.boundingClientRect.top;
+          });
+          //Set the first (topmost) intersecting element as active
+          setActiveId(sorted[0].target.id);
+        }
+      },
+      {
+        //Adjust these margins to control when headings become "active"
+        rootMargin: '0% 0% -75% 0%', //Activate when heading is in the top third of viewport
+        threshold: 0,
+      }
+    );
+
+    //Observe all headings that are in the table of contents
+    if (typeof window !== 'undefined') {
+      tableOfContents.forEach((heading) => {
+        const element = document.getElementById(heading.id);
+        if (element) {
+          observer.observe(element);
+        }
+      });
+    }
+
+    //Cleanup
+    return () => {
+      observer.disconnect();
+    };
+  }, [tableOfContents]);
+
+  // Add this useEffect to set initial active state
+  useEffect(() => {
+    if (tableOfContents.length > 0 && !activeId) {
+      // Set the first heading as active initially
+      setActiveId(tableOfContents[0].id);
+    }
+  }, [tableOfContents, activeId]);
 
   return (
     <>
@@ -265,8 +371,11 @@ export default function BlogPostClient({ post }) {
                         {tableOfContents.map((heading, index) => (
                           <a
                             key={index}
-                            href={`#heading-${index}`}
-                            className={`${styles.tocLink} ${styles[`toc${heading.level.toUpperCase()}`]}`}
+                            href={`#${heading.id}`}
+                            onClick={(e) => handleTocClick(e, heading.id)}
+                            className={`${styles.tocLink} ${styles[`toc${heading.level.toUpperCase()}`]} ${
+                              activeId === heading.id ? styles.active : ''
+                            }`}
                           >
                             {heading.text}
                           </a>
