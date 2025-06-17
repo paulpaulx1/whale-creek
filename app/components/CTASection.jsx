@@ -1,17 +1,20 @@
-'use client'
+'use client';
 
 import CTAButtons from './CTAButtons';
 import SocialIcons from './SocialIcons';
 import styles from './CTASection.module.css';
 import { useState, useEffect } from 'react';
+import { usePathname } from 'next/navigation';
 
 export default function CTASection() {
   const [isHomePage, setIsHomePage] = useState(false);
+  const router = usePathname();
 
   useEffect(() => {
     const checkCurrentPage = () => {
-      const path = window.location.pathname;
+      const path = router;
       setIsHomePage(path === '/' || path === '/home');
+      console.log('ran check current page', checkCurrentPage);
     };
 
     checkCurrentPage();
@@ -19,39 +22,39 @@ export default function CTASection() {
     window.addEventListener('popstate', checkCurrentPage);
 
     return () => window.removeEventListener('popstate', checkCurrentPage);
-  }, []);
+  }, [router]);
 
   // Don't render anything if we're on the home page
   if (isHomePage) {
     return null;
   }
-    return (
-      <section className={styles.cta}>
-        <div className={styles.ctaContainer}>
-          <div className={styles.ctaContent}>
-            <h2>
-              Ready to Transform Your{' '}
-              <span className={styles.ctaAccent}>Home or Business?</span>
-            </h2>
-            <p>
-              Contact Whale Creek Co today for a free consultation, and
-              let&apos;s discuss how we can bring your dream space to life.
-              Experience the best in construction and design in Indianapolis—
-              quality, care and satisfaction await!
-            </p>
-            <div className={styles.ctaButtons}>
-              <CTAButtons />
-            </div>
-            <div className={styles.ctaCircles}>
-              <SocialIcons />
-              <div className={styles.ctaCircle}></div>
-              <div className={styles.ctaCircle}></div>
-              <div className={styles.ctaCircle}></div>
-              <div className={styles.ctaCircle}></div>
-              <div className={styles.ctaCircle}></div>
-            </div>
+  return (
+    <section className={styles.cta}>
+      <div className={styles.ctaContainer}>
+        <div className={styles.ctaContent}>
+          <h2>
+            Ready to Transform Your{' '}
+            <span className={styles.ctaAccent}>Home or Business?</span>
+          </h2>
+          <p>
+            Contact Whale Creek Co today for a free consultation, and let&apos;s
+            discuss how we can bring your dream space to life. Experience the
+            best in construction and design in Indianapolis— quality, care and
+            satisfaction await!
+          </p>
+          <div className={styles.ctaButtons}>
+            <CTAButtons />
+          </div>
+          <div className={styles.ctaCircles}>
+            <SocialIcons />
+            <div className={styles.ctaCircle}></div>
+            <div className={styles.ctaCircle}></div>
+            <div className={styles.ctaCircle}></div>
+            <div className={styles.ctaCircle}></div>
+            <div className={styles.ctaCircle}></div>
           </div>
         </div>
-      </section>
-    );
+      </div>
+    </section>
+  );
 }
