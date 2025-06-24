@@ -7,7 +7,7 @@
   line-height: 1.6;
   position: relative;
   padding: 12rem 2rem;
-  margin: 8rem 0;
+  margin: 4rem 0;
   overflow: hidden;
 }
 
@@ -27,7 +27,7 @@
   align-items: start;
   margin-bottom: 8rem;
   margin-top: 4rem;
-  margin: 4rem 2rem 6rem 2rem;
+  margin: 4rem 2rem 4rem 2rem;
 }
 
 /* Minimal Content Section */
@@ -125,7 +125,7 @@
   padding: 0;
   border: none;
   position: relative;
-  margin: 8rem 0;
+  margin: 4rem 0;
   box-shadow: none;
   
   /* Animation states */
