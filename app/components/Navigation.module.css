@@ -1,16 +1,17 @@
+/* Navigation.module.css - Complete Updated File */
 .nav {
   position: fixed;
   top: 0;
   width: 100%;
-  backdrop-filter: blur(10px);
   z-index: 1000;
   transition: all 0.3s ease;
-  border-bottom: 1px solid rgba(38, 50, 56, 0.1);
-  background: var(--soft-cream);
+  border-bottom: 2px solid var(--charcoal);
+  background: rgba(255, 255, 255, 0.4); 
 }
 
 .navScrolled {
-  /* background: rgba(250, 250, 250, 0.98); */
+  background: var(--soft-cream); /* Solid when scrolled */
+  border-bottom: 1px solid rgba(38, 50, 56, 0.1);
   box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
 }
 
@@ -47,7 +48,6 @@
   animation: whaleDrop 1s cubic-bezier(0.68, -0.55, 0.265, 1.55) 1s forwards;
   color: white;
   font-size: 1.8rem;
-  /* Add subtle asymmetrical border radius */
   border-radius: 12px 4px 12px 4px;
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
@@ -65,7 +65,6 @@
 }
 
 .logoImage {
-  /* Apply subtle asymmetrical border radius to the image too */
   border-radius: 12px 4px 12px 4px;
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
@@ -131,7 +130,6 @@
   border-radius: 2px;
 }
 
-/* Hamburger animation when open */
 .hamburgerOpen span:nth-child(1) {
   transform: rotate(-45deg) translate(-5px, 6px);
 }
@@ -144,7 +142,6 @@
   transform: rotate(45deg) translate(-5px, -6px);
 }
 
-/* Mobile Menu */
 .mobileMenu {
   position: fixed;
   top: 0;
@@ -205,7 +202,6 @@
   width: 100%;
 }
 
-/* Mobile Menu Overlay */
 .mobileMenuOverlay {
   position: fixed;
   top: 0;
@@ -262,7 +258,6 @@
   .logoIcon {
     width: 50px;
     height: 50px;
-    /* Maintain subtle asymmetrical styling on mobile */
     border-radius: 10px 3px 10px 3px;
   }
 

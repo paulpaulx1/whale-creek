@@ -13,62 +13,62 @@ import { headers } from 'next/headers';
 const serviceAreasQuery = `*[_type == "project" && defined(location)].location`;
 
 async function getServiceAreas() {
-  try {
-    const locations = await client.fetch(serviceAreasQuery);
-    const dynamicAreas = [...new Set(locations.filter(Boolean))];
-    
-    // Hardcoded areas for immediate SEO benefit
-    const hardcodedAreas = [
-      'Indianapolis, IN',
-      'Meridian Hills, IN', 
-      'Noblesville, IN',
-      'Carmel, IN',
-      'Fishers, IN',
-      'Zionsville, IN',
-      'Westfield, IN'
-    ];
-    
-    // Combine and deduplicate
-    const allAreas = [...new Set([...dynamicAreas, ...hardcodedAreas])];
-    return allAreas;
-  } catch (error) {
-    console.error('Error fetching service areas:', error);
-    return [
-      'Indianapolis, IN',
-      'Meridian Hills, IN', 
-      'Noblesville, IN',
-      'Carmel, IN',
-      'Fishers, IN'
-    ];
-  }
+ try {
+   const locations = await client.fetch(serviceAreasQuery);
+   const dynamicAreas = [...new Set(locations.filter(Boolean))];
+   
+   // Hardcoded areas for immediate SEO benefit
+   const hardcodedAreas = [
+     'Indianapolis, IN',
+     'Meridian Hills, IN', 
+     'Noblesville, IN',
+     'Carmel, IN',
+     'Fishers, IN',
+     'Zionsville, IN',
+     'Westfield, IN'
+   ];
+   
+   // Combine and deduplicate
+   const allAreas = [...new Set([...dynamicAreas, ...hardcodedAreas])];
+   return allAreas;
+ } catch (error) {
+   console.error('Error fetching service areas:', error);
+   return [
+     'Indianapolis, IN',
+     'Meridian Hills, IN', 
+     'Noblesville, IN',
+     'Carmel, IN',
+     'Fishers, IN'
+   ];
+ }
 }
 
 export async function generateMetadata() {
-  const serviceAreas = await getServiceAreas();
-  return generatePageMetadata({}, serviceAreas, 'https://whalecreek.co');
+ const serviceAreas = await getServiceAreas();
+ return generatePageMetadata({}, serviceAreas, 'https://whalecreek.co');
 }
 
 export default async function Home() {
-  const serviceAreas = await getServiceAreas();
-  
-  const headersList = await headers();
-  const host = headersList.get('host') || 'whalecreek.co';
-  const protocol = process.env.NODE_ENV === 'production' ? 'https' : 'http';
-  const currentUrl = `${protocol}://${host}`;
+ const serviceAreas = await getServiceAreas();
+ 
+ const headersList = await headers();
+ const host = headersList.get('host') || 'whalecreek.co';
+ const protocol = process.env.NODE_ENV === 'production' ? 'https' : 'http';
+ const currentUrl = `${protocol}://${host}`;
 
-  return (
-    <>
-      <SchemaMarkup 
-        type="page"
-        serviceAreas={serviceAreas}
-        currentUrl={currentUrl}
-      />
-      <main className={styles.main} role='main'>
-        <Hero/>
-        <ServiceCardsSection />
-        <AboutContent />
-        <ClientInteractions />
-      </main>
-    </>
-  );
+ return (
+   <>
+     <SchemaMarkup 
+       type="page"
+       serviceAreas={serviceAreas}
+       currentUrl={currentUrl}
+     />
+     <main className={styles.main} role='main'>
+       <Hero/>
+       <ServiceCardsSection />
+       <AboutContent />
+       <ClientInteractions />
+     </main>
+   </>
+ );
 }
