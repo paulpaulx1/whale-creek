@@ -19,10 +19,10 @@ const AboutContent = () => {
       <div className={styles.aboutContent}>
         {/* Content Section */}
         <div className={styles.content} data-element="content">
-          <h2 className={styles.title}>
+          <h1 className={styles.title}>
             Indianapolis&apos;{" "}
             <span className={styles.heroAccent}>Trusted</span> Craftsmen
-          </h2>
+          </h1>
 
           <div className={styles.contentBlock}>
             <p>

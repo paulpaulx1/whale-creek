@@ -36,7 +36,7 @@
   padding: 0;
   border: none;
   position: relative;
-  
+
   /* Animation states */
   opacity: 1;
   transform: translateY(0);
@@ -51,16 +51,17 @@
 /* Clean Typography */
 .title {
   font-size: 3.2rem;
-  font-weight: 300;
   margin-bottom: 3rem;
   color: var(--charcoal);
   line-height: 1.1;
+  font-weight: 500;
   letter-spacing: -0.03em;
 }
 
 .heroAccent {
-  color: var(--primary-red);
-  font-weight: 400;
+  color: #ff6b35;
+  text-shadow: 1px 1px 0 var(--charcoal), -1px -1px 0 var(--charcoal), 1px -1px 0 var(--charcoal), -1px 1px 0 var(--charcoal);
+  font-weight: 600;
 }
 
 /* Minimal Content Blocks */
@@ -127,7 +128,7 @@
   position: relative;
   margin: 4rem 0;
   box-shadow: none;
-  
+
   /* Animation states */
   opacity: 1;
   transform: translateY(0);
@@ -195,7 +196,7 @@
   .title {
     font-size: 2.8rem;
   }
-  
+
   .aboutContent {
     gap: 6rem;
     margin-top: 3rem;
