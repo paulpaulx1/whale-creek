@@ -14,7 +14,7 @@ const AboutCarousel = () => {
       alt: "David Finegan, Master Builder and Founder of Whale Creek Construction"
     },
     {
-      src: "/images/Noblesville-Deck.jpg",
+      src: "/images/Noblesville-Deck.JPG",
       alt: "Custom deck in Noblesville, Indiana"
     },
     {

@@ -7,7 +7,7 @@ export default function Hero() {
   return (
     <section className={styles.hero}>
       <div className={styles.heroVideoBackground}>
-        <video autoPlay muted playsInline loop preload="auto">
+        <video autoPlay muted playsInline loop preload="auto" controls={false}>
           <source
             src="https://koklgwni3prbahdf.public.blob.vercel-storage.com/whale-creek-drone-footy.mov"
             type="video/mp4"
