@@ -2,12 +2,13 @@
 .hero {
     display: flex;
     align-items: center;
-    padding: 8rem 2rem;
+    padding: calc(8rem + 52px) 2rem 8rem; 
     position: relative;
     background: var(--soft-cream);
     overflow: hidden;
     min-height: 100vh;
 }
+
 
 .heroVideoBackground {
     position: absolute;
@@ -23,7 +24,17 @@
     width: 100%;
     height: 100%;
     object-fit: cover;
-    opacity: 0.3;
+    opacity: 0; /* Start invisible */
+    animation: videoFadeIn 3s ease-out .3s forwards; /* Delay 0.5s, then fade in over 1s */
+}
+
+@keyframes videoFadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 0.34; /* Your target opacity */
+    }
 }
 
 .heroContainer {
@@ -143,7 +154,7 @@
 /* Mobile Responsive */
 @media (max-width: 768px) {
     .hero {
-        padding: 6rem 2rem;
+        padding: calc(6rem + 52px) 2rem 6rem;
         min-height: 100vh;
     }
 

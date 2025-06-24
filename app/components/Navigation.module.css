@@ -6,7 +6,7 @@
   z-index: 1000;
   transition: all 0.3s ease;
   border-bottom: 2px solid var(--charcoal);
-  background: rgba(255, 255, 255, 0.4); 
+  background: rgba(255, 255, 255, 0.45); 
 }
 
 .navScrolled {

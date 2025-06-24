@@ -1,14 +1,19 @@
 .socialIcons {
     display: flex;
-    gap: 15px;
+    gap: 20px;
     /* adjust as needed */
     align-items: center;
     justify-content: center;
-    margin-right: 50px;
+
 }
 
-.social-icon {
-    margin-right: 15px;
+
+.socialIcon {
+    transition: transform 0.3s ease;
+}
+
+.socialIcon:hover {
+    transform: scale(1.2);
 }
 
 .social-icon:last-child {

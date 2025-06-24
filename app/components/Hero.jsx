@@ -7,7 +7,7 @@ export default function Hero() {
   return (
     <section className={styles.hero}>
       <div className={styles.heroVideoBackground}>
-        <video autoPlay muted playsInline loop>
+        <video autoPlay muted playsInline loop preload="auto">
           <source
             src="https://koklgwni3prbahdf.public.blob.vercel-storage.com/whale-creek-drone-footy.mov"
             type="video/mp4"
@@ -36,13 +36,6 @@ export default function Hero() {
         <div className={styles.heroActions}>
           <div className={styles.ctaSection}>
             <CTAButtons />
-          </div>
-          <div className={styles.heroCircles}>
-            <div className={styles.heroCircle}></div>
-            <div className={styles.heroCircle}></div>
-            <div className={styles.heroCircle}></div>
-            <div className={styles.heroCircle}></div>
-            <div className={styles.heroCircle}></div>
           </div>
           <div className={styles.socialSection}>
             <SocialIcons />
