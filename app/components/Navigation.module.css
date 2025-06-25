@@ -282,3 +282,122 @@
     padding: 10px 0;
   }
 }
+
+/* Add these styles to your existing Navigation.module.css */
+
+/* Right side container for phone and nav links */
+.navRight {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+
+/* Phone container styles */
+.phoneContainer {
+  display: flex;
+  align-items: center;
+  padding: 0.5rem 0;
+}
+
+.phoneInfo {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.phoneIcon {
+  width: 40px;
+  height: 40px;
+  background: var(--primary-red, #d32f2f);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  flex-shrink: 0;
+  transition: all 0.3s ease;
+}
+
+.phoneIcon:hover {
+  transform: scale(1.05);
+  background: var(--primary-red-dark, #b71c1c);
+}
+
+.phoneDetails {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.phoneLocation {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--charcoal, #263238);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  opacity: 0.8;
+}
+
+.phoneNumber {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--charcoal, #263238);
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.phoneNumber:hover {
+  color: var(--primary-red, #d32f2f);
+}
+
+/* Mobile phone styles */
+.mobilePhoneContainer {
+  padding: 1rem 2rem;
+  border-bottom: 1px solid rgba(38, 50, 56, 0.1);
+  margin-bottom: 0.5rem;
+}
+
+.mobilePhoneInfo {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.mobilePhoneContainer .phoneIcon {
+  width: 35px;
+  height: 35px;
+}
+
+.mobilePhoneContainer .phoneLocation {
+  font-size: 0.7rem;
+}
+
+.mobilePhoneContainer .phoneNumber {
+  font-size: 1rem;
+}
+
+/* Responsive adjustments */
+@media (max-width: 850px) {
+  .phoneContainer {
+    display: none;
+  }
+  
+  .navRight {
+    display: contents;
+  }
+}
+
+@media (max-width: 1024px) {
+  .phoneIcon {
+    width: 35px;
+    height: 35px;
+  }
+  
+  .phoneLocation {
+    font-size: 0.7rem;
+  }
+  
+  .phoneNumber {
+    font-size: 1rem;
+  }
+}
