@@ -1,14 +1,15 @@
 :root {
   /* Mondrian Classic Palette */
-  --primary-red: #D32F2F;
-  --primary-blue: #1976D2;
-  --primary-yellow: #F57C00;
+  --primary-red: #d32f2f;
+  --primary-blue: #1976d2;
+  --primary-yellow: #f57c00;
   --charcoal: #263238;
-  --sage-green: #66BB6A;
-  --warm-white: #FAFAFA;
-  --soft-cream: #F8F6F0;
+  --sage-green: #66bb6a;
+  --warm-white: #fafafa;
+  --soft-cream: #f8f6f0;
   --blueprint-blue: #1e3a5f;
-  --accent-coral: #FF7043;
+  --accent-coral: #ff7043;
+  --just-off-black: #222222;
 }
 
 * {
@@ -18,14 +19,17 @@
 }
 
 body {
-  font-family: 'SF Pro Display', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  font-family:
+    'SF Pro Display',
+    -apple-system,
+    BlinkMacSystemFont,
+    'Segoe UI',
+    sans-serif;
   background: var(--soft-cream);
-  color: var(--charcoal);
+  color: black;
   line-height: 1.6;
   overflow-x: hidden;
 }
-
-
 
 /* Smooth scrolling */
 html {
@@ -34,7 +38,7 @@ html {
 }
 
 /* Fade-in animation utility */
-.fade-in {
+/* .fade-in {
   opacity: 0;
   transform: translateY(30px);
   transition: all 0.6s ease;
@@ -43,7 +47,7 @@ html {
 .fade-in.visible {
   opacity: 1;
   transform: translateY(0);
-}
+} */
 
 /* Kinetic Background Elements - Used across components */
 @media (prefers-reduced-motion: reduce) {
@@ -103,9 +107,21 @@ html {
   animation-name: bounce;
 }
 
-.screw:nth-child(3) { top: 30%; left: 25%; animation-delay: -1s; }
-.screw:nth-child(4) { top: 70%; right: 30%; animation-delay: -3s; }
-.screw:nth-child(5) { bottom: 40%; left: 70%; animation-delay: -6s; }
+.screw:nth-child(3) {
+  top: 30%;
+  left: 25%;
+  animation-delay: -1s;
+}
+.screw:nth-child(4) {
+  top: 70%;
+  right: 30%;
+  animation-delay: -3s;
+}
+.screw:nth-child(5) {
+  bottom: 40%;
+  left: 70%;
+  animation-delay: -6s;
+}
 
 .plank {
   width: 80px;
@@ -114,22 +130,45 @@ html {
   animation-name: slide;
 }
 
-.plank:nth-child(6) { top: 40%; left: 5%; animation-delay: -2s; }
-.plank:nth-child(7) { bottom: 30%; right: 10%; animation-delay: -7s; }
+.plank:nth-child(6) {
+  top: 40%;
+  left: 5%;
+  animation-delay: -2s;
+}
+.plank:nth-child(7) {
+  bottom: 30%;
+  right: 10%;
+  animation-delay: -7s;
+}
 
 @keyframes rotate {
-  0%, 100% { transform: rotate(0deg); }
-  50% { transform: rotate(180deg); }
+  0%,
+  100% {
+    transform: rotate(0deg);
+  }
+  50% {
+    transform: rotate(180deg);
+  }
 }
 
 @keyframes bounce {
-  0%, 100% { transform: translateY(0) scale(1); }
-  50% { transform: translateY(-20px) scale(1.2); }
+  0%,
+  100% {
+    transform: translateY(0) scale(1);
+  }
+  50% {
+    transform: translateY(-20px) scale(1.2);
+  }
 }
 
 @keyframes slide {
-  0%, 100% { transform: translateX(0); }
-  50% { transform: translateX(60px); }
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+  50% {
+    transform: translateX(60px);
+  }
 }
 
 /* 5-Circle Accent Animation */
@@ -152,8 +191,18 @@ html {
   transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.hero-circle:nth-child(1) { background: var(--primary-red); }
-.hero-circle:nth-child(2) { background: var(--primary-blue); }
-.hero-circle:nth-child(3) { background: var(--primary-yellow); }
-.hero-circle:nth-child(4) { background: var(--charcoal); }
-.hero-circle:nth-child(5) { background: var(--sage-green); }
+.hero-circle:nth-child(1) {
+  background: var(--primary-red);
+}
+.hero-circle:nth-child(2) {
+  background: var(--primary-blue);
+}
+.hero-circle:nth-child(3) {
+  background: var(--primary-yellow);
+}
+.hero-circle:nth-child(4) {
+  background: var(--charcoal);
+}
+.hero-circle:nth-child(5) {
+  background: var(--sage-green);
+}

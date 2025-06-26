@@ -41,7 +41,7 @@
   font-size: 3rem;
   font-weight: 700;
   color: var(--charcoal);
-  font-family: 'JetBrains Mono', monospace;
+  font-family: var(--font-space), monospace;
   margin-bottom: 0.5rem;
   transition: all 0.3s ease;
 }

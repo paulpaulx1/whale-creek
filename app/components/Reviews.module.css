@@ -177,7 +177,7 @@
 }
 
 .reviewText {
-  color: #3c4043;
+  /* color: #3c4043; */
   line-height: 1.5;
   font-size: 0.95rem;
   flex: 1;
@@ -186,13 +186,14 @@
 .dotsContainer {
   display: flex;
   justify-content: center;
-  gap: 8px;
+  gap: 12px;
   margin-top: 1rem;
+  padding: 12px 0;
 }
 
 .dot {
-  width: 10px;
-  height: 10px;
+  width: 12px;
+  height: 12px;
   border-radius: 50%;
   background: #dadce0;
   border: none;

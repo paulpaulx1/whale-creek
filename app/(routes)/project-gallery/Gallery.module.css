@@ -5,7 +5,7 @@
   padding-top: 100px;
   min-height: 100vh;
   font-family:
-    'Space Grotesk',
+    var(--font-space),
     -apple-system,
     BlinkMacSystemFont,
     'Segoe UI',
@@ -308,7 +308,7 @@
 .btnSecondary {
   padding: 1.2rem 2.5rem;
   border: 2px solid;
-  font-family: 'Space Grotesk', sans-serif;
+  font-family: var(--font-space), sans-serif;
   font-weight: 600;
   font-size: 0.9rem;
   cursor: pointer;

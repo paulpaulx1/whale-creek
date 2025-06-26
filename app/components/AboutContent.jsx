@@ -75,7 +75,7 @@ const AboutContent = () => {
       {/* Stats Section */}
       <div className={styles.statsSection} data-element="stats">
         <div className={styles.statsHeader}>
-          <h3 className={styles.statsTitle}>Our Track Record</h3>
+          <div className={styles.statsTitle}>Our Track Record</div>
         </div>
 
         <div className={styles.statsGrid}>

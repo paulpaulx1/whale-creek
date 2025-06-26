@@ -36,22 +36,22 @@ const Footer = () => {
             {/* Contact grid */}
             <div className={styles.contactGrid}>
               <div className={styles.contactItem}>
-                <h4>Call</h4>
-                <a href='tel:3174312449'>(317) 431-2449</a>
+                <p>Call</p>
+                <a href="tel:3174312449">(317) 431-2449</a>
               </div>
               <div className={styles.contactItem}>
-                <h4>Email</h4>
-                <a href='mailto:dave@whalecreek.co'>dave@whalecreek.co</a>
+                <p>Email</p>
+                <a href="mailto:dave@whalecreek.co">dave@whalecreek.co</a>
               </div>
               <div className={styles.contactItem}>
-                <h4>Service</h4>
+                <p>Service</p>
                 <span>Indianapolis & Surrounding Areas</span>
               </div>
             </div>
 
             {/* Quick links */}
             <div className={styles.quickLinks}>
-              <h4>Quick Links</h4>
+              <p>Quick Links</p>
               <div className={styles.linksList}>
                 <Link href='/about'>About</Link>
                 <Link href='/indianapolis-general-contractor'>Services</Link>
