@@ -82,18 +82,6 @@ const Reviews = () => {
     return Math.floor((reviews.length - 1) / reviewsPerView) * reviewsPerView;
   }, [reviews.length, reviewsPerView]);
 
-  // Auto-cycle through review sets
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentIndex((prev) => {
-        const nextIndex = prev + reviewsPerView;
-        return nextIndex > maxIndex ? 0 : nextIndex;
-      });
-    }, 6000);
-
-    return () => clearInterval(interval);
-  }, [reviewsPerView, maxIndex]); // Removed reviews.length since it's constant
-
   const handlePrevious = () => {
     setCurrentIndex((prev) => {
       const newIndex = prev - reviewsPerView;
@@ -143,7 +131,7 @@ const Reviews = () => {
   return (
     <div className={styles.reviewsContainer}>
       <div className={styles.reviewsHeader}>
-        <h3 className={styles.sectionTitle}>What Our Clients Say</h3>
+        <div className={styles.sectionTitle}>What Our Clients Say</div>
         <div className={styles.overallRating}>
           <div className={styles.ratingNumber}>5.0</div>
           <div className={styles.starsContainer}>{renderStars(5)}</div>

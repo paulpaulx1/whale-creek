@@ -4,7 +4,7 @@
 .main {
   padding-top: 100px;
   min-height: 100vh;
-  font-family: 'Space Grotesk', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-family: var(--font-space), -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
 }
 
 .container {
@@ -115,7 +115,7 @@
   border-radius: 8px 0 8px 0;
   background: #FAFAFA;
   font-size: 1rem;
-  font-family: 'Space Grotesk', sans-serif;
+  font-family: var(--font-space), sans-serif;
   color: #263238;
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   resize: vertical;
@@ -155,7 +155,7 @@
   color: #FAFAFA;
   border: 3px solid #263238;
   border-radius: 8px 0 8px 0;
-  font-family: 'Space Grotesk', sans-serif;
+  font-family: var(--font-space), sans-serif;
   font-weight: 600;
   font-size: 1rem;
   text-transform: uppercase;
@@ -380,7 +380,7 @@
   color: #FAFAFA;
   border: 2px solid #FAFAFA;
   border-radius: 4px;
-  font-family: 'Space Grotesk', sans-serif;
+  font-family: var(--font-space), sans-serif;
   font-weight: 600;
   font-size: 0.9rem;
   cursor: pointer;

@@ -1,7 +1,7 @@
 /* AboutSection.module.css - Minimal & Spacious Design */
 
 .aboutSection {
-  font-family: 'Space Grotesk', sans-serif;
+  font-family: var(--font-space), sans-serif;
   background: linear-gradient(135deg, var(--soft-cream) 0%, var(--warm-white) 100%);
   color: var(--charcoal);
   line-height: 1.6;
@@ -43,10 +43,10 @@
   transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.content:not(:global(.visible)) {
+/* .content:not(:global(.visible)) {
   opacity: 0.3;
   transform: translateY(40px);
-}
+} */
 
 /* Clean Typography */
 .title {
@@ -88,10 +88,10 @@
   transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1) 0.2s;
 }
 
-.imageSection:not(:global(.visible)) {
+/* .imageSection:not(:global(.visible)) {
   opacity: 0.3;
   transform: translateY(40px);
-}
+} */
 
 .imageContainer {
   border: 3px solid var(--charcoal);
@@ -135,10 +135,10 @@
   transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1) 0.4s;
 }
 
-.statsSection:not(:global(.visible)) {
+/* .statsSection:not(:global(.visible)) {
   opacity: 0.3;
   transform: translateY(50px);
-}
+} */
 
 .statsHeader {
   text-align: center;

@@ -41,7 +41,7 @@
    }
    
    .servicesTitle {
-    font-family: 'JetBrains Mono', monospace;
+    font-family: var(--font-space), monospace;
     font-size: 2.5rem;
     font-weight: 600;
     color: var(--warm-white);
@@ -70,7 +70,7 @@
     right: 0;
     font-size: 0.6rem;
     opacity: 0.7;
-    font-family: 'JetBrains Mono', monospace;
+    font-family: var(--font-space), monospace;
    }
    
    .servicesSubtitle {
@@ -81,7 +81,7 @@
     padding: 2rem;
     border: 2px solid rgba(255, 255, 255, 0.3);
     backdrop-filter: blur(10px);
-    font-family: 'JetBrains Mono', monospace;
+    font-family: var(--font-space), monospace;
    }
    
    .servicesGrid {
@@ -91,13 +91,13 @@
    }
    
    /* Simple fade only */
-   .servicesSection:not(:global(.visible)) {
+   /* .servicesSection:not(:global(.visible)) {
     opacity: 0.8;
-   }
+   } */
    
-   .servicesSection:global(.visible) {
+   /* .servicesSection:global(.visible) {
     opacity: 1;
-   }
+   } */
    
    /* Responsive design */
    @media (max-width: 1024px) {

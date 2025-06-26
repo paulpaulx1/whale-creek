@@ -27,7 +27,7 @@
     background: #fafafa;
     border: 3px solid #263238;
     color: #263238;
-    font-family: 'Space Grotesk', sans-serif;
+    font-family: var(--font-space), sans-serif;
     font-weight: 500;
     font-size: 0.9rem;
     text-transform: uppercase;
