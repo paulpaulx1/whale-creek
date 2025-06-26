@@ -33,8 +33,8 @@ export default function CTASection() {
       <div className={styles.ctaContainer}>
         <div className={styles.ctaContent}>
           <h2>
-            Ready to Transform Your{' '}
-            <span className={styles.ctaAccent}>Home or Business?</span>
+            Ready to <span className={styles.ctaAccent}>Transform </span> Your
+            Home or Business?
           </h2>
           <p>
             Contact Whale Creek Co today for a free consultation, and let&apos;s
