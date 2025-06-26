@@ -67,18 +67,18 @@ const portableTextComponents = {
       const text = value.children.map((child) => child.text).join('');
       const id = generateHeadingId(text);
       return (
-        <h3 id={id} className={styles.contentSubheading}>
+        <div id={id} className={styles.contentSubheading}>
           {children}
-        </h3>
+        </div>
       );
     },
     h4: ({ children, value }) => {
       const text = value.children.map((child) => child.text).join('');
       const id = generateHeadingId(text);
       return (
-        <h4 id={id} className={styles.contentSubSubheading}>
+        <div id={id} className={styles.contentSubSubheading}>
           {children}
-        </h4>
+        </div>
       );
     },
     normal: ({ children }) => (
@@ -234,7 +234,6 @@ export default function BlogPostClient({ post }) {
               <div className={styles.postHeroContent}>
                 <div
                   className={styles.categoryBadge}
-                  style={{ backgroundColor: getCategoryColor(post.category) }}
                 >
                   {post.category}
                 </div>
@@ -309,7 +308,7 @@ export default function BlogPostClient({ post }) {
                 {/* Tags */}
                 {post.tags && post.tags.length > 0 && (
                   <div className={styles.postTags}>
-                    <h3 className={styles.tagsTitle}>Related Topics:</h3>
+                    <div className={styles.tagsTitle}>Related Topics:</div>
                     <div className={styles.tags}>
                       {post.tags.map((tag, index) => (
                         <span key={index} className={styles.tag}>
@@ -323,7 +322,7 @@ export default function BlogPostClient({ post }) {
                 {/* Article Metadata */}
                 <div className={styles.articleMeta}>
                   <div className={styles.metaCard}>
-                    <h3 className={styles.metaTitle}>Article Information</h3>
+                    <div className={styles.metaTitle}>Article Information</div>
                     <div className={styles.metaGrid}>
                       <div className={styles.metaItem}>
                         <span className={styles.metaLabel}>Published:</span>
@@ -366,7 +365,7 @@ export default function BlogPostClient({ post }) {
                   {/* Table of Contents */}
                   {tableOfContents.length > 0 && (
                     <div className={styles.sidebarSection}>
-                      <h3 className={styles.sidebarTitle}>In This Article</h3>
+                      <div className={styles.sidebarTitle}>In This Article</div>
                       <nav className={styles.tableOfContents}>
                         {tableOfContents.map((heading, index) => (
                           <a
@@ -386,7 +385,7 @@ export default function BlogPostClient({ post }) {
 
                   {/* Quick Actions */}
                   <div className={styles.sidebarSection}>
-                    <h3 className={styles.sidebarTitle}>Quick Actions</h3>
+                    <div className={styles.sidebarTitle}>Quick Actions</div>
                     <div className={styles.quickActions}>
                       {/* Back to Blog */}
                       <div className={styles.sidebarSection}>
@@ -441,9 +440,9 @@ export default function BlogPostClient({ post }) {
                       >
                         {relatedPost.category}
                       </div>
-                      <h3 className={styles.relatedPostTitle}>
+                      <div className={styles.relatedPostTitle}>
                         {relatedPost.title}
-                      </h3>
+                      </div>
                       <p className={styles.relatedPostExcerpt}>
                         {relatedPost.excerpt}
                       </p>
