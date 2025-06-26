@@ -397,16 +397,6 @@
     background: #999;
   }
 
-  .dotsContainer {
-    gap: 6px;
-    margin-top: 0.75rem;
-  }
-
-  .dot {
-    width: 8px;
-    height: 8px;
-  }
-
   .dot.active {
     transform: scale(1.3);
   }

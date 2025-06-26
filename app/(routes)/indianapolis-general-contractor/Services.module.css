@@ -77,22 +77,25 @@
   position: relative;
 }
 
-.serviceReverse .serviceContent {
-  border-radius: 0 25px 0 25px;
-}
+@media (min-width: 769px) {
 
-.serviceReverse .serviceContent {
-  grid-template-columns: 1fr 1fr;
+  .serviceReverse .serviceContent {
+    border-radius: 0 25px 0 25px;
+  }
+  
+  .serviceReverse .serviceContent {
+    grid-template-columns: 1fr 1fr;
+  }
+  
+  .serviceReverse .serviceText {
+    order: 2;
+  }
+  
+  .serviceReverse .serviceImage {
+    order: 1;
+  }
 }
-
-.serviceReverse .serviceText {
-  order: 2;
-}
-
-.serviceReverse .serviceImage {
-  order: 1;
-}
-
+  
 .serviceContent::before {
   content: '';
   position: absolute;

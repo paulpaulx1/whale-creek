@@ -71,13 +71,4 @@
     .imageContainer {
       height: 350px;
     }
-    
-    .dots {
-      gap: 8px;
-    }
-    
-    .dot {
-      width: 10px;
-      height: 10px;
-    }
   }

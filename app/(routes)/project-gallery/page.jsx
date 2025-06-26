@@ -79,7 +79,7 @@ export default async function ProjectGallery() {
   const serviceAreas = await getServiceAreas(projects);
   
   // Get current URL dynamically
-  const headersList = headers();
+  const headersList = await headers();
   const host = headersList.get('host') || 'whalecreek.co';
   const protocol = process.env.NODE_ENV === 'production' ? 'https' : 'http';
   const currentUrl = `${protocol}://${host}/project-gallery`;
