@@ -250,3 +250,194 @@
     font-size: 1.3rem;
   }
 }
+
+/* Add these styles to your existing Services.module.css */
+
+/* Hero Section */
+.heroSection {
+  padding: 4rem 2rem 2rem;
+  background: var(--blueprint-blue);
+  color: var(--warm-white);
+  position: relative;
+}
+
+.heroSection::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: 
+    linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px),
+    linear-gradient(rgba(255,255,255,0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.05) 1px, transparent 1px);
+  background-size: 100px 100px, 100px 100px, 20px 20px, 20px 20px;
+  background-position: -1px -1px, -1px -1px, -1px -1px, -1px -1px;
+  z-index: 1;
+}
+
+.heroContainer {
+  max-width: 1200px;
+  margin: 0 auto;
+  text-align: center;
+  position: relative;
+  z-index: 2;
+}
+
+.heroContainer h1 {
+  font-size: 3.5rem;
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+  color: var(--warm-white);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  line-height: 1.2;
+}
+
+.heroSubtitle {
+  font-size: 1.2rem;
+  opacity: 0.9;
+  line-height: 1.6;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+/* Service Areas Section */
+.serviceAreasSection {
+  padding: 4rem 2rem;
+  background: var(--blueprint-blue);
+  color: var(--warm-white);
+  position: relative;
+}
+
+.serviceAreasSection::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: 
+    linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px),
+    linear-gradient(rgba(255,255,255,0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.05) 1px, transparent 1px);
+  background-size: 100px 100px, 100px 100px, 20px 20px, 20px 20px;
+  background-position: -1px -1px, -1px -1px, -1px -1px, -1px -1px;
+  z-index: 1;
+}
+
+.serviceAreasContainer {
+  max-width: 1200px;
+  margin: 0 auto;
+  text-align: center;
+  position: relative;
+  z-index: 2;
+}
+
+.serviceAreasContainer h2 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+  color: var(--warm-white);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.serviceAreasContainer p {
+  font-size: 1.1rem;
+  opacity: 0.9;
+  line-height: 1.6;
+  margin-bottom: 2rem;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.serviceAreasList {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
+  margin: 2rem 0;
+}
+
+.serviceArea {
+  background: rgba(255, 255, 255, 0.1);
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  border-radius: 25px;
+  padding: 0.8rem 1.5rem;
+  font-size: 0.95rem;
+  color: var(--warm-white);
+  backdrop-filter: blur(10px);
+  transition: all 0.3s ease;
+}
+
+.serviceArea:hover {
+  background: rgba(255, 255, 255, 0.15);
+  border-color: var(--primary-yellow);
+  transform: translateY(-2px);
+}
+
+/* Responsive adjustments */
+@media (max-width: 1024px) {
+  .heroContainer h1 {
+    font-size: 3rem;
+  }
+  
+  .serviceAreasContainer h2 {
+    font-size: 2.2rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .heroSection {
+    padding: 3rem 1rem 1rem;
+  }
+  
+  .heroContainer h1 {
+    font-size: 2.5rem;
+  }
+  
+  .heroSubtitle {
+    font-size: 1.1rem;
+  }
+  
+  .serviceAreasSection {
+    padding: 3rem 1rem;
+  }
+  
+  .serviceAreasContainer h2 {
+    font-size: 2rem;
+  }
+  
+  .serviceAreasList {
+    gap: 0.8rem;
+  }
+  
+  .serviceArea {
+    padding: 0.6rem 1.2rem;
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .heroContainer h1 {
+    font-size: 2rem;
+  }
+  
+  .heroSubtitle {
+    font-size: 1rem;
+  }
+  
+  .serviceAreasContainer h2 {
+    font-size: 1.8rem;
+  }
+  
+  .serviceArea {
+    padding: 0.5rem 1rem;
+    font-size: 0.85rem;
+  }
+}

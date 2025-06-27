@@ -4,40 +4,52 @@ import ServiceCard from './ServiceCard';
 const ServiceCardsSection = () => {
   const services = [
     {
-      iconType: 'hammer',
-      blueprint: 'MILL_001',
-      title: 'Custom Millwork',
-      description: 'Precision-crafted trim, moldings, and architectural details that transform spaces with timeless elegance and superior quality.',
-    },
-    {
       iconType: 'house',
       blueprint: 'RES_001',
-      title: 'Home Construction',
-      description: 'Complete home construction and renovation services, bringing your vision to life with meticulous attention to detail.',
+      title: 'Residential General Contractor',
+      description: 'Licensed Indianapolis general contractors specializing in home additions, remodeling, and custom residential construction throughout central Indiana.',
+      linkUrl: '/indianapolis-general-contractor#residential-general-contractor-indianapolis',
+      linkText: 'Learn More About Residential Services'
     },
     {
       iconType: 'buildings',
       blueprint: 'COM_001',
-      title: 'Commercial Projects',
-      description: 'Professional-grade construction solutions for businesses, combining functionality with aesthetic appeal.',
+      title: 'Commercial General Contractors',
+      description: 'Professional commercial construction services for Indianapolis businesses including office build-outs, retail spaces, and tenant improvements.',
+      linkUrl: '/indianapolis-general-contractor#commercial-general-contractors-indianapolis',
+      linkText: 'Explore Commercial Services'
+    },
+    {
+      iconType: 'hammer',
+      blueprint: 'MIL_001',
+      title: 'Custom Millwork & Woodworking',
+      description: 'Master craftsmen creating custom cabinetry, built-ins, architectural millwork, and precision woodworking for Indianapolis homes and businesses.',
+      linkUrl: '/indianapolis-general-contractor#custom-millwork-woodworking-indianapolis',
+      linkText: 'View Millwork Services'
+    },
+    {
+      iconType: 'ruler',
+      blueprint: 'OUT_001',
+      title: 'Outdoor Living & Deck Building',
+      description: 'Custom deck building, pergolas, patios, and outdoor living spaces designed for Indianapolis area homes with weather-resistant construction.',
+      linkUrl: '/indianapolis-general-contractor#outdoor-living-deck-building-indianapolis',
+      linkText: 'See Outdoor Living Options'
     },
     {
       iconType: 'toolbox',
       blueprint: 'CAB_001',
       title: 'Custom Cabinetry',
-      description: 'Bespoke storage solutions designed and built to maximize space while complementing your unique style.',
+      description: 'Bespoke storage solutions designed and built to maximize space while complementing your unique style and functional needs.',
+      linkUrl: null,
+      linkText: null
     },
     {
       iconType: 'wrench',
-      blueprint: 'REN_001',
-      title: 'Renovation & Remodeling',
-      description: 'Transform existing spaces with expert renovation services that blend modern functionality with classic craftsmanship.',
-    },
-    {
-      iconType: 'ruler',
       blueprint: 'DES_001',
       title: 'Design Services',
       description: 'Professional design guidance to help you visualize and plan your project from initial concept to final execution.',
+      linkUrl: null,
+      linkText: null
     },
   ];
 
@@ -50,8 +62,8 @@ const ServiceCardsSection = () => {
         <div className={styles.servicesHeader}>
           <h2 className={styles.servicesTitle}>Our Expertise</h2>
           <p className={styles.servicesSubtitle}>
-            From concept to completion, we deliver exceptional craftsmanship
-            across all aspects of construction, design, and custom woodworking.
+            From concept to completion, we deliver exceptional Indianapolis general contractor services
+            across all aspects of residential and commercial construction, custom woodworking, and outdoor living.
           </p>
         </div>
         
@@ -63,6 +75,8 @@ const ServiceCardsSection = () => {
               blueprint={service.blueprint}
               title={service.title}
               description={service.description}
+              linkUrl={service.linkUrl}
+              linkText={service.linkText}
             />
           ))}
         </div>

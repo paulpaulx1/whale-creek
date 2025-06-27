@@ -94,3 +94,65 @@
     color: var(--warm-white);
     font-family: var(--font-space), sans-serif;
   }
+
+  /* Add these styles to your ServiceCard.module.css */
+
+/* Spinning icon animation */
+.spinningIcon {
+    animation: spin 20s linear infinite;
+  }
+  
+  @keyframes spin {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
+  
+  .cardLink {
+    margin-top: 1.5rem;
+    padding-top: 1rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+  }
+  
+  .readMoreLink {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--primary-yellow);
+    text-decoration: none;
+    font-size: 0.9rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: all 0.3s ease;
+    font-family: var(--font-space), monospace;
+  }
+  
+  .readMoreLink:hover {
+    color: var(--warm-white);
+    transform: translateX(5px);
+  }
+  
+  .readMoreLink i {
+    font-size: 1rem;
+    transition: transform 0.3s ease;
+  }
+  
+  .readMoreLink:hover i {
+    transform: translateX(3px);
+  }
+  
+  /* Responsive adjustments */
+  @media (max-width: 768px) {
+    .cardLink {
+      margin-top: 1rem;
+      padding-top: 0.8rem;
+    }
+    
+    .readMoreLink {
+      font-size: 0.8rem;
+    }
+  }
