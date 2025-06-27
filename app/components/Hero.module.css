@@ -24,20 +24,7 @@
     width: 100%;
     height: 100%;
     object-fit: cover;
-    opacity: 0; /* Start invisible */
-}
-
-.heroVideoBackground video.videoLoaded {
-    animation: videoFadeIn 2s ease-out forwards;
-}
-
-@keyframes videoFadeIn {
-    from {
-        opacity: 0;
-    }
-    to {
-        opacity: 0.34; /* Your target opacity */
-    }
+    /* Remove all the opacity and animation stuff - handling in JS now */
 }
 
 .heroContainer {
@@ -157,32 +144,29 @@
 /* Mobile Responsive */
 @media (max-width: 768px) {
     .hero {
-        padding: calc(6rem + 52px) 2rem 6rem;
+        padding: calc(6rem + 52px) 1rem 6rem; 
         min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
     }
 
     .heroContainer {
         grid-template-columns: 1fr;
         gap: 3rem;
         text-align: center;
+        width: 100%;
+        max-width: 100%;
     }
 
     .heroContent {
         order: 1;
+        width: 100%;
     }
 
     .heroActions {
         order: 2;
         gap: 2rem;
-    }
-
-    .heroContent h1 {
-        font-size: 2.8rem;
-        margin-bottom: 1.5rem;
-    }
-
-    .heroContent h2 {
-        font-size: 1.2rem;
-        margin-bottom: 2rem;
+        width: 100%;
     }
 }

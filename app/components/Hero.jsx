@@ -1,39 +1,14 @@
-// components/Hero.js
-'use client';
-import { useState, useRef } from 'react';
+// Server Component - no 'use client' directive
 import styles from "./Hero.module.css";
 import CTAButtons from "./CTAButtons";
 import SocialIcons from "./SocialIcons";
+import VideoBackground from "./VideoBackground";
 
 export default function Hero() {
-  const [videoLoaded, setVideoLoaded] = useState(false);
-  const videoRef = useRef(null);
-
-  const handleVideoLoad = () => {
-    setVideoLoaded(true);
-  };
-
   return (
     <section className={styles.hero}>
-      <div className={styles.heroVideoBackground}>
-        <video 
-          ref={videoRef}
-          autoPlay 
-          muted 
-          playsInline 
-          loop 
-          preload="auto" 
-          onLoadedData={handleVideoLoad}
-          className={videoLoaded ? styles.videoLoaded : ''}
-        >
-          <source
-            src="https://koklgwni3prbahdf.public.blob.vercel-storage.com/whale-creek-drone-footy.mov"
-            type="video/mp4"
-          />
-        </video>
-      </div>
+      <VideoBackground />
 
-      {/* Rest of your component */}
       <div className={styles.heroContainer}>
         <div className={styles.heroContent}>
           <h1>
@@ -42,13 +17,13 @@ export default function Hero() {
             Company
           </h1>
           <h2>
-            Licensed & Bonded. Founded by master builder David Finegan, we
-            specialize in custom woodwork, deck building, sunrooms, home
+            Licensed & Bonded Indianapolis General Contractors. Founded by
+            master builder David Finegan, our Indianapolis-based team
+            specializes in custom woodwork, deck building, sunrooms, home
             additions, and complete renovations throughout Indianapolis and
-            central Indiana. From outdoor living spaces to bespoke cabinetry,
-            our design-focused approach delivers architectural woodwork and
-            general contracting excellence that brings decades of craftsmanship
-            to every project.
+            central Indiana. As experienced general contractors in Indianapolis
+            Indiana, we deliver architectural woodwork and construction
+            excellence with decades of craftsmanship in every project.
           </h2>
         </div>
 
