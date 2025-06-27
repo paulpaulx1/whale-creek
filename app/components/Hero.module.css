@@ -170,3 +170,43 @@
         width: 100%;
     }
 }
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+    .hero {
+        padding: calc(6rem + 52px) 1rem 6rem; 
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .heroContainer {
+        grid-template-columns: 1fr;
+        gap: 3rem;
+        text-align: center;
+        width: 100%;
+        max-width: 100%;
+    }
+
+    .heroContent {
+        order: 1;
+        width: 100%;
+    }
+
+    .heroContent h1 {
+        font-size: 2.8rem;  /* Add this back */
+        margin-bottom: 1.5rem;
+    }
+
+    .heroContent h2 {
+        font-size: 1.2rem;  /* Add this back */
+        margin-bottom: 2rem;
+    }
+
+    .heroActions {
+        order: 2;
+        gap: 2rem;
+        width: 100%;
+    }
+}
