@@ -25,7 +25,10 @@
     height: 100%;
     object-fit: cover;
     opacity: 0; /* Start invisible */
-    animation: videoFadeIn 3s ease-out .3s forwards; /* Delay 0.5s, then fade in over 1s */
+}
+
+.heroVideoBackground video.videoLoaded {
+    animation: videoFadeIn 2s ease-out forwards;
 }
 
 @keyframes videoFadeIn {

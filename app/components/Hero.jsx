@@ -1,13 +1,31 @@
-// components/Hero.js (Server Component)
+// components/Hero.js
+'use client';
+import { useState, useRef } from 'react';
 import styles from "./Hero.module.css";
 import CTAButtons from "./CTAButtons";
 import SocialIcons from "./SocialIcons";
 
 export default function Hero() {
+  const [videoLoaded, setVideoLoaded] = useState(false);
+  const videoRef = useRef(null);
+
+  const handleVideoLoad = () => {
+    setVideoLoaded(true);
+  };
+
   return (
     <section className={styles.hero}>
       <div className={styles.heroVideoBackground}>
-        <video autoPlay muted playsInline loop preload="auto" controls={false}>
+        <video 
+          ref={videoRef}
+          autoPlay 
+          muted 
+          playsInline 
+          loop 
+          preload="auto" 
+          onLoadedData={handleVideoLoad}
+          className={videoLoaded ? styles.videoLoaded : ''}
+        >
           <source
             src="https://koklgwni3prbahdf.public.blob.vercel-storage.com/whale-creek-drone-footy.mov"
             type="video/mp4"
@@ -15,6 +33,7 @@ export default function Hero() {
         </video>
       </div>
 
+      {/* Rest of your component */}
       <div className={styles.heroContainer}>
         <div className={styles.heroContent}>
           <h1>
