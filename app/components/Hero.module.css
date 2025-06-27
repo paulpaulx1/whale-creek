@@ -24,8 +24,7 @@
     width: 100%;
     height: 100%;
     object-fit: cover;
-    /* opacity: 0;  Start invisible */
-    opacity: 1;
+    opacity: 0; /* Start invisible */
     animation: videoFadeIn 3s ease-out .3s forwards; /* Delay 0.5s, then fade in over 1s */
 }
 
