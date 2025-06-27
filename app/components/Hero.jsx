@@ -17,12 +17,12 @@ export default function Hero() {
             Company
           </h1>
           <h2>
-            Licensed & Bonded Indianapolis General Contractors. Founded by
-            master builder David Finegan, our Indianapolis-based team
-            specializes in custom woodwork, deck building, sunrooms, home
-            additions, and complete renovations throughout Indianapolis and
-            central Indiana. As experienced general contractors in Indianapolis
-            Indiana, we deliver architectural woodwork and construction
+            Licensed & Bonded general contractors in Indianapolis Indiana.
+            Founded by master builder David Finegan, our Indianapolis general
+            contractors specialize in custom woodwork, deck building, sunrooms,
+            home additions, and complete renovations throughout Indianapolis and
+            central Indiana. As experienced general contractor Indianapolis
+            teams trust, we deliver architectural woodwork and construction
             excellence with decades of craftsmanship in every project.
           </h2>
         </div>
