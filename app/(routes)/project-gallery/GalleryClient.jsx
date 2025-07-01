@@ -12,6 +12,11 @@ export default function GalleryClient({ projects }) {
   const [lightboxImage, setLightboxImage] = useState(null);
   const [projectImageIndices, setProjectImageIndices] = useState({});
   const [modalImageIndex, setModalImageIndex] = useState(0);
+  const [galleryCollapsed, setGalleryCollapsed] = useState(false)
+
+  const handleToggleGallery = () => {
+    setGalleryCollapsed((prev) => !prev)
+  }
 
   const categories = [
     { id: 'all', label: 'All Projects', icon: 'squares-four' },
@@ -298,6 +303,8 @@ export default function GalleryClient({ projects }) {
           modalImageIndex={modalImageIndex}
           closeLightbox={closeLightbox}
           setModalImageIndex={setModalImageIndex}
+          galleryCollapsed={galleryCollapsed}
+          onToggleGallery={handleToggleGallery}
         />
       )}
     </main>

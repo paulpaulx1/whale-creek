@@ -3,12 +3,15 @@ import Image from 'next/image';
 import { XIcon, MapPinIcon, CalendarIcon, UserIcon, CoinsIcon } from '@phosphor-icons/react';
 import { urlFor } from '../lib/sanity'
 import styles from './Lightbox.module.css'; 
+import GalleryCollapseToggle from './GalleryCollapseToggle';
 
 const Lightbox = ({
   lightboxImage,
   modalImageIndex,
   closeLightbox,
   setModalImageIndex,
+  galleryCollapsed,
+  onToggleGallery
 }) => {
   if (!lightboxImage || !lightboxImage.fullProject) return null;
 
@@ -255,34 +258,42 @@ const Lightbox = ({
           </div>
         </div>
 
-        {/* Always Visible Image Gallery Section (30% of modal height) */}
-        <div className={styles.imageGallerySection}>
+        <div
+          className={`${styles.imageGallerySection} ${galleryCollapsed ? styles.collapsed : ''}`}
+        >
           <div className={styles.galleryHeader}>
             <h3>Project Gallery</h3>
+            <GalleryCollapseToggle
+              collapsed={galleryCollapsed}
+              onToggle={onToggleGallery}
+            />
           </div>
-
-          <div className={styles.imageGrid}>
-            {lightboxImage.fullProject.images.map((image, index) => (
-              <div
-                key={index}
-                className={`${styles.galleryThumbnail} ${index === modalImageIndex ? styles.active : ''}`}
-                onClick={() => setModalImageIndex(index)}
-              >
-                <Image
-                  src={urlFor(image.asset.asset).width(200).height(150).url()}
-                  alt={
-                    image.alt ||
-                    `${lightboxImage.fullProject.title} - Image ${index + 1}`
-                  }
-                  fill
-                  style={{ objectFit: 'cover' }}
-                />
-                {image.caption && (
-                  <div className={styles.thumbnailCaption}>{image.caption}</div>
-                )}
-              </div>
-            ))}
-          </div>
+          {!galleryCollapsed && (
+            <div className={styles.imageGrid}>
+              {lightboxImage.fullProject.images.map((image, index) => (
+                <div
+                  key={index}
+                  className={`${styles.galleryThumbnail} ${index === modalImageIndex ? styles.active : ''}`}
+                  onClick={() => setModalImageIndex(index)}
+                >
+                  <Image
+                    src={urlFor(image.asset.asset).width(200).height(150).url()}
+                    alt={
+                      image.alt ||
+                      `${lightboxImage.fullProject.title} - Image ${index + 1}`
+                    }
+                    fill
+                    style={{ objectFit: 'cover' }}
+                  />
+                  {image.caption && (
+                    <div className={styles.thumbnailCaption}>
+                      {image.caption}
+                    </div>
+                  )}
+                </div>
+              ))}
+            </div>
+          )}
         </div>
       </div>
     </div>

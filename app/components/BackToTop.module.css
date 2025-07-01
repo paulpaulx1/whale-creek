@@ -3,7 +3,7 @@
     position: fixed;
     bottom: 40px;
     right: 40px;
-    z-index: 1000;
+    z-index: 999;
     
     /* Button styling following your design system */
     width: 60px;
