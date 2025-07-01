@@ -51,7 +51,7 @@ export async function generateMetadata() {
 
 export default async function Services() {
   const serviceAreas = await getServiceAreas();
-  const headersList = headers();
+  const headersList = await headers();
   const host = headersList.get('host') || 'whalecreek.co';
   const protocol = process.env.NODE_ENV === 'production' ? 'https' : 'http';
   const currentUrl = `${protocol}://${host}/indianapolis-general-contractor`;
