@@ -28,7 +28,7 @@ export default function VideoBackground() {
         preload="auto" 
         controls={false}
         onCanPlay={handleVideoLoad}
-        style={{ opacity: videoLoaded ? 0.34 : 0, transition: 'opacity 2s ease-out' }}
+        style={{ opacity: videoLoaded ? 0.9 : 0, transition: 'opacity 2s ease-out' }}
       >
         <source
           src="https://koklgwni3prbahdf.public.blob.vercel-storage.com/whale-creek-drone-footy.mov"

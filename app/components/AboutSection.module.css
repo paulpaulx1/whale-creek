@@ -43,26 +43,27 @@
   transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-/* .content:not(:global(.visible)) {
-  opacity: 0.3;
-  transform: translateY(40px);
-} */
-
-/* Clean Typography */
+/* Clean Typography - Updated to Garamond */
 .title {
-  font-size: 3.2rem;
+  font-family: 'EB Garamond', 'Garamond', serif;
+  font-size: 3.8rem;
   margin-bottom: 3rem;
   color: var(--charcoal);
   line-height: 1.1;
   font-weight: 500;
-  letter-spacing: -0.03em;
+  letter-spacing: -0.02em;
+  text-transform: none; /* Remove uppercase for more elegant Garamond look */
 }
 
 .heroAccent {
-  color: #ff6b35;
-  text-shadow: 1px 1px 0 var(--charcoal), -1px -1px 0 var(--charcoal), 1px -1px 0 var(--charcoal), -1px 1px 0 var(--charcoal);
+  color: #ff6b35; /* Orange accent */
   font-weight: 600;
+  font-family: 'EB Garamond', 'Garamond', serif;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3); /* Shadow for depth */
+  position: relative;
 }
+
+
 
 /* Minimal Content Blocks */
 .contentBlock {
@@ -87,11 +88,6 @@
   transform: translateY(0);
   transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1) 0.2s;
 }
-
-/* .imageSection:not(:global(.visible)) {
-  opacity: 0.3;
-  transform: translateY(40px);
-} */
 
 .imageContainer {
   border: 3px solid var(--charcoal);
@@ -134,11 +130,6 @@
   transform: translateY(0);
   transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1) 0.4s;
 }
-
-/* .statsSection:not(:global(.visible)) {
-  opacity: 0.3;
-  transform: translateY(50px);
-} */
 
 .statsHeader {
   text-align: center;
@@ -194,7 +185,7 @@
 /* Spacious responsive design */
 @media (max-width: 1024px) {
   .title {
-    font-size: 2.8rem;
+    font-size: 3.2rem;
   }
 
   .aboutContent {
@@ -232,7 +223,7 @@
   }
 
   .title {
-    font-size: 2.4rem;
+    font-size: 2.6rem;
   }
 
   .contentBlock p {
@@ -268,7 +259,7 @@
   }
 
   .title {
-    font-size: 2rem;
+    font-size: 2.2rem;
   }
 
   .statsTitle {

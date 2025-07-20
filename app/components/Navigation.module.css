@@ -1,12 +1,12 @@
-/* Navigation.module.css - Complete Updated File */
+/* Navigation.module.css - Complete Updated File with Light Unscrolled State */
 .nav {
   position: fixed;
   top: 0;
   width: 100%;
   z-index: 1000;
   transition: all 0.3s ease;
-  border-bottom: 2px solid var(--charcoal);
-  background: rgba(255, 255, 255, 0.45); 
+  border-bottom: 3px solid rgba(255, 255, 255, 0.8); /* Thick border like CTA buttons when unscrolled */
+  background: rgba(0, 0, 0, 0.3); /* Dark shroud like CTA buttons when unscrolled */
 }
 
 .navScrolled {
@@ -31,9 +31,17 @@
   gap: 1rem;
   font-weight: 600;
   font-size: 1.8rem;
-  color: var(--charcoal);
+  color: #ffffff; /* White when unscrolled */
   text-decoration: none;
   z-index: 1001;
+  transition: color 0.3s ease;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5); /* Add shadow for readability */
+}
+
+/* Dark text when scrolled */
+.navScrolled .logo {
+  color: var(--charcoal);
+  text-shadow: none;
 }
 
 .logoIcon {
@@ -67,6 +75,12 @@
 .logoImage {
   border-radius: 12px 4px 12px 4px;
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  filter: brightness(0) saturate(100%) invert(1) drop-shadow(1px 1px 2px rgba(0, 0, 0, 0.3)); /* Make it pure white and add shadow when unscrolled */
+}
+
+/* Remove filter and shadow when scrolled */
+.navScrolled .logoImage {
+  filter: none;
 }
 
 .logo:hover .logoImage {
@@ -82,11 +96,18 @@
 .navLinks a {
   font-family: 'SF Pro Display', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   text-decoration: none;
-  color: var(--charcoal);
+  color: #ffffff; /* White when unscrolled */
   font-weight: 500;
   transition: color 0.3s ease;
   position: relative;
   font-size: 1.1rem;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5); /* Add shadow for readability */
+}
+
+/* Dark text when scrolled */
+.navScrolled .navLinks a {
+  color: var(--charcoal);
+  text-shadow: none;
 }
 
 .navLinks a:hover {
@@ -124,10 +145,17 @@
 .hamburger span {
   width: 25px;
   height: 3px;
-  background: var(--charcoal);
+  background: #ffffff; /* White when unscrolled */
   margin: 3px 0;
   transition: 0.3s;
   border-radius: 2px;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3); /* Add shadow */
+}
+
+/* Dark hamburger when scrolled */
+.navScrolled .hamburger span {
+  background: var(--charcoal);
+  box-shadow: none;
 }
 
 .hamburgerOpen span:nth-child(1) {
@@ -283,8 +311,6 @@
   }
 }
 
-/* Add these styles to your existing Navigation.module.css */
-
 /* Right side container for phone and nav links */
 .navRight {
   display: flex;
@@ -316,6 +342,12 @@
   color: white;
   flex-shrink: 0;
   transition: all 0.3s ease;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3); /* Add shadow when unscrolled */
+}
+
+/* Remove shadow when scrolled */
+.navScrolled .phoneIcon {
+  box-shadow: none;
 }
 
 .phoneIcon:hover {
@@ -332,18 +364,34 @@
 .phoneLocation {
   font-size: 0.75rem;
   font-weight: 600;
-  color: var(--charcoal, #263238);
+  color: #ffffff; /* White when unscrolled */
   text-transform: uppercase;
   letter-spacing: 0.5px;
+  opacity: 0.9;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5); /* Add shadow */
+  transition: color 0.3s ease;
+}
+
+/* Dark text when scrolled */
+.navScrolled .phoneLocation {
+  color: var(--charcoal, #263238);
+  text-shadow: none;
   opacity: 0.8;
 }
 
 .phoneNumber {
   font-size: 1.1rem;
   font-weight: 700;
-  color: var(--charcoal, #263238);
+  color: #ffffff; /* White when unscrolled */
   text-decoration: none;
   transition: color 0.3s ease;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5); /* Add shadow */
+}
+
+/* Dark text when scrolled */
+.navScrolled .phoneNumber {
+  color: var(--charcoal, #263238);
+  text-shadow: none;
 }
 
 .phoneNumber:hover {

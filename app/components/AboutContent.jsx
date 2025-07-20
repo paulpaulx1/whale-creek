@@ -20,24 +20,19 @@ const AboutContent = () => {
         {/* Content Section */}
         <div className={styles.content} data-element="content">
           <h1 className={styles.title}>
-            Indianapolis&apos;{" "}
-            <span className={styles.heroAccent}>Trusted</span> Craftsmen
+            Master{" "}
+            <span className={styles.heroAccent}>Craftsmen</span> Serving Indianapolis
           </h1>
 
           <div className={styles.contentBlock}>
             <p>
-              With decades of combined experience, Whale Creek Construction has
-              established itself as Indianapolis&apos; premier destination for
-              custom millwork and construction excellence.
+              As Indianapolis' most trusted general contractor and woodworker specialists, we've perfected the art of transforming homes throughout central Indiana with precision CNC machining and time-honored craftsmanship techniques.
             </p>
             <p>
-              Our team combines traditional woodworking techniques with modern
-              technology and project management systems to deliver projects on
-              time, within budget, and beyond expectations.
+              Our Indianapolis woodworker heritage combines with modern general contractor expertise, advanced CNC operations, and strict adherence to industry standards to deliver results that exceed building codes and stand the test of time.
             </p>
             <p>
-              Every project begins with understanding your vision and ends with
-              results that exceed your expectations.
+              Every custom millwork piece, every renovation, every addition reflects our commitment to Indianapolis homeowners who demand excellence backed by licensed, bonded professionals operating at the highest industry standards.
             </p>
           </div>
 
