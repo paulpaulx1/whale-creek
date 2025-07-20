@@ -2,8 +2,8 @@ import { memo, useCallback } from 'react';
 import styles from './ImageCarousel.module.css';
 import Image from 'next/image';
 import {
-  ArrowFatLinesLeftIcon,
-  ArrowFatLinesRightIcon,
+  CaretLeftIcon,
+  CaretRightIcon,
 } from '@phosphor-icons/react';
 import { urlFor } from '../lib/sanity';
 
@@ -87,7 +87,7 @@ const ImageCarousel = memo(
               aria-label='Previous image'
               type='button'
             >
-              <ArrowFatLinesLeftIcon size={28} />
+              <CaretLeftIcon size={28} />
             </button>
             <button
               className={`${styles.carouselControl} ${styles.carouselNext}`}
@@ -95,7 +95,7 @@ const ImageCarousel = memo(
               aria-label='Next image'
               type='button'
             >
-              <ArrowFatLinesRightIcon size={28} />
+              <CaretRightIcon size={28} />
             </button>
 
             {/* Image Indicators */}

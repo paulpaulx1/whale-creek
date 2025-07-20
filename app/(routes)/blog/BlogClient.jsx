@@ -93,18 +93,6 @@ export default function BlogClient({ posts }) {
                       <div className={styles.featuredInfo}>
                         <h3>{post.title}</h3>
                         <p>{post.excerpt}</p>
-                        <div className={styles.postMeta}>
-                          <span className={styles.date}>
-                            <i className='ph ph-calendar'></i>
-                            {formatDate(post.publishedAt)}
-                          </span>
-                          {post.readingTime && (
-                            <span className={styles.readTime}>
-                              <i className='ph ph-clock'></i>
-                              {post.readingTime} min read
-                            </span>
-                          )}
-                        </div>
                       </div>
                     </div>
                   </div>
@@ -184,18 +172,6 @@ export default function BlogClient({ posts }) {
                   <div className={styles.postContent}>
                     <h3 className={styles.postTitle}>{post.title}</h3>
                     <p className={styles.postExcerpt}>{post.excerpt}</p>
-                    <div className={styles.postMeta}>
-                      <span className={styles.date}>
-                        <i className='ph ph-calendar'></i>
-                        {formatDate(post.publishedAt)}
-                      </span>
-                      {post.readingTime && (
-                        <span className={styles.readTime}>
-                          <i className='ph ph-clock'></i>
-                          {post.readingTime} min read
-                        </span>
-                      )}
-                    </div>
                     {post.tags && post.tags.length > 0 && (
                       <div className={styles.tags}>
                         {post.tags.slice(0, 3).map((tag, index) => (
@@ -207,7 +183,6 @@ export default function BlogClient({ posts }) {
                     )}
                     <div className={styles.readMore}>
                       <span>Read More</span>
-                      <i className='ph ph-arrow-right'></i>
                     </div>
                   </div>
                 </Link>

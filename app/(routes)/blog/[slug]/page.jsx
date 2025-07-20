@@ -105,8 +105,9 @@ export async function generateMetadata({ params }) {
 }
 
 export default async function BlogPostPage({ params }) {
+  const { slug } = await params
   const [post, serviceAreas] = await Promise.all([
-    getBlogPost(params.slug),
+    getBlogPost(slug),
     getServiceAreas()
   ]);
 
@@ -116,7 +117,7 @@ export default async function BlogPostPage({ params }) {
   const headersList = headers();
   const host = headersList.get('host') || 'whalecreek.co';
   const protocol = process.env.NODE_ENV === 'production' ? 'https' : 'http';
-  const currentUrl = `${protocol}://${host}/blog/${params.slug}`;
+  const currentUrl = `${protocol}://${host}/blog/${slug}`;
 
   return (
     <>
