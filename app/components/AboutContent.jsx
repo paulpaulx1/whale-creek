@@ -20,19 +20,26 @@ const AboutContent = () => {
         {/* Content Section */}
         <div className={styles.content} data-element="content">
           <h1 className={styles.title}>
-            Master{" "}
-            <span className={styles.heroAccent}>Craftsmen</span> Serving Indianapolis
+            Master <span className={styles.heroAccent}>Craftsmen</span> Serving
+            Indianapolis
           </h1>
 
           <div className={styles.contentBlock}>
             <p>
-              As Indianapolis' most trusted general contractor and woodworker specialists, we've perfected the art of transforming homes throughout central Indiana with precision CNC machining and time-honored craftsmanship techniques.
+              As Indianapolis&apos; most trusted general contractor and
+              woodworker specialists, we&apos;ve perfected...
             </p>
             <p>
-              Our Indianapolis woodworker heritage combines with modern general contractor expertise, advanced CNC operations, and strict adherence to industry standards to deliver results that exceed building codes and stand the test of time.
+              Our Indianapolis woodworker heritage combines with modern general
+              contractor expertise, advanced CNC operations, and strict
+              adherence to industry standards to deliver results that exceed
+              building codes and stand the test of time.
             </p>
             <p>
-              Every custom millwork piece, every renovation, every addition reflects our commitment to Indianapolis homeowners who demand excellence backed by licensed, bonded professionals operating at the highest industry standards.
+              Every custom millwork piece, every renovation, every addition
+              reflects our commitment to Indianapolis homeowners who demand
+              excellence backed by licensed, bonded professionals operating at
+              the highest industry standards.
             </p>
           </div>
 
