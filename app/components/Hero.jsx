@@ -13,7 +13,7 @@ export default function Hero() {
         <div className={styles.heroContent}>
           <h1>
             Indiana&apos;s Premier{" "}
-            <span className={styles.heroAccent}>Construction</span> & <br/>
+            <span className={styles.heroAccent}>Construction</span> <br/>and
             Woodworking
           </h1>
           <h2>

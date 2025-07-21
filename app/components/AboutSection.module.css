@@ -45,7 +45,7 @@
 
 /* Clean Typography - Updated to Garamond */
 .title {
-  font-family: 'EB Garamond', 'Garamond', serif;
+  /* font-family: 'EB Garamond', 'Garamond', serif; */
   font-size: 3.8rem;
   margin-bottom: 3rem;
   color: var(--charcoal);
@@ -58,9 +58,9 @@
 .heroAccent {
   color: #ff6b35; /* Orange accent */
   font-weight: 600;
-  font-family: 'EB Garamond', 'Garamond', serif;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3); /* Shadow for depth */
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Shadow for depth */
   position: relative;
+  font-size: 4rem;
 }
 
 

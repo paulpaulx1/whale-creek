@@ -435,6 +435,13 @@
   }
 }
 
+@media (min-width: 851px) and (max-width: 858px) {
+  .navRight {
+    gap: 0px;
+  }
+
+}
+ 
 @media (max-width: 1024px) {
   .phoneIcon {
     width: 35px;

@@ -7,7 +7,7 @@ import StatCard from "./StatCard";
 
 const AboutContent = () => {
   const stats = [
-    { number: "500+", label: "Projects Completed" },
+    { number: "150+", label: "Projects Completed" },
     { number: "15+", label: "Years Experience" },
     { number: "100%", label: "Client Satisfaction" },
     { number: "24/7", label: "Project Support" },
