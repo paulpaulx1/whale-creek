@@ -1,7 +1,7 @@
 /* CTA Section - Hero-style Scandinavian */
 .cta {
     padding: 6rem 2rem;
-    background: var(--soft-cream);
+    background: white;
     color: var(--charcoal);
     text-align: center;
     position: relative;

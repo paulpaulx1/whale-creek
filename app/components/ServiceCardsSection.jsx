@@ -6,7 +6,7 @@ const ServiceCardsSection = () => {
     {
       iconType: 'house',
       blueprint: 'RES_001',
-      title: 'Residential General Contractor',
+      title: 'Residential General Contracting',
       description: 'Licensed Indianapolis general contractors specializing in home additions, remodeling, and custom residential construction throughout central Indiana.',
       linkUrl: '/indianapolis-general-contractor#residential-general-contractor-indianapolis',
       linkText: 'Learn More About Residential Services'
@@ -14,7 +14,7 @@ const ServiceCardsSection = () => {
     {
       iconType: 'buildings',
       blueprint: 'COM_001',
-      title: 'Commercial General Contractors',
+      title: 'Commercial General Contracting',
       description: 'Professional commercial construction services for Indianapolis businesses including office build-outs, retail spaces, and tenant improvements.',
       linkUrl: '/indianapolis-general-contractor#commercial-general-contractors-indianapolis',
       linkText: 'Explore Commercial Services'
@@ -60,11 +60,7 @@ const ServiceCardsSection = () => {
     >
       <div className={styles.container}>
         <div className={styles.servicesHeader}>
-          <h2 className={styles.servicesTitle}>Our Expertise</h2>
-          <p className={styles.servicesSubtitle}>
-            From concept to completion, we deliver exceptional Indianapolis general contractor services
-            across all aspects of residential and commercial construction, custom woodworking, and outdoor living.
-          </p>
+          <h2 className={styles.servicesTitle}>Services</h2>
         </div>
         
         <div className={styles.servicesGrid}>

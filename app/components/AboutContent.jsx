@@ -15,19 +15,26 @@ const AboutContent = () => {
 
   return (
     <div className={styles.container}>
-      {/* About Content Grid */}
+      {/* About Content Grid - Reversed Layout */}
       <div className={styles.aboutContent}>
-        {/* Content Section */}
+        {/* Image Section - Now First */}
+        <div className={styles.imageSection} data-element="image">
+          <AboutCarousel />
+        </div>
+
+        {/* Content Section - Now Second */}
         <div className={styles.content} data-element="content">
           <h1 className={styles.title}>
-            Master <span className={styles.heroAccent}>Craftsmen</span> Serving
-            Indianapolis
+            About Whale Creek
           </h1>
 
           <div className={styles.contentBlock}>
             <p>
               As Indianapolis&apos; most trusted general contractor and
-              woodworker specialists, we&apos;ve perfected...
+              woodworker specialists, we&apos;ve been transforming homes and
+              businesses throughout the greater Indianapolis area for over 15 years.
+              Our team combines traditional craftsmanship with modern techniques
+              to deliver exceptional results on every project.
             </p>
             <p>
               Our Indianapolis woodworker heritage combines with modern general
@@ -55,22 +62,13 @@ const AboutContent = () => {
             ></div>
             <div
               className={styles.circle}
-              style={{ backgroundColor: "#F57C00" }}
-            ></div>
-            <div
-              className={styles.circle}
               style={{ backgroundColor: "#66BB6A" }}
             ></div>
             <div
               className={styles.circle}
-              style={{ backgroundColor: "#FF7043" }}
+              style={{ backgroundColor: "#8D6E63" }}
             ></div>
           </div>
-        </div>
-
-        {/* Image Section */}
-        <div className={styles.imageSection} data-element="image">
-          <AboutCarousel />
         </div>
       </div>
 
@@ -97,15 +95,11 @@ const AboutContent = () => {
         <div className={styles.statsCircles} data-circles="stats">
           <div
             className={styles.circle}
-            style={{ backgroundColor: "#FF7043" }}
-          ></div>
-          <div
-            className={styles.circle}
-            style={{ backgroundColor: "#F57C00" }}
-          ></div>
-          <div
-            className={styles.circle}
             style={{ backgroundColor: "#D32F2F" }}
+          ></div>
+          <div
+            className={styles.circle}
+            style={{ backgroundColor: "#1976D2" }}
           ></div>
           <div
             className={styles.circle}
@@ -113,7 +107,7 @@ const AboutContent = () => {
           ></div>
           <div
             className={styles.circle}
-            style={{ backgroundColor: "#1976D2" }}
+            style={{ backgroundColor: "#8D6E63" }}
           ></div>
         </div>
       </div>
