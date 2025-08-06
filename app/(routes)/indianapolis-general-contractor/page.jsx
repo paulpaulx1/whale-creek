@@ -1,4 +1,5 @@
 import styles from './Services.module.css';
+import Image from 'next/image';
 import SchemaMarkup from '../../components/seo/SchemaMarkup';
 import { generatePageMetadata } from '../../components/seo/generateMetadata';
 import { pageConfigs } from '../../lib/seo/seoConfig'; 
@@ -57,9 +58,26 @@ export default async function Services() {
 
   const mainServices = [
     {
+      id: 'outdoor-living-deck-building-indianapolis',
+      title: 'Outdoor Living & Deck Building Indianapolis',
+      image: '/images/Noblesville-Deck.JPG',
+      description:
+        'Our general contractor Indianapolis team specializes in outdoor living spaces including custom decks, pergolas, patios, and outdoor room additions that extend your living space throughout the Indianapolis area.',
+      details:
+        'As experienced deck building and outdoor living general contractors in Indianapolis Indiana, we design and construct custom decks, covered porches, pergolas, outdoor kitchens, and patio spaces. Our Indianapolis general contractors understand local building codes and weather considerations to create durable, beautiful outdoor spaces.',
+      blueprint: 'OUT_001',
+      features: [
+        'Custom deck building Indianapolis',
+        'Pergolas and covered porches',
+        'Outdoor kitchens and living spaces',
+        'Patio design and construction',
+        'Weather-resistant construction',
+      ],
+    },
+    {
       id: 'residential-general-contractor-indianapolis',
       title: 'Residential General Contractor Indianapolis',
-      image: '/images/residential-construction.jpg',
+      image: '/images/Westfield_Sunroom.jpeg',
       description:
         'As licensed and bonded residential general contractors in Indianapolis Indiana, Whale Creek Co specializes in home additions, remodeling, and custom residential construction projects throughout central Indiana.',
       details:
@@ -76,7 +94,7 @@ export default async function Services() {
     {
       id: 'commercial-general-contractors-indianapolis',
       title: 'Commercial General Contractors Indianapolis',
-      image: '/images/commercial-construction.jpg',
+      image: '/images/Patio_Indianapolis.jpg',
       description:
         'Whale Creek Co provides comprehensive commercial general contractors Indianapolis services for businesses throughout central Indiana. Our commercial construction expertise spans retail spaces, offices, and industrial projects.',
       details:
@@ -93,7 +111,7 @@ export default async function Services() {
     {
       id: 'custom-millwork-woodworking-indianapolis',
       title: 'Custom Millwork & Woodworking Indianapolis',
-      image: '/images/custom-millwork.jpg',
+      image: '/images/Pocket_Doors.jpeg', 
       description:
         'Combining our general contractor Indianapolis expertise with master woodworking, Whale Creek Co creates custom millwork, built-ins, cabinetry, and architectural woodwork for residential and commercial clients.',
       details:
@@ -105,23 +123,6 @@ export default async function Services() {
         'Built-in furniture and storage',
         'Precision craftsmanship',
         'Residential and commercial millwork',
-      ],
-    },
-    {
-      id: 'outdoor-living-deck-building-indianapolis',
-      title: 'Outdoor Living & Deck Building Indianapolis',
-      image: '/images/outdoor-living.jpg',
-      description:
-        'Our general contractor Indianapolis team specializes in outdoor living spaces including custom decks, pergolas, patios, and outdoor room additions that extend your living space throughout the Indianapolis area.',
-      details:
-        'As experienced deck building and outdoor living general contractors in Indianapolis Indiana, we design and construct custom decks, covered porches, pergolas, outdoor kitchens, and patio spaces. Our Indianapolis general contractors understand local building codes and weather considerations to create durable, beautiful outdoor spaces.',
-      blueprint: 'OUT_001',
-      features: [
-        'Custom deck building Indianapolis',
-        'Pergolas and covered porches',
-        'Outdoor kitchens and living spaces',
-        'Patio design and construction',
-        'Weather-resistant construction',
       ],
     },
   ];
@@ -176,13 +177,19 @@ export default async function Services() {
                     </ul>
                   </div>
                   <div className={styles.serviceImage}>
-                    <div className={styles.imagePlaceholder}>
-                      <i
-                        className='ph ph-image'
-                        style={{ fontSize: '4rem', opacity: 0.3 }}
-                      ></i>
-                      <p>{service.title}</p>
-                    </div>
+                    <Image
+                      src={service.image}
+                      alt={service.title}
+                      width={600}
+                      height={400}
+                      className={styles.serviceImg}
+                      style={{
+                        objectFit: 'cover',
+                        width: '100%',
+                        height: '100%'
+                      }}
+                      priority={index < 2} // Priority load first 2 images
+                    />
                   </div>
                 </div>
               </div>

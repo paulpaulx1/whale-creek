@@ -1,4 +1,3 @@
-/* AboutSection.module.css - Minimal & Spacious Design */
 
 .aboutSection {
   font-family: var(--font-space), sans-serif;
@@ -189,7 +188,7 @@
 /* Spacious responsive design */
 @media (max-width: 1024px) {
   .title {
-    font-size: 3.2rem;
+    font-size: 2.5rem;
   }
 
   .aboutContent {
@@ -227,7 +226,7 @@
   }
 
   .title {
-    font-size: 2.6rem;
+    font-size: 2.5rem;
   }
 
   .contentBlock p {
