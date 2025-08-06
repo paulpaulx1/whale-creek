@@ -14,7 +14,7 @@
 
 /* Blueprint-Style Services Section */
 .services {
-  padding: 6rem 2rem;
+  padding: 2rem;
   background: var(--blueprint-blue);
   color: var(--warm-white);
   position: relative;
@@ -42,8 +42,9 @@
   position: relative;
   z-index: 2;
 }
-
-
+.servicesContainer > *:last-child {
+  margin-bottom: 6px;
+}
 
 /* Service Sections */
 .serviceSection {
@@ -306,7 +307,7 @@
 
 /* Service Areas Section */
 .serviceAreasSection {
-  padding: 4rem 2rem;
+  padding: 2rem;
   background: var(--blueprint-blue);
   color: var(--warm-white);
   position: relative;

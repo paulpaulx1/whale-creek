@@ -200,10 +200,6 @@ export default async function Services() {
         {/* Service Areas Section */}
         <section className={styles.serviceAreasSection}>
           <div className={styles.serviceAreasContainer}>
-            <h2>Indianapolis General Contractor Service Areas</h2>
-            <p>
-              Our Indianapolis general contractors proudly serve residential and commercial clients throughout central Indiana including:
-            </p>
             <div className={styles.serviceAreasList}>
               {serviceAreas.map((area, index) => (
                 <span key={index} className={styles.serviceArea}>
