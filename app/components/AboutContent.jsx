@@ -24,17 +24,24 @@ const AboutContent = () => {
 
         {/* Content Section - Now Second */}
         <div className={styles.content} data-element="content">
-          <h1 className={styles.title}>
-            About Whale Creek
-          </h1>
+          <h1 className={styles.title}>About Whale Creek</h1>
 
           <div className={styles.contentBlock}>
-          <p>
-  As Indianapolis' most trusted general contractor and woodworker specialists, we've been transforming homes and businesses throughout the greater Indianapolis area for over 15 years. Our team combines traditional craftsmanship with modern techniques to deliver exceptional results on every project.
-</p>
-<p>
-  Our Indianapolis woodworker heritage combines with modern general contractor expertise, advanced CNC operations, and strict adherence to industry standards to deliver results that exceed building codes and stand the test of time. Every project reflects our commitment to Indianapolis homeowners who demand excellence backed by licensed, bonded professionals.
-</p>
+            <p>
+              As Indianapolis&apos; most trusted general contractor and
+              woodworker specialists, we&apos;ve been transforming homes and
+              businesses throughout the greater Indianapolis area for over 15
+              years. Our team combines traditional craftsmanship with modern
+              techniques to deliver exceptional results on every project.
+            </p>
+            <p>
+              Our Indianapolis woodworker heritage combines with modern general
+              contractor expertise, advanced CNC operations, and strict
+              adherence to industry standards to deliver results that exceed
+              building codes and stand the test of time. Every project reflects
+              our commitment to Indianapolis homeowners who demand excellence
+              backed by licensed, bonded professionals.
+            </p>
           </div>
         </div>
       </div>
