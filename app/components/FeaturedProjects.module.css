@@ -260,7 +260,15 @@
     }
   }
   
-  /* Clean Accessibility */
+    /* Section divider line */
+    .sectionDivider {
+      width: calc(100% - 4rem);
+      height: 1px;
+      background: rgba(38, 50, 56, 0.2);
+      margin: 0 auto 4rem;
+    }
+    
+    /* Clean Accessibility */
   .featuredCard:focus,
   .navButton:focus,
   .indicator:focus {

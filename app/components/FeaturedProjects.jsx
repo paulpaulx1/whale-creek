@@ -209,6 +209,9 @@ export default function FeaturedProjects({ projects, maxProjects = 2 }) {
         </div>
       </section>
       
+      {/* Divider Line */}
+      <div className={styles.sectionDivider}></div>
+      
       {lightboxImage && (
         <Lightbox
           lightboxImage={lightboxImage}

@@ -290,3 +290,10 @@
     line-height: 1.6;
   }
 }
+
+.sectionDivider {
+  width: calc(100% - 4rem);
+  height: 1px;
+  background: rgba(38, 50, 56, 0.2);
+  margin: 4rem auto;
+}

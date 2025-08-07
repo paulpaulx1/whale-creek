@@ -49,28 +49,11 @@ const AboutContent = () => {
               the highest industry standards.
             </p>
           </div>
-
-          {/* Clean circle accent */}
-          <div className={styles.aboutCircles} data-circles="about">
-            <div
-              className={styles.circle}
-              style={{ backgroundColor: "#D32F2F" }}
-            ></div>
-            <div
-              className={styles.circle}
-              style={{ backgroundColor: "#1976D2" }}
-            ></div>
-            <div
-              className={styles.circle}
-              style={{ backgroundColor: "#66BB6A" }}
-            ></div>
-            <div
-              className={styles.circle}
-              style={{ backgroundColor: "#8D6E63" }}
-            ></div>
-          </div>
         </div>
       </div>
+
+      {/* Divider Line */}
+      <div className={styles.sectionDivider}></div>
 
       {/* Stats Section */}
       <div className={styles.statsSection} data-element="stats">
@@ -90,26 +73,6 @@ const AboutContent = () => {
         </div>
 
         <Reviews />
-
-        {/* Clean circle accent */}
-        <div className={styles.statsCircles} data-circles="stats">
-          <div
-            className={styles.circle}
-            style={{ backgroundColor: "#D32F2F" }}
-          ></div>
-          <div
-            className={styles.circle}
-            style={{ backgroundColor: "#1976D2" }}
-          ></div>
-          <div
-            className={styles.circle}
-            style={{ backgroundColor: "#66BB6A" }}
-          ></div>
-          <div
-            className={styles.circle}
-            style={{ backgroundColor: "#8D6E63" }}
-          ></div>
-        </div>
       </div>
     </div>
   );
