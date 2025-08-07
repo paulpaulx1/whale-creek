@@ -1,4 +1,4 @@
-import { Raleway, Space_Grotesk } from 'next/font/google';
+import { Inter, Space_Grotesk } from 'next/font/google';
 import './globals.css';
 import Navigation from './components/Navigation';
 import KineticBackground from './components/KineticBackground';
@@ -6,11 +6,13 @@ import Footer from './components/Footer';
 import BackToTop from './components/BackToTop';
 import CTASection from './components/CTASection';
 
-const raleway = Raleway({
+const inter = Inter({
   subsets: ['latin'],
   weight: ['300', '400', '500', '600', '700'],
-  variable: '--font-raleway',
+  variable: '--font-inter',
+  display: 'swap',
 });
+
 const spaceGrotesk = Space_Grotesk({
   subsets: ['latin'],
   weight: ['300', '400', '500', '600', '700'],
@@ -31,7 +33,7 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang='en' className={`${raleway.variable} ${spaceGrotesk.variable}`}>
+    <html lang='en' className={`${inter.variable} ${spaceGrotesk.variable}`}>
       <body>
         <Navigation />
         <KineticBackground />

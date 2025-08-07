@@ -6,10 +6,15 @@
   --charcoal: #263238;
   --sage-green: #66bb6a;
   --warm-white: #fafafa;
-  --soft-cream: #f8f6f0;
+  --soft-cream: #fafafa;
   --blueprint-blue: #1e3a5f;
   --accent-coral: #ff7043;
   --just-off-black: #222222;
+  
+  /* Font Variables - Inter as primary */
+  --font-primary: var(--font-inter);
+  --font-raleway: var(--font-inter); /* Replace Raleway with Inter */
+  --font-space: var(--font-space); /* Keep Space Grotesk for contrast */
 }
 
 * {
@@ -19,12 +24,7 @@
 }
 
 body {
-  font-family:
-    'SF Pro Display',
-    -apple-system,
-    BlinkMacSystemFont,
-    'Segoe UI',
-    sans-serif;
+  font-family: var(--font-inter), -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   background: var(--soft-cream);
   color: black;
   line-height: 1.6;
