@@ -61,7 +61,7 @@ export default function Navigation() {
               alt='Whale Creek Logo'
             />
           </div>
-          <span className={styles.logoText}>Whale Creek Co</span>
+          <span className={styles.logoText}>Whale Creek</span>
         </Link>
 
         {/* Phone Number and Navigation Container */}

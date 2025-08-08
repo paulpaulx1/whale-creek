@@ -1,0 +1,34 @@
+/* components/AboutImage.module.css */
+.imageContainer {
+    border: 3px solid var(--charcoal);
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: none;
+    transition: all 0.3s ease;
+    position: relative;
+    background: var(--warm-white);
+    height: 500px;
+  }
+  
+  .imageContainer:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+  }
+  
+  .image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+  }
+  
+  .imageContainer:hover .image {
+    transform: scale(1.02);
+  }
+  
+  /* Mobile adjustments */
+  @media (max-width: 768px) {
+    .imageContainer {
+      height: 350px;
+    }
+  }

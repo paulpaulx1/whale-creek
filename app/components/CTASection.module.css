@@ -21,6 +21,11 @@
     letter-spacing: -0.02em;
     color: var(--charcoal);
     line-height: 1.1;
+    font-family: 'Anton', 'Impact', sans-serif;
+    font-size: 2.5rem;
+    font-weight: 400;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
   }
   
   .ctaAccent {

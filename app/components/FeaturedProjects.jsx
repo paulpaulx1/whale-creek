@@ -168,9 +168,7 @@ export default function FeaturedProjects({ projects, maxProjects = 2 }) {
                     <div className={styles.projectInfo}>
                       <h3 className={styles.projectTitle}>{project.title}</h3>
                       <p className={styles.projectCategory}>{project.category}</p>
-                      {index === 1 && (
-                        <span className={styles.moreDetails}>MORE DETAILS →</span>
-                      )}
+                      <span className={styles.moreDetails}>MORE DETAILS →</span>
                     </div>
                   </div>
                 </Link>

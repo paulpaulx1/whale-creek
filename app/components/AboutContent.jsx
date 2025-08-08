@@ -1,7 +1,7 @@
 import styles from "./AboutSection.module.css";
 import Reviews from "./Reviews";
 import Image from "next/image";
-import AboutCarousel from "./AboutCarousel";
+import AboutImage from "./AboutImage";
 
 import StatCard from "./StatCard";
 
@@ -19,7 +19,7 @@ const AboutContent = () => {
       <div className={styles.aboutContent}>
         {/* Image Section - Now First */}
         <div className={styles.imageSection} data-element="image">
-          <AboutCarousel />
+          <AboutImage />
         </div>
 
         {/* Content Section - Now Second */}

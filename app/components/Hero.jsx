@@ -12,19 +12,10 @@ export default function Hero() {
       <div className={styles.heroContainer}>
         <div className={styles.heroContent}>
           <h1>
-            Indiana&apos;s Premier{" "}
-            <span className={styles.heroAccent}>Construction</span> <br/>and
-            Woodworking
+            Whale Creek<br/>
+            <span className={styles.heroAccent}>Construction</span><br/>
+            Indianapolis, Indiana
           </h1>
-          <h2>
-            Licensed & Bonded general contractors in Indianapolis Indiana.
-            Founded by master builder David Finegan, our Indianapolis general
-            contractors specialize in custom woodwork, deck building, sunrooms,
-            home additions, and complete renovations throughout Indianapolis and
-            central Indiana. As an experienced general contractor Indianapolis
-            teams trust, we deliver architectural woodwork and construction
-            excellence with decades of craftsmanship in every project.
-          </h2>
         </div>
 
         <div className={styles.heroActions}>

@@ -140,6 +140,7 @@
 }
 
 .statsTitle {
+  
   font-size: 2.8rem;
   font-weight: 300;
   color: var(--charcoal);
@@ -296,4 +297,15 @@
   height: 1px;
   background: rgba(38, 50, 56, 0.2);
   margin: 4rem auto;
+}
+
+.title {
+  font-family: 'Anton', 'Impact', sans-serif;
+  font-size: 2.4rem;
+  font-weight: 400;
+  margin-bottom: 2.5rem;
+  color: var(--charcoal);
+  line-height: 1.1;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
 }

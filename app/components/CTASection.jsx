@@ -33,7 +33,7 @@ export default function CTASection() {
       <div className={styles.ctaContainer}>
         <div className={styles.ctaContent}>
           <h2>
-            Ready to <span className={styles.ctaAccent}>Transform </span> Your
+            Ready to <span className={styles.ctaAccent}>Transform </span><br /> Your
             Home or Business?
           </h2>
           <p>
@@ -44,14 +44,6 @@ export default function CTASection() {
           </p>
           <div className={styles.ctaButtons}>
             <CTAButtons />
-          </div>
-          <div className={styles.ctaCircles}>
-            <SocialIcons />
-            <div className={styles.ctaCircle}></div>
-            <div className={styles.ctaCircle}></div>
-            <div className={styles.ctaCircle}></div>
-            <div className={styles.ctaCircle}></div>
-            <div className={styles.ctaCircle}></div>
           </div>
         </div>
       </div>
