@@ -1,17 +1,17 @@
-/* Hero.module.css - Redesigned Clean & Minimal */
+/* Hero.module.css - Refined & Elegant */
 .hero {
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: calc(8rem + 52px) 2rem 8rem; 
+    padding: 8rem 2rem; 
     position: relative;
     background: var(--soft-cream);
     overflow: hidden;
     min-height: 100vh;
     text-align: center;
-  }
-  
-  .heroVideoBackground {
+}
+
+.heroVideoBackground {
     position: absolute;
     top: 0;
     left: 0;
@@ -19,127 +19,182 @@
     height: 100%;
     z-index: 1;
     pointer-events: none;
-  }
-  
-  .heroVideoBackground video {
+}
+
+.heroVideoBackground video {
     width: 100%;
     height: 100%;
     object-fit: cover;
-  }
-  
-  /* Dark overlay shroud */
-  .heroVideoBackground::after {
+}
+
+/* Refined dark overlay - less heavy */
+.heroVideoBackground::after {
     content: '';
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0, 0, 0, 0.5);
+    background: rgba(0, 0, 0, 0.35); /* Reduced from 0.5 */
     z-index: 2;
-  }
-  
-  .heroContainer {
+}
+
+.heroContainer {
     max-width: 1200px;
     margin: 0 auto;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    gap: 4rem;
+    gap: 6rem; /* Increased spacing */
     position: relative;
     z-index: 3;
     width: 100%;
-  }
-  
-  .heroContent {
+}
+
+.heroContent {
     text-align: center;
-  }
-  
-  .heroContent h1 {
-    font-family: 'Anton', 'Impact', sans-serif;
-    font-size: 3.6rem;
-    font-weight: 400;
-    line-height: 1.1;
+    max-width: 800px; /* Constrain width for better readability */
+}
+
+.heroContent h1 {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    font-size: 2.5rem;
+    font-weight: 300; /* Much lighter weight like Safwat */
+    font-style: normal;
+    line-height: 1.2;
     margin: 0;
     color: #ffffff;
+    letter-spacing: 0.15em; /* Exact same as Safwat */
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3); /* Exact same as Safwat */
     text-transform: uppercase;
-    letter-spacing: 0.05em;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
-    opacity: .88;
-  }
-  
-  .heroAccent {
-    color: #ff6b35;
+    width: 100%;
+}
+
+/* Accent styling for "Construction" */
+.heroAccent {
+    color: #ff6b35; /* Orange accent color */
+    font-weight: 500; /* Slightly heavier for emphasis */
     position: relative;
     text-shadow: 
-      2px 2px 4px rgba(0, 0, 0, 0.8),
-      1px 1px 0 rgba(0, 0, 0, 0.9);
-  }
-  
-  .heroActions {
+        0 2px 8px rgba(0, 0, 0, 0.4),
+        0 1px 0 rgba(0, 0, 0, 0.2);
+}
+
+/* Remove description styling since we're not using it */
+/* .heroDescription {
+    font-family: 'Inter', sans-serif;
+    font-size: 1.2rem;
+    font-weight: 400;
+    line-height: 1.6;
+    color: rgba(255, 255, 255, 0.9);
+    margin-top: 2rem;
+    max-width: 500px;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+} */
+
+.heroActions {
     display: flex;
     flex-direction: column;
     gap: 3rem;
     align-items: center;
     justify-content: center;
     width: 100%;
-  }
-  
-  .ctaSection {
+}
+
+.ctaSection {
     position: relative;
-    width: 100%;
     display: flex;
-    justify-content: center;
-  }
-  
-  .socialSection {
-    width: 100%;
+    gap: 1.5rem; /* Space between CTAs */
+}
+
+.socialSection {
     display: flex;
-    justify-content: center;
-  }
-  
-  /* Mobile Responsive */
-  @media (max-width: 768px) {
+    align-items: center;
+    justify-content: center; /* Center the social icons */
+}
+
+/* Mobile Responsive */
+@media (max-width: 1024px) {
+    .heroContainer {
+        align-items: center;
+        text-align: center;
+    }
+    
+    .heroContent {
+        text-align: center;
+    }
+    
+    .heroActions {
+        justify-content: center;
+        flex-direction: column;
+        gap: 3rem;
+    }
+    
+    .socialSection {
+        margin-left: 0;
+    }
+}
+
+@media (max-width: 768px) {
     .hero {
-      padding: calc(6rem + 52px) 1rem 6rem; 
-      min-height: 100vh;
+        padding: 6rem 1rem; 
+        min-height: 100vh;
+        text-align: center;
     }
-  
+
     .heroContainer {
-      gap: 3rem;
+        gap: 4rem;
+        align-items: center;
     }
-  
+    
+    .heroContent {
+        text-align: center;
+    }
+
     .heroContent h1 {
-      font-size: 2.8rem;
-      line-height: 1.3;
-      letter-spacing: 0.03em;
+        font-size: 2.2rem;
+        letter-spacing: 0.06em;
     }
-  
+
     .heroActions {
-      gap: 2rem;
+        gap: 2.5rem;
+        flex-direction: column;
+        justify-content: center;
     }
-  }
-  
-  @media (max-width: 480px) {
+    
+    .socialSection {
+        margin-left: 0;
+    }
+}
+
+@media (max-width: 480px) {
     .heroContent h1 {
-      font-size: 2.2rem;
-      line-height: 1.4;
+        font-size: 1.8rem;
+        letter-spacing: 0.05em;
     }
-  
+
     .heroContainer {
-      gap: 2.5rem;
+        gap: 3rem;
     }
-  
+
     .heroActions {
-      gap: 1.5rem;
+        gap: 2rem;
     }
-  }
-  
-  /* Extra clean focus on the message */
-  @media (max-width: 320px) {
+    
+    .heroDescription {
+        font-size: 1.1rem;
+        margin-top: 1.5rem;
+    }
+}
+
+@media (max-width: 320px) {
     .heroContent h1 {
-      font-size: 1.8rem;
-      letter-spacing: 0.02em;
+        font-size: 1.5rem;
+        letter-spacing: 0.04em;
     }
-  }
+    
+    .heroDescription {
+        font-size: 1rem;
+    }
+}

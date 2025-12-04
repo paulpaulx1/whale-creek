@@ -3,171 +3,146 @@
 import { useState, useEffect } from 'react';
 import { usePathname } from 'next/navigation';
 import Link from 'next/link';
-import styles from './Navigation.module.css';
 import Image from 'next/image';
+import styles from './Navigation.module.css';
+
+const navItems = [
+  { href: '/', label: 'About' },
+  { href: '/indianapolis-general-contractor', label: 'Services' },
+  { href: '/project-gallery', label: 'Gallery' },
+  { href: '/blog', label: 'Blog' },
+  { href: '/indianapolis-woodworker-contact', label: 'Contact' }
+];
 
 export default function Navigation() {
+  const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const pathname = usePathname();
 
   useEffect(() => {
     const handleScroll = () => {
       if (pathname === '/') {
-        setIsScrolled(window.scrollY > 100);
+        setIsScrolled(window.scrollY > 50);
       } else {
         setIsScrolled(true);
       }
     };
+    
     handleScroll();
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, [pathname]);
 
-  const toggleMobileMenu = () => {
-    setIsMobileMenuOpen(!isMobileMenuOpen);
-    
-    // Prevent body scrolling when menu is open
-    if (!isMobileMenuOpen) {
+  useEffect(() => {
+    // Prevent body scroll when menu is open
+    if (isOpen) {
       document.body.style.overflow = 'hidden';
     } else {
       document.body.style.overflow = 'unset';
     }
-  };
 
-  const closeMobileMenu = () => {
-    setIsMobileMenuOpen(false);
-    document.body.style.overflow = 'unset';
-  };
-
-  // Clean up body overflow on unmount
-  useEffect(() => {
     return () => {
       document.body.style.overflow = 'unset';
     };
-  }, []);
+  }, [isOpen]);
+
+  const toggleMenu = () => {
+    setIsOpen(!isOpen);
+  };
+
+  const closeMenu = () => {
+    setIsOpen(false);
+  };
 
   return (
-    <nav className={`${styles.nav} ${isScrolled ? styles.navScrolled : ''}`}>
-      <div className={styles.navContainer}>
-        {/* Logo */}
-        <Link href='/' className={styles.logo}>
-          <div className={styles.logoIcon}>
-            <Image
-              className={styles.logoImage}
-              width='70'
-              height='70'
-              src='/images/whaleCreek.png'
-              alt='Whale Creek Logo'
-            />
+    <>
+      <nav className={`${styles.nav} ${isScrolled ? styles.navScrolled : ''}`}>
+        <div className={styles.navContainer}>
+          {/* Logo/Brand */}
+          <div className={styles.brand}>
+            <Link href="/" className={styles.brandLink} onClick={closeMenu}>
+              <div className={styles.logoIcon}>
+                <Image
+                  className={styles.logoImage}
+                  width='60'
+                  height='60'
+                  src='/images/whaleCreek.png'
+                  alt='Whale Creek Logo'
+                />
+              </div>
+              <span className={styles.brandText}>Whale Creek</span>
+            </Link>
           </div>
-          <span className={styles.logoText}>Whale Creek</span>
-        </Link>
 
-        {/* Phone Number and Navigation Container */}
-        <div className={styles.navRight}>
-          {/* Phone Number */}
-          <div className={styles.phoneContainer}>
-            <div className={styles.phoneInfo}>
-              <div className={styles.phoneIcon}>
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+          {/* Desktop Menu */}
+          <div className={styles.desktopMenu}>
+            {navItems.map((item) => (
+              <Link
+                key={item.href}
+                href={item.href}
+                className={styles.navLink}
+                onClick={closeMenu}
+              >
+                {item.label}
+              </Link>
+            ))}
+          </div>
+
+          {/* Mobile Menu Button */}
+          <button
+            className={`${styles.menuToggle} ${isOpen ? styles.menuOpen : ''}`}
+            onClick={toggleMenu}
+            aria-label="Toggle navigation menu"
+            aria-expanded={isOpen}
+          >
+            <span className={styles.menuLine}></span>
+            <span className={styles.menuLine}></span>
+            <span className={styles.menuLine}></span>
+          </button>
+        </div>
+
+        {/* Mobile Menu Overlay */}
+        <div className={`${styles.mobileMenuOverlay} ${isOpen ? styles.overlayOpen : ''}`}>
+          <div className={styles.mobileMenu}>
+            <div className={styles.mobileMenuHeader}>
+              <span className={styles.mobileMenuTitle}>Menu</span>
+              <button
+                className={styles.closeButton}
+                onClick={closeMenu}
+                aria-label="Close menu"
+              >
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                  <path d="M18 6L6 18" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
+                  <path d="M6 6L18 18" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
                 </svg>
-              </div>
-              <div className={styles.phoneDetails}>
-                <div className={styles.phoneLocation}>Indianapolis, IN</div>
-                <a href="tel:317-431-2449" className={styles.phoneNumber}>(317) 431-2449</a>
-              </div>
+              </button>
+            </div>
+            
+            <div className={styles.mobileMenuItems}>
+              {navItems.map((item, index) => (
+                <Link
+                  key={item.href}
+                  href={item.href}
+                  className={styles.mobileNavLink}
+                  onClick={closeMenu}
+                  style={{ animationDelay: `${index * 0.1}s` }}
+                >
+                  {item.label}
+                </Link>
+              ))}
             </div>
           </div>
-
-          {/* Desktop Navigation */}
-          <ul className={styles.navLinks}>
-            <li>
-              <Link href='/'>About</Link>
-            </li>
-            <li>
-              <Link href='/indianapolis-general-contractor'>Services</Link>
-            </li>
-            <li>
-              <Link href='/project-gallery'>Gallery</Link>
-            </li>
-            <li>
-              <Link href='/blog'>Blog</Link>
-            </li>
-            <li>
-              <Link href='/indianapolis-woodworker-contact'>Contact</Link>
-            </li>
-          </ul>
         </div>
+      </nav>
 
-        {/* Mobile Menu Button */}
+      {/* Backdrop */}
+      {isOpen && (
         <div
-          className={`${styles.hamburger} ${isMobileMenuOpen ? styles.hamburgerOpen : ''}`}
-          onClick={toggleMobileMenu}
-        >
-          <span></span>
-          <span></span>
-          <span></span>
-        </div>
-
-        {/* Mobile Navigation */}
-        <div
-          className={`${styles.mobileMenu} ${isMobileMenuOpen ? styles.mobileMenuOpen : ''}`}
-        >
-          <ul className={styles.mobileNavLinks}>
-            <li>
-              <Link href='/' onClick={closeMobileMenu}>
-                About
-              </Link>
-            </li>
-            <li>
-              <Link
-                href='/indianapolis-general-contractor'
-                onClick={closeMobileMenu}
-              >
-                Services
-              </Link>
-            </li>
-            <li>
-              <Link href='/project-gallery' onClick={closeMobileMenu}>
-                Gallery
-              </Link>
-            </li>
-            <li>
-              <Link href='/blog' onClick={closeMobileMenu}>
-                Blog
-              </Link>
-            </li>
-            <li>
-              <Link
-                href='/indianapolis-woodworker-contact'
-                onClick={closeMobileMenu}
-              >
-                Contact
-              </Link>
-            </li>
-            <li className={styles.phoneMenuItem}>
-              <a href="tel:317-431-2449" onClick={closeMobileMenu}>
-                <div className={styles.phoneIcon}>
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                  </svg>
-                </div>
-                (317) 431-2449
-              </a>
-            </li>
-          </ul>
-        </div>
-      </div>
-
-      {/* Mobile Menu Overlay */}
-      {isMobileMenuOpen && (
-        <div
-          className={styles.mobileMenuOverlay}
-          onClick={closeMobileMenu}
-        ></div>
+          className={styles.backdrop}
+          onClick={closeMenu}
+          aria-hidden="true"
+        />
       )}
-    </nav>
+    </>
   );
 }
