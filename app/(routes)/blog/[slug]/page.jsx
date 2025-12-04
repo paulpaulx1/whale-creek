@@ -89,8 +89,9 @@ async function getServiceAreas() {
 
 // Server-side metadata generation
 export async function generateMetadata({ params }) {
+  const { slug } = await params
   const [post, serviceAreas] = await Promise.all([
-    getBlogPost(params.slug),
+    getBlogPost(slug),
     getServiceAreas()
   ]);
 
@@ -114,7 +115,7 @@ export default async function BlogPostPage({ params }) {
   if (!post) notFound();
 
   // Get current URL dynamically
-  const headersList = headers();
+  const headersList = await headers();
   const host = headersList.get('host') || 'whalecreek.co';
   const protocol = process.env.NODE_ENV === 'production' ? 'https' : 'http';
   const currentUrl = `${protocol}://${host}/blog/${slug}`;
