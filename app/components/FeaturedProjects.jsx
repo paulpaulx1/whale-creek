@@ -31,6 +31,7 @@ export default function FeaturedProjects({ projects = [], maxProjects = 2 }) {
   const currentProjects = projectPairs[currentPair] || [];
   const hasMultiplePairs = projectPairs.length > 1;
 
+  // ✅ SLIDER ROTATION — ALWAYS CALLED
   useEffect(() => {
     if (!hasMultiplePairs) return;
 
@@ -41,8 +42,7 @@ export default function FeaturedProjects({ projects = [], maxProjects = 2 }) {
     return () => clearInterval(interval);
   }, [hasMultiplePairs, projectPairs.length]);
 
-  if (!currentProjects.length) return null;
-
+  // ✅ ENTRANCE ANIMATION — ALWAYS CALLED
   useEffect(() => {
     const section = document.querySelector(`.${styles.featuredSection}`);
     if (!section) return;
@@ -58,9 +58,11 @@ export default function FeaturedProjects({ projects = [], maxProjects = 2 }) {
     );
 
     observer.observe(section);
-
     return () => observer.disconnect();
   }, []);
+
+  // ✅ ✅ ✅ SAFE TO EARLY-RETURN *AFTER* ALL HOOKS
+  if (!currentProjects.length) return null;
 
   return (
     <>
@@ -76,7 +78,6 @@ export default function FeaturedProjects({ projects = [], maxProjects = 2 }) {
           <div className={styles.featuredContainer}>
             <div className={styles.featuredGrid}>
               {currentProjects.map((project, index) => {
-                // ✅ ✅ ✅ THIS IS THE FIX
                 const image = project.images?.[0];
                 const imageUrl = image?.asset?.asset?.url;
 
@@ -90,11 +91,11 @@ export default function FeaturedProjects({ projects = [], maxProjects = 2 }) {
                     key={project._id}
                     href="/project-gallery"
                     className={`
-    ${styles.featuredCard}
-    ${index === 0 ? styles.leftCard : styles.rightCard}
-    ${hasAnimated ? styles.cardVisible : styles.cardHidden}
-    ${hasAnimated && index === 1 ? styles.cardDelay : ""}
-  `}
+                      ${styles.featuredCard}
+                      ${index === 0 ? styles.leftCard : styles.rightCard}
+                      ${hasAnimated ? styles.cardVisible : styles.cardHidden}
+                      ${hasAnimated && index === 1 ? styles.cardDelay : ""}
+                    `}
                   >
                     <div className={styles.featuredImage}>
                       <Image
