@@ -1,73 +1,83 @@
+"use client";
+
+import { useEffect, useRef, useState } from "react";
 import styles from "./AboutSection.module.css";
 import Reviews from "./Reviews";
-import Image from "next/image";
 import AboutImage from "./AboutImage";
 
-import StatCard from "./StatCard";
-
 const AboutContent = () => {
-  const stats = [
-    { number: "150+", label: "Projects Completed" },
-    { number: "15+", label: "Years Experience" },
-    { number: "100%", label: "Client Satisfaction" },
-    { number: "24/7", label: "Project Support" },
-  ];
+  const [hasAnimated, setHasAnimated] = useState(false);
+  const sectionRef = useRef(null);
+
+  useEffect(() => {
+    if (!sectionRef.current) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setHasAnimated(true);
+          observer.disconnect();
+        }
+      },
+      { threshold: 0.25 }
+    );
+
+    observer.observe(sectionRef.current);
+    return () => observer.disconnect();
+  }, []);
+
+  // ✅ SAFE CLASS JOINER (filters out undefined)
+  const cx = (...classes) => classes.filter(Boolean).join(" ");
 
   return (
     <div className={styles.container}>
-      {/* About Content Grid - Reversed Layout */}
-      <div className={styles.aboutContent}>
-        {/* Image Section - Now First */}
-        <div className={styles.imageSection} data-element="image">
+      <div ref={sectionRef} className={styles.aboutContent}>
+        {/* ✅ IMAGE */}
+        <div
+          className={cx(
+            styles.imageSection,
+            hasAnimated ? styles.aboutVisible : styles.aboutHiddenLeft
+          )}
+        >
           <AboutImage />
         </div>
 
-        {/* Content Section - Now Second */}
-        <div className={styles.content} data-element="content">
+        {/* ✅ TEXT (STAGGERED) */}
+        <div
+          className={cx(
+            styles.content,
+            hasAnimated
+              ? styles.aboutVisibleDelayed
+              : styles.aboutHiddenRight
+          )}
+        >
           <h1 className={styles.title}>About Whale Creek</h1>
 
           <div className={styles.contentBlock}>
             <p>
-              As Indianapolis&apos; most trusted general contractor and
-              woodworker specialists, we&apos;ve been transforming homes and
-              businesses throughout the greater Indianapolis area for over 15
-              years. Our team combines traditional craftsmanship with modern
-              techniques to deliver exceptional results on every project.
+              Whale Creek is a custom general contractor and woodworking shop
+              based in the Indianapolis area. We specialize in residential
+              renovations, custom cabinetry, and detailed finish work that
+              demands precision, patience, and experience.
             </p>
+
             <p>
-              Our Indianapolis woodworker heritage combines with modern general
-              contractor expertise, advanced CNC operations, and strict
-              adherence to industry standards to deliver results that exceed
-              building codes and stand the test of time. Every project reflects
-              our commitment to Indianapolis homeowners who demand excellence
-              backed by licensed, bonded professionals.
+              For over 15 years, we’ve built our reputation on clean execution,
+              honest communication, and results that hold up years after the
+              final walkthrough. We don’t cut corners, we don’t rush work, and
+              we don’t disappear after the job is done.
+            </p>
+
+            <p>
+              Every project is treated as a long-term investment — in the home,
+              in the craft, and in the relationship with the client.
             </p>
           </div>
         </div>
       </div>
 
-      {/* Divider Line */}
       <div className={styles.sectionDivider}></div>
-
-      {/* Stats Section */}
-      <div className={styles.statsSection} data-element="stats">
-        <div className={styles.statsHeader}>
-          <div className={styles.statsTitle}>Our Track Record</div>
-        </div>
-
-        <div className={styles.statsGrid}>
-          {stats.map((statObj, i) => (
-            <StatCard
-              key={i}
-              number={statObj.number}
-              label={statObj.label}
-              index={i}
-            />
-          ))}
-        </div>
-
-        <Reviews />
-      </div>
+      <Reviews />
     </div>
   );
 };

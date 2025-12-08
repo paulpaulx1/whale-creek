@@ -1,7 +1,5 @@
 /* components/AboutImage.module.css */
 .imageContainer {
-    border: 3px solid var(--charcoal);
-    border-radius: 8px;
     overflow: hidden;
     box-shadow: none;
     transition: all 0.3s ease;

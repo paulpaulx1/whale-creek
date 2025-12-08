@@ -36,9 +36,9 @@ export default function RootLayout({ children }) {
     <html lang='en' className={`${inter.variable} ${spaceGrotesk.variable}`}>
       <body>
         <Navigation />
-        <KineticBackground />
+        {/* <KineticBackground /> */}
         {children}
-        <CTASection/>
+        {/* <CTASection/> */}
         <Footer />
         <BackToTop/>
       </body>
