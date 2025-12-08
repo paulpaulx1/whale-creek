@@ -1,155 +1,142 @@
-/* ServiceCardsSection.module.css - Blueprint Theme */
- 
+/* ServiceCardsSection.module.css — Vellum / Graphite Theme */
+
 .servicesSection {
-    background: var(--blueprint-blue);
-    color: var(--warm-white);
-    padding: 8rem 2rem;
-    position: relative;
-    overflow: hidden;
-    /* Just fade, no movement */
-    opacity: 1;
-    transition: opacity 0.5s ease;
-   }
-   
-   /* Blueprint grid background */
-   .servicesSection::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-image: 
-      linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px),
-      linear-gradient(rgba(255,255,255,0.05) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(255,255,255,0.05) 1px, transparent 1px);
-    background-size: 100px 100px, 100px 100px, 20px 20px, 20px 20px;
-    background-position: -1px -1px, -1px -1px, -1px -1px, -1px -1px;
-   }
-   
-   .container {
-    max-width: 1200px;
-    margin: 0 auto;
-    position: relative;
-    z-index: 2;
-   }
-   
-   .servicesHeader {
-    text-align: center;
-    margin-bottom: 5rem;
-   }
-   
-   .servicesTitle {
-    font-family: var(--font-space), monospace;
-    font-size: 2.5rem;
-    font-weight: 600;
-    color: var(--warm-white);
-    margin-bottom: 2rem;
-    text-transform: uppercase;
-    letter-spacing: 3px;
-    position: relative;
-   }
-   
-   .servicesTitle::before {
-    content: '';
-    position: absolute;
-    top: -25px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 80px;
-    height: 4px;
-    background: var(--primary-yellow);
-    border-radius: 2px;
-   }
-   
-   .servicesTitle::after {
-    content: 'SERVICES_001';
-    position: absolute;
-    top: -15px;
-    right: 0;
-    font-size: 0.6rem;
-    opacity: 0.7;
-    font-family: var(--font-space), monospace;
-   }
-   
-   .servicesSubtitle {
-    font-size: 1.2rem;
-    max-width: 600px;
-    margin: 0 auto;
-    background: rgba(255, 255, 255, 0.1);
-    padding: 2rem;
-    border: 2px solid rgba(255, 255, 255, 0.3);
-    backdrop-filter: blur(10px);
-    font-family: var(--font-space), monospace;
-   }
-   
-   .servicesGrid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-    gap: 3rem;
-   }
-   
-   /* Simple fade only */
-   /* .servicesSection:not(:global(.visible)) {
-    opacity: 0.8;
-   } */
-   
-   /* .servicesSection:global(.visible) {
-    opacity: 1;
-   } */
-   
-   /* Responsive design */
-   @media (max-width: 1024px) {
-    .servicesTitle {
-      font-size: 2.2rem;
-    }
-    
-    .servicesGrid {
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 2.5rem;
-    }
-   }
-   
-   @media (max-width: 768px) {
-    .servicesSection {
-      padding: 4rem 1rem;
-    }
-   
-    .servicesTitle {
-      font-size: 2rem;
-    }
-   
-    .servicesSubtitle {
-      font-size: 1rem;
-      padding: 1.5rem;
-    }
-   
-    .servicesGrid {
-      grid-template-columns: 1fr;
-      gap: 2rem;
-    }
-   
-    .servicesHeader {
-      margin-bottom: 3rem;
-    }
-   }
-   
-   @media (max-width: 480px) {
-    .servicesSection {
-      padding: 3rem 1rem;
-    }
-   
-    .servicesTitle {
-      font-size: 1.8rem;
-      letter-spacing: 2px;
-    }
-   
-    .servicesTitle::after {
-      display: none;
-    }
-   
-    .servicesSubtitle {
-      padding: 1rem;
-    }
-   }
+  background: #f6f6f4; /* vellum */
+  color: #1c1c1c; /* graphite */
+  padding: 8rem 2rem;
+  position: relative;
+  overflow: hidden;
+  opacity: 1;
+  transition: opacity 0.5s ease;
+}
+
+/* Drafting grid background */
+.servicesSection::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: 
+    linear-gradient(rgba(0,0,0,0.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0,0,0,0.06) 1px, transparent 1px),
+    linear-gradient(rgba(0,0,0,0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0,0,0,0.03) 1px, transparent 1px);
+  background-size: 120px 120px, 120px 120px, 24px 24px, 24px 24px;
+  background-position: -1px -1px;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 2;
+}
+
+.servicesHeader {
+  text-align: center;
+  margin-bottom: 5rem;
+}
+
+.servicesTitle {
+  font-family: var(--font-space), monospace;
+  font-size: 2.5rem;
+  font-weight: 600;
+  color: #111; /* ink black */
+  margin-bottom: 2rem;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  position: relative;
+}
+
+.servicesTitle::before {
+  content: '';
+  position: absolute;
+  top: -24px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80px;
+  height: 3px;
+  background: #111;
+  opacity: 0.5;
+}
+
+.servicesTitle::after {
+  content: 'SERVICES_001';
+  position: absolute;
+  top: -14px;
+  right: 0;
+  font-size: 0.6rem;
+  opacity: 0.45;
+  color: #f97316;
+  font-family: var(--font-space), monospace;
+}
+
+.servicesSubtitle {
+  font-size: 1.1rem;
+  max-width: 640px;
+  margin: 0 auto;
+  background: rgba(0,0,0,0.04);
+  padding: 2rem;
+  border: 1px solid rgba(0,0,0,0.15);
+  font-family: var(--font-space), monospace;
+  color: #2b2b2b;
+}
+
+.servicesGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 3rem;
+}
+
+@media (max-width: 1024px) {
+  .servicesTitle {
+    font-size: 2.2rem;
+  }
+
+  .servicesGrid {
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2.5rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .servicesSection {
+    padding: 4rem 1rem;
+  }
+
+  .servicesTitle {
+    font-size: 2rem;
+  }
+
+  .servicesSubtitle {
+    font-size: 1rem;
+    padding: 1.5rem;
+  }
+
+  .servicesGrid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .servicesHeader {
+    margin-bottom: 3rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .servicesSection {
+    padding: 3rem 1rem;
+  }
+
+  .servicesTitle {
+    font-size: 1.8rem;
+    letter-spacing: 2px;
+  }
+
+  .servicesTitle::after {
+    display: none;
+  }
+
+  .servicesSubtitle {
+    padding: 1rem;
+  }
+}

@@ -1,10 +1,10 @@
-import styles from './Services.module.css';
-import Image from 'next/image';
-import SchemaMarkup from '../../components/seo/SchemaMarkup';
-import { generatePageMetadata } from '../../components/seo/generateMetadata';
-import { pageConfigs } from '../../lib/seo/seoConfig'; 
-import { headers } from 'next/headers';
-import { client } from '../../lib/sanity';
+import styles from "./Services.module.css";
+import Image from "next/image";
+import SchemaMarkup from "../../components/seo/SchemaMarkup";
+import { generatePageMetadata } from "../../components/seo/generateMetadata";
+import { pageConfigs } from "../../lib/seo/seoConfig";
+import { headers } from "next/headers";
+import { client } from "../../lib/sanity";
 
 const serviceAreasQuery = `*[_type == "project" && defined(location)].location`;
 
@@ -15,25 +15,25 @@ async function getServiceAreas() {
 
     // Hardcoded areas for immediate SEO benefit
     const hardcodedAreas = [
-      'Indianapolis, IN',
-      'Meridian Hills, IN',
-      'Noblesville, IN',
-      'Carmel, IN',
-      'Fishers, IN',
-      'Zionsville, IN',
-      'Westfield, IN',
+      "Indianapolis, IN",
+      "Meridian Hills, IN",
+      "Noblesville, IN",
+      "Carmel, IN",
+      "Fishers, IN",
+      "Zionsville, IN",
+      "Westfield, IN",
     ];
 
     const allAreas = [...new Set([...dynamicAreas, ...hardcodedAreas])];
     return allAreas;
   } catch (error) {
-    console.error('Error fetching service areas:', error);
+    console.error("Error fetching service areas:", error);
     return [
-      'Indianapolis, IN',
-      'Meridian Hills, IN',
-      'Noblesville, IN',
-      'Carmel, IN',
-      'Fishers, IN',
+      "Indianapolis, IN",
+      "Meridian Hills, IN",
+      "Noblesville, IN",
+      "Carmel, IN",
+      "Fishers, IN",
     ];
   }
 }
@@ -44,85 +44,85 @@ export async function generateMetadata() {
 
   return generatePageMetadata(
     servicesConfig,
-    [], 
-    'https://whalecreek.co/indianapolis-general-contractor'
+    [],
+    "https://whalecreek.co/indianapolis-general-contractor"
   );
 }
 
 export default async function Services() {
   const serviceAreas = await getServiceAreas();
   const headersList = await headers();
-  const host = headersList.get('host') || 'whalecreek.co';
-  const protocol = process.env.NODE_ENV === 'production' ? 'https' : 'http';
+  const host = headersList.get("host") || "whalecreek.co";
+  const protocol = process.env.NODE_ENV === "production" ? "https" : "http";
   const currentUrl = `${protocol}://${host}/indianapolis-general-contractor`;
 
   const mainServices = [
     {
-      id: 'outdoor-living-deck-building-indianapolis',
-      title: 'Outdoor Living & Deck Building Indianapolis',
-      image: '/images/Noblesville-Deck.JPG',
+      id: "outdoor-living-deck-building-indianapolis",
+      title: "Outdoor Living & Deck Building Indianapolis",
+      image: "/images/Noblesville-Deck.JPG",
       description:
-        'Our general contractor Indianapolis team specializes in outdoor living spaces including custom decks, pergolas, patios, and outdoor room additions that extend your living space throughout the Indianapolis area.',
+        "Whale Creek Co designs and builds custom outdoor living spaces in Indianapolis, including decks, patios, pergolas, and covered outdoor rooms that extend how you use your home year-round.",
       details:
-        'As experienced deck building and outdoor living general contractors in Indianapolis Indiana, we design and construct custom decks, covered porches, pergolas, outdoor kitchens, and patio spaces. Our Indianapolis general contractors understand local building codes and weather considerations to create durable, beautiful outdoor spaces.',
-      blueprint: 'OUT_001',
+        "As experienced deck builders and outdoor living contractors in Indianapolis, we account for Indiana’s freeze-thaw cycles, drainage requirements, and structural load standards to ensure your outdoor investment holds up for decades. From custom decks to outdoor kitchens and covered porches, every structure is engineered for durability and visual impact.",
+      blueprint: "OUT_001",
       features: [
-        'Custom deck building Indianapolis',
-        'Pergolas and covered porches',
-        'Outdoor kitchens and living spaces',
-        'Patio design and construction',
-        'Weather-resistant construction',
+        "Custom deck building Indianapolis",
+        "Pergolas and covered porches",
+        "Outdoor kitchens and living spaces",
+        "Patio design and construction",
+        "Weather-resistant construction",
       ],
     },
     {
-      id: 'residential-general-contractor-indianapolis',
-      title: 'Residential General Contractor Indianapolis',
-      image: '/images/Westfield_Sunroom.jpeg',
+      id: "residential-general-contractor-indianapolis",
+      title: "Residential General Contractor Indianapolis",
+      image: "/images/Westfield_Sunroom.jpeg",
       description:
-        'As licensed and bonded residential general contractors in Indianapolis Indiana, Whale Creek Co specializes in home additions, remodeling, and custom residential construction projects throughout central Indiana.',
+        "Whale Creek Co is a licensed and bonded residential general contractor in Indianapolis specializing in home additions, remodeling, and full custom residential construction throughout Central Indiana.",
       details:
-        'Our Indianapolis general contractors team brings over 20 years of experience to residential projects including kitchen remodels, bathroom renovations, room additions, and complete home transformations. We serve homeowners in Indianapolis, Carmel, Fishers, Noblesville, and surrounding areas with comprehensive residential general contractor services.',
-      blueprint: 'RES_001',
+        "With over 20 years of residential construction experience, our team handles kitchen remodels, bathroom renovations, room additions, and complete home transformations. We serve homeowners throughout Indianapolis, Carmel, Fishers, Noblesville, and surrounding communities with transparent pricing, precise scheduling, and long-term craftsmanship.",
+      blueprint: "RES_001",
       features: [
-        'Licensed residential general contractor Indianapolis',
-        'Home additions and remodeling',
-        'Kitchen and bathroom renovations',
-        'Complete home transformations',
-        'Serving Indianapolis metro area',
+        "Licensed residential general contractor Indianapolis",
+        "Home additions and remodeling",
+        "Kitchen and bathroom renovations",
+        "Complete home transformations",
+        "Serving Indianapolis metro area",
       ],
     },
     {
-      id: 'commercial-general-contractors-indianapolis',
-      title: 'Commercial General Contractors Indianapolis',
-      image: '/images/Patio_Indianapolis.jpg',
+      id: "commercial-general-contractors-indianapolis",
+      title: "Commercial General Contractors Indianapolis",
+      image: "/images/Patio_Indianapolis.jpg",
       description:
-        'Whale Creek Co provides comprehensive commercial general contractors Indianapolis services for businesses throughout central Indiana. Our commercial construction expertise spans retail spaces, offices, and industrial projects.',
+        "Whale Creek Co provides professional commercial general contracting services in Indianapolis for offices, retail spaces, and light industrial construction throughout Central Indiana.",
       details:
-        'As experienced commercial general contractors Indianapolis businesses trust, we handle tenant improvements, office build-outs, retail construction, and commercial renovations. Our general contractor Indianapolis team works with property managers, business owners, and developers across the Indianapolis metropolitan area.',
-      blueprint: 'COM_001',
+        "From tenant improvements and office build-outs to full commercial renovations, our Indianapolis commercial contractors work with business owners, developers, and property managers to deliver efficient, code-compliant build-outs with minimal downtime.",
+      blueprint: "COM_001",
       features: [
-        'Commercial general contractors Indianapolis',
-        'Office and retail construction',
-        'Tenant improvements and build-outs',
-        'Industrial and commercial renovations',
-        'Licensed and insured commercial contractors',
+        "Commercial general contractors Indianapolis",
+        "Office and retail construction",
+        "Tenant improvements and build-outs",
+        "Industrial and commercial renovations",
+        "Licensed and insured commercial contractors",
       ],
     },
     {
-      id: 'custom-millwork-woodworking-indianapolis',
-      title: 'Custom Millwork & Woodworking Indianapolis',
-      image: '/images/Pocket_Doors.jpeg', 
+      id: "custom-millwork-woodworking-indianapolis",
+      title: "Custom Millwork & Woodworking Indianapolis",
+      image: "/images/Pocket_Doors.jpeg",
       description:
-        'Combining our general contractor Indianapolis expertise with master woodworking, Whale Creek Co creates custom millwork, built-ins, cabinetry, and architectural woodwork for residential and commercial clients.',
+        "Whale Creek Co blends expert general contracting with in-house master woodworking to create custom millwork, cabinetry, built-ins, and architectural wood features.",
       details:
-        'Our Indianapolis general contractors team includes skilled craftsmen who specialize in custom cabinetry, built-in furniture, trim work, and architectural millwork. From custom kitchen cabinets to office built-ins, we deliver precision woodworking that complements our general contracting services throughout Indianapolis and central Indiana.',
-      blueprint: 'MIL_001',
+        "Our craftsmen specialize in custom cabinetry, built-in furniture, trim work, and architectural millwork for both residential and commercial clients. From custom kitchen cabinets to executive office built-ins, every detail is built for precision, durability, and visual harmony.",
+      blueprint: "MIL_001",
       features: [
-        'Custom millwork and cabinetry',
-        'Architectural woodworking',
-        'Built-in furniture and storage',
-        'Precision craftsmanship',
-        'Residential and commercial millwork',
+        "Custom millwork and cabinetry",
+        "Architectural woodworking",
+        "Built-in furniture and storage",
+        "Precision craftsmanship",
+        "Residential and commercial millwork",
       ],
     },
   ];
@@ -130,7 +130,7 @@ export default async function Services() {
   return (
     <>
       <SchemaMarkup
-        type='page'
+        type="page"
         serviceAreas={serviceAreas}
         currentUrl={currentUrl}
       />
@@ -138,9 +138,17 @@ export default async function Services() {
         {/* Hero Section */}
         <section className={styles.heroSection}>
           <div className={styles.heroContainer}>
-            <h1>General Contractors in Indianapolis Indiana</h1>
+            <h1>
+              Indianapolis General Contractors for Residential & Commercial
+              Construction
+            </h1>
             <p className={styles.heroSubtitle}>
-              Licensed, bonded, and insured Indianapolis general contractors specializing in residential and commercial construction, custom millwork, and outdoor living spaces throughout central Indiana.
+              Whale Creek Co is a licensed, bonded, and insured Indianapolis
+              general contractor specializing in residential remodeling,
+              commercial construction, custom millwork, and outdoor living
+              spaces throughout Central Indiana. With over 20 years of hands-on
+              experience, we deliver craftsmanship-driven construction with
+              clear communication, reliable timelines, and long-term durability.
             </p>
           </div>
         </section>
@@ -152,7 +160,7 @@ export default async function Services() {
               <div
                 key={service.id}
                 id={service.id}
-                className={`${styles.serviceSection} ${index % 2 === 1 ? styles.serviceReverse : ''}`}
+                className={`${styles.serviceSection} ${index % 2 === 1 ? styles.serviceReverse : ""}`}
               >
                 <div className={styles.serviceContent}>
                   <div className={styles.serviceText}>
@@ -170,7 +178,7 @@ export default async function Services() {
                     <ul className={styles.serviceFeatures}>
                       {service.features.map((feature, idx) => (
                         <li key={idx}>
-                          <i className='ph ph-check-circle'></i>
+                          <i className="ph ph-check-circle"></i>
                           {feature}
                         </li>
                       ))}
@@ -184,9 +192,9 @@ export default async function Services() {
                       height={400}
                       className={styles.serviceImg}
                       style={{
-                        objectFit: 'cover',
-                        width: '100%',
-                        height: '100%'
+                        objectFit: "cover",
+                        width: "100%",
+                        height: "100%",
                       }}
                       priority={index < 2} // Priority load first 2 images
                     />
@@ -208,7 +216,9 @@ export default async function Services() {
               ))}
             </div>
             <p>
-              As licensed general contractors in Indianapolis Indiana, we bring decades of construction expertise to every project throughout the greater Indianapolis metropolitan area.
+              As licensed general contractors in Indianapolis Indiana, we bring
+              decades of construction expertise to every project throughout the
+              greater Indianapolis metropolitan area.
             </p>
           </div>
         </section>

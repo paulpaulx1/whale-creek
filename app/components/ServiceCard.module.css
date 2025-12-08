@@ -1,158 +1,160 @@
-/* ServiceCard.module.css - Blueprint themed service cards */
+.serviceCard {
+  background: rgba(255, 255, 255, 0.55);
+  padding: 2.5rem;
+  border: 1px solid rgba(0, 0, 0, 0.18);
+  transition: all 0.35s ease;
+  position: relative;
+  overflow: hidden;
+  color: #1e1e1e;
+}
+
+/* Drafting corner marker */
+.serviceCard::before {
+  content: '';
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  width: 18px;
+  height: 18px;
+  border: 1px solid #f97316;
+  border-radius: 50%;
+  color: #f97316;
+}
+
+/* Blueprint reference number */
+.serviceCard::after {
+  content: attr(data-blueprint);
+  position: absolute;
+  bottom: 12px;
+  right: 16px;
+  font-family: var(--font-space), monospace;
+  font-size: 0.7rem;
+  opacity: 0.45;
+  color: #333;
+}
+
+/* Hover */
+.serviceCard:hover {
+  transform: scale(1.025);
+  border-color: #111;
+  background: rgba(255, 255, 255, 0.75);
+  box-shadow: 0 18px 42px rgba(0, 0, 0, 0.18);
+}
+
+/* Icon */
+.serviceIcon {
+  width: 80px;
+  height: 80px;
+  background: #f6f6f4;
+  color: #f97316;
+  ;
+  border: 2px solid #f97316;
+  ;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 2rem;
+  font-size: 2rem;
+  position: relative;
+  transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.serviceIcon::after {
+  content: '';
+  position: absolute;
+  top: -6px;
+  right: -6px;
+  width: 12px;
+  height: 12px;
+  background: #f97316;
+  border-radius: 50%;
+}
+
+.serviceCard:hover .serviceIcon {
+  transform: scale(1.08) rotate(360deg);
+}
+
+/* Title */
+.serviceCard h3 {
+  font-family: var(--font-space), monospace;
+  font-size: 1.35rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  color: #111;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+/* Description */
+.serviceCard p {
+  line-height: 1.6;
+  color: #2a2a2a;
+  font-family: var(--font-space), sans-serif;
+}
+
+/* Link divider */
+.cardLink {
+  margin-top: 1.5rem;
+  padding-top: 1rem;
+  border-top: 1px solid rgba(0, 0, 0, 0.15);
+}
+
+.readMoreLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: #111;
+  text-decoration: none;
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  transition: all 0.25s ease;
+  font-family: var(--font-space), monospace;
+  color: #f97316;
+  font-weight: 800;
+}
+
+.readMoreLink:hover {
+  color: #000;
+  transform: translateX(6px);
+}
+
+.readMoreLink i {
+  font-size: 1rem;
+  transition: transform 0.3s ease;
+  color: #f97316;
+  /* same orange */
+}
 
 
-  .serviceCard {
-    background: rgba(255, 255, 255, 0.05);
-    padding: 2.5rem;
-    border: 2px solid rgba(255, 255, 255, 0.2);
-    backdrop-filter: blur(10px);
-    transition: all 0.3s ease;
-    position: relative;
-    overflow: hidden;
-  }
-  
-  /* Blueprint corner circle */
-  .serviceCard::before {
-    content: '';
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    width: 20px;
-    height: 20px;
-    border: 2px solid var(--primary-yellow);
-    border-radius: 50%;
-  }
-  
-  /* Blueprint reference number */
-  .serviceCard::after {
-    content: attr(data-blueprint);
-    position: absolute;
-    bottom: 10px;
-    right: 15px;
-    font-family: var(--font-space), monospace;
-    font-size: 0.7rem;
-    opacity: 0.6;
-    color: rgba(255, 255, 255, 0.6);
-  }
-  
-  /* Hover effects - straighten and scale */
-  .serviceCard:hover {
-    transform: rotate(0deg) scale(1.03);
-    border-color: var(--primary-yellow);
-    background: rgba(255, 255, 255, 0.1);
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
-  }
-  
-  /* Service icon styling */
-  .serviceIcon {
-    width: 80px;
-    height: 80px;
-    background: var(--warm-white);
-    color: var(--blueprint-blue);
-    border: 3px solid var(--primary-yellow);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-bottom: 2rem;
-    font-size: 2rem;
-    position: relative;
-    transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
-  }
-  
-  /* Small red accent circle on icon */
-  .serviceIcon::after {
-    content: '';
-    position: absolute;
-    top: -8px;
-    right: -8px;
-    width: 16px;
-    height: 16px;
-    background: var(--primary-red);
-    border-radius: 50%;
-  }
-  
-  /* Spinning icon on hover */
-  .serviceCard:hover .serviceIcon {
-    transform: scale(1.1) rotate(360deg);
-  }
-  
-  /* Service title styling */
-  .serviceCard h3 {
-    font-family: var(--font-space), monospace;
-    font-size: 1.4rem;
-    font-weight: 600;
-    margin-bottom: 1rem;
-    color: var(--warm-white);
-    text-transform: uppercase;
-    letter-spacing: 1px;
-  }
-  
-  /* Service description styling */
-  .serviceCard p {
-    line-height: 1.6;
-    opacity: 0.9;
-    color: var(--warm-white);
-    font-family: var(--font-space), sans-serif;
-  }
+.readMoreLink:hover i {
+  transform: translateX(4px);
+}
 
-  /* Add these styles to your ServiceCard.module.css */
-
-/* Spinning icon animation */
+/* Spin utility (still works) */
 .spinningIcon {
-    animation: spin 20s linear infinite;
+  animation: spin 22s linear infinite;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
   }
-  
-  @keyframes spin {
-    from {
-      transform: rotate(0deg);
-    }
-    to {
-      transform: rotate(360deg);
-    }
+
+  to {
+    transform: rotate(360deg);
   }
-  
+}
+
+/* Responsive */
+@media (max-width: 768px) {
   .cardLink {
-    margin-top: 1.5rem;
-    padding-top: 1rem;
-    border-top: 1px solid rgba(255, 255, 255, 0.2);
+    margin-top: 1rem;
+    padding-top: 0.8rem;
   }
-  
+
   .readMoreLink {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.5rem;
-    color: var(--primary-yellow);
-    text-decoration: none;
-    font-size: 0.9rem;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    transition: all 0.3s ease;
-    font-family: var(--font-space), monospace;
+    font-size: 0.8rem;
   }
-  
-  .readMoreLink:hover {
-    color: var(--warm-white);
-    transform: translateX(5px);
-  }
-  
-  .readMoreLink i {
-    font-size: 1rem;
-    transition: transform 0.3s ease;
-  }
-  
-  .readMoreLink:hover i {
-    transform: translateX(3px);
-  }
-  
-  /* Responsive adjustments */
-  @media (max-width: 768px) {
-    .cardLink {
-      margin-top: 1rem;
-      padding-top: 0.8rem;
-    }
-    
-    .readMoreLink {
-      font-size: 0.8rem;
-    }
-  }
+}

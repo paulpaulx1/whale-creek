@@ -5,13 +5,16 @@
   width: 100%;
   z-index: 1000;
   transition: all 0.3s ease;
-  background: rgba(0, 0, 0, 0.3); /* Slight translucent shroud when not scrolled */
+  background: rgba(0, 0, 0, 0.3);
+  /* Slight translucent shroud when not scrolled */
   padding: 2rem 0;
-  border-bottom: 2px solid white; /* White border bottom */
+  border-bottom: 2px solid white;
+  /* White border bottom */
 }
 
 .navScrolled {
-  background: rgba(0, 0, 0, 0.7); /* Dark translucent when scrolled */
+  background: rgba(0, 0, 0, 0.7);
+  /* Dark translucent when scrolled */
   backdrop-filter: blur(10px);
   padding: 1rem 0;
 }
@@ -34,13 +37,13 @@
   text-decoration: none;
   display: flex;
   align-items: center;
-  gap: 0.75rem;
+  gap: 2rem;
 }
 
 .brandText {
   font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-  font-size: 0.9rem;
-  font-weight: 400;
+  font-size: 1.2rem;
+  font-weight: 600;
   color: rgba(255, 255, 255, 0.9);
   text-transform: uppercase;
   letter-spacing: 0.1em;
@@ -69,7 +72,8 @@
 .logoImage {
   border-radius: 8px;
   transition: all 0.3s ease;
-  filter: brightness(0) saturate(100%) invert(1); /* Always white */
+  filter: brightness(0) saturate(100%) invert(1);
+  /* Always white */
 }
 
 /* Keep white filter even when scrolled */
@@ -305,11 +309,11 @@
   .navContainer {
     padding: 0 1rem;
   }
-  
+
   .nav {
     padding: 1.5rem 0;
   }
-  
+
   .navScrolled {
     padding: 1rem 0;
   }
@@ -342,6 +346,7 @@
 
 /* Reduced motion */
 @media (prefers-reduced-motion: reduce) {
+
   .nav,
   .navLink,
   .brandText,
@@ -352,13 +357,13 @@
   .closeButton {
     transition: none;
   }
-  
+
   .mobileNavLink {
     animation: none;
     opacity: 1;
     transform: translateX(0);
   }
-  
+
   .backdrop {
     animation: none;
     opacity: 1;
