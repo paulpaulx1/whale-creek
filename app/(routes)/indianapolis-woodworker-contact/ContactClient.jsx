@@ -1,35 +1,32 @@
-// app/contact/page.js
-'use client';
+"use client";
 
-import { useState } from 'react';
-import styles from './Contact.module.css';
-import { PhoneIcon, AtIcon } from '@phosphor-icons/react';
+import { useState } from "react";
+import styles from "./Contact.module.css";
+import { PhoneIcon, AtIcon, PaperPlaneTiltIcon } from "@phosphor-icons/react";
 
 export default function ContactClient() {
   const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    phone: '',
-    service: '',
-    message: '',
+    name: "",
+    email: "",
+    phone: "",
+    service: "",
+    message: "",
   });
+
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [result, setResult] = useState('');
+  const [result, setResult] = useState("");
 
   const services = [
-    'Custom Millwork',
-    'Residential Construction',
-    'Commercial Projects',
-    'Kitchen Cabinetry',
-    'Home Renovation',
-    'General Contracting',
+    "Custom Millwork",
+    "Residential Construction",
+    "Commercial Projects",
+    "Kitchen Cabinetry",
+    "Home Renovation",
+    "General Contracting",
   ];
 
   const handleChange = (e) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value,
-    });
+    setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
   const handleSubmit = async (e) => {
@@ -37,31 +34,29 @@ export default function ContactClient() {
     setIsSubmitting(true);
 
     try {
-      const response = await fetch('https://api.web3forms.com/submit', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
+      const response = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          access_key: 'da50ebeb-4f05-4ee2-8c37-441bd39d44a0', // Replace with your actual key
+          access_key: "da50ebeb-4f05-4ee2-8c37-441bd39d44a0",
           ...formData,
         }),
       });
 
       if (response.ok) {
-        setResult('Thank you! Your message has been sent successfully.');
+        setResult("Thank you — your message is on its way.");
         setFormData({
-          name: '',
-          email: '',
-          phone: '',
-          service: '',
-          message: '',
+          name: "",
+          email: "",
+          phone: "",
+          service: "",
+          message: "",
         });
       } else {
-        setResult('Something went wrong. Please try again.');
+        setResult("Something went wrong. Please try again.");
       }
-    } catch (error) {
-      setResult('Error sending message. Please try again.');
+    } catch {
+      setResult("Error sending message. Please try again.");
     } finally {
       setIsSubmitting(false);
     }
@@ -69,197 +64,114 @@ export default function ContactClient() {
 
   return (
     <main className={styles.main}>
-      {/* Hero Section */}
+      {/* HERO */}
       <section className={styles.hero}>
-        <div className={styles.heroContainer}>
-          <div className={styles.heroContent}>
-            <h1>
-              Contact <span className={styles.heroAccent}>Whale Creek</span>
-            </h1>
-            <p className={styles.heroSubtext}>
-              Ready to bring your vision to life? <br /> Get in touch with us
-              through email, phone, or by filling our the form below.
-            </p>
-          </div>
+        <div className={styles.heroInner}>
+          <h1>
+            Contact <span>Whale Creek</span>
+          </h1>
+          <p>
+            Ready to bring your vision to life? <br />
+            Get in touch with us through email, phone, or by filling out the
+            form below.
+          </p>
+          <div className={styles.heroDivider} />
         </div>
       </section>
 
-      {/* Contact Form Section */}
+      {/* FORM */}
       <section className={styles.contactSection}>
-        <div className={styles.container}>
-          <div className={styles.contactGrid}>
-            {/* Contact Form */}
-            <div className={styles.formSection}>
-              <form className={styles.contactForm} onSubmit={handleSubmit}>
-                <div className={styles.formGrid}>
-                  <div className={styles.formGroup}>
-                    <label htmlFor='name' className={styles.formLabel}>
-                      <i className='ph ph-user'></i>
-                      Full Name
-                    </label>
-                    <input
-                      type='text'
-                      id='name'
-                      name='name'
-                      value={formData.name}
-                      onChange={handleChange}
-                      className={styles.formInput}
-                      placeholder='Your full name'
-                      required
-                    />
-                  </div>
+        <div className={styles.grid}>
+          {/* FORM */}
+          <form className={styles.form} onSubmit={handleSubmit}>
+            <div className={styles.fieldRow}>
+              <input
+                name="name"
+                placeholder="Full Name"
+                value={formData.name}
+                onChange={handleChange}
+                required
+              />
 
-                  <div className={styles.formGroup}>
-                    <label htmlFor='email' className={styles.formLabel}>
-                      <i className='ph ph-envelope'></i>
-                      Email Address
-                    </label>
-                    <input
-                      type='email'
-                      id='email'
-                      name='email'
-                      value={formData.email}
-                      onChange={handleChange}
-                      className={styles.formInput}
-                      placeholder='your.email@example.com'
-                      required
-                    />
-                  </div>
-
-                  <div className={styles.formGroup}>
-                    <label htmlFor='phone' className={styles.formLabel}>
-                      <i className='ph ph-phone'></i>
-                      Phone Number
-                    </label>
-                    <input
-                      type='tel'
-                      id='phone'
-                      name='phone'
-                      value={formData.phone}
-                      onChange={handleChange}
-                      className={styles.formInput}
-                      placeholder='(555) 123-4567'
-                    />
-                  </div>
-
-                  <div className={styles.formGroup}>
-                    <label htmlFor='service' className={styles.formLabel}>
-                      <i className='ph ph-hammer'></i>
-                      Service Needed
-                    </label>
-                    <select
-                      id='service'
-                      name='service'
-                      value={formData.service}
-                      onChange={handleChange}
-                      className={styles.formSelect}
-                      required
-                    >
-                      <option value=''>Select a service</option>
-                      {services.map((service) => (
-                        <option key={service} value={service}>
-                          {service}
-                        </option>
-                      ))}
-                    </select>
-                  </div>
-
-                  <div
-                    className={`${styles.formGroup} ${styles.formGroupFull}`}
-                  >
-                    <label htmlFor='message' className={styles.formLabel}>
-                      <i className='ph ph-chat-text'></i>
-                      Project Details
-                    </label>
-                    <textarea
-                      id='message'
-                      name='message'
-                      value={formData.message}
-                      onChange={handleChange}
-                      className={styles.formTextarea}
-                      rows='6'
-                      placeholder='Tell us about your project, timeline, budget, and any specific requirements...'
-                      required
-                    ></textarea>
-                  </div>
-                </div>
-
-                <button
-                  type='submit'
-                  className={styles.submitBtn}
-                  disabled={isSubmitting}
-                >
-                  {isSubmitting ? (
-                    <>
-                      <span className={styles.spinner}></span>
-                      Sending Message...
-                    </>
-                  ) : (
-                    <>
-                      <i className='ph ph-paper-plane-tilt'></i>
-                      Send Message
-                    </>
-                  )}
-                </button>
-
-                {result && (
-                  <div
-                    className={`${styles.result} ${result.includes('Thank you') ? styles.success : styles.error}`}
-                  >
-                    {result}
-                  </div>
-                )}
-              </form>
+              <input
+                type="email"
+                name="email"
+                placeholder="Email Address"
+                value={formData.email}
+                onChange={handleChange}
+                required
+              />
             </div>
 
-            {/* Contact Info */}
-            <div className={styles.infoSection}>
-              <div className={styles.contactInfo}>
-                <div className={styles.contactHeader}>Get in Touch</div>
-                <p>Contact us today for a free consultation and estimate.</p>
+            <div className={styles.fieldRow}>
+              <input
+                name="phone"
+                placeholder="Phone (optional)"
+                value={formData.phone}
+                onChange={handleChange}
+              />
 
-                <div className={styles.infoCards}>
-                  <div className={styles.infoCard}>
-                    <div className={styles.infoIcon}>
-                      <i className='ph ph-phone'>
-                        <PhoneIcon size={32} />
-                      </i>
-                    </div>
+              <select
+                name="service"
+                value={formData.service}
+                onChange={handleChange}
+                required
+              >
+                <option value="">Select a service</option>
+                {services.map((s) => (
+                  <option key={s}>{s}</option>
+                ))}
+              </select>
+            </div>
 
-                    <div className={styles.infoContent}>
-                      <div className={styles.infoTitle}>Phone</div>
-                      <p>+1 (555) 123-4567</p>
-                    </div>
-                  </div>
+            <textarea
+              name="message"
+              placeholder="Tell us a bit about the project..."
+              value={formData.message}
+              onChange={handleChange}
+              required
+            />
 
-                  <div className={styles.infoCard}>
-                    <div className={styles.infoIcon}>
-                      <i className='ph ph-envelope'>
-                        <AtIcon size={32} />
-                      </i>
-                    </div>
-                    <div className={styles.infoContent}>
-                      <div className={styles.infoTitle}>Email</div>
-                      <p>info@whalecreek.com</p>
-                    </div>
-                  </div>
-                </div>
+            <button disabled={isSubmitting}>
+              {isSubmitting ? (
+                "Sending…"
+              ) : (
+                <>
+                  Send Message <PaperPlaneTiltIcon size={18} />
+                </>
+              )}
+            </button>
 
-                <div className={styles.ctaNote}>
-                  <div className={styles.infoTitle}>
-                    Why choose Whale Creek?
-                  </div>
-                  <ul>
-                    <li>25+ years of experience</li>
-                    <li>Licensed & fully insured</li>
-                    <li>Award-winning craftsmanship</li>
-                    <li>Free estimates & consultations</li>
-                    <li>Local Indianapolis specialists</li>
-                  </ul>
-                </div>
+            {result && (
+              <div
+                className={`${styles.result} ${
+                  result.includes("Thank") ? styles.success : styles.error
+                }`}
+              >
+                {result}
               </div>
+            )}
+          </form>
+
+          {/* INFO */}
+          <aside className={styles.info}>
+            <div className={styles.infoCard}>
+              <PhoneIcon size={22} />
+              <span>(317) 431-2449</span>
             </div>
-          </div>
+
+            <div className={styles.infoCard}>
+              <AtIcon size={22} />
+              <span>dave@whalecreek.co</span>
+            </div>
+
+            <ul className={styles.trustList}>
+              <li>25+ years experience</li>
+              <li>Licensed & insured</li>
+              <li>Central Indiana specialists</li>
+              <li>Design-build workflow</li>
+            </ul>
+          </aside>
         </div>
       </section>
     </main>
