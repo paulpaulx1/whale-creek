@@ -374,3 +374,7 @@
     opacity: 1;
   }
 }
+
+[style*="overflow: hidden"] .brand {
+  z-index: 999;
+}
