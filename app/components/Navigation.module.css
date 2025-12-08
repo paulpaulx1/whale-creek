@@ -54,6 +54,11 @@
   color: #ffffff;
 }
 
+.logoWrapper {
+  display: flex;
+  justify-content: space-between;
+  width: 250px;
+}
 .logoIcon {
   width: 45px;
   height: 45px;
