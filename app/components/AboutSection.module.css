@@ -1,4 +1,3 @@
-
 .aboutSection {
   font-family: var(--font-space), sans-serif;
   background: #fafafa;
@@ -46,18 +45,19 @@
 .title {
   /* font-family: 'EB Garamond', 'Garamond', serif; */
   color: #263238;
-  text-transform: uppercase;
   letter-spacing: 2px;
   margin: 0;
   font-size: 2.5rem;
   margin-bottom: 14px;
-  font-weight: 600; /* Remove uppercase for more elegant Garamond look */
+  font-weight: 600;
 }
 
 .heroAccent {
-  color: #ff6b35; /* Orange accent */
+  color: #ff6b35;
+  /* Orange accent */
   font-weight: 600;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Shadow for depth */
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  /* Shadow for depth */
   position: relative;
   font-size: 4rem;
 }
@@ -140,7 +140,7 @@
 }
 
 .statsTitle {
-  
+
   font-size: 2.8rem;
   font-weight: 300;
   color: var(--charcoal);
@@ -307,7 +307,6 @@
   color: var(--charcoal);
   line-height: 1.1;
   letter-spacing: 0.05em;
-  text-transform: uppercase;
 }
 
 /* -------------------------------

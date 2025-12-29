@@ -5,6 +5,7 @@ import Image from "next/image";
 import Lightbox from "../../components/LightBox";
 import Filter from "../../components/Filter";
 import styles from "./Gallery.module.css";
+import CTASection from "../../components/CTASection";
 
 export default function GalleryClient({ projects }) {
   const [filteredProjects, setFilteredProjects] = useState(projects);
@@ -31,9 +32,7 @@ export default function GalleryClient({ projects }) {
     if (activeFilter === "all") {
       setFilteredProjects(base);
     } else {
-      const next = base.filter(
-        (project) => project.category === activeFilter
-      );
+      const next = base.filter((project) => project.category === activeFilter);
       setFilteredProjects(next);
     }
   }, [activeFilter, projects]);
@@ -135,6 +134,7 @@ export default function GalleryClient({ projects }) {
           closeLightbox={closeLightbox}
         />
       )}
+      <CTASection />
     </main>
   );
 }

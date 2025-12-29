@@ -1,109 +1,179 @@
-/* CTA Section - Hero-style Scandinavian */
+/* ============================
+   CTA — VELLUM EDITORIAL
+============================ */
+
 .cta {
-    padding: 6rem 2rem;
-    background: #fafafa;
-    color: var(--charcoal);
-    text-align: center;
-    position: relative;
-  }
-  
-  .ctaContainer {
-    max-width: 800px;
-    margin: 0 auto;
-    position: relative;
-  }
-  
-  .ctaContent h2 {
-    font-size: 3rem;
-    font-weight: 700;
-    margin-bottom: 2rem;
-    text-transform: uppercase;
-    letter-spacing: -0.02em;
-    color: var(--charcoal);
-    line-height: 1.1;
-    font-family: 'Anton', 'Impact', sans-serif;
-    font-size: 2.5rem;
-    font-weight: 400;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-  }
-  
-  .ctaAccent {
-    color: #D32F2F;
-    position: relative;
-  }
-  
-  .ctaContent p {
-    font-size: 1.3rem;
-    margin-bottom: 2rem;
-    opacity: 0.8;
-    font-weight: 400;
-    color: var(--charcoal);
-    max-width: 600px;
-    margin-left: auto;
-    margin-right: auto;
-  }
-  
-  .ctaButtons {
-    margin-bottom: 2rem;
-  }
-  
-  /* Circle Accent */
-  .ctaCircles {
-    display: flex;
-    justify-content: center;
-    gap: 12px;
-    align-items: center;
-    margin-top: 1rem;
+  padding: 6rem 2rem;
+  background:
+    radial-gradient(
+      circle at top,
+      rgba(255, 255, 255, 0.85),
+      rgba(246, 246, 244, 1)
+    );
+  color: var(--charcoal);
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Soft paper grain */
+.cta::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: linear-gradient(
+    120deg,
+    rgba(0,0,0,0.02) 25%,
+    transparent 25%,
+    transparent 50%,
+    rgba(0,0,0,0.02) 50%,
+    rgba(0,0,0,0.02) 75%,
+    transparent 75%
+  );
+  background-size: 6px 6px;
+  pointer-events: none;
+  opacity: 0.15;
+}
+
+.ctaContainer {
+  max-width: 780px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 2;
+}
+
+/* ============================
+   CTA HEADER
+============================ */
+
+.ctaContent h2 {
+  font-size: clamp(2rem, 4vw, 2.75rem);
+  font-weight: 500;
+  margin-bottom: 1.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: var(--charcoal);
+  line-height: 1.15;
+}
+
+.ctaAccent {
+  color: #f97316;
+  position: relative;
+}
+
+/* Underline whisper */
+.ctaAccent::after {
+  content: '';
+  position: absolute;
+  left: 10%;
+  right: 10%;
+  bottom: -6px;
+  height: 1px;
+  background: linear-gradient(
+    to right,
+    transparent,
+    rgba(249, 115, 22, 0.45),
+    transparent
+  );
+}
+
+/* ============================
+   CTA BODY
+============================ */
+
+.ctaContent p {
+  font-size: 1.05rem;
+  margin-bottom: 2.5rem;
+  opacity: 0.78;
+  font-weight: 400;
+  color: var(--charcoal);
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+  line-height: 1.7;
+}
+
+/* ============================
+   BUTTON ROW
+============================ */
+
+.ctaButtons {
+  margin-bottom: 2.5rem;
+}
+
+/* ============================
+   CIRCLE ACCENTS — VELLUM MOTION
+============================ */
+
+.ctaCircles {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  align-items: center;
+  margin-top: 1.5rem;
+  opacity: 0;
+  animation: circlesAppear 0.9s ease-out 0.8s forwards;
+}
+
+.ctaCircle {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  filter: blur(0.2px);
+  transition:
+    transform 0.5s cubic-bezier(0.4, 0, 0.2, 1),
+    box-shadow 0.5s ease;
+  box-shadow:
+    0 6px 18px rgba(0,0,0,0.15),
+    inset 0 0 0 1px rgba(255,255,255,0.25);
+}
+
+.ctaCircle:nth-child(2) { background: var(--primary-red); }
+.ctaCircle:nth-child(3) { background: var(--primary-blue); }
+.ctaCircle:nth-child(4) { background: var(--primary-yellow); }
+.ctaCircle:nth-child(5) { background: var(--charcoal); }
+.ctaCircle:nth-child(6) { background: var(--sage-green); }
+
+@keyframes circlesAppear {
+  from {
     opacity: 0;
-    animation: circlesAppear 1s ease-out 1s forwards;
+    transform: translateY(18px) scale(0.6);
   }
-  
-  .ctaCircle {
-    width: 16px;
-    height: 16px;
-    border-radius: 50%;
-    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
   }
-  
-  .ctaCircle:nth-child(2) { background: var(--primary-red); }
-  .ctaCircle:nth-child(3) { background: var(--primary-blue); }
-  .ctaCircle:nth-child(4) { background: var(--primary-yellow); }
-  .ctaCircle:nth-child(5) { background: var(--charcoal); }
-  .ctaCircle:nth-child(6) { background: var(--sage-green); }
-  
-  @keyframes circlesAppear {
-    from {
-      opacity: 0;
-      transform: translateY(20px) scale(0);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0) scale(1);
-    }
-  }
-  
-  .ctaContent:hover .ctaCircle {
-    transform: scale(1.3) translateY(-5px);
-  }
-  @media (max-width: 768px) {
-        
+}
+
+/* Soft hover bloom */
+.ctaContent:hover .ctaCircle {
+  transform: scale(1.25) translateY(-6px);
+  box-shadow:
+    0 10px 28px rgba(0,0,0,0.25),
+    0 0 0 6px rgba(249, 115, 22, 0.12);
+}
+
+/* ============================
+   RESPONSIVE
+============================ */
+
+@media (max-width: 768px) {
   .cta {
-    padding: 4rem 1rem;
+    padding: 4.5rem 1.5rem;
   }
-  
+
   .ctaContent h2 {
-    font-size: 2rem;
+    font-size: 1.9rem;
   }
-  
+
   .ctaButtons {
     flex-direction: column;
     align-items: center;
     gap: 1rem;
   }
-  
+
   .btnPrimary,
   .btnSecondary {
-    width: 250px;
+    width: 260px;
   }
-  }
+}
