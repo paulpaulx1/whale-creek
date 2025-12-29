@@ -282,7 +282,7 @@ export default async function ProjectPage({ params }) {
 
               {project.testimonial && (
                 <blockquote className={styles.testimonial}>
-                  <p>"{project.testimonial.quote}"</p>
+                  <p>&ldquo;{project.testimonial.quote}&rdquo;</p>
                   {(project.testimonial.author ||
                     project.testimonial.authorTitle) && (
                     <footer className={styles.testimonialFooter}>
