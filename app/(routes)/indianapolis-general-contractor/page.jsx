@@ -60,7 +60,7 @@ export default async function Services() {
       title: "Outdoor Living Spaces",
       image: "/images/Noblesville-Deck.JPG",
       description:
-        "Decks, pergolas, patios, sunrooms, and outdoor structures designed to extend your living space. From quiet backyard retreats to entertainment-ready decks, our outdoor projects are thoughtfully designed, structurally sound, and built for Indiana's climate.",
+        "We design and build decks, pergolas, patios, sunrooms, and outdoor structures to extend your living space. From quiet backyard retreats to entertainment-ready decks, our outdoor projects are thoughtfully designed, structurally sound, and built for Indiana's climate.",
       details:
         "We account for Indiana's freeze-thaw cycles, drainage, and structural load standards to ensure every outdoor structure holds up for decades.",
       blueprint: "OUT_001",
