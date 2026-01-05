@@ -54,11 +54,13 @@ export default function ServicesClient({ services, serviceAreas }) {
         />
         <div className={styles.servicesHeroOverlay} />
         <div className={styles.servicesHeroContent}>
-          <h1>What We Do</h1>
+          <h1>Indianapolis General Contractor</h1>
           <p>
-            Residential construction, custom millwork, and commercial general
-            contracting — built with precision, clarity, and long-term
-            durability across Central Indiana.
+            We work with homeowners and commercial businesses across
+            Indianapolis to complete renovations, custom builds, and full home
+            remodels. Whether you want a custom piece of furniture or you're
+            transforming your entire home, we're with you from the first sketch
+            to the final walkthrough.
           </p>
         </div>
       </section>
@@ -81,7 +83,11 @@ export default function ServicesClient({ services, serviceAreas }) {
                   <p className={styles.serviceDescription}>
                     {service.description}
                   </p>
-                  <p className={styles.serviceDetails}>{service.details}</p>
+
+                  {/* ✅ Only render details if it exists */}
+                  {service.details && (
+                    <p className={styles.serviceDetails}>{service.details}</p>
+                  )}
 
                   <ul className={styles.serviceFeatures}>
                     {service.features.map((feature, i) => (
@@ -91,6 +97,13 @@ export default function ServicesClient({ services, serviceAreas }) {
                       </li>
                     ))}
                   </ul>
+
+                  {/* ✅ Optional post-features paragraph */}
+                  {service.additionalInfo && (
+                    <p className={styles.serviceAdditional}>
+                      {service.additionalInfo}
+                    </p>
+                  )}
                 </div>
 
                 <div

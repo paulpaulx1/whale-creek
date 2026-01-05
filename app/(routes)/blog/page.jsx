@@ -1,12 +1,12 @@
 // src/app/blog/page.js
-import BlogClient from './BlogClient';
-import { client } from '../../lib/sanity';
-import { generateBlogsMetadata } from '../../components/seo/generateMetadata';
-import SchemaMarkup from '../../components/seo/SchemaMarkup';
-import { headers } from 'next/headers';
+import BlogClient from "./BlogClient";
+import { client } from "../../lib/sanity";
+import { generateBlogsMetadata } from "../../components/seo/generateMetadata";
+import SchemaMarkup from "../../components/seo/SchemaMarkup";
+import { headers } from "next/headers";
 
 const blogQuery = `
-  *[_type == "blogPost"] | order(publishedAt desc) {
+  *[_type == "blogPost" && status == "published"] | order(publishedAt desc) {
     _id,
     title,
     slug,
@@ -40,26 +40,26 @@ async function getServiceAreas() {
 
     // Hardcoded areas for immediate SEO benefit
     const hardcodedAreas = [
-      'Indianapolis, IN',
-      'Meridian Hills, IN',
-      'Noblesville, IN',
-      'Carmel, IN',
-      'Fishers, IN',
-      'Zionsville, IN',
-      'Westfield, IN',
+      "Indianapolis, IN",
+      "Meridian Hills, IN",
+      "Noblesville, IN",
+      "Carmel, IN",
+      "Fishers, IN",
+      "Zionsville, IN",
+      "Westfield, IN",
     ];
 
     // Combine and deduplicate
     const allAreas = [...new Set([...dynamicAreas, ...hardcodedAreas])];
     return allAreas;
   } catch (error) {
-    console.error('Error fetching service areas:', error);
+    console.error("Error fetching service areas:", error);
     return [
-      'Indianapolis, IN',
-      'Meridian Hills, IN',
-      'Noblesville, IN',
-      'Carmel, IN',
-      'Fishers, IN',
+      "Indianapolis, IN",
+      "Meridian Hills, IN",
+      "Noblesville, IN",
+      "Carmel, IN",
+      "Fishers, IN",
     ];
   }
 }
@@ -69,7 +69,7 @@ async function getBlogPosts() {
     const posts = await client.fetch(blogQuery);
     return posts || [];
   } catch (error) {
-    console.error('Error fetching blog posts:', error);
+    console.error("Error fetching blog posts:", error);
     return [];
   }
 }
@@ -85,18 +85,18 @@ export default async function BlogPage() {
   const posts = await getBlogPosts();
   const serviceAreas = await getServiceAreas();
   const headersList = await headers();
-  const host = headersList.get('host') || 'whalecreek.co';
-  const protocol = process.env.NODE_ENV === 'production' ? 'https' : 'http';
+  const host = headersList.get("host") || "whalecreek.co";
+  const protocol = process.env.NODE_ENV === "production" ? "https" : "http";
   const currentUrl = `${protocol}://${host}/blog`;
 
   return (
     <>
-          <SchemaMarkup 
-            type="blog"
-            data={posts}
-            serviceAreas={serviceAreas}
-            currentUrl={currentUrl}
-          />
+      <SchemaMarkup
+        type="blog"
+        data={posts}
+        serviceAreas={serviceAreas}
+        currentUrl={currentUrl}
+      />
       <BlogClient posts={posts} />
     </>
   );

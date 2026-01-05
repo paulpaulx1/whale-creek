@@ -14,6 +14,9 @@ export default function Hero() {
           <h1>
             Whale Creek <span className={styles.heroAccent}>Construction</span><br/>Indianapolis, Indiana
           </h1>
+          <p className={styles.heroSubtitle}>
+            General Contractor • Home Renovation • Custom Woodworking
+          </p>
         </div>
 
         <div className={styles.heroActions}>

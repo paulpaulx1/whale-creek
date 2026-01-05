@@ -57,67 +57,65 @@ export default async function Services() {
   const mainServices = [
     {
       id: "outdoor-living-deck-building-indianapolis",
-      title: "Outdoor Living & Deck Building Indianapolis",
+      title: "Outdoor Living Spaces",
       image: "/images/Noblesville-Deck.JPG",
       description:
-        "Whale Creek Co designs and builds custom outdoor living spaces in Indianapolis, including decks, patios, pergolas, and covered outdoor rooms.",
+        "Decks, pergolas, patios, sunrooms, and outdoor structures designed to extend your living space. From quiet backyard retreats to entertainment-ready decks, our outdoor projects are thoughtfully designed, structurally sound, and built for Indiana's climate.",
       details:
-        "We account for Indiana’s freeze-thaw cycles, drainage, and structural load standards to ensure every outdoor structure holds up for decades.",
+        "We account for Indiana's freeze-thaw cycles, drainage, and structural load standards to ensure every outdoor structure holds up for decades.",
       blueprint: "OUT_001",
       features: [
-        "Custom deck building Indianapolis",
-        "Pergolas and covered porches",
-        "Outdoor kitchens and living spaces",
-        "Weather-resistant construction",
+
       ],
+      additionalInfo: "",
     },
     {
       id: "residential-general-contractor-indianapolis",
-      title: "Residential General Contractor Indianapolis",
+      title: "Residential Renovation Services",
       image: "/images/Westfield_Sunroom.jpeg",
       description:
-        "Licensed and bonded residential general contractor specializing in additions, remodeling, and full custom construction.",
-      details:
-        "Our team delivers kitchen remodels, bathroom renovations, room additions, and full home transformations with precise execution.",
+        "As experienced general contractors in Indianapolis, we guide homeowners through renovation projects of all kinds. Our renovation work commonly includes:",
       blueprint: "RES_001",
       features: [
-        "Licensed residential general contractor",
-        "Home additions and remodeling",
-        "Kitchen and bathroom renovations",
-        "Complete home transformations",
+        "Kitchen renovations that improve flow, storage, and usability",
+        "Custom cabinetry focused on design, efficiency, and longevity",
+        "Whole-home renovations and structural reconfigurations",
       ],
+      additionalInfo:
+        "As an Indianapolis residential general contractor, we oversee planning, permits, scheduling, and trade coordination, so your project stays organized, predictable, and aligned with your goals.",
     },
     {
       id: "commercial-general-contractors-indianapolis",
-      title: "Commercial General Contractors Indianapolis",
+      title: "Commercial Projects",
       image: "/images/Patio_Indianapolis.jpg",
       description:
-        "Professional commercial general contracting services in Indianapolis for offices, retail spaces, and build-outs.",
+        "Whale Creek Co partners with businesses seeking a dependable manufacturing and fabrication shop. Whether you need custom furniture, retail buildouts, or specialty wood products, we're here for you from early prototyping to full-scale production.",
       details:
-        "From tenant improvements to full commercial renovations, we deliver efficient, code-compliant construction with minimal downtime.",
+        "Our experience serving both B2B and B2C clients means we understand:",
       blueprint: "COM_001",
       features: [
-        "Office and retail construction",
-        "Tenant improvements and build-outs",
-        "Industrial renovations",
-        "Licensed and insured contractors",
+        "Production timelines and coordination",
+        "Repeatability and quality control",
+        "Packaging, staging, and delivery readiness",
       ],
+      additionalInfo:
+        "From specialty product lines to repeatable cabinetry systems, we deliver production work with precision, care, and all the standards we apply to one-off builds.",
     },
     {
       id: "custom-millwork-woodworking-indianapolis",
-      title: "Custom Millwork & Woodworking Indianapolis",
+      title: "Custom Woodworking & Millwork",
       image: "/images/Pocket_Doors.jpeg",
       description:
-        "In-house master woodworking for custom cabinetry, built-ins, and architectural millwork.",
-      details:
-        "From kitchens to executive offices, every piece is built for precision, durability, and visual harmony.",
+        "We produce custom woodwork and millwork for commercial and residential applications, ranging from standalone pieces to integrated architectural elements. Our state-of-the-art CNC milling technology allows us to execute complex cuts, intricate patterns, and tight precision across both short runs and larger production volumes.",
+      details: "Common projects include:",
       blueprint: "MIL_001",
       features: [
-        "Custom cabinetry",
-        "Architectural woodworking",
-        "Built-in furniture",
-        "Precision craftsmanship",
+        "Custom furniture",
+        "Built-ins, shelving, and cabinetry",
+        "Bar fronts, reception desks, and retail elements",
+        "Architectural millwork and specialty components",
       ],
+      additionalInfo: "",
     },
   ];
 

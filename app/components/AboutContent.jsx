@@ -46,31 +46,26 @@ const AboutContent = () => {
         <div
           className={cx(
             styles.content,
-            hasAnimated
-              ? styles.aboutVisibleDelayed
-              : styles.aboutHiddenRight
+            hasAnimated ? styles.aboutVisibleDelayed : styles.aboutHiddenRight
           )}
         >
           <h1 className={styles.title}>About Whale Creek</h1>
 
           <div className={styles.contentBlock}>
             <p>
-              Whale Creek is a custom general contractor and woodworking shop
-              based in the Indianapolis area. We specialize in residential
-              renovations, custom cabinetry, and detailed finish work that
-              demands precision, patience, and experience.
+              Whale Creek Co. is your go-to Indianapolis general contractor for
+              home renovations that blend expert craftsmanship with thoughtful
+              design. From kitchen renovations to custom millwork and complete
+              remodels, we excel in bringing your vision to life.
             </p>
 
             <p>
-              For over 15 years, we’ve built our reputation on clean execution,
-              honest communication, and results that hold up years after the
-              final walkthrough. We don’t cut corners, we don’t rush work, and
-              we don’t disappear after the job is done.
-            </p>
-
-            <p>
-              Every project is treated as a long-term investment — in the home,
-              in the craft, and in the relationship with the client.
+              We’re a full-service workshop based in Garfield Park, where we
+              offer construction expertise, woodworking, and custom fabrication
+              under one roof. From initial sketches to final installation, our
+              team of skilled craftsmen delivers exceptional millwork, custom
+              furniture, and construction projects including sunrooms, decks,
+              cabinetry, and home renovations.
             </p>
           </div>
         </div>

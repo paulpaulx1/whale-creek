@@ -1,188 +1,218 @@
 /* Hero.module.css - Refined & Elegant */
 .hero {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 8rem 2rem; 
-    position: relative;
-    background: var(--soft-cream);
-    overflow: hidden;
-    min-height: 100vh;
-    text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8rem 2rem;
+  position: relative;
+  background: var(--soft-cream);
+  overflow: hidden;
+  min-height: 100vh;
+  text-align: center;
 }
 
 .heroVideoBackground {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 1;
-    pointer-events: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  pointer-events: none;
 }
 
 .heroVideoBackground video {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 /* Refined dark overlay - less heavy */
 .heroVideoBackground::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.35); /* Reduced from 0.5 */
-    z-index: 2;
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.35);
+  /* Reduced from 0.5 */
+  z-index: 2;
 }
 
 .heroContainer {
-    max-width: 1200px;
-    margin: 0 auto;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 6rem; /* Increased spacing */
-    position: relative;
-    z-index: 3;
-    width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 6rem;
+  /* Increased spacing */
+  position: relative;
+  z-index: 3;
+  width: 100%;
 }
 
 .heroContent {
-    text-align: center;
-    max-width: 800px; /* Constrain width for better readability */
+  text-align: center;
+  max-width: 800px;
+  /* Constrain width for better readability */
 }
 
 .heroContent h1 {
-    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-    font-size: 2.5rem;
-    font-weight: 700; 
-    font-style: normal;
-    line-height: 1.2;
-    margin: 0;
-    color: #ffffff;
-    letter-spacing: 0.15em; /* Exact same as Safwat */
-    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3); /* Exact same as Safwat */
-    text-transform: uppercase;
-    width: 100%;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: 2.5rem;
+  font-weight: 700;
+  font-style: normal;
+  line-height: 1.2;
+  margin: 0;
+  color: #ffffff;
+  letter-spacing: 0.15em;
+  /* Exact same as Safwat */
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+  /* Exact same as Safwat */
+  text-transform: uppercase;
+  width: 100%;
 }
 
 /* Accent styling for "Construction" */
 .heroAccent {
-    color: #ff6b35; /* Orange accent color */
-    font-weight: 700; /* Slightly heavier for emphasis */
-    position: relative;
-    text-shadow: 
-        0 2px 8px rgba(0, 0, 0, 0.4),
-        0 1px 0 rgba(0, 0, 0, 0.2);
+  color: #ff6b35;
+  /* Orange accent color */
+  font-weight: 700;
+  /* Slightly heavier for emphasis */
+  position: relative;
+  text-shadow:
+    0 2px 8px rgba(0, 0, 0, 0.4),
+    0 1px 0 rgba(0, 0, 0, 0.2);
 }
 
 .heroActions {
-    display: flex;
-    flex-direction: column;
-    gap: 3rem;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
 }
 
 .ctaSection {
-    position: relative;
-    display: flex;
-    gap: 1.5rem; /* Space between CTAs */
+  position: relative;
+  display: flex;
+  gap: 1.5rem;
+  /* Space between CTAs */
 }
 
 .socialSection {
-    display: flex;
-    align-items: center;
-    justify-content: center; /* Center the social icons */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* Center the social icons */
 }
 
 /* Mobile Responsive */
 @media (max-width: 1024px) {
-    .heroContainer {
-        align-items: center;
-        text-align: center;
-    }
-    
-    .heroContent {
-        text-align: center;
-    }
-    
-    .heroActions {
-        justify-content: center;
-        flex-direction: column;
-        gap: 3rem;
-    }
-    
-    .socialSection {
-        margin-left: 0;
-    }
+  .heroContainer {
+    align-items: center;
+    text-align: center;
+  }
+
+  .heroContent {
+    text-align: center;
+  }
+
+  .heroActions {
+    justify-content: center;
+    flex-direction: column;
+    gap: 3rem;
+  }
+
+  .socialSection {
+    margin-left: 0;
+  }
 }
 
 @media (max-width: 768px) {
-    .hero {
-        padding: 6rem 1rem; 
-        min-height: 100vh;
-        text-align: center;
-    }
+  .hero {
+    padding: 6rem 1rem;
+    min-height: 100vh;
+    text-align: center;
+  }
 
-    .heroContainer {
-        gap: 4rem;
-        align-items: center;
-    }
-    
-    .heroContent {
-        text-align: center;
-    }
+  .heroContainer {
+    gap: 4rem;
+    align-items: center;
+  }
 
-    .heroContent h1 {
-        font-size: 2.2rem;
-        letter-spacing: 0.06em;
-    }
+  .heroContent {
+    text-align: center;
+  }
 
-    .heroActions {
-        gap: 2.5rem;
-        flex-direction: column;
-        justify-content: center;
-    }
-    
-    .socialSection {
-        margin-left: 0;
-    }
+  .heroContent h1 {
+    font-size: 2.2rem;
+    letter-spacing: 0.06em;
+  }
+
+  .heroActions {
+    gap: 2.5rem;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .socialSection {
+    margin-left: 0;
+  }
 }
 
 @media (max-width: 480px) {
-    .heroContent h1 {
-        font-size: 1.8rem;
-        letter-spacing: 0.05em;
-    }
+  .heroContent h1 {
+    font-size: 1.8rem;
+    letter-spacing: 0.05em;
+  }
 
-    .heroContainer {
-        gap: 3rem;
-    }
+  .heroContainer {
+    gap: 3rem;
+  }
 
-    .heroActions {
-        gap: 2rem;
-    }
-    
-    .heroDescription {
-        font-size: 1.1rem;
-        margin-top: 1.5rem;
-    }
+  .heroActions {
+    gap: 2rem;
+  }
+
+  .heroDescription {
+    font-size: 1.1rem;
+    margin-top: 1.5rem;
+  }
 }
 
 @media (max-width: 320px) {
-    .heroContent h1 {
-        font-size: 1.5rem;
-        letter-spacing: 0.04em;
-    }
-    
-    .heroDescription {
-        font-size: 1rem;
-    }
+  .heroContent h1 {
+    font-size: 1.5rem;
+    letter-spacing: 0.04em;
+  }
+
+  .heroDescription {
+    font-size: 1rem;
+  }
+}
+
+.heroSubtitle {
+  font-size: 1.125rem;
+  /* 18px */
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.9);
+  /* Slightly transparent if on video bg */
+  margin-top: 1rem;
+  letter-spacing: 0.5px;
+  text-align: center;
+  /* Adjust based on your h1 alignment */
+}
+
+/* Optional: responsive sizing */
+@media (max-width: 768px) {
+  .heroSubtitle {
+    font-size: 1rem;
+    /* 16px on mobile */
+    margin-top: 0.75rem;
+  }
 }
