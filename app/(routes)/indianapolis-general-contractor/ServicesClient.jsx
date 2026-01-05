@@ -58,8 +58,8 @@ export default function ServicesClient({ services, serviceAreas }) {
           <p>
             We work with homeowners and commercial businesses across
             Indianapolis to complete renovations, custom builds, and full home
-            remodels. Whether you want a custom piece of furniture or you're
-            transforming your entire home, we're with you from the first sketch
+            remodels. Whether you want a custom piece of furniture or you&apos;re
+            transforming your entire home, we&apos;re with you from the first sketch
             to the final walkthrough.
           </p>
         </div>
