@@ -59,7 +59,7 @@ const AboutContent = () => {
             </p>
 
             <p>
-              We're a full-service workshop based in Garfield Park, where we
+              We&apos;re a full-service workshop based in Garfield Park, where we
               offer construction expertise, woodworking, and custom fabrication
               under one roof. From initial sketches to final installation, our
               team of skilled craftsmen delivers exceptional millwork, custom
