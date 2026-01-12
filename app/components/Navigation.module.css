@@ -1,4 +1,4 @@
-/* Navigation.module.css - Refined like Safwat */
+/* Navigation.module.css - Refined like Whale Creek */
 .nav {
   position: fixed;
   top: 0;
@@ -6,15 +6,12 @@
   z-index: 1000;
   transition: all 0.3s ease;
   background: rgba(0, 0, 0, 0.3);
-  /* Slight translucent shroud when not scrolled */
   padding: 2rem 0;
   border-bottom: 2px solid white;
-  /* White border bottom */
 }
 
 .navScrolled {
   background: rgba(0, 0, 0, 0.7);
-  /* Dark translucent when scrolled */
   backdrop-filter: blur(10px);
   padding: 1rem 0;
 }
@@ -37,7 +34,7 @@
   text-decoration: none;
   display: flex;
   align-items: center;
-  gap: 2rem;
+  gap: 1rem;
 }
 
 .brandText {
@@ -56,9 +53,10 @@
 
 .logoWrapper {
   display: flex;
-  justify-content: space-between;
-  width: 250px;
+  align-items: center;
+  gap: 1rem;
 }
+
 .logoIcon {
   width: 45px;
   height: 45px;
@@ -78,7 +76,6 @@
   border-radius: 8px;
   transition: all 0.3s ease;
   filter: brightness(0) saturate(100%) invert(1);
-  /* Always white */
 }
 
 /* Keep white filter even when scrolled */
@@ -322,6 +319,15 @@
   .navScrolled {
     padding: 1rem 0;
   }
+
+  .brandText {
+    font-size: 1rem;
+  }
+
+  .logoIcon {
+    width: 40px;
+    height: 40px;
+  }
 }
 
 @media (max-width: 480px) {
@@ -336,6 +342,10 @@
   .mobileMenu {
     width: 100%;
     max-width: 100vw;
+  }
+
+  .brandText {
+    font-size: 0.9rem;
   }
 }
 
@@ -373,8 +383,4 @@
     animation: none;
     opacity: 1;
   }
-}
-
-[style*="overflow: hidden"] .brand {
-  z-index: 999;
 }

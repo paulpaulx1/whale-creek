@@ -19,20 +19,19 @@ const AboutContent = () => {
           observer.disconnect();
         }
       },
-      { threshold: 0.25 }
+      { threshold: 0.1 }
     );
 
     observer.observe(sectionRef.current);
     return () => observer.disconnect();
   }, []);
 
-  // ✅ SAFE CLASS JOINER (filters out undefined)
   const cx = (...classes) => classes.filter(Boolean).join(" ");
 
   return (
     <div className={styles.container}>
       <div ref={sectionRef} className={styles.aboutContent}>
-        {/* ✅ IMAGE */}
+        {/* Image */}
         <div
           className={cx(
             styles.imageSection,
@@ -42,7 +41,7 @@ const AboutContent = () => {
           <AboutImage />
         </div>
 
-        {/* ✅ TEXT (STAGGERED) */}
+        {/* Text */}
         <div
           className={cx(
             styles.content,
@@ -60,7 +59,7 @@ const AboutContent = () => {
             </p>
 
             <p>
-              We’re a full-service workshop based in Garfield Park, where we
+              We're a full-service workshop based in Garfield Park, where we
               offer construction expertise, woodworking, and custom fabrication
               under one roof. From initial sketches to final installation, our
               team of skilled craftsmen delivers exceptional millwork, custom

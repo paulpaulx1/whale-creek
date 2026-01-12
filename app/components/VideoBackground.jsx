@@ -7,15 +7,55 @@ const videos = [
   {
     id: 1,
     title: "Residential Renovation",
-    src: "https://koklgwni3prbahdf.public.blob.vercel-storage.com/whale-creek-drone-footy.mov",
+    src: "/videos/whale-creek-drone-footy.mp4",
+    poster: "/images/video-poster.jpg",
     location: "Noblesville, Indiana",
   },
 ];
 
 export default function VideoBackground() {
   const [currentVideo, setCurrentVideo] = useState(0);
-  const [videoLoaded, setVideoLoaded] = useState({});
+  const [isReady, setIsReady] = useState(false);
   const videoRefs = useRef([]);
+  const hasAttemptedPlay = useRef(false);
+
+  useEffect(() => {
+    const video = videoRefs.current[0];
+    if (!video || hasAttemptedPlay.current) return;
+
+    // Aggressive loading strategy
+    video.load();
+
+    const attemptPlay = () => {
+      if (hasAttemptedPlay.current) return;
+
+      hasAttemptedPlay.current = true;
+      video
+        .play()
+        .then(() => {
+          setIsReady(true);
+        })
+        .catch((err) => {
+          console.log("Video autoplay blocked:", err);
+          setIsReady(true); // Still show it
+        });
+    };
+
+    // Try multiple trigger points for maximum compatibility
+    video.addEventListener("loadeddata", attemptPlay);
+    video.addEventListener("canplay", attemptPlay);
+    video.addEventListener("canplaythrough", attemptPlay);
+
+    // Fallback: force play after 500ms
+    const fallbackTimer = setTimeout(attemptPlay, 500);
+
+    return () => {
+      video.removeEventListener("loadeddata", attemptPlay);
+      video.removeEventListener("canplay", attemptPlay);
+      video.removeEventListener("canplaythrough", attemptPlay);
+      clearTimeout(fallbackTimer);
+    };
+  }, []);
 
   useEffect(() => {
     if (videos.length <= 1) return;
@@ -26,13 +66,6 @@ export default function VideoBackground() {
 
     return () => clearInterval(timer);
   }, []);
-
-  const handleVideoLoad = (index) => {
-    setVideoLoaded((prev) => ({
-      ...prev,
-      [index]: true,
-    }));
-  };
 
   const goToVideo = (index) => {
     setCurrentVideo(index);
@@ -55,10 +88,10 @@ export default function VideoBackground() {
             loop
             preload="auto"
             controls={false}
-            onCanPlay={() => handleVideoLoad(index)}
+            poster={video.poster}
             style={{
-              opacity: videoLoaded[index] ? 0.9 : 0,
-              transition: "opacity 2s ease-out",
+              opacity: isReady ? 0.9 : 0,
+              transition: "opacity 0.4s ease-out",
             }}
             className={styles.video}
           >

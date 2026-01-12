@@ -12,7 +12,9 @@ export default function Hero() {
       <div className={styles.heroContainer}>
         <div className={styles.heroContent}>
           <h1>
-            Whale Creek <span className={styles.heroAccent}>Construction</span><br/>Indianapolis, Indiana
+            Whale Creek <span className={styles.heroAccent}>Construction</span>
+            <br />
+            Indianapolis, Indiana
           </h1>
           <p className={styles.heroSubtitle}>
             General Contractor • Home Renovation • Custom Woodworking
