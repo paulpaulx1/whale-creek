@@ -91,7 +91,7 @@ export default function VideoBackground() {
             poster={video.poster}
             style={{
               opacity: isReady ? 0.9 : 0,
-              transition: "opacity 0.4s ease-out",
+              transition: "opacity 1.5s ease-out",
             }}
             className={styles.video}
           >
