@@ -30,26 +30,33 @@ const AboutContent = () => {
 
   return (
     <div className={styles.container}>
+      {/* ✅ Section-level header (centered, above everything) */}
+      <header className={styles.sectionHeader}>
+        <p className={styles.sectionKicker}>About Whale Creek</p>
+      </header>
+
       <div ref={sectionRef} className={styles.aboutContent}>
-        {/* Image */}
+        {/* LEFT: Image + headline underneath */}
         <div
           className={cx(
             styles.imageSection,
             hasAnimated ? styles.aboutVisible : styles.aboutHiddenLeft
           )}
         >
+          <h2 className={styles.imageHeadline}>
+            Indianapolis craftsmanship, thoughtful design, and build quality you
+            can feel.
+          </h2>
           <AboutImage />
         </div>
 
-        {/* Text */}
+        {/* RIGHT: copy + help card (no big headline here) */}
         <div
           className={cx(
             styles.content,
             hasAnimated ? styles.aboutVisibleDelayed : styles.aboutHiddenRight
           )}
         >
-          <h1 className={styles.title}>About Whale Creek</h1>
-
           <div className={styles.contentBlock}>
             <p>
               Whale Creek Co. is your go-to Indianapolis general contractor for
@@ -59,18 +66,37 @@ const AboutContent = () => {
             </p>
 
             <p>
-              We&apos;re a full-service workshop based in Garfield Park, where we
-              offer construction expertise, woodworking, and custom fabrication
-              under one roof. From initial sketches to final installation, our
-              team of skilled craftsmen delivers exceptional millwork, custom
-              furniture, and construction projects including sunrooms, decks,
-              cabinetry, and home renovations.
+              We&apos;re a full-service workshop based in Garfield Park, where
+              we offer construction expertise, woodworking, and custom
+              fabrication under one roof. From initial sketches to final
+              installation, our team of skilled craftsmen delivers exceptional
+              millwork, custom furniture, and construction projects including
+              sunrooms, decks, cabinetry, and home renovations.
             </p>
+          </div>
+
+          <div className={styles.helpCard}>
+            <h3 className={styles.helpTitle}>What we build</h3>
+            <ul className={styles.helpList}>
+              <li>Kitchen renovations and full remodels</li>
+              <li>Custom millwork, cabinetry, and built-ins</li>
+              <li>Decks, sunrooms, and outdoor structures</li>
+              <li>Custom furniture and fabrication</li>
+            </ul>
+
+            <div className={styles.helpActions}>
+              <a className={styles.primaryCta} href="#contact">
+                Start a Project
+              </a>
+              <a className={styles.secondaryCta} href="/projects">
+                View Projects
+              </a>
+            </div>
           </div>
         </div>
       </div>
 
-      <div className={styles.sectionDivider}></div>
+      <div className={styles.sectionDivider} />
       <Reviews />
     </div>
   );
