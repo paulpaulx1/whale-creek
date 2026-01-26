@@ -1,3 +1,33 @@
+/* Animations */
+@keyframes heroBackgroundZoom {
+  from {
+    transform: scale(1.08);
+  }
+  to {
+    transform: scale(1);
+  }
+}
+
+@keyframes heroOverlayFade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes heroContentFadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 /* Hero.module.css - Refined & Elegant */
 .hero {
   display: flex;
@@ -27,7 +57,7 @@
   object-fit: cover;
 }
 
-/* Refined dark overlay - less heavy */
+/* Refined dark overlay with fade-in */
 .heroVideoBackground::after {
   content: '';
   position: absolute;
@@ -36,8 +66,8 @@
   width: 100%;
   height: 100%;
   background: rgba(0, 0, 0, 0.35);
-  /* Reduced from 0.5 */
   z-index: 2;
+  animation: heroOverlayFade 1s ease-out;
 }
 
 .heroContainer {
@@ -48,7 +78,6 @@
   align-items: center;
   justify-content: center;
   gap: 6rem;
-  /* Increased spacing */
   position: relative;
   z-index: 3;
   width: 100%;
@@ -57,7 +86,6 @@
 .heroContent {
   text-align: center;
   max-width: 800px;
-  /* Constrain width for better readability */
 }
 
 .heroContent h1 {
@@ -69,23 +97,31 @@
   margin: 0;
   color: #ffffff;
   letter-spacing: 0.15em;
-  /* Exact same as Safwat */
   text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
-  /* Exact same as Safwat */
   text-transform: uppercase;
   width: 100%;
+  animation: heroContentFadeUp 0.8s ease-out 0.3s both;
 }
 
 /* Accent styling for "Construction" */
 .heroAccent {
   color: #ff6b35;
-  /* Orange accent color */
   font-weight: 700;
-  /* Slightly heavier for emphasis */
   position: relative;
   text-shadow:
     0 2px 8px rgba(0, 0, 0, 0.4),
     0 1px 0 rgba(0, 0, 0, 0.2);
+}
+
+.heroSubtitle {
+  font-size: 1.125rem;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.9);
+  margin-top: 1rem;
+  letter-spacing: 0.5px;
+  text-align: center;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+  animation: heroContentFadeUp 0.8s ease-out 0.5s both;
 }
 
 .heroActions {
@@ -95,20 +131,19 @@
   align-items: center;
   justify-content: center;
   width: 100%;
+  animation: heroContentFadeUp 0.8s ease-out 0.7s both;
 }
 
 .ctaSection {
   position: relative;
   display: flex;
   gap: 1.5rem;
-  /* Space between CTAs */
 }
 
 .socialSection {
   display: flex;
   align-items: center;
   justify-content: center;
-  /* Center the social icons */
 }
 
 /* Mobile Responsive */
@@ -154,6 +189,11 @@
     letter-spacing: 0.06em;
   }
 
+  .heroSubtitle {
+    font-size: 1rem;
+    margin-top: 0.75rem;
+  }
+
   .heroActions {
     gap: 2.5rem;
     flex-direction: column;
@@ -171,17 +211,16 @@
     letter-spacing: 0.05em;
   }
 
+  .heroSubtitle {
+    font-size: 0.9rem;
+  }
+
   .heroContainer {
     gap: 3rem;
   }
 
   .heroActions {
     gap: 2rem;
-  }
-
-  .heroDescription {
-    font-size: 1.1rem;
-    margin-top: 1.5rem;
   }
 }
 
@@ -191,28 +230,18 @@
     letter-spacing: 0.04em;
   }
 
-  .heroDescription {
-    font-size: 1rem;
+  .heroSubtitle {
+    font-size: 0.85rem;
   }
 }
 
-.heroSubtitle {
-  font-size: 1.125rem;
-  /* 18px */
-  font-weight: 500;
-  color: rgba(255, 255, 255, 0.9);
-  /* Slightly transparent if on video bg */
-  margin-top: 1rem;
-  letter-spacing: 0.5px;
-  text-align: center;
-  /* Adjust based on your h1 alignment */
-}
-
-/* Optional: responsive sizing */
-@media (max-width: 768px) {
-  .heroSubtitle {
-    font-size: 1rem;
-    /* 16px on mobile */
-    margin-top: 0.75rem;
+/* Reduce motion for accessibility */
+@media (prefers-reduced-motion: reduce) {
+  .heroVideoBackground video,
+  .heroVideoBackground::after,
+  .heroContent h1,
+  .heroSubtitle,
+  .heroActions {
+    animation: none;
   }
 }

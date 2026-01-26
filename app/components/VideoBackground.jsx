@@ -73,6 +73,15 @@ export default function VideoBackground() {
 
   return (
     <div className={styles.videoCarousel}>
+      {/* Poster gradient - fades out when video loads */}
+      <div
+        className={styles.videoPoster}
+        style={{
+          opacity: isReady ? 0 : 1,
+          transition: "opacity 1s ease-out",
+        }}
+      />
+
       {videos.map((video, index) => (
         <div
           key={video.id}
@@ -88,7 +97,6 @@ export default function VideoBackground() {
             loop
             preload="auto"
             controls={false}
-            poster={video.poster}
             style={{
               opacity: isReady ? 0.9 : 0,
               transition: "opacity 1.5s ease-out",

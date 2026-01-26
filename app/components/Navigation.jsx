@@ -78,12 +78,13 @@ export default function Navigation() {
 
           {/* Desktop Menu */}
           <div className={styles.desktopMenu}>
-            {navItems.map((item) => (
+            {navItems.map((item, index) => (
               <Link
                 key={item.href}
                 href={item.href}
-                className={styles.navLink}
+                className={`${styles.navLink} ${styles.navItem}`}
                 onClick={closeMenu}
+                style={{ animationDelay: `${(index + 1) * 0.1}s` }}
               >
                 {item.label}
               </Link>
