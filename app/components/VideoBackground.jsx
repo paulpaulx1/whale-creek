@@ -7,7 +7,7 @@ const videos = [
   {
     id: 1,
     title: "Residential Renovation",
-    src: "/videos/whale-creek-drone-footy.mp4",
+    src: "/videos/whale-creek-720p.mp4",
     poster: "/images/video-poster.jpg",
     location: "Noblesville, Indiana",
   },
