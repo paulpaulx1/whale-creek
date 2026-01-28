@@ -242,7 +242,7 @@
 /* Phosphor Icon Styling */
 .filterIcon {
   color: #263238;
-  transition: 
+  transition:
     transform 0.6s cubic-bezier(0.4, 0, 0.2, 1),
     color 0.25s ease;
   will-change: transform;
@@ -251,7 +251,8 @@
 /* ✅ ORANGE SPIN ON HOVER */
 .filterBtn:hover .filterIcon {
   transform: rotate(360deg) scale(1.1);
-  color: #f97316; /* your orange */
+  color: #f97316;
+  /* your orange */
 }
 
 /* Hover State */
@@ -287,12 +288,29 @@
   animation: filterIn 0.4s ease forwards;
 }
 
-.filterBtn:nth-child(1) { animation-delay: 0.05s; }
-.filterBtn:nth-child(2) { animation-delay: 0.1s; }
-.filterBtn:nth-child(3) { animation-delay: 0.15s; }
-.filterBtn:nth-child(4) { animation-delay: 0.2s; }
-.filterBtn:nth-child(5) { animation-delay: 0.25s; }
-.filterBtn:nth-child(6) { animation-delay: 0.3s; }
+.filterBtn:nth-child(1) {
+  animation-delay: 0.05s;
+}
+
+.filterBtn:nth-child(2) {
+  animation-delay: 0.1s;
+}
+
+.filterBtn:nth-child(3) {
+  animation-delay: 0.15s;
+}
+
+.filterBtn:nth-child(4) {
+  animation-delay: 0.2s;
+}
+
+.filterBtn:nth-child(5) {
+  animation-delay: 0.25s;
+}
+
+.filterBtn:nth-child(6) {
+  animation-delay: 0.3s;
+}
 
 @keyframes filterIn {
   to {
@@ -329,6 +347,7 @@
 
 /* Reduced Motion */
 @media (prefers-reduced-motion: reduce) {
+
   .filterBtn,
   .filterIcon {
     transition: none;
