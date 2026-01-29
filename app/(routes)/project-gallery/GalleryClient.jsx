@@ -5,18 +5,16 @@ import Image from "next/image";
 import Lightbox from "../../components/LightBox";
 import Filter from "../../components/Filter";
 import styles from "./Gallery.module.css";
-import CTASection from "../../components/CTASection";
+import Link from "next/link";
 
-export default function GalleryClient({ projects }) {
+export default function GalleryClient({ projects, page = 1, totalPages = 1 }) {
   const [filteredProjects, setFilteredProjects] = useState(projects);
   const [activeFilter, setActiveFilter] = useState("all");
   const [lightboxImage, setLightboxImage] = useState(null);
   const [modalImageIndex, setModalImageIndex] = useState(0);
 
-  // ✅ Refs for entrance animation
   const gridRefs = useRef([]);
 
-  // ✅ CLEAN CATEGORY DEFINITIONS (icons handled in Filter.jsx)
   const categories = [
     { id: "all", label: "All" },
     { id: "millwork", label: "Millwork" },
@@ -28,32 +26,29 @@ export default function GalleryClient({ projects }) {
 
   useEffect(() => {
     const base = Array.isArray(projects) ? projects : [];
-
-    if (activeFilter === "all") {
-      setFilteredProjects(base);
-    } else {
-      const next = base.filter((project) => project.category === activeFilter);
-      setFilteredProjects(next);
-    }
+    setFilteredProjects(
+      activeFilter === "all"
+        ? base
+        : base.filter((p) => p.category === activeFilter),
+    );
   }, [activeFilter, projects]);
 
-  /* ✅ FILTER RE-TRIGGER ANIMATION SAFELY */
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
             entry.target.classList.add(styles.visible);
-            observer.unobserve(entry.target); // ✅ prevent flicker
+            observer.unobserve(entry.target);
           }
         });
       },
-      { threshold: 0.2 }
+      { threshold: 0.2 },
     );
 
     gridRefs.current.forEach((el) => {
       if (el) {
-        el.classList.remove(styles.visible); // ✅ reset before observe
+        el.classList.remove(styles.visible);
         observer.observe(el);
       }
     });
@@ -61,13 +56,12 @@ export default function GalleryClient({ projects }) {
     return () => observer.disconnect();
   }, [filteredProjects]);
 
-  const handleFilterChange = (categoryId) => {
-    setActiveFilter(categoryId);
-  };
-
-  const openLightbox = (image, project, index = 0) => {
+  const openLightbox = (cover, project, index = 0) => {
+    if (!cover) return;
     setLightboxImage({
-      ...image,
+      ...cover,
+      // make Lightbox use urlLightbox
+      url: cover.urlLightbox || cover.url,
       projectTitle: project.title,
       fullProject: project,
     });
@@ -81,35 +75,36 @@ export default function GalleryClient({ projects }) {
 
   return (
     <main className={styles.main}>
-      {/* ✅ FILTER */}
       <Filter
         categories={categories}
         activeFilter={activeFilter}
-        onFilterChange={handleFilterChange}
+        onFilterChange={setActiveFilter}
         minimal
       />
 
-      {/* ✅ GALLERY GRID */}
       <section className={styles.gallerySection}>
         <div className={styles.container}>
           <div className={styles.projectsGrid}>
             {filteredProjects.map((project, index) => {
-              const image = project.images?.[0]?.asset?.asset?.url;
+              const cover = project.cover;
+              const src = cover?.urlGrid || cover?.url;
 
               return (
                 <article
                   ref={(el) => (gridRefs.current[index] = el)}
                   className={styles.projectCard}
-                  onClick={() => openLightbox(project.images?.[0], project, 0)}
+                  onClick={() => openLightbox(cover, project, 0)}
                   key={project._id}
                 >
                   <div className={styles.projectImage}>
-                    {image && (
+                    {src && (
                       <Image
-                        src={image}
-                        alt={project.title}
+                        src={src}
+                        alt={cover?.alt || project.title}
                         fill
                         className={styles.projectImg}
+                        sizes="(max-width: 768px) 100vw, 33vw"
+                        unoptimized
                       />
                     )}
                   </div>
@@ -122,10 +117,34 @@ export default function GalleryClient({ projects }) {
               );
             })}
           </div>
+
+          {/* Pagination */}
+          <nav className={styles.pagination} aria-label="Gallery pages">
+            <Link
+              className={styles.pageBtn}
+              href={`/project-gallery?page=${Math.max(1, page - 1)}`}
+              aria-disabled={page <= 1}
+              tabIndex={page <= 1 ? -1 : 0}
+            >
+              ← Prev
+            </Link>
+
+            <div className={styles.pageMeta}>
+              Page {page} / {totalPages}
+            </div>
+
+            <Link
+              className={styles.pageBtn}
+              href={`/project-gallery?page=${Math.min(totalPages, page + 1)}`}
+              aria-disabled={page >= totalPages}
+              tabIndex={page >= totalPages ? -1 : 0}
+            >
+              Next →
+            </Link>
+          </nav>
         </div>
       </section>
 
-      {/* ✅ LIGHTBOX */}
       {lightboxImage && (
         <Lightbox
           lightboxImage={lightboxImage}
@@ -134,7 +153,6 @@ export default function GalleryClient({ projects }) {
           closeLightbox={closeLightbox}
         />
       )}
-      <CTASection />
     </main>
   );
 }

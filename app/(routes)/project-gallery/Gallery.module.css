@@ -16,7 +16,7 @@
 }
 
 /* ============================
-   GALLERY GRID
+   GALLERY MASONRY
 ============================ */
 
 .gallerySection {
@@ -24,9 +24,8 @@
 }
 
 .projectsGrid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
-  gap: 3.5rem 3rem;
+  column-count: 3;
+  column-gap: 3rem;
 }
 
 /* ============================
@@ -34,9 +33,15 @@
 ============================ */
 
 .projectCard {
+  break-inside: avoid;
+  /* Prevents cards from breaking across columns */
+  margin-bottom: 3rem;
   cursor: pointer;
   background: transparent;
   transition: transform 0.4s ease;
+  display: inline-block;
+  /* Fixes weird spacing issues */
+  width: 100%;
 }
 
 .projectCard:hover {
@@ -47,7 +52,6 @@
 .projectImage {
   position: relative;
   width: 100%;
-  height: 320px;
   overflow: hidden;
   background: #eae8e3;
   border-radius: 2px;
@@ -61,7 +65,6 @@
 .projectCard:hover .projectImg {
   transform: scale(1.05);
 }
-
 
 /* Info */
 .projectInfo {
@@ -90,18 +93,18 @@
 
 @media (max-width: 1024px) {
   .projectsGrid {
-    gap: 3rem 2.5rem;
+    column-count: 2;
+    column-gap: 2.5rem;
   }
 }
 
 @media (max-width: 768px) {
   .projectsGrid {
-    grid-template-columns: 1fr;
-    gap: 2.5rem;
+    column-count: 1;
   }
 
-  .projectImage {
-    height: 280px;
+  .projectCard {
+    margin-bottom: 2.5rem;
   }
 }
 
@@ -109,12 +112,7 @@
   .container {
     padding: 0 1.25rem;
   }
-
-  .projectImage {
-    height: 240px;
-  }
 }
-
 
 /* === ENTRANCE MOTION === */
 
@@ -155,6 +153,18 @@
   transition-delay: 0.3s;
 }
 
+.projectCard:nth-child(7) {
+  transition-delay: 0.35s;
+}
+
+.projectCard:nth-child(8) {
+  transition-delay: 0.4s;
+}
+
+.projectCard:nth-child(9) {
+  transition-delay: 0.45s;
+}
+
 /* Motion safety */
 @media (prefers-reduced-motion: reduce) {
   .projectCard {
@@ -162,15 +172,4 @@
     transform: none;
     transition: none;
   }
-}
-
-.projectCard {
-  opacity: 0;
-  transform: translateY(20px);
-  transition: opacity 0.6s ease, transform 0.6s ease;
-}
-
-.visible {
-  opacity: 1;
-  transform: translateY(0);
 }

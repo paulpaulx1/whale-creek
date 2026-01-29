@@ -28,8 +28,8 @@ const projectQuery = `
       alt,
       caption,
       "url": asset.asset->url,
-      "urlOptimized": asset.asset->url + "?w=800&h=800&fit=max&auto=format",
-      "urlLightbox": asset.asset->url + "?w=2400&auto=format&q=85",
+      "urlGrid": asset.asset->url + "?w=1600&fit=max&auto=format&q=80",
+      "urlLightbox": asset.asset->url + "?w=2200&fit=max&auto=format&q=82",
       "dimensions": asset.asset->metadata.dimensions
     }
   }
