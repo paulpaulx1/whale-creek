@@ -48,10 +48,10 @@ export default function MasonryGallery({ images = [], title = "" }) {
             >
               <div className={styles.masonryImageWrap}>
                 <Image
-                  src={img.url}
+                  src={img.urlOptimized} // Use smaller version for grid
                   alt={img.alt || `${title} photo ${idx + 1}`}
-                  width={img.dimensions?.width || 1200}
-                  height={img.dimensions?.height || 900}
+                  width={800}
+                  height={800}
                   className={styles.masonryImage}
                   sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 40vw"
                 />
@@ -85,7 +85,7 @@ export default function MasonryGallery({ images = [], title = "" }) {
 
             <div className={styles.lightboxMedia}>
               <Image
-                src={active.url}
+                src={active.urlLightbox} // Use larger but still optimized version
                 alt={active.alt || title}
                 fill
                 className={styles.lightboxImg}
