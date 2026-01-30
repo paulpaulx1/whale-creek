@@ -6,18 +6,21 @@ import Link from "next/link";
 import Image from "next/image";
 import styles from "./Navigation.module.css";
 
-const navItems = [
-  { href: "/", label: "About" },
-  { href: "/indianapolis-general-contractor", label: "Services" },
-  { href: "/project-gallery", label: "Gallery" },
-  { href: "/blog", label: "Blog" },
-  { href: "/indianapolis-woodworker-contact", label: "Contact" },
-];
-
 export default function Navigation() {
   const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const pathname = usePathname();
+
+  const navItems = [
+    {
+      href: pathname === "/" ? "#about" : "/#about",
+      label: "About",
+    },
+    { href: "/indianapolis-general-contractor", label: "Services" },
+    { href: "/project-gallery", label: "Gallery" },
+    { href: "/blog", label: "Blog" },
+    { href: "/indianapolis-woodworker-contact", label: "Contact" },
+  ];
 
   useEffect(() => {
     const handleScroll = () => {
@@ -29,7 +32,7 @@ export default function Navigation() {
     };
 
     handleScroll();
-    window.addEventListener("scroll", handleScroll);
+    window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, [pathname]);
 
@@ -64,8 +67,8 @@ export default function Navigation() {
               <div className={styles.logoIcon}>
                 <Image
                   className={styles.logoImage}
-                  width="60"
-                  height="60"
+                  width={60}
+                  height={60}
                   src="/images/whaleCreek.png"
                   alt="Whale Creek Logo"
                 />

@@ -9,7 +9,7 @@ const videos = [
     title: "Residential Renovation",
     src: "/videos/whale-creek-720p.mp4",
     poster: "/images/video-poster.jpg",
-    location: "Noblesville, Indiana",
+    location: "Avon, Indiana",
   },
 ];
 

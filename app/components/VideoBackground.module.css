@@ -7,7 +7,6 @@
   height: 100%;
   z-index: 1;
   pointer-events: none;
-  overflow: hidden;
 }
 
 .videoSlide {
@@ -28,17 +27,6 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
-  animation: heroBackgroundZoom 1.5s ease-out;
-}
-
-@keyframes heroBackgroundZoom {
-  from {
-    transform: scale(1.08);
-  }
-
-  to {
-    transform: scale(1);
-  }
 }
 
 /* Dark overlay shroud for text legibility */
@@ -49,22 +37,8 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, 0.4);
+  background: rgba(8, 7, 17, 0.4);
   z-index: 2;
-}
-
-/* Video poster/placeholder gradient */
-.videoPoster {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 50%, #1a1a1a 100%);
-  /* OR for a warmer construction/wood tone: */
-  /* background: linear-gradient(135deg, #2c2420 0%, #3d3530 50%, #2c2420 100%); */
-  z-index: 0;
-  pointer-events: none;
 }
 
 /* Project info - bottom left corner */
@@ -77,19 +51,7 @@
   max-width: 300px;
   pointer-events: auto;
   text-align: left;
-  animation: heroContentFadeUp 0.8s ease-out 0.9s both;
-}
-
-@keyframes heroContentFadeUp {
-  from {
-    opacity: 0;
-    transform: translateY(30px);
-  }
-
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  /* Ensure left alignment */
 }
 
 .projectTitle {
@@ -247,11 +209,22 @@
 /* Reduced motion */
 @media (prefers-reduced-motion: reduce) {
 
-  .video,
-  .projectInfo,
   .videoSlide,
   .dot {
-    animation: none;
     transition: none;
   }
+}
+
+/* Video poster/placeholder gradient */
+.videoPoster {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 50%, #1a1a1a 100%);
+  /* OR for a warmer construction/wood tone: */
+  /* background: linear-gradient(135deg, #2c2420 0%, #3d3530 50%, #2c2420 100%); */
+  z-index: 0;
+  pointer-events: none;
 }

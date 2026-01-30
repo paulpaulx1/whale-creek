@@ -36,19 +36,21 @@
   width: 100%;
   z-index: 1000;
   transition: all 0.3s ease;
-  background: rgba(0, 0, 0, 0.3);
+  background: rgba(12, 27, 45, 0.746);
+  /* var(--navy-deep) */
+  border-bottom: 1px solid rgba(255, 255, 255, 0.18);
   padding: 2rem 0;
-  border-bottom: 2px solid white;
+
 }
 
 .navScrolled {
-  background: rgba(0, 0, 0, 0.7);
+  background: color-mix(in srgb, var(--navy-deep) 95%, transparent);
   backdrop-filter: blur(10px);
   padding: 1rem 0;
+  border-bottom: 1px solid color-mix(in srgb, #ffffff 14%, transparent);
 }
 
 .navContainer {
-  max-width: 1200px;
   margin: 0 auto;
   display: flex;
   justify-content: space-between;
@@ -98,6 +100,7 @@
   flex-shrink: 0;
   transition: all 0.3s ease;
   border-radius: 8px;
+  margin-right: 16px;
 }
 
 .logoIcon:hover {
@@ -147,7 +150,8 @@
   left: 0;
   width: 0;
   height: 1px;
-  background: rgba(255, 255, 255, 0.8);
+  background: white;
+
   transition: width 0.3s ease;
 }
 
@@ -229,7 +233,9 @@
   width: 320px;
   max-width: 85vw;
   height: 100vh;
-  background: rgba(26, 26, 26, 0.98);
+
+  background: rgba(11, 31, 58, 0.96);
+
   backdrop-filter: blur(20px);
   transform: translateX(100%);
   transition: transform 0.3s ease;
@@ -400,393 +406,6 @@
   }
 
   .mobileNavLink {
-    opacity: 1;
-    transform: translateX(0);
-  }
-
-  .backdrop {
-    animation: none;
-    opacity: 1;
-  }
-}
-
-/* Navigation.module.css - Refined like Whale Creek */
-.nav {
-  position: fixed;
-  top: 0;
-  width: 100%;
-  z-index: 1000;
-  transition: all 0.3s ease;
-  background: rgba(0, 0, 0, 0.3);
-  padding: 2rem 0;
-  border-bottom: 2px solid white;
-}
-
-.navScrolled {
-  background: rgba(0, 0, 0, 0.7);
-  backdrop-filter: blur(10px);
-  padding: 1rem 0;
-}
-
-.navContainer {
-  max-width: 1200px;
-  margin: 0 auto;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 0 2rem;
-}
-
-/* Logo/Brand */
-.brand {
-  z-index: 1001;
-}
-
-.brandLink {
-  text-decoration: none;
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-}
-
-.brandText {
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-  font-size: 1.2rem;
-  font-weight: 600;
-  color: rgba(255, 255, 255, 0.9);
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-  transition: color 0.3s ease;
-}
-
-.brandText:hover {
-  color: #ffffff;
-}
-
-.logoWrapper {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-}
-
-.logoIcon {
-  width: 45px;
-  height: 45px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-shrink: 0;
-  transition: all 0.3s ease;
-  border-radius: 8px;
-}
-
-.logoIcon:hover {
-  transform: scale(1.05);
-}
-
-.logoImage {
-  border-radius: 8px;
-  transition: all 0.3s ease;
-  filter: brightness(0) saturate(100%) invert(1);
-}
-
-/* Keep white filter even when scrolled */
-.navScrolled .logoImage {
-  filter: brightness(0) saturate(100%) invert(1);
-}
-
-/* Desktop Menu */
-.desktopMenu {
-  display: flex;
-  gap: 3rem;
-  align-items: center;
-}
-
-.navLink {
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-  font-size: 0.9rem;
-  font-weight: 400;
-  color: rgba(255, 255, 255, 0.9);
-  text-decoration: none;
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-  position: relative;
-  transition: color 0.3s ease;
-  padding: 0.5rem 0;
-}
-
-.navLink::after {
-  content: '';
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 0;
-  height: 1px;
-  background: rgba(255, 255, 255, 0.8);
-  transition: width 0.3s ease;
-}
-
-.navLink:hover::after {
-  width: 100%;
-}
-
-.navLink:hover {
-  color: #ffffff;
-}
-
-/* Mobile Menu Toggle */
-.menuToggle {
-  display: none;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  width: 30px;
-  height: 30px;
-  background: none;
-  border: none;
-  cursor: pointer;
-  z-index: 1001;
-  padding: 0;
-  opacity: 1;
-  visibility: visible;
-  transition: opacity 0.3s ease, visibility 0.3s ease;
-}
-
-/* Hide hamburger when menu is open */
-.menuToggle.menuOpen {
-  opacity: 0;
-  visibility: hidden;
-}
-
-.menuLine {
-  width: 22px;
-  height: 2px;
-  background: #ffffff;
-  margin: 2px 0;
-  transition: all 0.3s ease;
-  transform-origin: center;
-}
-
-.menuToggle.menuOpen .menuLine:nth-child(1) {
-  transform: rotate(45deg) translate(5px, 5px);
-}
-
-.menuToggle.menuOpen .menuLine:nth-child(2) {
-  opacity: 0;
-}
-
-.menuToggle.menuOpen .menuLine:nth-child(3) {
-  transform: rotate(-45deg) translate(7px, -6px);
-}
-
-/* Mobile Menu Overlay */
-.mobileMenuOverlay {
-  position: fixed;
-  top: 0;
-  right: 0;
-  width: 100%;
-  height: 100vh;
-  z-index: 999;
-  pointer-events: none;
-  opacity: 0;
-  transition: opacity 0.3s ease;
-}
-
-.mobileMenuOverlay.overlayOpen {
-  pointer-events: all;
-  opacity: 1;
-}
-
-.mobileMenu {
-  position: absolute;
-  top: 0;
-  right: 0;
-  width: 320px;
-  max-width: 85vw;
-  height: 100vh;
-  background: rgba(26, 26, 26, 0.98);
-  backdrop-filter: blur(20px);
-  transform: translateX(100%);
-  transition: transform 0.3s ease;
-  padding: 2rem;
-  border-left: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-.overlayOpen .mobileMenu {
-  transform: translateX(0);
-}
-
-.mobileMenuHeader {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 3rem;
-  padding-bottom: 1rem;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-.mobileMenuTitle {
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-  font-size: 1.1rem;
-  font-weight: 300;
-  color: #ffffff;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-}
-
-.closeButton {
-  background: none;
-  border: none;
-  color: rgba(255, 255, 255, 0.8);
-  cursor: pointer;
-  padding: 0;
-  width: 24px;
-  height: 24px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: color 0.3s ease;
-}
-
-.closeButton:hover {
-  color: #ffffff;
-}
-
-.mobileMenuItems {
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-}
-
-.mobileNavLink {
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-  font-size: 1.1rem;
-  font-weight: 400;
-  color: rgba(255, 255, 255, 0.8);
-  text-decoration: none;
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-  padding: 1rem 0;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-  transition: all 0.3s ease;
-  opacity: 0;
-  transform: translateX(30px);
-  animation: slideInMobile 0.4s ease forwards;
-}
-
-.mobileNavLink:hover {
-  color: #ffffff;
-  padding-left: 0.5rem;
-}
-
-.mobileNavLink:last-child {
-  border-bottom: none;
-}
-
-/* Backdrop */
-.backdrop {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100vh;
-  background: rgba(0, 0, 0, 0.3);
-  z-index: 998;
-  opacity: 0;
-  animation: fadeInBackdrop 0.3s ease forwards;
-}
-
-/* Animations */
-@keyframes slideInMobile {
-  to {
-    opacity: 1;
-    transform: translateX(0);
-  }
-}
-
-@keyframes fadeInBackdrop {
-  to {
-    opacity: 1;
-  }
-}
-
-/* Responsive Design */
-@media (max-width: 768px) {
-  .desktopMenu {
-    display: none;
-  }
-
-  .menuToggle {
-    display: flex;
-  }
-
-  .navContainer {
-    padding: 0 1rem;
-  }
-
-  .nav {
-    padding: 1.5rem 0;
-  }
-
-  .navScrolled {
-    padding: 1rem 0;
-  }
-
-  .brandText {
-    font-size: 1rem;
-  }
-
-  .logoIcon {
-    width: 40px;
-    height: 40px;
-  }
-}
-
-@media (max-width: 480px) {
-  .nav {
-    padding: 1rem 0;
-  }
-
-  .navScrolled {
-    padding: 0.75rem 0;
-  }
-
-  .mobileMenu {
-    width: 100%;
-    max-width: 100vw;
-  }
-
-  .brandText {
-    font-size: 0.9rem;
-  }
-}
-
-/* Accessibility */
-.navLink:focus,
-.brandLink:focus,
-.menuToggle:focus,
-.mobileNavLink:focus,
-.closeButton:focus {
-  outline: 2px solid rgba(255, 255, 255, 0.8);
-  outline-offset: 5px;
-}
-
-/* Reduced motion */
-@media (prefers-reduced-motion: reduce) {
-
-  .nav,
-  .navLink,
-  .brandText,
-  .menuLine,
-  .mobileMenuOverlay,
-  .mobileMenu,
-  .mobileNavLink,
-  .closeButton {
-    transition: none;
-  }
-
-  .mobileNavLink {
-    animation: none;
     opacity: 1;
     transform: translateX(0);
   }

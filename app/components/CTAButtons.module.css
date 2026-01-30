@@ -80,7 +80,7 @@
   transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
   position: relative;
   z-index: 2;
-  color: var(--primary-yellow) !important;
+  color: #f97316 !important;
   width: 32px !important;
   height: 32px !important;
 }

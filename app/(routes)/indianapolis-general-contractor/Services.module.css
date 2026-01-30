@@ -1,10 +1,61 @@
 /* ================================
+   KEYFRAME ANIMATIONS
+================================ */
+
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* ================================
    PAGE WRAPPER
 ================================ */
 
 .main {
   padding-top: 80px;
-  background: #f6f6f4;
+  background: var(--bg-cream);
   /* vellum */
   min-height: 100vh;
   font-family: var(--font-space), -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
@@ -28,6 +79,7 @@
   object-fit: cover;
   object-position: center;
   z-index: 1;
+  animation: fadeIn 1s ease-out;
 }
 
 /* dark overlay for readability */
@@ -58,6 +110,9 @@
   text-transform: uppercase;
   color: #ffffff;
   margin-bottom: 1.5rem;
+  animation: fadeInDown 0.8s ease-out;
+  animation-fill-mode: both;
+  animation-delay: 0.2s;
 }
 
 .servicesHeroContent p {
@@ -65,6 +120,9 @@
   font-size: 1.2rem;
   line-height: 1.7;
   color: rgba(255, 255, 255, 0.88);
+  animation: fadeInDown 0.8s ease-out;
+  animation-fill-mode: both;
+  animation-delay: 0.4s;
 }
 
 /* ================================
@@ -73,7 +131,7 @@
 
 .services {
   padding: 7rem 2rem 6rem;
-  background: #f6f6f4;
+  background: var(--bg-cream);
   /* vellum */
   color: #1e1e1e;
   position: relative;
@@ -108,13 +166,21 @@
 
 .serviceSection {
   margin-bottom: 5rem;
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.visible {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 .serviceContent {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 4rem;
-  align-items: center;
+
 
   background: rgba(255, 255, 255, 0.7);
   border: 1px solid rgba(0, 0, 0, 0.18);
@@ -212,6 +278,24 @@
   margin-bottom: 0.85rem;
   font-size: 0.95rem;
   color: #2a2a2a;
+  animation: slideIn 0.5s ease-out;
+  animation-fill-mode: both;
+}
+
+.visible .serviceFeatures li:nth-child(1) {
+  animation-delay: 0.3s;
+}
+
+.visible .serviceFeatures li:nth-child(2) {
+  animation-delay: 0.4s;
+}
+
+.visible .serviceFeatures li:nth-child(3) {
+  animation-delay: 0.5s;
+}
+
+.visible .serviceFeatures li:nth-child(4) {
+  animation-delay: 0.6s;
 }
 
 .serviceFeatures i {
@@ -231,7 +315,136 @@
 }
 
 .serviceImg {
-  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.serviceContent:hover .serviceImg {
+  transform: scale(1.05);
+}
+
+/* ================================
+   SERVICE AREAS — VELLUM + DARK BUTTONS
+================================ */
+
+.serviceAreasSection {
+  position: relative;
+  padding: 6rem 2rem 7rem;
+  background: var(--bg-cream);
+  color: #1e1e1e;
+  overflow: hidden;
+}
+
+/* Subtle drafting grid for light background */
+.serviceAreasSection::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(0, 0, 0, 0.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 0, 0, 0.035) 1px, transparent 1px),
+    linear-gradient(rgba(0, 0, 0, 0.015) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 0, 0, 0.015) 1px, transparent 1px);
+  background-size: 120px 120px, 120px 120px, 24px 24px, 24px 24px;
+  background-position: -1px -1px;
+  z-index: 1;
+}
+
+.serviceAreasContainer {
+  position: relative;
+  z-index: 2;
+  max-width: 1100px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+/* Description text */
+.serviceAreasContainer>p {
+  margin-top: 2.5rem;
+  font-size: 1.05rem;
+  line-height: 1.7;
+  color: #2a2a2a;
+  max-width: 760px;
+  margin-left: auto;
+  margin-right: auto;
+  animation: fadeIn 0.8s ease-out;
+  animation-delay: 0.2s;
+  animation-fill-mode: both;
+}
+
+/* Area button grid */
+.serviceAreasList {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem 1.2rem;
+  margin-bottom: 2.5rem;
+}
+
+/* Individual area buttons */
+.serviceArea {
+  background: rgba(255, 255, 255, 0.85);
+  color: #1e1e1e;
+  border: 1px solid rgba(0, 0, 0, 0.18);
+  padding: 0.75rem 1.5rem;
+  font-size: 0.9rem;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  border-radius: 2px;
+  transition: all 0.25s ease;
+  white-space: nowrap;
+  animation: fadeInUp 0.5s ease-out;
+  animation-fill-mode: both;
+  cursor: default;
+}
+
+/* Stagger the area chips */
+.serviceArea:nth-child(1) {
+  animation-delay: 0.05s;
+}
+
+.serviceArea:nth-child(2) {
+  animation-delay: 0.1s;
+}
+
+.serviceArea:nth-child(3) {
+  animation-delay: 0.15s;
+}
+
+.serviceArea:nth-child(4) {
+  animation-delay: 0.2s;
+}
+
+.serviceArea:nth-child(5) {
+  animation-delay: 0.25s;
+}
+
+.serviceArea:nth-child(6) {
+  animation-delay: 0.3s;
+}
+
+.serviceArea:nth-child(7) {
+  animation-delay: 0.35s;
+}
+
+.serviceArea:nth-child(8) {
+  animation-delay: 0.4s;
+}
+
+.serviceArea:nth-child(9) {
+  animation-delay: 0.45s;
+}
+
+.serviceArea:nth-child(10) {
+  animation-delay: 0.5s;
+}
+
+/* Orange drafting hover */
+.serviceArea:hover {
+  border-color: #f97316;
+  color: #f97316;
+  background: rgba(249, 115, 22, 0.08);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(249, 115, 22, 0.15);
 }
 
 /* ================================
@@ -247,6 +460,14 @@
 @media (max-width: 768px) {
   .services {
     padding: 5rem 1rem 4rem;
+  }
+
+  .servicesHeroContent h1 {
+    font-size: 2.5rem;
+  }
+
+  .servicesHeroContent p {
+    font-size: 1.05rem;
   }
 
   .serviceContent {
@@ -266,112 +487,7 @@
   .serviceImage {
     height: 300px;
   }
-}
 
-@media (max-width: 480px) {
-  .serviceContent {
-    padding: 1.75rem;
-  }
-
-  .serviceText h2 {
-    font-size: 1.7rem;
-  }
-}
-
-.serviceSection {
-  opacity: 0;
-  transform: translateY(40px);
-  transition: opacity 0.8s ease, transform 0.8s ease;
-}
-
-.visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-/* ================================
-   SERVICE AREAS — CHARCOAL + VELLUM
-================================ */
-
-.serviceAreasSection {
-  position: relative;
-  padding: 6rem 2rem 7rem;
-  background: #1e1e1e;
-  /* charcoal */
-  color: #f6f6f4;
-  overflow: hidden;
-}
-
-/* Subtle drafting grid */
-.serviceAreasSection::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background-image:
-    linear-gradient(rgba(255, 255, 255, 0.06) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255, 255, 255, 0.06) 1px, transparent 1px),
-    linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
-  background-size: 120px 120px, 120px 120px, 24px 24px, 24px 24px;
-  background-position: -1px -1px;
-  z-index: 1;
-}
-
-.serviceAreasContainer {
-  position: relative;
-  z-index: 2;
-  max-width: 1100px;
-  margin: 0 auto;
-  text-align: center;
-}
-
-/* Vellum panel */
-.serviceAreasContainer>p {
-  margin-top: 2.5rem;
-  font-size: 1.05rem;
-  line-height: 1.7;
-  color: rgba(255, 255, 255, 0.85);
-  max-width: 760px;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-/* Area pill grid */
-.serviceAreasList {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 1rem 1.2rem;
-  margin-bottom: 2.5rem;
-}
-
-/* Individual area "chips" */
-.serviceArea {
-  background: rgba(255, 255, 255, 0.05);
-  color: #f6f6f4;
-  border: 1px solid rgba(255, 255, 255, 0.25);
-  padding: 0.7rem 1.4rem;
-  font-size: 0.9rem;
-  letter-spacing: 0.04em;
-  border-radius: 2px;
-  /* architectural edge, not pill */
-  transition: all 0.25s ease;
-  white-space: nowrap;
-}
-
-/* Orange drafting hover */
-.serviceArea:hover {
-  border-color: #f97316;
-  color: #f97316;
-  background: rgba(249, 115, 22, 0.06);
-  transform: translateY(-2px);
-}
-
-/* ================================
-   RESPONSIVE
-================================ */
-
-@media (max-width: 768px) {
   .serviceAreasSection {
     padding: 4.5rem 1rem 5.5rem;
   }
@@ -387,6 +503,19 @@
 }
 
 @media (max-width: 480px) {
+  .servicesHeroContent h1 {
+    font-size: 2rem;
+    letter-spacing: 2px;
+  }
+
+  .serviceContent {
+    padding: 1.75rem;
+  }
+
+  .serviceText h2 {
+    font-size: 1.7rem;
+  }
+
   .serviceAreasContainer>p {
     font-size: 0.95rem;
   }

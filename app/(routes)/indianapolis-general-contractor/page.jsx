@@ -42,7 +42,7 @@ export async function generateMetadata() {
   return generatePageMetadata(
     servicesConfig,
     [],
-    "https://whalecreek.co/indianapolis-general-contractor"
+    "https://whalecreek.co/indianapolis-general-contractor",
   );
 }
 
@@ -58,21 +58,19 @@ export default async function Services() {
     {
       id: "outdoor-living-deck-building-indianapolis",
       title: "Outdoor Living Spaces",
-      image: "/images/Noblesville-Deck.JPG",
+      image: "/images/Pergola.JPG",
       description:
         "We design and build decks, pergolas, patios, sunrooms, and outdoor structures to extend your living space. From quiet backyard retreats to entertainment-ready decks, our outdoor projects are thoughtfully designed, structurally sound, and built for Indiana's climate.",
       details:
         "We account for Indiana's freeze-thaw cycles, drainage, and structural load standards to ensure every outdoor structure holds up for decades.",
       blueprint: "OUT_001",
-      features: [
-
-      ],
+      features: [],
       additionalInfo: "",
     },
     {
       id: "residential-general-contractor-indianapolis",
       title: "Residential Renovation Services",
-      image: "/images/Westfield_Sunroom.jpeg",
+      image: "/images/ScreenSunroom.jpg",
       description:
         "As experienced general contractors in Indianapolis, we guide homeowners through renovation projects of all kinds. Our renovation work commonly includes:",
       blueprint: "RES_001",
@@ -87,7 +85,7 @@ export default async function Services() {
     {
       id: "commercial-general-contractors-indianapolis",
       title: "Commercial Projects",
-      image: "/images/Patio_Indianapolis.jpg",
+      image: "/images/Covry Mirror.png",
       description:
         "Whale Creek Co partners with businesses seeking a dependable manufacturing and fabrication shop. Whether you need custom furniture, retail buildouts, or specialty wood products, we're here for you from early prototyping to full-scale production.",
       details:
@@ -104,7 +102,7 @@ export default async function Services() {
     {
       id: "custom-millwork-woodworking-indianapolis",
       title: "Custom Woodworking & Millwork",
-      image: "/images/Pocket_Doors.jpeg",
+      image: "/images/built-in-cabinet.jpg",
       description:
         "We produce custom woodwork and millwork for commercial and residential applications, ranging from standalone pieces to integrated architectural elements. Our state-of-the-art CNC milling technology allows us to execute complex cuts, intricate patterns, and tight precision across both short runs and larger production volumes.",
       details: "Common projects include:",

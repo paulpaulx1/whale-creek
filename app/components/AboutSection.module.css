@@ -5,14 +5,16 @@
   line-height: 1.6;
   position: relative;
   padding: 10rem 2rem;
-  margin: 4rem 0;
+
   overflow: hidden;
 }
 
+
 .container {
-  max-width: 1200px;
-  width: 100%;
-  margin: 0 auto;
+  /* max-width: 1200px; */
+  /* background: #fafafa; */
+  padding: 1rem 3rem;
+  width: 100vw;
   position: relative;
   z-index: 2;
 }
@@ -115,7 +117,7 @@
 /* --- NEW: How we help card --- */
 .helpCard {
   margin-top: 2.25rem;
-  background: #ffffff;
+  /* background: #ffffff; */
   border: 1px solid rgba(38, 50, 56, 0.16);
   border-radius: 18px;
   padding: 2.25rem 2.25rem 2rem 2.25rem;
@@ -155,7 +157,7 @@
   width: 8px;
   height: 8px;
   border-radius: 999px;
-  background: #ff6b35;
+  background: var(--teal);
   opacity: 0.9;
 }
 
@@ -301,7 +303,6 @@
   /* was ~0.9 */
   font-weight: 750;
   /* heavier */
-  color: rgba(38, 50, 56, 0.78);
   margin: 0;
 }
 
@@ -310,7 +311,7 @@
   display: block;
   width: 56px;
   height: 2px;
-  background: rgba(38, 50, 56, 0.22);
+  background: var(--teal);
   margin: 14px auto 0 auto;
   border-radius: 999px;
 }

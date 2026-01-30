@@ -29,7 +29,7 @@ const AboutContent = () => {
   const cx = (...classes) => classes.filter(Boolean).join(" ");
 
   return (
-    <div className={styles.container}>
+    <div className={styles.container} id="about">
       {/* ✅ Section-level header (centered, above everything) */}
       <header className={styles.sectionHeader}>
         <p className={styles.sectionKicker}>About Whale Creek</p>
