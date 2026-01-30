@@ -23,6 +23,14 @@ const projectQuery = `
     tags,
     testimonial,
     featured,
+    video {
+      asset->{
+        playbackId,
+        data {
+          aspect_ratio
+        }
+      }
+    },
     images[]{
       _key,
       alt,
@@ -123,7 +131,11 @@ export default async function ProjectPage({ params }) {
 
         {/* Main Content - Masonry Grid */}
         <div className={styles.content}>
-          <MasonryGallery images={project.images || []} title={project.title} />
+          <MasonryGallery 
+            images={project.images || []} 
+            title={project.title}
+            video={project.video || null}
+          />
         </div>
 
         {/* Sidebar - Project Details */}

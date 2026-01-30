@@ -3,14 +3,75 @@
 
 import { useEffect, useMemo, useState } from "react";
 import Image from "next/image";
+import MuxPlayer from "@mux/mux-player-react";
 import styles from "./ProjectPage.module.css";
 
-export default function MasonryGallery({ images = [], title = "" }) {
+function VideoMasonryItem({ playbackId, aspectRatioRaw, title }) {
+  const [videoLoaded, setVideoLoaded] = useState(false);
+
+  // aspectRatioRaw comes from Sanity like "16:9"
+  const parts = String(aspectRatioRaw)
+    .split(":")
+    .map((n) => Number(n));
+  const w = Number.isFinite(parts[0]) ? parts[0] : 16;
+  const h = Number.isFinite(parts[1]) && parts[1] !== 0 ? parts[1] : 9;
+
+  // CSS expects "16 / 9" (NOT "16:9")
+  const cssAspectRatio = `${w} / ${h}`;
+  const isVertical = w / h < 1;
+
+  // Optional: cap vertical videos by height without breaking aspect ratio.
+  // If height would exceed 60vh, width shrinks accordingly.
+
+  const maxWidth = isVertical ? "450px" : "100%";
+
+  return (
+    <div
+      className={styles.videoItem}
+      style={{
+        width: "100%",
+        maxWidth,
+
+        aspectRatio: cssAspectRatio,
+      }}
+    >
+      {!videoLoaded && <div className={styles.videoSkeleton} />}
+
+      <MuxPlayer
+        playbackId={playbackId}
+        metadata={{ video_title: title }}
+        streamType="on-demand"
+        controls
+        autoPlay="muted"
+        loop
+        onLoadedMetadata={() => setVideoLoaded(true)}
+        onCanPlay={() => setVideoLoaded(true)}
+        style={{
+          "--media-object-fit": "cover",
+          "--media-object-position": "center",
+          position: "absolute",
+          inset: 0,
+          width: "100%",
+          height: "100%",
+          opacity: videoLoaded ? 1 : 0,
+          transition: "opacity 0.3s ease",
+        }}
+      />
+    </div>
+  );
+}
+
+export default function MasonryGallery({
+  images = [],
+  title = "",
+  video = null,
+}) {
   const safeImages = useMemo(() => images.filter((img) => img?.url), [images]);
 
   const [activeIndex, setActiveIndex] = useState(0);
   const [open, setOpen] = useState(false);
   const [preloadedIndex, setPreloadedIndex] = useState(null);
+  const [videoLoaded, setVideoLoaded] = useState(false); // Add this
 
   // Preload lightbox image on hover
   const handleMouseEnter = (idx) => {
@@ -66,13 +127,23 @@ export default function MasonryGallery({ images = [], title = "" }) {
     return () => window.removeEventListener("keydown", onKeyDown);
   }, [open, safeImages.length]);
 
-  if (!safeImages.length) return null;
+  if (!safeImages.length && !video?.asset?.playbackId) return null;
 
   const active = safeImages[activeIndex];
 
   return (
     <>
+      {video?.asset?.playbackId && (
+        <VideoMasonryItem
+          playbackId={video.asset.playbackId}
+          aspectRatioRaw={video.asset.data?.aspect_ratio || "16:9"}
+          title={title}
+        />
+      )}
       <div className={styles.masonry}>
+        {/* Video first if it exists */}
+
+        {/* Then all the images */}
         {safeImages.map((img, idx) => {
           const w = img?.dimensions?.width ?? 1600;
           const h = img?.dimensions?.height ?? 1200;

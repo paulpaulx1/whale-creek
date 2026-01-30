@@ -483,3 +483,70 @@
         padding: 24px 24px 12px 24px;
     }
 }
+
+/* ============================================
+   VIDEO CONTAINER
+   ============================================ */
+.videoItem {
+    position: relative;
+    display: inline-block;
+    /* plays nice inside CSS columns */
+    break-inside: avoid;
+    overflow: hidden;
+    /* optional */
+    background: #eee;
+    /* optional */
+}
+
+/* This fills whatever space the aspect-ratio wrapper reserves */
+.videoSkeleton {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(90deg,
+            rgba(0, 0, 0, 0.06) 0%,
+            rgba(0, 0, 0, 0.12) 50%,
+            rgba(0, 0, 0, 0.06) 100%);
+    background-size: 200% 100%;
+    animation: shimmer 1.1s infinite linear;
+}
+
+@keyframes shimmer {
+    0% {
+        background-position: 200% 0;
+    }
+
+    100% {
+        background-position: -200% 0;
+    }
+}
+
+.videoItem {
+    position: relative;
+    display: inline-block;
+    /* good in CSS columns */
+    break-inside: avoid;
+    overflow: hidden;
+    /* optional */
+    background: rgba(0, 0, 0, 0.04);
+}
+
+.videoSkeleton {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(90deg,
+            rgba(0, 0, 0, 0.06) 0%,
+            rgba(0, 0, 0, 0.12) 50%,
+            rgba(0, 0, 0, 0.06) 100%);
+    background-size: 200% 100%;
+    animation: shimmer 1.1s linear infinite;
+}
+
+@keyframes shimmer {
+    0% {
+        background-position: 200% 0;
+    }
+
+    100% {
+        background-position: -200% 0;
+    }
+}
