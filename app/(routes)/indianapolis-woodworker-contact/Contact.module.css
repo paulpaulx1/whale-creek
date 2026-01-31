@@ -73,7 +73,7 @@
 }
 
 /* Vertical divider */
-@media (min-width: 1024px) {
+/* @media (min-width: 1024px) {
   .grid::after {
     content: '';
     position: absolute;
@@ -86,7 +86,7 @@
         rgba(0, 0, 0, 0.15),
         transparent);
   }
-}
+} */
 
 /* =============================
    FORM (VELLUM CARD)
