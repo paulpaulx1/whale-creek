@@ -34,14 +34,13 @@ export default function ContactClient() {
     setIsSubmitting(true);
 
     try {
-      const response = await fetch("https://api.web3forms.com/submit", {
+      const response = await fetch("/api/contact", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          access_key: "da50ebeb-4f05-4ee2-8c37-441bd39d44a0",
-          ...formData,
-        }),
+        body: JSON.stringify(formData),
       });
+
+      const data = await response.json();
 
       if (response.ok) {
         setResult("Thank you — your message is on its way.");
@@ -53,7 +52,7 @@ export default function ContactClient() {
           message: "",
         });
       } else {
-        setResult("Something went wrong. Please try again.");
+        setResult(data.error || "Something went wrong. Please try again.");
       }
     } catch {
       setResult("Error sending message. Please try again.");
