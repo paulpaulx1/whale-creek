@@ -58,7 +58,7 @@ export default async function Services() {
     {
       id: "outdoor-living-deck-building-indianapolis",
       title: "Outdoor Living Spaces",
-      image: "/images/Pergola.JPG",
+      image: "/images/Pergola.jpg",
       description:
         "We design and build decks, pergolas, patios, sunrooms, and outdoor structures to extend your living space. From quiet backyard retreats to entertainment-ready decks, our outdoor projects are thoughtfully designed, structurally sound, and built for Indiana's climate.",
       details:
@@ -102,7 +102,7 @@ export default async function Services() {
     {
       id: "custom-millwork-woodworking-indianapolis",
       title: "Custom Woodworking & Millwork",
-      image: "/images/built-in-cabinet.jpg",
+      image: "/images/built-in-cabinet.JPG",
       description:
         "We produce custom woodwork and millwork for commercial and residential applications, ranging from standalone pieces to integrated architectural elements. Our state-of-the-art CNC milling technology allows us to execute complex cuts, intricate patterns, and tight precision across both short runs and larger production volumes.",
       details: "Common projects include:",
