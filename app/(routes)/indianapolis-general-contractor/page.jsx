@@ -70,7 +70,7 @@ export default async function Services() {
     {
       id: "residential-general-contractor-indianapolis",
       title: "Residential Renovation Services",
-      image: "/images/ScreenSunroom.jpg",
+      image: "/images/AvonInside.jpg",
       description:
         "As experienced general contractors in Indianapolis, we guide homeowners through renovation projects of all kinds. Our renovation work commonly includes:",
       blueprint: "RES_001",

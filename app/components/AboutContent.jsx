@@ -44,7 +44,7 @@ const AboutContent = () => {
           )}
         >
           <h2 className={styles.imageHeadline}>
-            Indianapolis craftsmanship, thoughtful design, and build quality you
+            Midwest craftsmanship, thoughtful design, and build quality you
             can feel.
           </h2>
           <AboutImage />
@@ -80,7 +80,7 @@ const AboutContent = () => {
             <ul className={styles.helpList}>
               <li>Kitchen renovations and full remodels</li>
               <li>Custom millwork, cabinetry, and built-ins</li>
-              <li>Decks, sunrooms, and outdoor structures</li>
+              <li>Decks, sunrooms, and outdoor living</li>
               <li>Custom furniture and fabrication</li>
             </ul>
 

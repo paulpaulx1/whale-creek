@@ -70,7 +70,7 @@ export default function ContactClient() {
             Contact <span>Whale Creek</span>
           </h1>
           <p>
-            Ready to bring your vision to life? <br />
+            Ready to start your project? <br />
             Get in touch with us through email, phone, or by filling out the
             form below.
           </p>
