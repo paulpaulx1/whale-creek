@@ -1,382 +1,498 @@
 .carousel {
-  position: relative;
-  height: 100vh;
-  overflow: hidden;
-  background-color: #0f172a;
-  opacity: 0;
-  transition: opacity 700ms;
+    position: relative;
+    height: 100vh;
+    overflow: hidden;
+    background-color: #0f172a;
+    opacity: 0;
+    transition: opacity 700ms;
 }
 
 .carousel.ready {
-  opacity: 1;
+    opacity: 1;
 }
 
 .slide {
-  position: absolute;
-  inset: 0;
-  opacity: 0;
-  transform: scale(1.05);
-  z-index: 0;
-  pointer-events: none;
-  transition: all 1600ms ease-in-out;
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+    transform: scale(1.05);
+    z-index: 0;
+    pointer-events: none;
+    transition: all 1600ms ease-in-out;
 }
 
 .slide.active {
-  opacity: 1;
-  transform: scale(1);
-  z-index: 10;
-  pointer-events: auto;
+    opacity: 1;
+    transform: scale(1);
+    z-index: 10;
+    pointer-events: auto;
 }
 
 /* Video container */
 .videoContainer {
-  position: absolute;
-  inset: 0;
-  z-index: 0;
-  overflow: hidden;
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    overflow: hidden;
 }
 
 .video {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  z-index: 0;
-  transition: opacity 1s ease-in-out;
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 0;
+    transition: opacity 1s ease-in-out;
 }
 
-/* Image background */
+/* Image background - fade in with zoom */
 .imageBackground {
-  position: absolute;
-  inset: 0;
-  background-size: cover;
-  background-position: center;
-  z-index: 0;
-  transform: scale(1);
-  transition: transform 12000ms ease-out;
+    position: absolute;
+    inset: 0;
+    background-size: cover;
+    background-position: center;
+    z-index: 0;
+    transform: scale(1);
+    opacity: 0;
+    transition: opacity 1200ms ease-out, transform 12000ms ease-out;
+}
+
+.imageBackground.fadeIn {
+    opacity: 1;
 }
 
 .imageBackground.zoom {
-  transform: scale(1.15);
+    transform: scale(1.15);
 }
 
 /* Overlay */
 .overlay {
-  position: absolute;
-  inset: 0;
-  z-index: 10;
-  background: linear-gradient(
-    to bottom,
-    rgba(0, 0, 0, 0.47),
-    rgba(9, 13, 24, 0.54),
-    rgba(8, 12, 21, 0.44)
-  );
+    position: absolute;
+    inset: 0;
+    z-index: 10;
+    background: linear-gradient(to bottom,
+            rgba(0, 0, 0, 0.47),
+            rgba(9, 13, 24, 0.54),
+            rgba(8, 12, 21, 0.44));
 }
 
 .overlay.videoOverlay {
-  background: linear-gradient(
-    to bottom,
-    rgba(15, 23, 42, 0.7),
-    rgba(15, 23, 42, 0.75),
-    rgba(15, 23, 42, 0.85)
-  );
+    background: linear-gradient(to bottom,
+            rgba(15, 23, 42, 0.7),
+            rgba(15, 23, 42, 0.75),
+            rgba(15, 23, 42, 0.85));
 }
 
 /* Content */
 .content {
-  position: relative;
-  z-index: 20;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 100%;
-  text-align: center;
-  color: white;
-  padding: 0 1.5rem;
+    position: relative;
+    z-index: 20;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    text-align: center;
+    color: white;
+    padding: 0 1.5rem;
 }
 
 .contentInner {
-  max-width: 72rem;
-  margin: 0 auto;
-  margin-top: 6rem;
+    max-width: 72rem;
+    margin: 0 auto;
+    margin-top: 6rem;
 }
 
-/* Title */
+/* Title - faster staggered animation */
 .title {
-  font-family: var(--font-bebas);
-  font-size: 4rem;
-  font-weight: 400;
-  letter-spacing: 0.05em;
-  line-height: 1.1;
-  margin-bottom: 2rem;
-  opacity: 0;
-  transform: translateY(2rem);
-  transition: all 700ms;
+    font-family: var(--font-bebas);
+    font-size: 4rem;
+    font-weight: 400;
+    letter-spacing: 0.05em;
+    line-height: 1.1;
+    margin-bottom: 2rem;
+    opacity: 0;
+    transform: translateY(2rem);
+    transition: opacity 700ms cubic-bezier(0.4, 0, 0.2, 1),
+        transform 700ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .title.visible {
-  opacity: 1;
-  transform: translateY(0);
+    opacity: 1;
+    transform: translateY(0);
+    transition-delay: 200ms;
 }
 
-/* Services */
+/* Services - slight delay after title */
 .services {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 0.75rem;
-  font-family: var(--font-montserrat);
-  font-size: 1rem;
-  font-weight: 500;
-  letter-spacing: 0.025em;
-  margin-bottom: 2rem;
-  opacity: 0;
-  transform: translateY(2rem);
-  transition: all 700ms;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.75rem;
+    font-family: var(--font-montserrat);
+    font-size: 1rem;
+    font-weight: 500;
+    letter-spacing: 0.025em;
+    margin-bottom: 2rem;
+    opacity: 0;
+    transform: translateY(2rem);
+    transition: opacity 600ms cubic-bezier(0.4, 0, 0.2, 1),
+        transform 600ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .services.visible {
-  opacity: 1;
-  transform: translateY(0);
+    opacity: 1;
+    transform: translateY(0);
+    transition-delay: 350ms;
 }
 
 .service {
-  color: rgba(255, 255, 255, 0.95);
-  font-weight: 500;
+    color: rgba(255, 255, 255, 0.95);
+    font-weight: 500;
 }
 
 .divider {
-  color: rgba(255, 255, 255, 0.6);
-  font-weight: 400;
-  display: none;
+    color: rgba(255, 255, 255, 0.6);
+    font-weight: 400;
+    display: none;
 }
 
-/* Description */
+/* Description - cascading effect */
 .description {
-  font-family: var(--font-montserrat);
-  font-size: 1.125rem;
-  font-weight: 300;
-  max-width: 48rem;
-  margin: 0 auto 3rem;
-  color: rgba(255, 255, 255, 1);
-  line-height: 1.75;
-  opacity: 0;
-  transform: translateY(2rem);
-  transition: all 700ms;
+    font-family: var(--font-montserrat);
+    font-size: 1.125rem;
+    font-weight: 300;
+    max-width: 48rem;
+    margin: 0 auto 3rem;
+    color: rgba(255, 255, 255, 1);
+    line-height: 1.75;
+    opacity: 0;
+    transform: translateY(2rem);
+    transition: opacity 600ms cubic-bezier(0.4, 0, 0.2, 1),
+        transform 600ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .description.visible {
-  opacity: 1;
-  transform: translateY(0);
+    opacity: 1;
+    transform: translateY(0);
+    transition-delay: 500ms;
 }
 
-/* CTAs */
+/* CTAs - final element in cascade */
 .ctas {
-  display: flex;
-  flex-direction: column;
-  gap: 1.5rem;
-  justify-content: center;
-  opacity: 0;
-  transform: translateY(2rem);
-  transition: all 700ms;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    justify-content: center;
+    opacity: 0;
+    transform: translateY(2rem);
+    transition: opacity 600ms cubic-bezier(0.4, 0, 0.2, 1),
+        transform 600ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .ctas.visible {
-  opacity: 1;
-  transform: translateY(0);
+    opacity: 1;
+    transform: translateY(0);
+    transition-delay: 650ms;
 }
 
 .ctaPrimary,
 .ctaSecondary {
-  padding: 1rem 2rem;
-  font-family: var(--font-montserrat);
-  font-weight: 500;
-  letter-spacing: 0.05em;
-  text-align: center;
-  text-decoration: none;
-  transition: all 300ms;
-  border: 2px solid;
+    padding: 1rem 2rem;
+    font-family: var(--font-montserrat);
+    font-weight: 500;
+    letter-spacing: 0.05em;
+    text-align: center;
+    text-decoration: none;
+    transition: all 300ms cubic-bezier(0.4, 0, 0.2, 1);
+    border: 2px solid;
 }
 
 .ctaPrimary {
-  background-color: #334155;
-  border-color: #334155;
-  color: white;
+    background-color: #334155;
+    border-color: #334155;
+    color: white;
 }
 
 .ctaPrimary:hover {
-  background-color: transparent;
-  border-color: white;
-  transform: scale(1.05) translateY(-0.25rem);
-  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+    background-color: transparent;
+    border-color: white;
+    transform: scale(1.05) translateY(-0.25rem);
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
 }
 
 .ctaSecondary {
-  background-color: transparent;
-  border-color: rgba(255, 255, 255, 0.8);
-  color: white;
+    background-color: transparent;
+    border-color: rgba(255, 255, 255, 0.8);
+    color: white;
 }
 
 .ctaSecondary:hover {
-  background-color: white;
-  color: #0f172a;
-  transform: scale(1.05) translateY(-0.25rem);
-  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+    background-color: white;
+    color: #0f172a;
+    transform: scale(1.05) translateY(-0.25rem);
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
 }
 
-/* Navigation buttons */
+/* Navigation buttons - subtle entrance */
 .navButton {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  z-index: 30;
-  padding: 0.75rem;
-  border-radius: 9999px;
-  background-color: rgba(30, 41, 59, 0.2);
-  color: white;
-  border: none;
-  cursor: pointer;
-  transition: background-color 200ms;
-  display: none;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 30;
+    padding: 0.75rem;
+    border-radius: 9999px;
+    background-color: rgba(30, 41, 59, 0.2);
+    color: white;
+    border: none;
+    cursor: pointer;
+    transition: all 300ms cubic-bezier(0.4, 0, 0.2, 1);
+    display: none;
+    opacity: 0;
+}
+
+.carousel.ready .navButton {
+    opacity: 1;
+    transition-delay: 1200ms;
 }
 
 .navButton:hover {
-  background-color: rgba(30, 41, 59, 0.4);
+    background-color: rgba(30, 41, 59, 0.4);
+    transform: translateY(-50%) scale(1.1);
 }
 
 .navLeft {
-  left: 1.5rem;
+    left: 1.5rem;
 }
 
 .navRight {
-  right: 1.5rem;
+    right: 1.5rem;
 }
 
-/* Play/Pause button */
+/* Play/Pause button - fade in with nav */
 .playPause {
-  position: absolute;
-  bottom: 2rem;
-  right: 2rem;
-  z-index: 30;
-  padding: 1rem;
-  border-radius: 9999px;
-  background-color: rgba(30, 41, 59, 0.3);
-  color: white;
-  border: none;
-  cursor: pointer;
-  transition: all 300ms;
-  display: none;
-  align-items: center;
-  justify-content: center;
+    position: absolute;
+    bottom: 2rem;
+    right: 2rem;
+    z-index: 30;
+    padding: 1rem;
+    border-radius: 9999px;
+    background-color: rgba(30, 41, 59, 0.3);
+    color: white;
+    border: none;
+    cursor: pointer;
+    transition: all 300ms cubic-bezier(0.4, 0, 0.2, 1);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+}
+
+.carousel.ready .playPause {
+    opacity: 1;
+    transition-delay: 1200ms;
 }
 
 .playPause:hover {
-  background-color: rgba(30, 41, 59, 0.5);
-  transform: scale(1.1);
+    background-color: rgba(30, 41, 59, 0.5);
+    transform: scale(1.1);
+}
+
+/* Project card - slide in from bottom-left with staggered children */
+.projectCard {
+    position: absolute;
+    bottom: 2rem;
+    left: 2rem;
+    z-index: 30;
+    max-width: 20rem;
+    padding: 1.5rem;
+    background-color: transparent;
+    color: white;
+    text-decoration: none;
+    transition: all 300ms cubic-bezier(0.4, 0, 0.2, 1);
+    display: none;
+    opacity: 0;
+}
+
+.projectCard.projectCardVisible {
+    opacity: 1;
+    transition-delay: 700ms;
+}
+
+.projectCard:hover {
+    transform: translateY(-0.25rem);
+}
+
+.projectTitle {
+    font-family: var(--font-montserrat);
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: rgba(255, 255, 255, 0.6);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 0.5rem;
+    opacity: 0;
+    transform: translateY(1rem);
+    transition: opacity 500ms cubic-bezier(0.4, 0, 0.2, 1),
+        transform 500ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.projectTitle.projectTitleVisible {
+    opacity: 1;
+    transform: translateY(0);
+    transition-delay: 800ms;
+}
+
+.projectName {
+    font-family: var(--font-bebas);
+    font-size: 1.5rem;
+    font-weight: 400;
+    letter-spacing: 0.05em;
+    margin-bottom: 0.25rem;
+    color: white;
+    opacity: 0;
+    transform: translateY(1rem);
+    transition: opacity 500ms cubic-bezier(0.4, 0, 0.2, 1),
+        transform 500ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.projectName.projectNameVisible {
+    opacity: 1;
+    transform: translateY(0);
+    transition-delay: 900ms;
+}
+
+.projectLocation {
+    font-family: var(--font-montserrat);
+    font-size: 0.875rem;
+    font-weight: 300;
+    color: rgba(255, 255, 255, 0.7);
+    margin-bottom: 1rem;
+    opacity: 0;
+    transform: translateY(1rem);
+    transition: opacity 500ms cubic-bezier(0.4, 0, 0.2, 1),
+        transform 500ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.projectLocation.projectLocationVisible {
+    opacity: 1;
+    transform: translateY(0);
+    transition-delay: 1000ms;
+}
+
+.projectLink {
+    font-family: var(--font-montserrat);
+    font-size: 0.875rem;
+    font-weight: 400;
+    color: rgba(255, 255, 255, 0.9);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+    display: inline-block;
+    transition: all 300ms cubic-bezier(0.4, 0, 0.2, 1);
+    opacity: 0;
+    transform: translateY(1rem);
+}
+
+.projectLink.projectLinkVisible {
+    opacity: 1;
+    transform: translateY(0);
+    transition-delay: 1100ms;
+}
+
+.projectCard:hover .projectLink {
+    border-color: white;
+    color: white;
 }
 
 /* Responsive */
 @media (min-width: 768px) {
-  .title {
-    font-size: 5rem;
-  }
+    .title {
+        font-size: 5rem;
+    }
 
-  .services {
-    gap: 1.5rem;
-    font-size: 1.125rem;
-  }
+    .services {
+        gap: 1.5rem;
+        font-size: 1.125rem;
+    }
 
-  .divider {
-    display: inline;
-  }
+    .divider {
+        display: inline;
+    }
 
-  .description {
-    font-size: 1.25rem;
-  }
+    .description {
+        font-size: 1.25rem;
+    }
 
-  .ctas {
-    flex-direction: row;
-  }
+    .ctas {
+        flex-direction: row;
+    }
 
-  .navButton {
-    display: inline-flex;
-  }
+    .navButton {
+        display: inline-flex;
+    }
 }
 
 @media (min-width: 1024px) {
-  .title {
-    font-size: 5rem;
-  }
+    .title {
+        font-size: 5rem;
+    }
 
-  .playPause {
-    display: flex;
-  }
+    .playPause {
+        display: flex;
+    }
+
+    .projectCard {
+        display: block;
+    }
 }
 
-/* Project card (bottom-left) */
-.projectCard {
-  position: absolute;
-  bottom: 2rem;
-  left: 2rem;
-  z-index: 30;
-  max-width: 20rem;
-  padding: 1.5rem;
-  background-color: transparent;
-  color: white;
-  text-decoration: none;
-  transition: all 300ms;
-  display: none;
-}
+/* Reduced motion preferences */
+@media (prefers-reduced-motion: reduce) {
 
-.projectCard:hover {
-  transform: translateY(-0.25rem);
-}
+    .carousel,
+    .slide,
+    .title,
+    .services,
+    .description,
+    .ctas,
+    .navButton,
+    .playPause,
+    .projectCard,
+    .projectTitle,
+    .projectName,
+    .projectLocation,
+    .projectLink,
+    .imageBackground {
+        transition: none;
+        animation: none;
+    }
 
-.projectTitle {
-  font-family: var(--font-montserrat);
-  font-size: 0.875rem;
-  font-weight: 600;
-  color: rgba(255, 255, 255, 0.6);
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-  margin-bottom: 0.5rem;
-}
+    .title.visible,
+    .services.visible,
+    .description.visible,
+    .ctas.visible {
+        opacity: 1;
+        transform: none;
+        transition-delay: 0ms;
+    }
 
-.projectName {
-  font-family: var(--font-bebas);
-  font-size: 1.5rem;
-  font-weight: 400;
-  letter-spacing: 0.05em;
-  margin-bottom: 0.25rem;
-  color: white;
-}
+    .carousel.ready .navButton,
+    .carousel.ready .playPause {
+        opacity: 1;
+        transform: none;
+        transition-delay: 0ms;
+    }
 
-.projectLocation {
-  font-family: var(--font-montserrat);
-  font-size: 0.875rem;
-  font-weight: 300;
-  color: rgba(255, 255, 255, 0.7);
-  margin-bottom: 1rem;
-}
+    .projectCard.projectCardVisible,
+    .projectTitle.projectTitleVisible,
+    .projectName.projectNameVisible,
+    .projectLocation.projectLocationVisible,
+    .projectLink.projectLinkVisible {
+        opacity: 1;
+        transform: none;
+        transition-delay: 0ms;
+    }
 
-.projectLink {
-  font-family: var(--font-montserrat);
-  font-size: 0.875rem;
-  font-weight: 400;
-  color: rgba(255, 255, 255, 0.9);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.3);
-  display: inline-block;
-  transition: all 300ms;
-}
-
-.projectCard:hover .projectLink {
-  border-color: white;
-  color: white;
-}
-
-@media (min-width: 1024px) {
-  .projectCard {
-    display: block;
-  }
+    .imageBackground.fadeIn {
+        opacity: 1;
+    }
 }

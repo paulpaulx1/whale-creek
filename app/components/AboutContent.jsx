@@ -5,7 +5,7 @@ import styles from "./AboutSection.module.css";
 import Reviews from "./Reviews";
 import AboutImage from "./AboutImage";
 
-const AboutContent = ({ reviews = [] }) => {
+const AboutContent = () => {
   const [hasAnimated, setHasAnimated] = useState(false);
   const sectionRef = useRef(null);
 
@@ -19,7 +19,7 @@ const AboutContent = ({ reviews = [] }) => {
           observer.disconnect();
         }
       },
-      { threshold: 0.1 }
+      { threshold: 0.1 },
     );
 
     observer.observe(sectionRef.current);
@@ -30,8 +30,15 @@ const AboutContent = ({ reviews = [] }) => {
 
   return (
     <div className={styles.container} id="about">
-      {/* ✅ Section-level header (centered, above everything) */}
-      <header className={styles.sectionHeader}>
+      {/* ✅ Animated section header */}
+      <header
+        className={cx(
+          styles.sectionHeader,
+          hasAnimated
+            ? styles.sectionHeaderVisible
+            : styles.sectionHeaderHidden,
+        )}
+      >
         <p className={styles.sectionKicker}>About Whale Creek</p>
       </header>
 
@@ -40,21 +47,21 @@ const AboutContent = ({ reviews = [] }) => {
         <div
           className={cx(
             styles.imageSection,
-            hasAnimated ? styles.aboutVisible : styles.aboutHiddenLeft
+            hasAnimated ? styles.aboutVisible : styles.aboutHiddenLeft,
           )}
         >
           <h2 className={styles.imageHeadline}>
-            Midwest craftsmanship, thoughtful design, and build quality you
-            can feel.
+            Midwest craftsmanship, thoughtful design, and build quality you can
+            feel.
           </h2>
           <AboutImage />
         </div>
 
-        {/* RIGHT: copy + help card (no big headline here) */}
+        {/* RIGHT: copy + help card */}
         <div
           className={cx(
             styles.content,
-            hasAnimated ? styles.aboutVisibleDelayed : styles.aboutHiddenRight
+            hasAnimated ? styles.aboutVisibleDelayed : styles.aboutHiddenRight,
           )}
         >
           <div className={styles.contentBlock}>
@@ -78,9 +85,9 @@ const AboutContent = ({ reviews = [] }) => {
           <div className={styles.helpCard}>
             <h3 className={styles.helpTitle}>What we build</h3>
             <ul className={styles.helpList}>
+              <li>Decks, sunrooms, and outdoor living</li>
               <li>Kitchen renovations and full remodels</li>
               <li>Custom millwork, cabinetry, and built-ins</li>
-              <li>Decks, sunrooms, and outdoor living</li>
               <li>Custom furniture and fabrication</li>
             </ul>
 
@@ -97,7 +104,6 @@ const AboutContent = ({ reviews = [] }) => {
       </div>
 
       <div className={styles.sectionDivider} />
-      <Reviews reviews={reviews} />
     </div>
   );
 };

@@ -9,7 +9,7 @@
 }
 
 .container {
-  padding: 1rem 3rem;
+  padding: 3rem 3rem;
   width: 100vw;
   position: relative;
   z-index: 2;
@@ -66,11 +66,12 @@
 
 .contentBlock p {
   font-family: var(--font-montserrat);
-  font-size: 1.12rem;
+  font-size: 15px;
   margin-bottom: 1.5rem;
   line-height: 1.75;
   color: var(--burgundy);
-  font-weight: 400;
+  font-weight: 500;
+  margin-top: 10px;
 }
 
 /* Image section */
@@ -160,6 +161,7 @@
   position: relative;
   padding-left: 1.25rem;
   line-height: 1.55;
+  font-weight: 500;
 }
 
 .helpList li::before {
@@ -225,7 +227,7 @@
   width: calc(100% - 4rem);
   height: 1px;
   background: rgba(38, 50, 56, 0.2);
-  margin: 4rem auto;
+  margin: 2rem auto;
 }
 
 /* -------------------------------
@@ -260,11 +262,23 @@
   margin-bottom: 12px;
 }
 
+/* Section header animation */
+.sectionHeaderHidden {
+  opacity: 0;
+  transform: translateY(-24px);
+}
+
+.sectionHeaderVisible {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+
 .sectionKicker {
   font-family: var(--font-bebas);
   text-transform: uppercase;
   letter-spacing: 0.1em;
-  font-size: 3rem;
+  font-size: 3.4rem;
   font-weight: 400;
   margin: 0;
   color: var(--burgundy);
@@ -312,6 +326,12 @@
 }
 
 @media (max-width: 768px) {
+
+  .container {
+    padding: 1.5rem 1.5rem;
+
+  }
+
   .aboutSection {
     padding: 6.5rem 1rem;
   }

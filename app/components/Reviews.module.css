@@ -2,7 +2,6 @@
   background: var(--warm-white);
   border-radius: 8px;
   padding: 2rem;
-  margin: 2rem 0;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
   border: 1px solid #e8eaed;
   max-width: 1200px;
@@ -215,11 +214,11 @@
   .reviewsGrid {
     grid-template-columns: repeat(3, 1fr);
   }
-  
+
   .reviewsContainer {
     max-width: 1200px;
   }
-  
+
   .reviewText {
     display: -webkit-box;
     -webkit-line-clamp: 4;
@@ -233,11 +232,11 @@
   .reviewsGrid {
     grid-template-columns: repeat(2, 1fr);
   }
-  
+
   .reviewsContainer {
     max-width: 900px;
   }
-  
+
   .reviewText {
     display: -webkit-box;
     -webkit-line-clamp: 5;
@@ -249,9 +248,10 @@
 /* Mobile styles - 1 review */
 @media (max-width: 767px) {
 
-  .reviewsGrid{
+  .reviewsGrid {
     height: 100%;
   }
+
   .reviewsContainer {
     padding: 1.25rem;
     margin: 1rem 0;
@@ -286,10 +286,12 @@
   /* Fixed height carousel to prevent shifting */
   .reviewsCarousel {
     gap: 0.5rem;
-    height: 320px; /* Fixed height */
+    height: 320px;
+    /* Fixed height */
     min-height: 320px;
     max-height: 320px;
-    align-items: center; /* Center arrows vertically */
+    align-items: center;
+    /* Center arrows vertically */
   }
 
   .navArrow {
@@ -301,7 +303,8 @@
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
     /* Remove margin-top since we're centering with align-items */
     margin-top: 0;
-    position: relative; /* Ensure consistent positioning */
+    position: relative;
+    /* Ensure consistent positioning */
   }
 
   .navArrow:hover,
@@ -325,10 +328,12 @@
   .reviewCard {
     padding: 1.25rem;
     border-radius: 10px;
-    height: 100%; /* Fill the carousel height */
+    height: 100%;
+    /* Fill the carousel height */
     max-height: 100%;
     min-height: 100%;
-    overflow: hidden; /* Prevent card from expanding */
+    overflow: hidden;
+    /* Prevent card from expanding */
   }
 
   .reviewCard:hover {
@@ -339,7 +344,8 @@
   .reviewHeader {
     gap: 0.75rem;
     margin-bottom: 0.75rem;
-    flex-shrink: 0; /* Prevent header from shrinking */
+    flex-shrink: 0;
+    /* Prevent header from shrinking */
   }
 
   .authorAvatar {
@@ -370,10 +376,14 @@
     font-size: 0.9rem;
     line-height: 1.6;
     color: #333;
-    flex: 1; /* Take remaining space */
-    overflow-y: auto; /* Enable vertical scrolling */
-    max-height: calc(100% - 80px); /* Account for header space */
-    padding-right: 0.5rem; /* Space for scrollbar */
+    flex: 1;
+    /* Take remaining space */
+    overflow-y: auto;
+    /* Enable vertical scrolling */
+    max-height: calc(100% - 80px);
+    /* Account for header space */
+    padding-right: 0.5rem;
+    /* Space for scrollbar */
     /* Custom scrollbar styling */
     scrollbar-width: thin;
     scrollbar-color: #ccc transparent;
@@ -429,6 +439,7 @@
   .reviewText {
     font-size: 0.85rem;
     line-height: 1.5;
-    max-height: calc(100% - 70px); /* Adjust for smaller header */
+    max-height: calc(100% - 70px);
+    /* Adjust for smaller header */
   }
 }

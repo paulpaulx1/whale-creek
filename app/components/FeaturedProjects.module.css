@@ -7,7 +7,7 @@
 }
 
 .featuredSection {
-  padding: 5rem 0;
+  padding: 2rem 0;
 }
 
 .sectionHeader {
@@ -270,7 +270,7 @@
   width: calc(100% - 4rem);
   height: 1px;
   background: rgba(38, 50, 56, 0.2);
-  margin: 0 auto 4rem;
+  margin-top: 36px;
 }
 
 /* Clean Accessibility */

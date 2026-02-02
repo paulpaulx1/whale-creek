@@ -8,6 +8,7 @@ import ServiceCardsSection from "./components/ServiceCardsSection";
 import AboutContent from "./components/AboutContent";
 import ClientInteractions from "./components/ClientInteractions";
 import SchemaMarkup from "./components/seo/SchemaMarkup";
+import Reviews from "./components/Reviews";
 import { generatePageMetadata } from "./components/seo/generateMetadata";
 import { client } from "./lib/sanity";
 import { headers } from "next/headers";
@@ -171,11 +172,11 @@ export default async function Home() {
         <HeroCarousel slides={slides} />
 
         {/* OLD: Static hero - keeping for now to compare */}
-        <Hero />
-
+        {/* <Hero /> */}
+        <AboutContent  />
         <FeaturedProjects projects={projects} maxProjects={2} />
-        <AboutContent reviews={reviews} />
         <ServiceCardsSection />
+        <Reviews reviews={reviews}/>
         <ClientInteractions />
       </main>
     </>
