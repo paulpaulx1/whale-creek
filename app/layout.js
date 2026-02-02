@@ -1,4 +1,4 @@
-import { Inter, Space_Grotesk, Bebas_Neue } from "next/font/google";
+import { Inter, Space_Grotesk, Bebas_Neue, Montserrat } from "next/font/google";
 import "./globals.css";
 import Navigation from "./components/Navigation";
 import KineticBackground from "./components/KineticBackground";
@@ -22,8 +22,15 @@ const spaceGrotesk = Space_Grotesk({
 
 const bebasNeue = Bebas_Neue({
   subsets: ["latin"],
-  weight: "400", // Bebas Neue only has one weight
+  weight: "400",
   variable: "--font-bebas",
+  display: "swap",
+});
+
+const montserrat = Montserrat({
+  subsets: ["latin"],
+  weight: ["300", "400", "500", "600"],
+  variable: "--font-montserrat",
   display: "swap",
 });
 
@@ -42,7 +49,7 @@ export default function RootLayout({ children }) {
   return (
     <html
       lang="en"
-      className={`${inter.variable} ${spaceGrotesk.variable} ${bebasNeue.variable}`}
+      className={`${inter.variable} ${spaceGrotesk.variable} ${bebasNeue.variable} ${montserrat.variable}`}
     >
       <body>
         <Navigation />

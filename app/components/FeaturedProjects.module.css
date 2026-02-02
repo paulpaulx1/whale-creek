@@ -18,24 +18,26 @@
 }
 
 .sectionTitle {
-  font-size: 2.5rem;
-  font-weight: 600;
-  color: #263238;
+  font-family: var(--font-bebas);
+  font-size: 3rem;
+  font-weight: 400;
+  color: var(--burgundy);
   margin: 0;
   text-transform: uppercase;
-  letter-spacing: 2px;
+  letter-spacing: 0.05em;
 }
 
 .viewAllLink {
+  font-family: var(--font-montserrat);
   font-size: 1rem;
-  color: #666;
+  color: var(--burgundy);
   text-decoration: underline;
   font-weight: 500;
   transition: color 0.3s ease;
 }
 
 .viewAllLink:hover {
-  color: #263238;
+  color: var(--burgundy);
 }
 
 .featuredContainer {
@@ -106,13 +108,15 @@
 }
 
 .projectTitle {
-  font-size: 1.5rem;
-  font-weight: 600;
+  font-family: var(--font-bebas);
+  font-size: 2rem;
+  font-weight: 400;
+  letter-spacing: 0.05em;
   margin: 0 0 0.5rem 0;
-  letter-spacing: 0.5px;
 }
 
 .projectCategory {
+  font-family: var(--font-montserrat);
   font-size: 0.9rem;
   opacity: 0.9;
   margin: 0;
@@ -122,6 +126,7 @@
 }
 
 .moreDetails {
+  font-family: var(--font-montserrat);
   position: absolute;
   bottom: -1rem;
   right: 0;
@@ -145,6 +150,7 @@
 }
 
 .navButton {
+  font-family: var(--font-montserrat);
   background: none;
   border: 1px solid #ddd;
   color: #666;
@@ -156,9 +162,9 @@
 }
 
 .navButton:hover {
-  background: #263238;
+  background: var(--burgundy);
   color: white;
-  border-color: #263238;
+  border-color: var(--burgundy);
 }
 
 .indicators {
@@ -177,7 +183,7 @@
 }
 
 .indicator.active {
-  background: #263238;
+  background: var(--burgundy);
 }
 
 .indicator:hover {
@@ -210,7 +216,7 @@
   }
 
   .sectionTitle {
-    font-size: 2rem;
+    font-size: 2.5rem;
   }
 
   .featuredCard {
@@ -222,7 +228,7 @@
   }
 
   .projectTitle {
-    font-size: 1.3rem;
+    font-size: 1.5rem;
   }
 
   .moreDetails {
@@ -243,7 +249,7 @@
   }
 
   .sectionTitle {
-    font-size: 1.8rem;
+    font-size: 2rem;
   }
 
   .featuredCard {
@@ -251,7 +257,7 @@
   }
 
   .projectTitle {
-    font-size: 1.2rem;
+    font-size: 1.3rem;
   }
 
   .projectOverlay {
@@ -277,21 +283,10 @@
 
 /* Reduced motion */
 @media (prefers-reduced-motion: reduce) {
-
   .featuredCard,
   .featuredImage img {
     transition: none;
   }
-}
-
-.sectionTitle {
-  font-family: 'Inter', 'Impact', sans-serif;
-  font-size: 2.5rem;
-  font-weight: 700;
-  color: #3a3a3a;
-  margin: 0;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
 }
 
 /* -------------------------------
@@ -317,7 +312,6 @@
 
 /* Respect reduced motion */
 @media (prefers-reduced-motion: reduce) {
-
   .cardHidden,
   .cardVisible {
     opacity: 1;

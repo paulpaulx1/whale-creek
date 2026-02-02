@@ -67,7 +67,7 @@ const ServiceCardsSection = () => {
     <section className={styles.servicesSection} data-element="services">
       <div className={styles.container}>
         <div className={styles.servicesHeader}>
-          <h2 className={styles.servicesTitle}>Services</h2>
+          <h2 className={styles.servicesTitle}>What We Do</h2>
         </div>
 
         <div className={styles.servicesGrid}>

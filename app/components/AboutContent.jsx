@@ -5,7 +5,7 @@ import styles from "./AboutSection.module.css";
 import Reviews from "./Reviews";
 import AboutImage from "./AboutImage";
 
-const AboutContent = () => {
+const AboutContent = ({ reviews = [] }) => {
   const [hasAnimated, setHasAnimated] = useState(false);
   const sectionRef = useRef(null);
 
@@ -97,7 +97,7 @@ const AboutContent = () => {
       </div>
 
       <div className={styles.sectionDivider} />
-      <Reviews />
+      <Reviews reviews={reviews} />
     </div>
   );
 };

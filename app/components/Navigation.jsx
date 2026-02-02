@@ -74,7 +74,7 @@ export default function Navigation() {
                 />
               </div>
               <Link href="/" className={styles.brandLink} onClick={closeMenu}>
-                <span className={styles.brandText}>Whale Creek</span>
+                <span className={styles.brandText}>Whale Creek Construction</span>
               </Link>
             </div>
           </div>
