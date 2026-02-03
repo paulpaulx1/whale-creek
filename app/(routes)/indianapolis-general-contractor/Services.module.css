@@ -56,9 +56,8 @@
 .main {
   padding-top: 80px;
   background: var(--bg-cream);
-  /* vellum */
   min-height: 100vh;
-  font-family: var(--font-space), -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-family: var(--font-montserrat), -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
 }
 
 /* ================================
@@ -103,10 +102,10 @@
 }
 
 .servicesHeroContent h1 {
-  font-family: var(--font-space), monospace;
-  font-size: 3.5rem;
-  font-weight: 700;
-  letter-spacing: 4px;
+  font-family: var(--font-bebas);
+  font-size: 4rem;
+  font-weight: 400;
+  letter-spacing: 0.05em;
   text-transform: uppercase;
   color: #ffffff;
   margin-bottom: 1.5rem;
@@ -116,10 +115,11 @@
 }
 
 .servicesHeroContent p {
+  font-family: var(--font-montserrat);
   max-width: 720px;
   font-size: 1.2rem;
   line-height: 1.7;
-  font-weight: 500;
+  font-weight: 400;
   color: rgb(255, 255, 255);
   animation: fadeInDown 0.8s ease-out;
   animation-fill-mode: both;
@@ -133,19 +133,9 @@
 .services {
   padding: 7rem 2rem 0rem 2rem;
   background: var(--bg-cream);
-  /* vellum */
   color: #1e1e1e;
   position: relative;
   overflow: hidden;
-}
-
-/* Light drafting grid (SUBTLE) */
-.services::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-
-  z-index: 1;
 }
 
 .servicesContainer {
@@ -173,45 +163,49 @@
 
 .serviceContent {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 0.8fr 1.2fr;
   gap: 4rem;
-
-
+  align-items: center;
   background: rgba(255, 255, 255, 0.7);
-  border: 1px solid rgba(0, 0, 0, 0.18);
+  border: 1px solid rgba(134, 38, 51, 0.25);
   padding: 3.5rem;
   position: relative;
   overflow: hidden;
   transition: transform 0.35s ease, box-shadow 0.35s ease;
 }
 
-/* Drafting dot */
-.serviceContent::before {
+.serviceReverse .serviceContent {
+  grid-template-columns: 1.2fr 0.8fr;
+}
+
+/* Burgundy accent dot */
+/* .serviceContent::before {
   content: '';
   position: absolute;
   top: 14px;
   right: 14px;
   width: 16px;
   height: 16px;
-  border: 1px solid #f97316;
+  border: 1px solid var(--burgundy);
   border-radius: 50%;
-}
+} */
 
 /* Blueprint ref */
-.serviceContent::after {
+/* .serviceContent::after {
   content: attr(data-blueprint);
   position: absolute;
   bottom: 12px;
   right: 16px;
-  font-family: var(--font-space), monospace;
+  font-family: var(--font-montserrat);
   font-size: 0.7rem;
   opacity: 0.4;
-  color: #333;
-}
+  color: var(--burgundy);
+} */
 
 .serviceContent:hover {
   transform: translateY(-4px);
-  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.18);
+  /* box-shadow: 0 24px 60px rgba(134, 38, 51, 0.15); */
+  border-color: rgba(134, 38, 51, 0.4);
 }
 
 /* Reverse layout */
@@ -233,27 +227,41 @@
 }
 
 .serviceText h2 {
-  font-family: var(--font-space), monospace;
-  font-size: 2.1rem;
-  font-weight: 700;
+  font-family: var(--font-bebas);
+  font-size: 2.5rem;
+  font-weight: 400;
   margin-bottom: 1.5rem;
-  letter-spacing: 2px;
+  letter-spacing: 0.05em;
   text-transform: uppercase;
-  color: #111;
+  color: var(--burgundy);
 }
 
 .serviceDescription {
+  font-family: var(--font-montserrat);
   font-size: 1.05rem;
   margin-bottom: 1.3rem;
+  font-weight: 500;
   line-height: 1.7;
-  color: #2a2a2a;
+  color: var(--burgundy);
 }
 
 .serviceDetails {
+  font-family: var(--font-montserrat);
   font-size: 1rem;
+  font-weight: 500;
   margin-bottom: 1.8rem;
   line-height: 1.7;
-  color: #444;
+  color: var(--burgundy);
+}
+
+/* Additional info paragraph */
+.serviceAdditional {
+  font-family: var(--font-montserrat);
+  font-size: 1rem;
+  margin-top: 1.5rem;
+  line-height: 1.7;
+  color: var(--burgundy);
+  font-weight: 500;
 }
 
 /* ================================
@@ -267,12 +275,14 @@
 }
 
 .serviceFeatures li {
+  font-family: var(--font-montserrat);
   display: flex;
   align-items: center;
   gap: 0.75rem;
   margin-bottom: 0.85rem;
   font-size: 0.95rem;
-  color: #2a2a2a;
+  color: var(--burgundy);
+  font-weight: 500;
   animation: slideIn 0.5s ease-out;
   animation-fill-mode: both;
 }
@@ -294,31 +304,60 @@
 }
 
 .serviceFeatures i {
-  color: #f97316;
+  color: var(--burgundy);
   font-size: 1.1rem;
 }
 
 /* ================================
-   SERVICE IMAGE
+   SERVICE IMAGE (LOGICAL / NATURAL)
 ================================ */
 
 .serviceImage {
   position: relative;
   height: 380px;
-  border: 1px solid rgba(0, 0, 0, 0.18);
+  display: flex;
+  align-items: center;
+  justify-content: center;
   overflow: hidden;
 }
 
-.serviceImg {
-  transition: transform 0.5s ease;
+.serviceImage[data-orientation="portrait"] {
+  height: 550px;
+  /* try 440–520 depending on taste */
 }
 
-.serviceContent:hover .serviceImg {
-  transform: scale(1.05);
+/* Base image behavior — NEVER distort */
+.serviceImg {
+  position: absolute;
+  object-fit: contain;
+  object-position: center;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.5s ease;
+  will-change: transform;
+}
+
+/* Landscape images → appear larger */
+.serviceImage[data-orientation="landscape"] .serviceImg {
+  transform: scale(1.08);
+}
+
+/* Portrait images → slightly restrained */
+.serviceImage[data-orientation="portrait"] .serviceImg {
+  transform: scale(0.95);
+}
+
+/* Hover — subtle, proportional */
+.serviceContent:hover .serviceImage[data-orientation="landscape"] .serviceImg {
+  transform: scale(1.12);
+}
+
+.serviceContent:hover .serviceImage[data-orientation="portrait"] .serviceImg {
+  transform: scale(0.98);
 }
 
 /* ================================
-   SERVICE AREAS — VELLUM + DARK BUTTONS
+   SERVICE AREAS — VELLUM + BURGUNDY BUTTONS
 ================================ */
 
 .serviceAreasSection {
@@ -327,15 +366,6 @@
   background: var(--bg-cream);
   color: #1e1e1e;
   overflow: hidden;
-}
-
-/* Subtle drafting grid for light background */
-.serviceAreasSection::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-
-  z-index: 1;
 }
 
 .serviceAreasContainer {
@@ -348,6 +378,7 @@
 
 /* Description text */
 .serviceAreasContainer>p {
+  font-family: var(--font-montserrat);
   margin-top: 2.5rem;
   font-size: 1.05rem;
   line-height: 1.7;
@@ -369,11 +400,17 @@
   margin-bottom: 2.5rem;
 }
 
+.serviceAreaFooter {
+  color: var(--burgundy) !important;
+  font-weight: 500;
+}
+
 /* Individual area buttons */
 .serviceArea {
+  font-family: var(--font-montserrat);
   background: rgba(255, 255, 255, 0.85);
-  color: #1e1e1e;
-  border: 1px solid rgba(0, 0, 0, 0.18);
+  color: var(--burgundy);
+  border: 1px solid rgba(134, 38, 51, 0.25);
   padding: 0.75rem 1.5rem;
   font-size: 0.9rem;
   font-weight: 500;
@@ -427,13 +464,13 @@
   animation-delay: 0.5s;
 }
 
-/* Orange drafting hover */
+/* Burgundy hover */
 .serviceArea:hover {
-  border-color: #f97316;
-  color: #f97316;
-  background: rgba(249, 115, 22, 0.08);
+  border-color: var(--burgundy);
+  color: var(--burgundy);
+  background: rgba(134, 38, 51, 0.08);
   transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(249, 115, 22, 0.15);
+  box-shadow: 0 4px 12px rgba(134, 38, 51, 0.15);
 }
 
 /* ================================
@@ -452,7 +489,7 @@
   }
 
   .servicesHeroContent h1 {
-    font-size: 2.5rem;
+    font-size: 3rem;
   }
 
   .servicesHeroContent p {
@@ -477,6 +514,10 @@
     height: 300px;
   }
 
+  .serviceText h2 {
+    font-size: 2.2rem;
+  }
+
   .serviceAreasSection {
     padding: 4.5rem 1rem 5.5rem;
   }
@@ -493,8 +534,7 @@
 
 @media (max-width: 480px) {
   .servicesHeroContent h1 {
-    font-size: 2rem;
-    letter-spacing: 2px;
+    font-size: 2.5rem;
   }
 
   .serviceContent {
@@ -502,7 +542,7 @@
   }
 
   .serviceText h2 {
-    font-size: 1.7rem;
+    font-size: 2rem;
   }
 
   .serviceAreasContainer>p {
@@ -512,4 +552,118 @@
   .serviceAreasList {
     gap: 0.7rem 0.7rem;
   }
+}
+
+/* ================================
+   MOBILE STACK: TITLE → TEXT → IMAGE
+   Drop this at the very bottom
+================================ */
+
+@media (max-width: 768px) {
+
+  /* Single column layout */
+  .serviceContent {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  /* Ignore reverse ordering on mobile */
+  .serviceReverse .serviceText,
+  .serviceText {
+    order: 1;
+  }
+
+  .serviceReverse .serviceImage,
+  .serviceImage {
+    order: 2;
+  }
+
+  /* Image sizing on mobile */
+  .serviceImage {
+    height: 260px;
+    margin-top: 0.5rem;
+  }
+
+  /* Portraits get more room so they don't look tiny */
+  .serviceImage[data-orientation="portrait"] {
+    height: 340px;
+  }
+
+  /* Reduce landscape scale a touch on mobile */
+  .serviceImage[data-orientation="landscape"] .serviceImg {
+    transform: scale(1.02);
+  }
+
+  /* Keep portraits comfortably large */
+  .serviceImage[data-orientation="portrait"] .serviceImg {
+    transform: scale(1.06);
+  }
+}
+
+
+/* ================================
+   MOBILE STACK — FORCE ORDER
+   TITLE → TEXT → IMAGE
+   (Overrides .serviceReverse)
+================================ */
+
+@media (max-width: 768px) {
+
+  /* Force single column */
+  .serviceContent {
+    display: grid;
+    grid-template-columns: 1fr !important;
+    gap: 2rem;
+  }
+
+  /* FORCE text first — even if reversed */
+  .serviceContent .serviceText {
+    order: 1 !important;
+  }
+
+  /* FORCE image last — even if reversed */
+  .serviceContent .serviceImage {
+    order: 2 !important;
+  }
+
+  /* Image sizing */
+  .serviceImage {
+    height: 260px;
+    margin-top: 0.5rem;
+  }
+
+  /* Portraits get more vertical room */
+  .serviceImage[data-orientation="portrait"] {
+    height: 340px;
+  }
+
+  /* Scale tuning */
+  .serviceImage[data-orientation="landscape"] .serviceImg {
+    transform: scale(1.02);
+  }
+
+  .serviceImage[data-orientation="portrait"] .serviceImg {
+    transform: scale(1.06);
+  }
+}
+
+.serviceText h2 {
+  position: relative;
+  display: inline-block;
+  /* keeps underline tight to text */
+  padding-bottom: 0.75rem;
+}
+
+.serviceText h2::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+
+  width: 48px;
+  height: 2px;
+
+  background: var(--burgundy);
+  /* your drafting orange */
+  opacity: 0.85;
 }

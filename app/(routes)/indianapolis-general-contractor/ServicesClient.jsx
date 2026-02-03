@@ -18,7 +18,7 @@ export default function ServicesClient({ services, serviceAreas }) {
           }
         });
       },
-      { threshold: 0.25 }
+      { threshold: 0.25 },
     );
 
     cardsRef.current.forEach((el) => el && observer.observe(el));
@@ -58,9 +58,9 @@ export default function ServicesClient({ services, serviceAreas }) {
           <p>
             We work with homeowners and commercial businesses across
             Indianapolis to complete renovations, custom builds, and full home
-            remodels. Whether you want a custom piece of furniture or you&apos;re
-            transforming your entire home, we&apos;re with you from the first sketch
-            to the final walkthrough.
+            remodels. Whether you want a custom piece of furniture or
+            you&apos;re transforming your entire home, we&apos;re with you from
+            the first sketch to the final walkthrough.
           </p>
         </div>
       </section>
@@ -114,7 +114,17 @@ export default function ServicesClient({ services, serviceAreas }) {
                     src={service.image}
                     alt={service.title}
                     fill
+                    sizes="(max-width: 768px) 100vw, 50vw"
                     className={styles.serviceImg}
+                    onLoadingComplete={(img) => {
+                      const wrapper = img.parentElement;
+                      if (!wrapper) return;
+
+                      const isLandscape = img.naturalWidth >= img.naturalHeight;
+                      wrapper.dataset.orientation = isLandscape
+                        ? "landscape"
+                        : "portrait";
+                    }}
                   />
                 </div>
               </div>
@@ -134,7 +144,7 @@ export default function ServicesClient({ services, serviceAreas }) {
             ))}
           </div>
 
-          <p>
+          <p className={styles.serviceAreaFooter}>
             As licensed general contractors in Indianapolis, we bring decades of
             construction expertise to projects throughout Central Indiana.
           </p>

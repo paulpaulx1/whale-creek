@@ -102,7 +102,7 @@ export default async function Services() {
     {
       id: "custom-millwork-woodworking-indianapolis",
       title: "Custom Woodworking & Millwork",
-      image: "/images/built-in-cabinet.JPG",
+      image: "/images/PortholeMirror2.jpg",
       description:
         "We produce custom woodwork and millwork for commercial and residential applications, ranging from standalone pieces to integrated architectural elements. Our state-of-the-art CNC milling technology allows us to execute complex cuts, intricate patterns, and tight precision across both short runs and larger production volumes.",
       details: "Common projects include:",
