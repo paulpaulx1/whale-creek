@@ -129,7 +129,7 @@ export default async function ProjectGallery({ searchParams }) {
           page={data.page}
           totalPages={data.totalPages}
         />
-        <CTASection />
+        {/* <CTASection /> */}
       </main>
     </>
   );

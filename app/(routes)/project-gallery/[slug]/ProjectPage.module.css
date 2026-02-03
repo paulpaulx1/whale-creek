@@ -1,7 +1,6 @@
 .main {
     padding-top: 80px;
-    background: #faf8f5;
-    /* soft cream */
+    background: var(--bg-cream);
     min-height: 100vh;
 }
 
@@ -21,19 +20,21 @@
 .backLink {
     grid-area: back;
     display: inline-block;
-    color: rgba(38, 50, 56, 0.65);
+    font-family: var(--font-montserrat);
+    color: var(--burgundy);
     text-decoration: none;
-    font-size: 0.9rem;
+    font-size: 1.2rem;
+    font-weight: 600;
     padding: 24px 0;
     transition: color 0.2s ease;
 }
 
 .backLink:hover {
-    color: #f57c00;
+    opacity: 0.7;
 }
 
 /* ============================================
-   LEFT SIDEBAR
+   LEFT SIDEBAR - SIMPLIFIED
    ============================================ */
 .sidebar {
     grid-area: sidebar;
@@ -43,10 +44,7 @@
     overflow-y: auto;
     padding: 32px 40px 56px 40px;
     margin: 0 24px 0 0;
-    background: #fff;
-    border: 1px solid rgba(38, 50, 56, 0.08);
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
-    border-radius: 12px;
+    background: transparent;
     margin-bottom: 20px;
 }
 
@@ -57,18 +55,22 @@
 }
 
 .title {
-    font-size: 2.25rem;
-    line-height: 1.15;
-    letter-spacing: -0.02em;
-    color: var(--charcoal);
-    font-weight: 700;
+    font-family: var(--font-bebas);
+    font-size: 2.75rem;
+    line-height: 1.1;
+    letter-spacing: 0.02em;
+    color: var(--burgundy);
+    font-weight: 400;
     margin: 0;
+    text-transform: uppercase;
 }
 
 .description {
+    font-family: var(--font-montserrat);
     font-size: 1.05rem;
-    line-height: 1.6;
-    color: rgba(38, 50, 56, 0.75);
+    line-height: 1.7;
+    color: var(--burgundy);
+    font-weight: 500;
     margin: 0;
 }
 
@@ -85,28 +87,34 @@
 }
 
 .metaLabel {
+    font-family: var(--font-montserrat);
     font-size: 0.8rem;
     text-transform: uppercase;
     letter-spacing: 0.05em;
-    color: rgba(38, 50, 56, 0.5);
+    color: var(--burgundy);
+    opacity: 0.6;
     font-weight: 600;
 }
 
 .metaValue {
+    font-family: var(--font-montserrat);
     font-size: 0.95rem;
-    color: rgba(38, 50, 56, 0.85);
+    color: var(--burgundy);
+    font-weight: 500;
 }
 
 .section {
     padding-top: 24px;
-    border-top: 1px solid rgba(38, 50, 56, 0.08);
+    border-top: 1px solid rgba(134, 38, 51, 0.2);
 }
 
 .sectionTitle {
+    font-family: var(--font-montserrat);
     font-size: 0.85rem;
     text-transform: uppercase;
     letter-spacing: 0.05em;
-    color: rgba(38, 50, 56, 0.5);
+    color: var(--burgundy);
+    opacity: 0.6;
     font-weight: 600;
     margin: 0 0 12px 0;
 }
@@ -118,18 +126,22 @@
 }
 
 .tag {
+    font-family: var(--font-montserrat);
     font-size: 0.85rem;
+    font-weight: 500;
     padding: 6px 12px;
-    background: rgba(245, 124, 0, 0.06);
-    color: rgba(38, 50, 56, 0.75);
-    border: 1px solid rgba(245, 124, 0, 0.12);
+    background: transparent;
+    color: var(--burgundy);
+    border: 1px solid rgba(134, 38, 51, 0.3);
     border-radius: 6px;
 }
 
 .portable {
+    font-family: var(--font-montserrat);
     font-size: 0.95rem;
     line-height: 1.7;
-    color: rgba(38, 50, 56, 0.75);
+    color: var(--burgundy);
+    font-weight: 500;
 }
 
 .portable p {
@@ -143,34 +155,41 @@
 .testimonial {
     margin: 0;
     padding: 20px;
-    background: rgba(245, 124, 0, 0.04);
-    border-left: 3px solid rgba(245, 124, 0, 0.4);
+    background: rgba(134, 38, 51, 0.05);
+    border-left: 3px solid var(--burgundy);
     border-radius: 6px;
 }
 
 .quote {
+    font-family: var(--font-montserrat);
     font-size: 0.95rem;
     line-height: 1.6;
-    color: rgba(38, 50, 56, 0.8);
+    color: var(--burgundy);
+    font-weight: 500;
     font-style: italic;
     margin: 0;
 }
 
 .testimonialFooter {
+    font-family: var(--font-montserrat);
     margin-top: 12px;
     font-size: 0.85rem;
-    color: rgba(38, 50, 56, 0.6);
+    color: var(--burgundy);
+    font-weight: 500;
 }
 
 .testimonialAuthor {
+    font-family: var(--font-montserrat);
     font-style: normal;
     font-weight: 600;
     display: block;
 }
 
 .testimonialTitle {
+    font-family: var(--font-montserrat);
     display: block;
     margin-top: 2px;
+    font-weight: 500;
 }
 
 .ctas {
@@ -181,10 +200,11 @@
 }
 
 .primaryBtn {
+    font-family: var(--font-montserrat);
     display: block;
-    background: #f57c00;
-    color: #fff;
-    font-weight: 600;
+    background: var(--burgundy);
+    color: var(--bg-cream);
+    font-weight: 700;
     font-size: 0.95rem;
     padding: 14px 20px;
     border-radius: 8px;
@@ -194,27 +214,28 @@
 }
 
 .primaryBtn:hover {
-    background: #e67300;
+    opacity: 0.9;
     transform: translateY(-1px);
 }
 
 .secondaryBtn {
+    font-family: var(--font-montserrat);
     display: block;
     background: transparent;
-    color: var(--charcoal);
+    color: var(--burgundy);
     font-weight: 600;
     font-size: 0.95rem;
     padding: 14px 20px;
     border-radius: 8px;
-    border: 1px solid rgba(38, 50, 56, 0.15);
+    border: 2px solid var(--burgundy);
     text-decoration: none;
     text-align: center;
     transition: all 0.2s ease;
 }
 
 .secondaryBtn:hover {
-    border-color: rgba(245, 124, 0, 0.4);
-    background: rgba(245, 124, 0, 0.02);
+    background: var(--burgundy);
+    color: var(--bg-cream);
 }
 
 /* ============================================
@@ -260,7 +281,13 @@
     height: auto;
     overflow: hidden;
     background: #f5f5f5;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    border: 1px solid rgba(134, 38, 51, 0.15);
+    box-shadow: 0 4px 20px rgba(134, 38, 51, 0.08);
+    transition: border-color 0.3s ease;
+}
+
+.masonryItem:hover .masonryImageWrap {
+    border-color: rgba(134, 38, 51, 0.3);
 }
 
 .masonryImage {
@@ -275,6 +302,7 @@
 }
 
 .masonryCaption {
+    font-family: var(--font-montserrat);
     position: absolute;
     bottom: 0;
     left: 0;
@@ -285,6 +313,7 @@
             rgba(0, 0, 0, 0) 100%);
     color: #fff;
     font-size: 0.85rem;
+    font-weight: 500;
     opacity: 0;
     transition: opacity 0.3s ease;
 }
@@ -333,6 +362,7 @@
 }
 
 .lightboxClose {
+    font-family: var(--font-montserrat);
     position: absolute;
     top: 16px;
     right: 16px;
@@ -364,10 +394,12 @@
 }
 
 .lightboxCaption {
+    font-family: var(--font-montserrat);
     padding: 16px 20px;
     background: rgba(255, 255, 255, 0.05);
     color: rgba(255, 255, 255, 0.85);
     font-size: 0.9rem;
+    font-weight: 500;
     margin: 0;
 }
 
@@ -381,12 +413,14 @@
 }
 
 .lightboxNavBtn {
+    font-family: var(--font-montserrat);
     border: 0;
     background: rgba(255, 255, 255, 0.1);
     color: #fff;
     padding: 10px 16px;
     cursor: pointer;
     font-size: 0.9rem;
+    font-weight: 500;
     transition: background 0.2s ease;
 }
 
@@ -395,8 +429,10 @@
 }
 
 .lightboxCount {
+    font-family: var(--font-montserrat);
     color: rgba(255, 255, 255, 0.7);
     font-size: 0.9rem;
+    font-weight: 500;
 }
 
 /* ============================================
@@ -436,10 +472,8 @@
     .sidebar {
         position: static;
         height: auto;
-        border: 1px solid rgba(38, 50, 56, 0.08);
         margin: 0 32px;
         padding: 40px 32px;
-        box-shadow: none;
     }
 
     .masonry {
@@ -448,7 +482,7 @@
     }
 
     .title {
-        font-size: 1.75rem;
+        font-size: 2.25rem;
     }
 }
 
@@ -482,6 +516,10 @@
     .backLink {
         padding: 24px 24px 12px 24px;
     }
+
+    .title {
+        font-size: 2rem;
+    }
 }
 
 /* ============================================
@@ -490,15 +528,11 @@
 .videoItem {
     position: relative;
     display: inline-block;
-    /* plays nice inside CSS columns */
     break-inside: avoid;
     overflow: hidden;
-    /* optional */
     background: #eee;
-    /* optional */
 }
 
-/* This fills whatever space the aspect-ratio wrapper reserves */
 .videoSkeleton {
     position: absolute;
     inset: 0;
@@ -508,37 +542,6 @@
             rgba(0, 0, 0, 0.06) 100%);
     background-size: 200% 100%;
     animation: shimmer 1.1s infinite linear;
-}
-
-@keyframes shimmer {
-    0% {
-        background-position: 200% 0;
-    }
-
-    100% {
-        background-position: -200% 0;
-    }
-}
-
-.videoItem {
-    position: relative;
-    display: inline-block;
-    /* good in CSS columns */
-    break-inside: avoid;
-    overflow: hidden;
-    /* optional */
-    background: rgba(0, 0, 0, 0.04);
-}
-
-.videoSkeleton {
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(90deg,
-            rgba(0, 0, 0, 0.06) 0%,
-            rgba(0, 0, 0, 0.12) 50%,
-            rgba(0, 0, 0, 0.06) 100%);
-    background-size: 200% 100%;
-    animation: shimmer 1.1s linear infinite;
 }
 
 @keyframes shimmer {

@@ -5,8 +5,8 @@
 .main {
   padding-top: 120px;
   min-height: 100vh;
-  background: #f6f6f4;
-  font-family: var(--font-space), system-ui, sans-serif;
+  background: var(--bg-cream);
+  font-family: var(--font-montserrat), system-ui, sans-serif;
 }
 
 .container {
@@ -20,7 +20,7 @@
 ============================ */
 
 .gallerySection {
-  padding: 5rem 0 7rem;
+  padding: 5rem 0 2rem;
 }
 
 .projectsGrid {
@@ -34,14 +34,13 @@
 
 .projectCard {
   break-inside: avoid;
-  /* Prevents cards from breaking across columns */
   margin-bottom: 3rem;
   cursor: pointer;
   background: transparent;
   transition: transform 0.4s ease;
   display: inline-block;
-  /* Fixes weird spacing issues */
   width: 100%;
+  text-decoration: none;
 }
 
 .projectCard:hover {
@@ -55,6 +54,12 @@
   overflow: hidden;
   background: #eae8e3;
   border-radius: 2px;
+  border: 1px solid rgba(134, 38, 51, 0.15);
+  transition: border-color 0.3s ease;
+}
+
+.projectCard:hover .projectImage {
+  border-color: rgba(134, 38, 51, 0.3);
 }
 
 .projectImg {
@@ -66,25 +71,45 @@
   transform: scale(1.05);
 }
 
+/* Fallback for missing images */
+.projectImgFallback {
+  width: 100%;
+  height: 300px;
+  background: #eae8e3;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #999;
+}
+
 /* Info */
 .projectInfo {
   margin-top: 1.4rem;
   display: flex;
   flex-direction: column;
-  gap: 0.3rem;
+  gap: 0.5rem;
 }
 
 .projectInfo h3 {
-  font-size: 1.05rem;
-  font-weight: 600;
-  letter-spacing: 1.2px;
+  font-family: var(--font-bebas);
+  font-size: 1.5rem;
+  font-weight: 400;
+  letter-spacing: 0.05em;
   text-transform: uppercase;
-  color: #111;
+  color: var(--burgundy);
+  transition: color 0.3s ease;
+}
+
+.projectCard:hover .projectInfo h3 {
+  color: var(--burgundy);
+  opacity: 0.85;
 }
 
 .projectInfo span {
-  font-size: 0.85rem;
-  color: #666;
+  font-family: var(--font-montserrat);
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--burgundy);
 }
 
 /* ============================
@@ -106,11 +131,19 @@
   .projectCard {
     margin-bottom: 2.5rem;
   }
+
+  .projectInfo h3 {
+    font-size: 1.8rem;
+  }
 }
 
 @media (max-width: 480px) {
   .container {
     padding: 0 1.25rem;
+  }
+
+  .projectInfo h3 {
+    font-size: 1.6rem;
   }
 }
 
@@ -178,67 +211,77 @@
    PAGINATION
 ============================ */
 
+/* ============================
+   PAGINATION
+============================ */
+
 .pagination {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 2rem;
+  gap: 2.5rem;
   margin-top: 5rem;
-  padding: 2.5rem 0;
-  border-top: 1px solid rgba(0, 0, 0, 0.12);
+  padding: 3rem 0;
+  border-top: 2px solid rgba(134, 38, 51, 0.3);
 }
 
 .pageBtn {
+  font-family: var(--font-montserrat);
   display: inline-flex;
   align-items: center;
-  gap: 0.5rem;
-  padding: 0.85rem 1.75rem;
-  font-size: 0.95rem;
-  font-weight: 600;
-  letter-spacing: 0.5px;
+  gap: 0.75rem;
+  padding: 1rem 2.5rem;
+  font-size: 1.05rem;
+  font-weight: 700;
+  letter-spacing: 0.8px;
   text-transform: uppercase;
-  color: #1e1e1e;
-  background: rgba(255, 255, 255, 0.85);
-  border: 1px solid rgba(0, 0, 0, 0.18);
-  border-radius: 2px;
+  color: var(--burgundy);
+  background: transparent;
+  border: 3px solid var(--burgundy);
+  border-radius: 4px;
   transition: all 0.25s ease;
   cursor: pointer;
+  text-decoration: none;
 }
 
 .pageBtn:hover {
-  color: #f97316;
-  border-color: #f97316;
-  background: rgba(249, 115, 22, 0.06);
-  transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(249, 115, 22, 0.15);
+  color: var(--bg-cream);
+  background: var(--burgundy);
+  border-color: var(--burgundy);
+  transform: translateY(-3px);
+  box-shadow: 0 6px 16px rgba(134, 38, 51, 0.3);
 }
 
 .pageBtn.disabled {
-  opacity: 0.35;
+  opacity: 0.3;
   cursor: not-allowed;
   pointer-events: none;
 }
 
 .pageMeta {
-  font-size: 0.9rem;
+  font-family: var(--font-bebas);
+  font-size: 1.5rem;
   font-weight: 500;
-  letter-spacing: 0.5px;
-  color: #555;
-  font-family: var(--font-space), monospace;
+  letter-spacing: 0.05em;
+  color: var(--burgundy);
+  text-transform: uppercase;
 }
 
 @media (max-width: 640px) {
   .pagination {
-    gap: 1rem;
+    gap: 1.5rem;
     margin-top: 3.5rem;
+    padding: 2.5rem 0;
   }
 
   .pageBtn {
-    padding: 0.75rem 1.25rem;
-    font-size: 0.85rem;
+    padding: 0.85rem 1.75rem;
+    font-size: 0.95rem;
+    font-weight: 700;
+    border-width: 3px;
   }
 
   .pageMeta {
-    font-size: 0.8rem;
+    font-size: 1.1rem;
   }
 }
