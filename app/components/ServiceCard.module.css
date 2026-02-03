@@ -1,7 +1,7 @@
 .serviceCard {
   background: rgba(255, 255, 255, 0.55);
   padding: 2.5rem;
-  border: 1px solid rgba(0, 0, 0, 0.18);
+  border: 1px solid var(--burgundy);
   transition: all 0.35s ease;
   position: relative;
   overflow: hidden;
@@ -21,8 +21,8 @@
 .serviceIcon {
   width: 80px;
   height: 80px;
-  background: #f6f6f4;
-  color: var(--burgundy);
+  background: var(--burgundy);
+  color: #f6f6f4;
   border: 2px solid var(--burgundy);
   display: flex;
   align-items: center;
@@ -40,7 +40,8 @@
   right: -6px;
   width: 12px;
   height: 12px;
-  background: var(--burgundy);
+  background: var(--bg-cream);
+  border: 1px solid var(--burgundy);
   border-radius: 50%;
 }
 
@@ -129,7 +130,7 @@
   .readMoreLink {
     font-size: 0.85rem;
   }
-  
+
   .serviceCard h3 {
     font-size: 1.5rem;
   }

@@ -54,7 +54,7 @@ export default function FeaturedProjects({ projects = [], maxProjects = 2 }) {
           observer.disconnect();
         }
       },
-      { threshold: 0.35 }
+      { threshold: 0.35 },
     );
 
     observer.observe(section);
@@ -69,8 +69,15 @@ export default function FeaturedProjects({ projects = [], maxProjects = 2 }) {
       <section className={styles.featuredSection}>
         <div className={styles.container}>
           <div className={styles.sectionHeader}>
-            <h2 className={styles.sectionTitle}>Featured Projects</h2>
-            <Link href="/project-gallery" className={styles.viewAllLink}>
+            <h2
+              className={`${styles.sectionTitle} ${hasAnimated ? styles.titleVisible : ""}`}
+            >
+              Featured Projects
+            </h2>
+            <Link
+              href="/project-gallery"
+              className={`${styles.viewAllLink} ${hasAnimated ? styles.linkVisible : ""}`}
+            >
               View All Featured Projects
             </Link>
           </div>
@@ -133,7 +140,7 @@ export default function FeaturedProjects({ projects = [], maxProjects = 2 }) {
                 <button
                   onClick={() =>
                     setCurrentPair((p) =>
-                      p === 0 ? projectPairs.length - 1 : p - 1
+                      p === 0 ? projectPairs.length - 1 : p - 1,
                     )
                   }
                   className={styles.navButton}

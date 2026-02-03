@@ -46,7 +46,7 @@ export default function ServicesClient({ services, serviceAreas }) {
       {/* ✅ HERO */}
       <section className={styles.servicesHero}>
         <Image
-          src="/images/Noblesville-Deck.JPG"
+          src="/images/Gary4.jpg"
           alt="Whale Creek Outdoor Living and General Contracting"
           fill
           priority

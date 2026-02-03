@@ -58,6 +58,31 @@
   gap: 3rem;
 }
 
+/* Icon box styles - inverted */
+.iconBox {
+  width: 64px;
+  height: 64px;
+  background: var(--burgundy);
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1.5rem;
+  transition: all 0.3s ease;
+}
+
+.iconBox svg {
+  width: 32px;
+  height: 32px;
+  color: var(--bg-cream);
+  fill: var(--bg-cream);
+}
+
+.serviceCard:hover .iconBox {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 20px rgba(134, 38, 51, 0.3);
+}
+
 @media (max-width: 1024px) {
   .servicesTitle {
     font-size: 2.5rem;
