@@ -20,7 +20,7 @@ export default function FilterClient({
     { id: "millwork", label: "Millwork" },
     { id: "residential", label: "Residential" },
     { id: "commercial", label: "Commercial" },
-    { id: "cabinetry", label: "Cabinetry" },
+    // { id: "cabinetry", label: "Cabinetry" },
     { id: "renovation", label: "Renovation" },
   ];
 

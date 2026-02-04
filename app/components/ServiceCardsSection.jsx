@@ -104,9 +104,9 @@ export default function ServiceCardsSection() {
         </div>
 
         <div className={styles.servicesGrid}>
-          {services.map((service) => (
+          {services.map((service, i) => (
             <div
-              key={service.id}
+              key={i}
               className={`${hasAnimated ? styles.cardVisible : styles.cardHidden}`}
             >
               <ServiceCard {...service} />

@@ -10,11 +10,11 @@ export default function HeroCarousel({ slides = [] }) {
   const [current, setCurrent] = useState(0);
   const [ready, setReady] = useState(slides.length > 0);
   const [contentReady, setContentReady] = useState(false);
+  const [projectCardReady, setProjectCardReady] = useState(false); // NEW
   const [isAutoAdvancing, setIsAutoAdvancing] = useState(true);
   const [zoomingSlide, setZoomingSlide] = useState(null);
   const [fadeInSlide, setFadeInSlide] = useState(null);
 
-  // ✅ restartable timer so manual nav gets a full interval
   const autoTimerRef = useRef(null);
 
   const clearAutoTimer = () => {
@@ -40,7 +40,6 @@ export default function HeroCarousel({ slides = [] }) {
     return () => clearTimeout(t);
   }, [slides, ready]);
 
-  // Trigger content animation faster - only 200ms delay
   useEffect(() => {
     if (!ready) return;
     const timer = setTimeout(() => {
@@ -49,27 +48,29 @@ export default function HeroCarousel({ slides = [] }) {
     return () => clearTimeout(timer);
   }, [ready]);
 
-  // ✅ Auto-advance using restartable timeout (not interval)
-  // Any slide change (manual or auto) resets the countdown
+  // NEW: Re-trigger project card animation on slide change
+  useEffect(() => {
+    setProjectCardReady(false);
+    const timer = setTimeout(() => {
+      setProjectCardReady(true);
+    }, 300); // Small delay after slide transition
+    return () => clearTimeout(timer);
+  }, [current]);
+
   useEffect(() => {
     restartAutoTimer();
     return clearAutoTimer;
-    // We only need length, not the whole slides array reference.
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [current, slides.length, isAutoAdvancing]);
 
-  // Trigger zoom and fade after slide transition completes
   useEffect(() => {
-    // Reset on slide change
     setZoomingSlide(null);
     setFadeInSlide(null);
 
-    // Fade in immediately
     const fadeTimer = setTimeout(() => {
       setFadeInSlide(current);
     }, 100);
 
-    // Then apply zoom after fade starts
     const zoomTimer = setTimeout(() => {
       setZoomingSlide(current);
     }, 200);
@@ -80,7 +81,6 @@ export default function HeroCarousel({ slides = [] }) {
     };
   }, [current]);
 
-  // If slides array shrinks, keep current in range
   useEffect(() => {
     if (!slides.length) return;
     setCurrent((c) => Math.min(c, slides.length - 1));
@@ -101,9 +101,7 @@ export default function HeroCarousel({ slides = [] }) {
   const toggleAutoAdvance = () => {
     setIsAutoAdvancing((v) => {
       const nextValue = !v;
-      // If turning off, stop timer immediately
       if (!nextValue) clearAutoTimer();
-      // If turning on, timer will be scheduled by the effect
       return nextValue;
     });
   };
@@ -120,7 +118,6 @@ export default function HeroCarousel({ slides = [] }) {
             key={s._id}
             className={`${styles.slide} ${active ? styles.active : ""}`}
           >
-            {/* Background media */}
             {isVideo ? (
               <div className={styles.videoContainer}>
                 <video
@@ -148,14 +145,12 @@ export default function HeroCarousel({ slides = [] }) {
               />
             )}
 
-            {/* Gradient overlay */}
             <div
               className={`${styles.overlay} ${
                 isVideo ? styles.videoOverlay : ""
               }`}
             />
 
-            {/* Text content */}
             <div className={styles.content}>
               <div className={styles.contentInner}>
                 <h1
@@ -214,7 +209,6 @@ export default function HeroCarousel({ slides = [] }) {
         );
       })}
 
-      {/* Controls */}
       <button
         onClick={prev}
         className={`${styles.navButton} ${styles.navLeft}`}
@@ -230,7 +224,6 @@ export default function HeroCarousel({ slides = [] }) {
         <ChevronRight size={24} />
       </button>
 
-      {/* Play/Pause */}
       <button
         onClick={toggleAutoAdvance}
         className={styles.playPause}
@@ -239,24 +232,24 @@ export default function HeroCarousel({ slides = [] }) {
         {isAutoAdvancing ? <Pause size={20} /> : <Play size={20} />}
       </button>
 
-      {/* Bottom-left project card */}
+      {/* Updated to use projectCardReady instead of contentReady */}
       {slides[current]?.featuredProject && (
         <Link
           href={`/project-gallery/${slides[current].featuredProject.slug}`}
           className={`${styles.projectCard} ${
-            contentReady ? styles.projectCardVisible : ""
+            projectCardReady ? styles.projectCardVisible : ""
           }`}
         >
           <h3
             className={`${styles.projectTitle} ${
-              contentReady ? styles.projectTitleVisible : ""
+              projectCardReady ? styles.projectTitleVisible : ""
             }`}
           >
             Featured Project
           </h3>
           <p
             className={`${styles.projectName} ${
-              contentReady ? styles.projectNameVisible : ""
+              projectCardReady ? styles.projectNameVisible : ""
             }`}
           >
             {slides[current].featuredProject.title}
@@ -264,7 +257,7 @@ export default function HeroCarousel({ slides = [] }) {
           {slides[current].featuredProject.location && (
             <p
               className={`${styles.projectLocation} ${
-                contentReady ? styles.projectLocationVisible : ""
+                projectCardReady ? styles.projectLocationVisible : ""
               }`}
             >
               {slides[current].featuredProject.location}
@@ -272,7 +265,7 @@ export default function HeroCarousel({ slides = [] }) {
           )}
           <span
             className={`${styles.projectLink} ${
-              contentReady ? styles.projectLinkVisible : ""
+              projectCardReady ? styles.projectLinkVisible : ""
             }`}
           >
             View Project →

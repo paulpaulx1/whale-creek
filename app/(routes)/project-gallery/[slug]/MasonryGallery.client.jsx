@@ -20,9 +20,6 @@ function VideoMasonryItem({ playbackId, aspectRatioRaw, title }) {
   const cssAspectRatio = `${w} / ${h}`;
   const isVertical = w / h < 1;
 
-  // Optional: cap vertical videos by height without breaking aspect ratio.
-  // If height would exceed 60vh, width shrinks accordingly.
-
   const maxWidth = isVertical ? "450px" : "100%";
 
   return (
@@ -31,7 +28,6 @@ function VideoMasonryItem({ playbackId, aspectRatioRaw, title }) {
       style={{
         width: "100%",
         maxWidth,
-
         aspectRatio: cssAspectRatio,
       }}
     >
@@ -71,7 +67,9 @@ export default function MasonryGallery({
   const [activeIndex, setActiveIndex] = useState(0);
   const [open, setOpen] = useState(false);
   const [preloadedIndex, setPreloadedIndex] = useState(null);
-  const [videoLoaded, setVideoLoaded] = useState(false); // Add this
+
+  // Determine if we should use horizontal layout
+  const useHorizontalLayout = safeImages.length <= 3;
 
   // Preload lightbox image on hover
   const handleMouseEnter = (idx) => {
@@ -140,10 +138,10 @@ export default function MasonryGallery({
           title={title}
         />
       )}
-      <div className={styles.masonry}>
-        {/* Video first if it exists */}
-
-        {/* Then all the images */}
+      <div 
+        className={`${styles.masonry} ${useHorizontalLayout ? styles.masonryHorizontal : ''}`}
+        data-item-count={safeImages.length}
+      >
         {safeImages.map((img, idx) => {
           const w = img?.dimensions?.width ?? 1600;
           const h = img?.dimensions?.height ?? 1200;
