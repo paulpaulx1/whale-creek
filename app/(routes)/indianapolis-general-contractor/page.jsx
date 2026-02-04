@@ -85,7 +85,7 @@ export default async function Services() {
     {
       id: "commercial-general-contractors-indianapolis",
       title: "Commercial Projects",
-      image: "/images/CovraMirror.webp",
+      image: "/images/covramirror.webp",
       description:
         "Whale Creek Co partners with businesses seeking a dependable manufacturing and fabrication shop. Whether you need custom furniture, retail buildouts, or specialty wood products, we're here for you from early prototyping to full-scale production.",
       details:
