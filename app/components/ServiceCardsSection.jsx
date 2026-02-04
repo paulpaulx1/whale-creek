@@ -1,7 +1,31 @@
-import styles from "./ServiceCardsSection.module.css";
-import ServiceCard from "./ServiceCard";
+"use client";
 
-const ServiceCardsSection = () => {
+import { useEffect, useState, useRef } from "react";
+import ServiceCard from "./ServiceCard";
+import styles from "./ServiceCardsSection.module.css";
+
+export default function ServiceCardsSection() {
+  const [hasAnimated, setHasAnimated] = useState(false);
+  const sectionRef = useRef(null);
+
+  useEffect(() => {
+    const section = sectionRef.current;
+    if (!section) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setHasAnimated(true);
+          observer.disconnect();
+        }
+      },
+      { threshold: 0.2 }
+    );
+
+    observer.observe(section);
+    return () => observer.disconnect();
+  }, []);
+
   const services = [
     {
       iconType: "house",
@@ -62,30 +86,34 @@ const ServiceCardsSection = () => {
       linkText: null,
     },
   ];
-
   return (
-    <section className={styles.servicesSection} data-element="services">
+    <section ref={sectionRef} className={styles.servicesSection}>
       <div className={styles.container}>
         <div className={styles.servicesHeader}>
-          <h2 className={styles.servicesTitle}>What We Do</h2>
+          <h2
+            className={`${styles.servicesTitle} ${hasAnimated ? styles.titleVisible : ""}`}
+          >
+            What We Build
+          </h2>
+          <p
+            className={`${styles.servicesSubtitle} ${hasAnimated ? styles.subtitleVisible : ""}`}
+          >
+            From custom millwork to complete home renovations, we bring
+            expertise and craftsmanship to every project.
+          </p>
         </div>
 
         <div className={styles.servicesGrid}>
-          {services.map((service, index) => (
-            <ServiceCard
-              key={index}
-              iconType={service.iconType}
-              blueprint={service.blueprint}
-              title={service.title}
-              description={service.description}
-              linkUrl={service.linkUrl}
-              linkText={service.linkText}
-            />
+          {services.map((service) => (
+            <div
+              key={service.id}
+              className={`${hasAnimated ? styles.cardVisible : styles.cardHidden}`}
+            >
+              <ServiceCard {...service} />
+            </div>
           ))}
         </div>
       </div>
     </section>
   );
-};
-
-export default ServiceCardsSection;
+}
