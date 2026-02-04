@@ -92,7 +92,7 @@ const AboutContent = () => {
             </ul>
 
             <div className={styles.helpActions}>
-              <a className={styles.primaryCta} href="#contact">
+              <a className={styles.primaryCta} href="/indianapolis-woodworker-contact">
                 Start a Project
               </a>
               <a className={styles.secondaryCta} href="/projects">
