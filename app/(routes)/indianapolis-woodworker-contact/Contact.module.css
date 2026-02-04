@@ -5,8 +5,8 @@
 .main {
   padding-top: 120px;
   min-height: 100vh;
-  background: #f6f6f4;
-  font-family: var(--font-space), system-ui, sans-serif;
+  background: var(--bg-cream);
+  font-family: var(--font-montserrat), system-ui, sans-serif;
 }
 
 /* =============================
@@ -16,7 +16,7 @@
 .hero {
   padding: 5rem 2rem 4rem;
   text-align: center;
-  background: #f6f6f4;
+  background: var(--bg-cream);
 }
 
 .heroInner {
@@ -25,32 +25,36 @@
 }
 
 .hero h1 {
-  font-size: clamp(2.4rem, 5vw, 3.5rem);
-  font-weight: 600;
-  letter-spacing: -0.02em;
-  color: #111;
-  margin-bottom: 1rem;
+  font-family: var(--font-bebas);
+  font-size: clamp(2.8rem, 5vw, 4rem);
+  font-weight: 400;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--burgundy);
+  margin-bottom: 1.5rem;
 }
 
 .hero h1 span {
-  color: #f97316;
-  /* ✅ ORANGE ACCENT */
+  color: var(--burgundy);
 }
 
 .hero p {
-  font-size: 1.05rem;
-  line-height: 1.6;
-  color: #555;
+  font-family: var(--font-montserrat);
+  font-size: 1.1rem;
+  line-height: 1.7;
+  color: var(--burgundy);
+  font-weight: 500;
+  opacity: 0.85;
   max-width: 620px;
   margin: 0 auto;
 }
 
 .heroDivider {
   width: 80px;
-  height: 1px;
+  height: 2px;
   background: linear-gradient(to right,
       transparent,
-      rgba(0, 0, 0, 0.25),
+      var(--burgundy),
       transparent);
   margin: 2.5rem auto 0;
 }
@@ -72,36 +76,17 @@
   position: relative;
 }
 
-/* Vertical divider */
-/* @media (min-width: 1024px) {
-  .grid::after {
-    content: '';
-    position: absolute;
-    top: 8%;
-    bottom: 8%;
-    left: 50%;
-    width: 1px;
-    background: linear-gradient(to bottom,
-        transparent,
-        rgba(0, 0, 0, 0.15),
-        transparent);
-  }
-} */
-
 /* =============================
-   FORM (VELLUM CARD)
+   FORM (SIMPLIFIED CARD)
 ============================= */
 
 .form {
-  background: rgba(255, 255, 255, 0.92);
+  background: rgba(255, 255, 255, 0.7);
   padding: 3rem;
   border-radius: 22px;
-  border: 1px solid rgba(0, 0, 0, 0.08);
+  border: 1px solid rgba(134, 38, 51, 0.2);
   backdrop-filter: blur(6px);
-
-  box-shadow:
-    0 22px 50px rgba(0, 0, 0, 0.06),
-    0 10px 24px rgba(0, 0, 0, 0.04);
+  box-shadow: 0 22px 50px rgba(134, 38, 51, 0.08);
 }
 
 .fieldRow {
@@ -114,15 +99,24 @@
 .form input,
 .form select,
 .form textarea {
+  font-family: var(--font-montserrat);
   width: 100%;
   padding: 1rem 1rem;
   font-size: 0.95rem;
+  font-weight: 500;
   border-radius: 10px;
-  border: 1px solid rgba(0, 0, 0, 0.15);
+  border: 2px solid rgba(134, 38, 51, 0.25);
   background: #fff;
-  font-family: inherit;
+  color: var(--burgundy);
   outline: none;
   transition: border 0.25s ease, box-shadow 0.25s ease;
+}
+
+.form input::placeholder,
+.form select::placeholder,
+.form textarea::placeholder {
+  color: var(--burgundy);
+  opacity: 0.5;
 }
 
 .form textarea {
@@ -134,8 +128,8 @@
 .form input:focus,
 .form select:focus,
 .form textarea:focus {
-  border-color: #f97316;
-  box-shadow: 0 0 0 1px rgba(249, 115, 22, 0.25);
+  border-color: var(--burgundy);
+  box-shadow: 0 0 0 1px rgba(134, 38, 51, 0.3);
 }
 
 /* =============================
@@ -143,30 +137,29 @@
 ============================= */
 
 .form button {
+  font-family: var(--font-montserrat);
   margin-top: 1rem;
   width: 100%;
   padding: 1.2rem;
   border-radius: 999px;
   border: none;
-  font-size: 0.85rem;
-  letter-spacing: 0.14em;
+  font-size: 0.9rem;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
-  font-weight: 600;
-  background: linear-gradient(180deg, #111, #000);
-  color: white;
+  font-weight: 700;
+  background: var(--burgundy);
+  color: var(--bg-cream);
   cursor: pointer;
-
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 0.6rem;
-
   transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
 
 .form button:hover:not(:disabled) {
   transform: translateY(-2px);
-  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.35);
+  box-shadow: 0 16px 36px rgba(134, 38, 51, 0.4);
 }
 
 .form button:disabled {
@@ -179,21 +172,25 @@
 ============================= */
 
 .result {
+  font-family: var(--font-montserrat);
   margin-top: 1.2rem;
   padding: 0.9rem 1rem;
   font-size: 0.85rem;
+  font-weight: 600;
   border-radius: 10px;
   text-align: center;
 }
 
 .success {
-  background: #e6f4ea;
-  color: #1b5e20;
+  background: rgba(134, 38, 51, 0.1);
+  color: var(--burgundy);
+  border: 1px solid rgba(134, 38, 51, 0.3);
 }
 
 .error {
   background: #fdecea;
   color: #b71c1c;
+  border: 1px solid #b71c1c;
 }
 
 /* =============================
@@ -207,29 +204,34 @@
 }
 
 .infoCard {
-  background: rgba(255, 255, 255, 0.75);
+  font-family: var(--font-montserrat);
+  background: rgba(255, 255, 255, 0.7);
   padding: 1.2rem 1.4rem;
   border-radius: 14px;
-  border: 1px solid rgba(0, 0, 0, 0.06);
-
+  border: 1px solid rgba(134, 38, 51, 0.15);
   display: flex;
   align-items: center;
   gap: 0.8rem;
-
   font-size: 0.95rem;
-  color: #222;
+  font-weight: 500;
+  color: var(--burgundy);
+  box-shadow: 0 10px 22px rgba(134, 38, 51, 0.06);
+  transition: all 0.3s ease;
+}
 
-  box-shadow:
-    0 10px 22px rgba(0, 0, 0, 0.04),
-    0 4px 10px rgba(0, 0, 0, 0.03);
+.infoCard:hover {
+  border-color: rgba(134, 38, 51, 0.3);
+  transform: translateY(-2px);
 }
 
 .trustList {
+  font-family: var(--font-montserrat);
   margin-top: 1.5rem;
   padding-left: 1.2rem;
-  color: #555;
+  color: var(--burgundy);
   font-size: 0.9rem;
-  line-height: 1.6;
+  font-weight: 500;
+  line-height: 1.7;
 }
 
 .trustList li {
@@ -247,8 +249,8 @@
     gap: 3rem;
   }
 
-  .grid::after {
-    display: none;
+  .hero h1 {
+    font-size: 2.5rem;
   }
 }
 
@@ -259,5 +261,13 @@
 
   .fieldRow {
     grid-template-columns: 1fr;
+  }
+
+  .hero h1 {
+    font-size: 2.2rem;
+  }
+
+  .hero p {
+    font-size: 1rem;
   }
 }
