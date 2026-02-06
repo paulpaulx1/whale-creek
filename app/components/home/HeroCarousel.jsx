@@ -2,6 +2,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import { ChevronLeft, ChevronRight, Play, Pause } from "lucide-react";
 import Link from "next/link";
+import Image from "next/image";
 import styles from "./HeroCarousel.module.css";
 
 const AUTO_ADVANCE_MS = 10000;
@@ -10,7 +11,7 @@ export default function HeroCarousel({ slides = [] }) {
   const [current, setCurrent] = useState(0);
   const [ready, setReady] = useState(slides.length > 0);
   const [contentReady, setContentReady] = useState(false);
-  const [projectCardReady, setProjectCardReady] = useState(false); // NEW
+  const [projectCardReady, setProjectCardReady] = useState(false);
   const [isAutoAdvancing, setIsAutoAdvancing] = useState(true);
   const [zoomingSlide, setZoomingSlide] = useState(null);
   const [fadeInSlide, setFadeInSlide] = useState(null);
@@ -48,12 +49,11 @@ export default function HeroCarousel({ slides = [] }) {
     return () => clearTimeout(timer);
   }, [ready]);
 
-  // NEW: Re-trigger project card animation on slide change
   useEffect(() => {
     setProjectCardReady(false);
     const timer = setTimeout(() => {
       setProjectCardReady(true);
-    }, 300); // Small delay after slide transition
+    }, 300);
     return () => clearTimeout(timer);
   }, [current]);
 
@@ -137,12 +137,19 @@ export default function HeroCarousel({ slides = [] }) {
                 </video>
               </div>
             ) : (
-              <div
-                className={`${styles.imageBackground} ${
-                  i === fadeInSlide ? styles.fadeIn : ""
-                } ${i === zoomingSlide ? styles.zoom : ""}`}
-                style={{ backgroundImage: `url(${s.imageUrl})` }}
-              />
+              <div className={styles.imageWrapper}>
+                <Image
+                  src={s.imageUrl}
+                  alt={s.title || ""}
+                  fill
+                  priority={i === 0} // Only first slide gets priority
+                  quality={85}
+                  className={`${styles.imageBackground} ${
+                    i === fadeInSlide ? styles.fadeIn : ""
+                  } ${i === zoomingSlide ? styles.zoom : ""}`}
+                  sizes="100vw"
+                />
+              </div>
             )}
 
             <div
@@ -232,7 +239,6 @@ export default function HeroCarousel({ slides = [] }) {
         {isAutoAdvancing ? <Pause size={20} /> : <Play size={20} />}
       </button>
 
-      {/* Updated to use projectCardReady instead of contentReady */}
       {slides[current]?.featuredProject && (
         <Link
           href={`/project-gallery/${slides[current].featuredProject.slug}`}
