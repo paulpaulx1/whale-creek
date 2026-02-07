@@ -566,3 +566,24 @@
 .imageBackground.zoom {
     transform: scale(1.15);
 }
+
+@media (max-width: 767px) {
+    .title {
+        font-size: 2.5rem; /* Reduced from 4rem */
+        margin-bottom: 1.5rem;
+    }
+
+    .description {
+        font-size: 1rem; /* Slightly smaller */
+        margin-bottom: 2rem; /* Reduced from 3rem to give CTAs more room */
+    }
+
+    .contentInner {
+        margin-top: 4rem; /* Reduced from 6rem */
+        padding-bottom: 3rem; /* Add bottom padding so CTAs don't touch */
+    }
+
+    .ctas {
+        gap: 1rem; /* Slightly tighter gap on mobile */
+    }
+}
