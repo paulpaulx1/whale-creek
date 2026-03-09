@@ -35,7 +35,11 @@ const serviceAreasQuery = `*[_type == "project" && defined(location)].location`;
 
 async function getServiceAreas() {
   try {
-    const locations = await client.fetch(serviceAreasQuery);
+    const locations = await client.fetch(
+      serviceAreasQuery,
+      {},
+      { next: { tags: ["sanity"] } },
+    );
     const dynamicAreas = [...new Set(locations.filter(Boolean))];
 
     // Hardcoded areas for immediate SEO benefit
@@ -66,7 +70,11 @@ async function getServiceAreas() {
 
 async function getBlogPosts() {
   try {
-    const posts = await client.fetch(blogQuery);
+    const posts = await client.fetch(
+      blogQuery,
+      {},
+      { next: { tags: ["sanity"] } },
+    );
     return posts || [];
   } catch (error) {
     console.error("Error fetching blog posts:", error);

@@ -62,7 +62,11 @@ async function getProjectsPage(page = 1) {
   const end = start + PAGE_SIZE;
 
   try {
-    const data = await client.fetch(galleryQuery, { start, end });
+    const data = await client.fetch(
+      galleryQuery,
+      { start, end },
+      { next: { tags: ["sanity"] } },
+    );
     const total = data?.total || 0;
 
     return {

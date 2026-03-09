@@ -85,7 +85,11 @@ const reviewsQuery = `
 
 async function getServiceAreas() {
   try {
-    const locations = await client.fetch(serviceAreasQuery);
+    const locations = await client.fetch(
+      serviceAreasQuery,
+      {},
+      { next: { tags: ["sanity"] } },
+    );
     const dynamicAreas = [...new Set(locations.filter(Boolean))];
 
     // Hardcoded areas for immediate SEO benefit
@@ -116,7 +120,11 @@ async function getServiceAreas() {
 
 async function getProjects() {
   try {
-    const projects = await client.fetch(projectsQuery);
+    const projects = await client.fetch(
+      projectsQuery,
+      {},
+      { next: { tags: ["sanity"] } },
+    );
     return projects || [];
   } catch (error) {
     console.error("Error fetching projects:", error);
@@ -126,7 +134,11 @@ async function getProjects() {
 
 async function getHeroSlides() {
   try {
-    const slides = await client.fetch(carouselQuery);
+    const slides = await client.fetch(
+      carouselQuery,
+      {},
+      { next: { tags: ["sanity"] } },
+    );
     return Array.isArray(slides) ? slides : [];
   } catch (error) {
     console.error("Error fetching carousel slides:", error);
@@ -136,7 +148,11 @@ async function getHeroSlides() {
 
 async function getReviews() {
   try {
-    const reviews = await client.fetch(reviewsQuery);
+    const reviews = await client.fetch(
+      reviewsQuery,
+      {},
+      { next: { tags: ["sanity"] } },
+    );
     return Array.isArray(reviews) ? reviews : [];
   } catch (error) {
     console.error("Error fetching reviews:", error);
@@ -173,10 +189,10 @@ export default async function Home() {
 
         {/* OLD: Static hero - keeping for now to compare */}
         {/* <Hero /> */}
-        <AboutContent  />
+        <AboutContent />
         <FeaturedProjects projects={projects} maxProjects={2} />
         <ServiceCardsSection />
-        <Reviews reviews={reviews}/>
+        <Reviews reviews={reviews} />
         <ClientInteractions />
       </main>
     </>

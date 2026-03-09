@@ -49,7 +49,11 @@ const allProjectsQuery = `
 
 async function getProject(slug) {
   try {
-    return await client.fetch(projectQuery, { slug });
+    return await client.fetch(
+      projectQuery,
+      { slug },
+      { next: { tags: ["sanity"] } },
+    );
   } catch (error) {
     console.error("Error fetching project:", error);
     return null;
@@ -57,7 +61,11 @@ async function getProject(slug) {
 }
 
 export async function generateStaticParams() {
-  const projects = await client.fetch(allProjectsQuery);
+  const projects = await client.fetch(
+    allProjectsQuery,
+    {},
+    { next: { tags: ["sanity"] } },
+  );
   return projects.map((p) => ({ slug: p.slug }));
 }
 
@@ -131,8 +139,8 @@ export default async function ProjectPage({ params }) {
 
         {/* Main Content - Masonry Grid */}
         <div className={styles.content}>
-          <MasonryGallery 
-            images={project.images || []} 
+          <MasonryGallery
+            images={project.images || []}
             title={project.title}
             video={project.video || null}
           />

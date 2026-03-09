@@ -19,7 +19,7 @@ export default function ServiceCardsSection() {
           observer.disconnect();
         }
       },
-      { threshold: 0.2 }
+      { threshold: 0.2 },
     );
 
     observer.observe(section);
@@ -68,13 +68,13 @@ export default function ServiceCardsSection() {
       linkText: "See Outdoor Living Options",
     },
     {
-      iconType: "toolbox",
+      iconType: "shovel",
       blueprint: "CAB_001",
-      title: "Custom Cabinetry",
+      title: "Whale Creek Underground",
       description:
-        "Bespoke storage solutions designed and built to fit your unique space, style, and functional needs.",
-      linkUrl: null,
-      linkText: null,
+        "Excavation, foundation work, site prep, and below-grade solutions — powered by our own equipment and ready to dig.",
+      linkUrl: "/project-gallery/underground",
+      linkText: "Learn More",
     },
     {
       iconType: "wrench",
@@ -87,6 +87,8 @@ export default function ServiceCardsSection() {
     },
   ];
   return (
+
+    
     <section ref={sectionRef} className={styles.servicesSection}>
       <div className={styles.container}>
         <div className={styles.servicesHeader}>

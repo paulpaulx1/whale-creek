@@ -47,7 +47,11 @@ const allUndergroundQuery = `
 
 async function getProject(slug) {
   try {
-    return await client.fetch(projectQuery, { slug });
+    return await client.fetch(
+      projectQuery,
+      { slug },
+      { next: { tags: ["sanity"] } },
+    );
   } catch (error) {
     console.error("Error fetching underground project:", error);
     return null;
@@ -55,7 +59,11 @@ async function getProject(slug) {
 }
 
 export async function generateStaticParams() {
-  const projects = await client.fetch(allUndergroundQuery);
+  const projects = await client.fetch(
+    allUndergroundQuery,
+    {},
+    { next: { tags: ["sanity"] } },
+  );
   return projects.map((p) => ({ slug: p.slug }));
 }
 

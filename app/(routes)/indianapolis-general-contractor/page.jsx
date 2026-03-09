@@ -10,7 +10,11 @@ const serviceAreasQuery = `*[_type == "project" && defined(location)].location`;
 
 async function getServiceAreas() {
   try {
-    const locations = await client.fetch(serviceAreasQuery);
+    const locations = await client.fetch(
+      serviceAreasQuery,
+      {},
+      { next: { tags: ["sanity"] } },
+    );
     const dynamicAreas = [...new Set(locations.filter(Boolean))];
 
     const hardcodedAreas = [

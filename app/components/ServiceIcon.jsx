@@ -1,16 +1,15 @@
 // components/ServiceIcon.tsx
-'use client'
+"use client";
 
-import { 
-  HammerIcon, 
-  HouseIcon, 
-  BuildingsIcon, 
-  ToolboxIcon, 
-  WrenchIcon, 
-  RulerIcon 
-} from '@phosphor-icons/react'
-
-
+import {
+  HammerIcon,
+  HouseIcon,
+  BuildingsIcon,
+  ToolboxIcon,
+  WrenchIcon,
+  RulerIcon,
+  ShovelIcon,
+} from "@phosphor-icons/react";
 
 export default function ServiceIcon({ type, size = 32, className }) {
   const icons = {
@@ -20,9 +19,10 @@ export default function ServiceIcon({ type, size = 32, className }) {
     toolbox: ToolboxIcon,
     wrench: WrenchIcon,
     ruler: RulerIcon,
-  }
+    shovel: ShovelIcon,
+  };
 
-  const IconComponent = icons[type]
-  
-  return <IconComponent size={size} className={className} />
+  const IconComponent = icons[type];
+
+  return <IconComponent size={size} className={className} />;
 }

@@ -38,7 +38,11 @@ const undergroundQuery = `
 
 async function getUndergroundProjects() {
   try {
-    return await client.fetch(undergroundQuery);
+    return await client.fetch(
+      undergroundQuery,
+      {},
+      { next: { tags: ["sanity"] } },
+    );
   } catch (error) {
     console.error("Error fetching underground projects:", error);
     return [];
