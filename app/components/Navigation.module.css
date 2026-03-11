@@ -525,7 +525,8 @@
 /* The navigable label link inside the header */
 .mobileDropdownLabel {
   flex: 1;
-  border-bottom: none; /* border lives on the parent header row */
+  border-bottom: none;
+  /* border lives on the parent header row */
 }
 
 .mobileDropdownLabel:hover {
@@ -538,12 +539,14 @@
   border: none;
   cursor: pointer;
   color: rgba(255, 255, 255, 0.6);
-  padding: 1rem 0 1rem 1rem;
+  padding: 0.35rem;
+  margin-left: 0.75rem;
   display: flex;
   align-items: center;
   justify-content: center;
   transition: color 0.3s ease;
   flex-shrink: 0;
+  border-radius: 4px;
 }
 
 .mobileChevronButton:hover {
