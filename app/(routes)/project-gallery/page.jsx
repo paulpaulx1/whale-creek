@@ -109,6 +109,7 @@ export async function generateMetadata() {
 
 export default async function ProjectGallery({ searchParams }) {
   const page = Number(searchParams?.page || 1);
+  const category = searchParams?.category || "all"; // ← add this
   const data = await getProjectsPage(page);
 
   const serviceAreas = await getServiceAreas(data.items);
@@ -132,6 +133,7 @@ export default async function ProjectGallery({ searchParams }) {
           projects={data.items}
           page={data.page}
           totalPages={data.totalPages}
+          initialFilter={category}
         />
         {/* <CTASection /> */}
       </main>

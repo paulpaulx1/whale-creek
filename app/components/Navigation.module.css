@@ -41,7 +41,10 @@
   }
 }
 
-/* Navigation.module.css - Refined like Whale Creek */
+/* ================================
+   NAV BASE
+================================ */
+
 .nav {
   position: fixed;
   top: 0;
@@ -68,7 +71,10 @@
   padding: 0 2rem;
 }
 
-/* Logo/Brand */
+/* ================================
+   BRAND
+================================ */
+
 .brand {
   z-index: 999;
   animation: fadeInDown 0.6s ease-out;
@@ -127,7 +133,10 @@
   filter: brightness(0) saturate(100%) invert(1);
 }
 
-/* Desktop Menu */
+/* ================================
+   DESKTOP MENU
+================================ */
+
 .desktopMenu {
   display: flex;
   gap: 3rem;
@@ -171,7 +180,10 @@
   color: #ffffff;
 }
 
-/* ── Dropdown ── */
+/* ================================
+   DROPDOWN
+================================ */
+
 .dropdownWrapper {
   position: relative;
   display: flex;
@@ -188,7 +200,6 @@
   padding: 0.5rem 0;
 }
 
-/* suppress the underline pseudo on the button trigger */
 .dropdownTrigger::after {
   display: none;
 }
@@ -205,6 +216,14 @@
   transform: rotate(180deg);
 }
 
+.chevronSmall {
+  transition: transform 0.25s ease;
+  opacity: 0.6;
+  flex-shrink: 0;
+  margin-left: auto;
+  transform: rotate(180deg);
+}
+
 .chevronOpen {
   transform: rotate(-360deg);
   opacity: 1;
@@ -214,7 +233,7 @@
   position: absolute;
   top: 100%;
   right: 0;
-  min-width: 180px;
+  min-width: 200px;
   padding-top: 0.75rem;
   background: transparent;
   pointer-events: none;
@@ -259,6 +278,13 @@
   text-decoration: none;
   transition: background 0.2s ease, color 0.2s ease;
   border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  width: 100%;
+  text-align: left;
+  background: none;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  cursor: pointer;
 }
 
 .dropdownItem:last-child {
@@ -270,7 +296,44 @@
   color: #ffffff;
 }
 
-/* Underground variant in dropdown */
+/* ── Nested accordion inside dropdown ── */
+
+.dropdownAccordion {
+  position: relative;
+  z-index: 1;
+}
+
+.dropdownAccordionTrigger {
+  justify-content: space-between;
+}
+
+.dropdownAccordionItems {
+  background: rgba(0, 0, 0, 0.25);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.dropdownSubItem {
+  padding-left: 1.6rem;
+  font-size: 0.88rem;
+  opacity: 0.85;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+}
+
+.dropdownSubItem:last-child {
+  border-bottom: none;
+}
+
+.dropdownSubItem:hover {
+  opacity: 1;
+}
+
+.subArrow {
+  opacity: 0.45;
+  font-size: 0.75rem;
+  flex-shrink: 0;
+}
+
+/* Underground variant */
 .dropdownItemUnderground {
   color: rgba(180, 130, 80, 0.85);
   letter-spacing: 0.15em;
@@ -281,7 +344,6 @@
   color: rgba(210, 165, 100, 1);
 }
 
-/* small amber dot indicator */
 .undergroundDot {
   display: inline-block;
   width: 5px;
@@ -291,7 +353,10 @@
   flex-shrink: 0;
 }
 
-/* Mobile Menu Toggle */
+/* ================================
+   MOBILE MENU TOGGLE
+================================ */
+
 .menuToggle {
   display: none;
   flex-direction: column;
@@ -335,7 +400,10 @@
   transform: rotate(-45deg) translate(7px, -6px);
 }
 
-/* Mobile Menu Overlay */
+/* ================================
+   MOBILE MENU
+================================ */
+
 .mobileMenuOverlay {
   position: fixed;
   top: 0;
@@ -366,6 +434,7 @@
   transition: transform 0.3s ease;
   padding: 2rem;
   border-left: 1px solid rgba(255, 255, 255, 0.1);
+  overflow-y: auto;
 }
 
 .overlayOpen .mobileMenu {
@@ -445,6 +514,42 @@
   flex-direction: column;
 }
 
+/* Row containing the label link + chevron toggle button */
+.mobileDropdownHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+/* The navigable label link inside the header */
+.mobileDropdownLabel {
+  flex: 1;
+  border-bottom: none; /* border lives on the parent header row */
+}
+
+.mobileDropdownLabel:hover {
+  padding-left: 0.5rem;
+}
+
+/* The chevron-only toggle button */
+.mobileChevronButton {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: rgba(255, 255, 255, 0.6);
+  padding: 1rem 0 1rem 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: color 0.3s ease;
+  flex-shrink: 0;
+}
+
+.mobileChevronButton:hover {
+  color: #ffffff;
+}
+
 .mobileDropdownTrigger {
   background: none;
   border: none;
@@ -477,6 +582,33 @@
   animation: none;
 }
 
+/* Mobile nested (Construction sub-items) */
+.mobileNestedGroup {
+  display: flex;
+  flex-direction: column;
+}
+
+.mobileNestedItems {
+  display: flex;
+  flex-direction: column;
+  padding-left: 1rem;
+  border-left: 1px solid rgba(255, 255, 255, 0.07);
+  margin-left: 0.25rem;
+  margin-bottom: 0.25rem;
+}
+
+.mobileSubItem {
+  font-size: 0.85rem;
+  opacity: 0.75;
+  padding: 0.55rem 0;
+  gap: 0.4rem;
+}
+
+.mobileSubItem:hover {
+  opacity: 1;
+}
+
+/* Underground mobile */
 .mobileDropdownItemUnderground {
   color: rgba(180, 130, 80, 0.85);
 }
@@ -485,7 +617,10 @@
   color: rgba(210, 165, 100, 1);
 }
 
-/* Backdrop */
+/* ================================
+   BACKDROP
+================================ */
+
 .backdrop {
   position: fixed;
   top: 0;
@@ -498,7 +633,10 @@
   animation: fadeInBackdrop 0.3s ease forwards;
 }
 
-/* Responsive Design */
+/* ================================
+   RESPONSIVE
+================================ */
+
 @media (max-width: 768px) {
   .desktopMenu {
     display: none;
@@ -549,18 +687,40 @@
   }
 }
 
-/* Accessibility */
+/* ================================
+   ACCESSIBILITY
+================================ */
+
 .navLink:focus,
 .brandLink:focus,
 .menuToggle:focus,
 .mobileNavLink:focus,
 .closeButton:focus,
-.dropdownTrigger:focus {
+.dropdownTrigger:focus,
+.mobileChevronButton:focus {
   outline: 2px solid rgba(255, 255, 255, 0.8);
   outline-offset: 5px;
 }
 
-/* Reduced motion */
+/* Dropdown items get inset focus so it stays inside the panel */
+.dropdownItem:focus-visible {
+  outline: none;
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.5);
+  background: rgba(255, 255, 255, 0.07);
+  color: #ffffff;
+}
+
+.dropdownAccordionTrigger:focus-visible {
+  outline: none;
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.5);
+  background: rgba(255, 255, 255, 0.07);
+  color: #ffffff;
+}
+
+/* ================================
+   REDUCED MOTION
+================================ */
+
 @media (prefers-reduced-motion: reduce) {
 
   .nav,
@@ -574,7 +734,9 @@
   .mobileNavLink,
   .closeButton,
   .dropdown,
-  .chevron {
+  .chevron,
+  .chevronSmall,
+  .mobileChevronButton {
     animation: none;
     transition: none;
   }
@@ -589,4 +751,3 @@
     opacity: 1;
   }
 }
-

@@ -11,8 +11,9 @@ export default function FilterClient({
   projects = [],
   page = 1,
   totalPages = 1,
+  initialFilter = "all", // ← receive it
 }) {
-  const [activeFilter, setActiveFilter] = useState("all");
+  const [activeFilter, setActiveFilter] = useState(initialFilter); // ← use it
   const gridRefs = useRef([]);
 
   const categories = [

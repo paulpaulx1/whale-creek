@@ -71,6 +71,7 @@ export default function ServicesClient({ services, serviceAreas }) {
           {services.map((service, index) => (
             <div
               key={service.id}
+              id={service.id}
               ref={(el) => (cardsRef.current[index] = el)}
               className={`${styles.serviceSection} ${index % 2 ? styles.serviceReverse : ""}`}
             >
@@ -84,7 +85,6 @@ export default function ServicesClient({ services, serviceAreas }) {
                     {service.description}
                   </p>
 
-                  {/* ✅ Only render details if it exists */}
                   {service.details && (
                     <p className={styles.serviceDetails}>{service.details}</p>
                   )}
@@ -98,7 +98,6 @@ export default function ServicesClient({ services, serviceAreas }) {
                     ))}
                   </ul>
 
-                  {/* ✅ Optional post-features paragraph */}
                   {service.additionalInfo && (
                     <p className={styles.serviceAdditional}>
                       {service.additionalInfo}
@@ -119,7 +118,6 @@ export default function ServicesClient({ services, serviceAreas }) {
                     onLoadingComplete={(img) => {
                       const wrapper = img.parentElement;
                       if (!wrapper) return;
-
                       const isLandscape = img.naturalWidth >= img.naturalHeight;
                       wrapper.dataset.orientation = isLandscape
                         ? "landscape"

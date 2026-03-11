@@ -60,7 +60,7 @@ export default async function Services() {
 
   const mainServices = [
     {
-      id: "outdoor-living-deck-building-indianapolis",
+      id: "outdoor-living-spaces",
       title: "Outdoor Living Spaces",
       image: "/images/Pergola.jpg",
       description:
@@ -72,7 +72,7 @@ export default async function Services() {
       additionalInfo: "",
     },
     {
-      id: "residential-general-contractor-indianapolis",
+      id: "residential-renovation-services",
       title: "Residential Renovation Services",
       image: "/images/AvonInside.jpg",
       description:
@@ -87,7 +87,7 @@ export default async function Services() {
         "As an Indianapolis residential general contractor, we oversee planning, permits, scheduling, and trade coordination, so your project stays organized, predictable, and aligned with your goals.",
     },
     {
-      id: "commercial-general-contractors-indianapolis",
+      id: "commercial-projects",
       title: "Commercial Projects",
       image: "/images/covramirror.webp",
       description:
@@ -104,7 +104,7 @@ export default async function Services() {
         "From specialty product lines to repeatable cabinetry systems, we deliver production work with precision, care, and all the standards we apply to one-off builds.",
     },
     {
-      id: "custom-millwork-woodworking-indianapolis",
+      id: "custom-woodworking-millwork",
       title: "Custom Woodworking & Millwork",
       image: "/images/PortholeMirror2.jpg",
       description:
@@ -119,6 +119,24 @@ export default async function Services() {
       ],
       additionalInfo: "",
     },
+    {
+      id: "underground",
+      title: "Whale Creek Underground",
+      image: "/images/underground.jpg",
+      description:
+        "Excavation, foundation work, and below-grade construction — handled in-house with our own equipment. We self-perform the dig so there's no subcontractor markup and no scheduling gap between groundwork and construction.",
+      details: "Common underground and site work includes:",
+      blueprint: "UND_001",
+      features: [
+        "Foundation excavation for new builds and additions",
+        "Garage foundations and concrete flatwork",
+        "Site preparation and rough grading",
+        "Basement dig-outs and crawl space excavation",
+        "Footing trenches and below-grade prep",
+      ],
+      additionalInfo:
+        "Having our own excavator on staff means we can respond faster, coordinate tighter with framing and concrete trades, and deliver a cleaner handoff from dirt to structure.",
+    },
   ];
 
   return (
@@ -129,7 +147,6 @@ export default async function Services() {
         currentUrl={currentUrl}
       />
 
-      {/* ✅ Client component handles animation only */}
       <ServicesClient services={mainServices} serviceAreas={serviceAreas} />
     </>
   );
