@@ -285,3 +285,29 @@
     font-size: 1.1rem;
   }
 }
+
+/* ============================
+   HORIZONTAL ROW (few items)
+============================ */
+
+.projectsGridRow {
+  display: flex;
+  flex-direction: row;
+  gap: 3rem;
+  align-items: flex-start;
+}
+
+.projectsGridRow .projectCard {
+  flex: 1;
+  min-width: 0;
+  /* prevents flex blowout */
+  margin-bottom: 0;
+  max-width: 500px;
+  /* keeps wide cards from getting absurd on large screens */
+}
+
+@media (max-width: 640px) {
+  .projectsGridRow {
+    flex-direction: column;
+  }
+}

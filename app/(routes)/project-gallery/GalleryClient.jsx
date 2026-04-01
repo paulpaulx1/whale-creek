@@ -73,6 +73,8 @@ export default function GalleryClient({ projects, page = 1, totalPages = 1 }) {
     setModalImageIndex(0);
   };
 
+  const useRowLayout = filteredProjects.length <= 3;
+
   return (
     <main className={styles.main}>
       <Filter
@@ -84,7 +86,11 @@ export default function GalleryClient({ projects, page = 1, totalPages = 1 }) {
 
       <section className={styles.gallerySection}>
         <div className={styles.container}>
-          <div className={styles.projectsGrid}>
+          <div
+            className={
+              useRowLayout ? styles.projectsGridRow : styles.projectsGrid
+            }
+          >
             {filteredProjects.map((project, index) => {
               const cover = project.cover;
               const src = cover?.urlGrid || cover?.url;
