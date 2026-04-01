@@ -61,6 +61,8 @@ export default function FilterClient({
     return () => observer.disconnect();
   }, [filteredProjects]);
 
+  const useRowLayout = filteredProjects.length <= 3;
+
   return (
     <>
       <Filter
@@ -71,7 +73,11 @@ export default function FilterClient({
 
       <section className={styles.gallerySection}>
         <div className={styles.container}>
-          <div className={styles.projectsGrid}>
+          <div
+            className={
+              useRowLayout ? styles.projectsGridRow : styles.projectsGrid
+            }
+          >
             {filteredProjects.map((project, index) => {
               // ✅ Prefer higher-fidelity grid URL if your paginated query adds it
               const asset = project.images?.[0]?.asset?.asset;
