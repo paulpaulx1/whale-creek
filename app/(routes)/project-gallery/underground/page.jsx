@@ -5,11 +5,34 @@ import styles from "./Underground.module.css";
 
 export const revalidate = 300;
 
-export const metadata = {
-  title: "Whale Creek Underground | Excavation Services",
-  description:
-    "Whale Creek Underground — excavation, grading, and site work in the Indianapolis area.",
-};
+const SITE_URL = "https://www.whalecreek.co";
+const PAGE_PATH = "/project-gallery/underground";
+const PAGE_URL = `${SITE_URL}${PAGE_PATH}`;
+
+export async function generateMetadata() {
+  const title = "Whale Creek Underground | Excavation Services";
+  const description =
+    "Whale Creek Underground — excavation, grading, and site work in the Indianapolis area.";
+
+  return {
+    title,
+    description,
+    alternates: {
+      canonical: PAGE_URL,
+    },
+    openGraph: {
+      title,
+      description,
+      url: PAGE_URL,
+      type: "website",
+    },
+    twitter: {
+      card: "summary_large_image",
+      title,
+      description,
+    },
+  };
+}
 
 const undergroundQuery = `
   *[_type == "project" && category == "underground" && defined(slug.current)]

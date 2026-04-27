@@ -1,4 +1,5 @@
 // app/project-gallery/[slug]/page.jsx
+
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { client } from "../../../lib/sanity";
@@ -7,9 +8,17 @@ import CTASection from "../../../components/CTASection";
 import MasonryGallery from "./MasonryGallery.client";
 import styles from "./ProjectPage.module.css";
 
+const SITE_URL = "https://www.whalecreek.co";
+const BASE_PATH = "/project-gallery";
+
 const projectQuery = `
-  *[_type == "project" && slug.current == $slug][0]{
+  *[
+    _type == "project" &&
+    slug.current == $slug &&
+    category != "underground"
+  ][0]{
     _id,
+    _updatedAt,
     title,
     slug,
     category,
@@ -44,7 +53,13 @@ const projectQuery = `
 `;
 
 const allProjectsQuery = `
-  *[_type == "project" && defined(slug.current)]{"slug": slug.current}
+  *[
+    _type == "project" &&
+    defined(slug.current) &&
+    category != "underground"
+  ]{
+    "slug": slug.current
+  }
 `;
 
 async function getProject(slug) {
@@ -66,32 +81,53 @@ export async function generateStaticParams() {
     {},
     { next: { tags: ["sanity"] } },
   );
-  return projects.map((p) => ({ slug: p.slug }));
+
+  return projects.map((project) => ({
+    slug: project.slug,
+  }));
 }
 
 export async function generateMetadata({ params }) {
   const { slug } = await params;
   const project = await getProject(slug);
 
-  if (!project) return { title: "Project Not Found" };
+  if (!project) {
+    return {
+      title: "Project Not Found | Whale Creek Co.",
+      description: "The requested project could not be found.",
+      alternates: {
+        canonical: `${SITE_URL}${BASE_PATH}/${slug}`,
+      },
+    };
+  }
 
+  const title = `${project.title} | Whale Creek Co.`;
+  const description =
+    project.description ||
+    `${humanCategory(project.category)} project by Whale Creek Co. in ${
+      project.location || "Indiana"
+    }`;
+
+  const canonical = `${SITE_URL}${BASE_PATH}/${project.slug.current}`;
   const image = project.images?.[0]?.url;
 
   return {
-    title: `${project.title} | Whale Creek Co.`,
-    description:
-      project.description ||
-      `${project.category} project by Whale Creek Co. in ${project.location || "Indiana"}`,
+    title,
+    description,
+    alternates: {
+      canonical,
+    },
     openGraph: {
-      title: `${project.title} | Whale Creek Co.`,
-      description: project.description,
+      title,
+      description,
+      url: canonical,
       images: image ? [{ url: image }] : [],
       type: "article",
     },
     twitter: {
       card: "summary_large_image",
-      title: `${project.title} | Whale Creek Co.`,
-      description: project.description,
+      title,
+      description,
       images: image ? [image] : [],
     },
   };
@@ -105,7 +141,9 @@ function humanCategory(value) {
     cabinetry: "Custom Cabinetry",
     renovation: "Renovation & Remodeling",
     cnc: "CNC Manufacturing",
+    underground: "Underground",
   };
+
   return map[value] || value;
 }
 
@@ -116,6 +154,7 @@ function formatProjectValue(value) {
     "50k-100k": "$50K – $100K",
     "100k+": "$100K+",
   };
+
   return map[value] || value;
 }
 
@@ -125,19 +164,13 @@ export default async function ProjectPage({ params }) {
 
   if (!project) notFound();
 
-  const year = project.completedDate
-    ? new Date(project.completedDate).getFullYear()
-    : null;
-
   return (
     <main className={styles.main}>
       <div className={styles.wrapper}>
-        {/* Back link - mobile first */}
         <Link href="/project-gallery" className={styles.backLink}>
           ← Gallery
         </Link>
 
-        {/* Main Content - Masonry Grid */}
         <div className={styles.content}>
           <MasonryGallery
             images={project.images || []}
@@ -146,7 +179,6 @@ export default async function ProjectPage({ params }) {
           />
         </div>
 
-        {/* Sidebar - Project Details */}
         <aside className={styles.sidebar}>
           <div className={styles.sidebarContent}>
             <h1 className={styles.title}>{project.title}</h1>
@@ -205,9 +237,9 @@ export default async function ProjectPage({ params }) {
               <div className={styles.section}>
                 <h3 className={styles.sectionTitle}>Materials</h3>
                 <div className={styles.tags}>
-                  {project.materials.map((m) => (
-                    <span key={m} className={styles.tag}>
-                      {m}
+                  {project.materials.map((material) => (
+                    <span key={material} className={styles.tag}>
+                      {material}
                     </span>
                   ))}
                 </div>
@@ -218,9 +250,9 @@ export default async function ProjectPage({ params }) {
               <div className={styles.section}>
                 <h3 className={styles.sectionTitle}>Services</h3>
                 <div className={styles.tags}>
-                  {project.tags.map((t) => (
-                    <span key={t} className={styles.tag}>
-                      {t}
+                  {project.tags.map((tag) => (
+                    <span key={tag} className={styles.tag}>
+                      {tag}
                     </span>
                   ))}
                 </div>
@@ -242,6 +274,7 @@ export default async function ProjectPage({ params }) {
                   <p className={styles.quote}>
                     &ldquo;{project.testimonial.quote}&rdquo;
                   </p>
+
                   {(project.testimonial.author ||
                     project.testimonial.authorTitle) && (
                     <footer className={styles.testimonialFooter}>
@@ -250,6 +283,7 @@ export default async function ProjectPage({ params }) {
                           {project.testimonial.author}
                         </cite>
                       )}
+
                       {project.testimonial.authorTitle && (
                         <span className={styles.testimonialTitle}>
                           {project.testimonial.authorTitle}
@@ -262,10 +296,17 @@ export default async function ProjectPage({ params }) {
             )}
 
             <div className={styles.ctas}>
-              <Link className={styles.primaryBtn} href="/contact">
+              <Link
+                className={styles.primaryBtn}
+                href="/indianapolis-woodworker-contact"
+              >
                 Request an Estimate
               </Link>
-              <Link className={styles.secondaryBtn} href="/services">
+
+              <Link
+                className={styles.secondaryBtn}
+                href="/indianapolis-general-contractor"
+              >
                 View All Services
               </Link>
             </div>

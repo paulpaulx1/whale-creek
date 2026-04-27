@@ -5,11 +5,15 @@ import SchemaMarkup from "../../../components/seo/SchemaMarkup";
 import { generateBlogMetadata } from "../../../components/seo/generateMetadata";
 import { client } from "../../../lib/sanity";
 import { notFound } from "next/navigation";
-import { headers } from "next/headers";
 
-// Your existing blog post query
+const SITE_URL = "https://www.whalecreek.co";
+
 const blogPostQuery = `
-  *[_type == "blogPost" && slug.current == $slug][0] {
+  *[
+    _type == "blogPost" &&
+    slug.current == $slug &&
+    status == "published"
+  ][0] {
     _id,
     _createdAt,
     _updatedAt,
@@ -35,7 +39,12 @@ const blogPostQuery = `
     content,
     seoTitle,
     seoDescription,
-    "relatedPosts": *[_type == "blogPost" && slug.current != $slug && category == ^.category][0...3] {
+    "relatedPosts": *[
+      _type == "blogPost" &&
+      slug.current != $slug &&
+      category == ^.category &&
+      status == "published"
+    ][0...3] {
       _id,
       title,
       slug,
@@ -53,17 +62,15 @@ const blogPostQuery = `
   }
 `;
 
-// Service areas query (reuse from homepage)
 const serviceAreasQuery = `*[_type == "project" && defined(location)].location`;
 
 async function getBlogPost(slug) {
   try {
-    const post = await client.fetch(
+    return await client.fetch(
       blogPostQuery,
       { slug },
       { next: { tags: ["sanity"] } },
     );
-    return post;
   } catch (error) {
     console.error("Error fetching blog post:", error);
     return null;
@@ -72,7 +79,12 @@ async function getBlogPost(slug) {
 
 async function getServiceAreas() {
   try {
-    const locations = await client.fetch(serviceAreasQuery, {}, { next: { tags: ["sanity"] } });
+    const locations = await client.fetch(
+      serviceAreasQuery,
+      {},
+      { next: { tags: ["sanity"] } },
+    );
+
     const dynamicAreas = [...new Set(locations.filter(Boolean))];
 
     const hardcodedAreas = [
@@ -87,13 +99,14 @@ async function getServiceAreas() {
 
     return [...new Set([...dynamicAreas, ...hardcodedAreas])];
   } catch (error) {
+    console.error("Error fetching service areas:", error);
     return ["Indianapolis, IN", "Meridian Hills, IN", "Noblesville, IN"];
   }
 }
 
-// Server-side metadata generation
 export async function generateMetadata({ params }) {
   const { slug } = await params;
+
   const [post, serviceAreas] = await Promise.all([
     getBlogPost(slug),
     getServiceAreas(),
@@ -103,6 +116,9 @@ export async function generateMetadata({ params }) {
     return {
       title: "Post Not Found | Whale Creek Construction",
       description: "The requested blog post could not be found.",
+      alternates: {
+        canonical: `${SITE_URL}/blog/${slug}`,
+      },
     };
   }
 
@@ -111,6 +127,7 @@ export async function generateMetadata({ params }) {
 
 export default async function BlogPostPage({ params }) {
   const { slug } = await params;
+
   const [post, serviceAreas] = await Promise.all([
     getBlogPost(slug),
     getServiceAreas(),
@@ -118,11 +135,7 @@ export default async function BlogPostPage({ params }) {
 
   if (!post) notFound();
 
-  // Get current URL dynamically
-  const headersList = await headers();
-  const host = headersList.get("host") || "whalecreek.co";
-  const protocol = process.env.NODE_ENV === "production" ? "https" : "http";
-  const currentUrl = `${protocol}://${host}/blog/${slug}`;
+  const currentUrl = `${SITE_URL}/blog/${slug}`;
 
   return (
     <>
@@ -132,6 +145,7 @@ export default async function BlogPostPage({ params }) {
         serviceAreas={serviceAreas}
         currentUrl={currentUrl}
       />
+
       <BlogPostClient post={post} />
     </>
   );

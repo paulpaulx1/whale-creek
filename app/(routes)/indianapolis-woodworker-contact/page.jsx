@@ -1,48 +1,42 @@
-// app/contact/page.jsx (Server Component)
-import ContactClient from './ContactClient';
-import SchemaMarkup from '../../components/seo/SchemaMarkup';
-import { generatePageMetadata } from '../../components/seo/generateMetadata';
-import { pageConfigs } from '../../lib/seo/seoConfig'; // Adjust path as needed
-import { headers } from 'next/headers';
+// app/contact/page.jsx
 
-// Generate metadata using your existing system
+import ContactClient from "./ContactClient";
+import SchemaMarkup from "../../components/seo/SchemaMarkup";
+import { generatePageMetadata } from "../../components/seo/generateMetadata";
+import { pageConfigs } from "../../lib/seo/seoConfig";
+
+const SITE_URL = "https://www.whalecreek.co";
+const PAGE_PATH = "/indianapolis-woodworker-contact";
+const PAGE_URL = `${SITE_URL}${PAGE_PATH}`;
+
 export async function generateMetadata() {
   const contactConfig = pageConfigs.contact;
 
-  return generatePageMetadata(
-    contactConfig,
-    [], // No service areas needed for contact page
-    'https://whalecreek.co/contact'
-  );
+  return generatePageMetadata(contactConfig, [], PAGE_URL);
 }
 
 export default async function ContactPage() {
-  // Get current URL for schema markup
-  const headersList = await headers();
-  const host = headersList.get('host') || 'whalecreek.co';
-  const protocol = process.env.NODE_ENV === 'production' ? 'https' : 'http';
-  const currentUrl = `${protocol}://${host}/contact`;
-
   return (
     <>
       <SchemaMarkup
-        type='page'
-        currentUrl={currentUrl}
+        type="page"
+        currentUrl={PAGE_URL}
         customSchemas={[
           {
-            '@context': 'https://schema.org',
-            '@type': 'ContactPage',
-            name: 'Contact Whale Creek Construction',
-            url: currentUrl,
+            "@context": "https://schema.org",
+            "@type": "ContactPage",
+            name: "Contact Whale Creek Construction",
+            url: PAGE_URL,
             mainEntity: {
-              '@type': 'LocalBusiness',
-              name: 'Whale Creek Construction',
-              telephone: '(317) 431-2449',
-              email: 'dave@whalecreek.co',
+              "@type": "LocalBusiness",
+              name: "Whale Creek Construction",
+              telephone: "(317) 431-2449",
+              email: "dave@whalecreek.co",
             },
           },
         ]}
       />
+
       <ContactClient />
     </>
   );

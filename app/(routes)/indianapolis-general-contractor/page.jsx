@@ -2,9 +2,12 @@ import styles from "./Services.module.css";
 import SchemaMarkup from "../../components/seo/SchemaMarkup";
 import { generatePageMetadata } from "../../components/seo/generateMetadata";
 import { pageConfigs } from "../../lib/seo/seoConfig";
-import { headers } from "next/headers";
 import { client } from "../../lib/sanity";
 import ServicesClient from "./ServicesClient";
+
+const SITE_URL = "https://www.whalecreek.co";
+const PAGE_PATH = "/indianapolis-general-contractor";
+const PAGE_URL = `${SITE_URL}${PAGE_PATH}`;
 
 const serviceAreasQuery = `*[_type == "project" && defined(location)].location`;
 
@@ -15,6 +18,7 @@ async function getServiceAreas() {
       {},
       { next: { tags: ["sanity"] } },
     );
+
     const dynamicAreas = [...new Set(locations.filter(Boolean))];
 
     const hardcodedAreas = [
@@ -30,6 +34,7 @@ async function getServiceAreas() {
     return [...new Set([...dynamicAreas, ...hardcodedAreas])];
   } catch (error) {
     console.error("Error fetching service areas:", error);
+
     return [
       "Indianapolis, IN",
       "Meridian Hills, IN",
@@ -43,20 +48,11 @@ async function getServiceAreas() {
 export async function generateMetadata() {
   const servicesConfig = pageConfigs.services;
 
-  return generatePageMetadata(
-    servicesConfig,
-    [],
-    "https://whalecreek.co/indianapolis-general-contractor",
-  );
+  return generatePageMetadata(servicesConfig, [], PAGE_URL);
 }
 
 export default async function Services() {
   const serviceAreas = await getServiceAreas();
-
-  const headersList = await headers();
-  const host = headersList.get("host") || "whalecreek.co";
-  const protocol = process.env.NODE_ENV === "production" ? "https" : "http";
-  const currentUrl = `${protocol}://${host}/indianapolis-general-contractor`;
 
   const mainServices = [
     {
@@ -144,7 +140,7 @@ export default async function Services() {
       <SchemaMarkup
         type="page"
         serviceAreas={serviceAreas}
-        currentUrl={currentUrl}
+        currentUrl={PAGE_URL}
       />
 
       <ServicesClient services={mainServices} serviceAreas={serviceAreas} />

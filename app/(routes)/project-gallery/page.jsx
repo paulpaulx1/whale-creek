@@ -1,20 +1,31 @@
 // app/project-gallery/page.jsx
+
 import FilterClient from "./FilterClient";
 import styles from "./Gallery.module.css";
-import CTASection from "../../components/CTASection";
 import SchemaMarkup from "../../components/seo/SchemaMarkup";
 import { generateGalleryMetadata } from "../../components/seo/generateMetadata";
 import { client } from "../../lib/sanity";
-import { headers } from "next/headers";
 
 export const revalidate = 300;
+
+const SITE_URL = "https://www.whalecreek.co";
+const PAGE_PATH = "/project-gallery";
+const PAGE_URL = `${SITE_URL}${PAGE_PATH}`;
 
 const PAGE_SIZE = 9;
 
 const galleryQuery = `
 {
-  "total": count(*[_type == "project" && defined(slug.current)]),
-  "items": *[_type == "project" && defined(slug.current)]
+  "total": count(*[
+    _type == "project" &&
+    defined(slug.current) &&
+    category != "underground"
+  ]),
+  "items": *[
+    _type == "project" &&
+    defined(slug.current) &&
+    category != "underground"
+  ]
     | order(featured desc, completedDate desc)
     [$start...$end]{
       _id,
@@ -31,8 +42,6 @@ const galleryQuery = `
       tags[],
       testimonial,
       title,
-
-      // ✅ KEEP EXISTING SHAPE YOUR CLIENT EXPECTS:
       images[0...1]{
         _key,
         alt,
@@ -41,11 +50,8 @@ const galleryQuery = `
           asset->{
             _id,
             url,
-
-            // ✅ Higher-fidelity grid + capped lightbox URLs
             "urlGrid": url + "?w=1200&fit=max&auto=format&q=82",
             "urlLightbox": url + "?w=2200&fit=max&auto=format&q=82",
-
             metadata{
               dimensions
             }
@@ -67,6 +73,7 @@ async function getProjectsPage(page = 1) {
       { start, end },
       { next: { tags: ["sanity"] } },
     );
+
     const total = data?.total || 0;
 
     return {
@@ -78,13 +85,22 @@ async function getProjectsPage(page = 1) {
     };
   } catch (error) {
     console.error("Error fetching gallery page:", error);
-    return { items: [], total: 0, page: 1, pageSize: PAGE_SIZE, totalPages: 1 };
+
+    return {
+      items: [],
+      total: 0,
+      page: 1,
+      pageSize: PAGE_SIZE,
+      totalPages: 1,
+    };
   }
 }
 
 async function getServiceAreas(projects) {
   const projectLocations = [
-    ...new Set((projects || []).map((p) => p.location).filter(Boolean)),
+    ...new Set(
+      (projects || []).map((project) => project.location).filter(Boolean),
+    ),
   ];
 
   const hardcodedAreas = [
@@ -101,23 +117,22 @@ async function getServiceAreas(projects) {
 }
 
 export async function generateMetadata() {
-  // lightweight: first page only
   const { items } = await getProjectsPage(1);
   const serviceAreas = await getServiceAreas(items);
+
   return generateGalleryMetadata(items, serviceAreas);
 }
 
 export default async function ProjectGallery({ searchParams }) {
-  const page = Number(searchParams?.page || 1);
-  const category = searchParams?.category || "all"; // ← add this
-  const data = await getProjectsPage(page);
+  const resolvedSearchParams = await searchParams;
 
+  const page = Number(resolvedSearchParams?.page || 1);
+  const category = resolvedSearchParams?.category || "all";
+
+  const data = await getProjectsPage(page);
   const serviceAreas = await getServiceAreas(data.items);
 
-  const headersList = await headers();
-  const host = headersList.get("host") || "whalecreek.co";
-  const protocol = process.env.NODE_ENV === "production" ? "https" : "http";
-  const currentUrl = `${protocol}://${host}/project-gallery?page=${data.page}`;
+  const currentUrl = data.page > 1 ? `${PAGE_URL}?page=${data.page}` : PAGE_URL;
 
   return (
     <>
@@ -135,7 +150,6 @@ export default async function ProjectGallery({ searchParams }) {
           totalPages={data.totalPages}
           initialFilter={category}
         />
-        {/* <CTASection /> */}
       </main>
     </>
   );

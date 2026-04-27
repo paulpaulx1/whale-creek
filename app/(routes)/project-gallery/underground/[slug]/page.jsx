@@ -67,22 +67,51 @@ export async function generateStaticParams() {
   return projects.map((p) => ({ slug: p.slug }));
 }
 
+const SITE_URL = "https://www.whalecreek.co";
+const BASE_PATH = "/project-gallery/underground";
+
 export async function generateMetadata({ params }) {
   const { slug } = await params;
   const project = await getProject(slug);
-  if (!project) return { title: "Project Not Found" };
+  const canonical = `${SITE_URL}${BASE_PATH}/${slug}`;
+
+  if (!project) {
+    return {
+      title: "Project Not Found | Whale Creek Underground",
+      description: "The requested underground project could not be found.",
+      alternates: {
+        canonical,
+      },
+    };
+  }
+
+  const title = `${project.title} | Whale Creek Underground`;
+  const description =
+    project.description ||
+    `Underground excavation project by Whale Creek in ${
+      project.location || "Indiana"
+    }`;
 
   const image = project.images?.[0]?.url;
+
   return {
-    title: `${project.title} | Whale Creek Underground`,
-    description:
-      project.description ||
-      `Underground excavation project by Whale Creek in ${project.location || "Indiana"}`,
+    title,
+    description,
+    alternates: {
+      canonical,
+    },
     openGraph: {
-      title: `${project.title} | Whale Creek Underground`,
-      description: project.description,
+      title,
+      description,
+      url: canonical,
       images: image ? [{ url: image }] : [],
       type: "article",
+    },
+    twitter: {
+      card: "summary_large_image",
+      title,
+      description,
+      images: image ? [image] : [],
     },
   };
 }
