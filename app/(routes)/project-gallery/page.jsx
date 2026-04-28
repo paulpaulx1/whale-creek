@@ -19,7 +19,12 @@ const galleryQuery = `
     category != "underground" &&
     !(_id in path("drafts.**"))
   ]
-  | order(featured desc, completedDate desc) {
+  | order(
+      defined(order) desc,
+      order asc,
+      featured desc,
+      completedDate desc
+    ) {
     _id,
     category,
     client,
