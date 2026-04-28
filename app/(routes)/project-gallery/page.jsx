@@ -121,7 +121,7 @@ export default async function ProjectGallery({ searchParams }) {
           <div className={styles.container}>
             <p className={styles.kicker}>Project Gallery</p>
             <h1 className={styles.pageTitle}>
-              Indianapolis Home Renovation, Construction and Millwork 
+              Indianapolis Home Renovation, Construction & Millwork Projects
             </h1>
             <p className={styles.pageIntro}>
               Explore completed decks, outdoor living spaces, renovations,
