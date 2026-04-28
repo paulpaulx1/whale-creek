@@ -117,6 +117,19 @@ export default async function ProjectGallery({ searchParams }) {
       />
 
       <main className={styles.main}>
+        <header className={styles.galleryHero}>
+          <div className={styles.container}>
+            <p className={styles.kicker}>Project Gallery</p>
+            <h1 className={styles.pageTitle}>
+              Indianapolis Home Renovation, Construction and Millwork 
+            </h1>
+            <p className={styles.pageIntro}>
+              Explore completed decks, outdoor living spaces, renovations,
+              cabinetry, custom furniture, and millwork projects by Whale Creek
+              Construction.
+            </p>
+          </div>
+        </header>
         <FilterClient projects={projects} initialFilter={category} />
       </main>
     </>
