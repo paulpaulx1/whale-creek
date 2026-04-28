@@ -9,26 +9,42 @@ export async function POST(request: Request) {
     const body = await request.text();
     const signature = request.headers.get(SIGNATURE_HEADER_NAME);
 
-    if (!WEBHOOK_SECRET || !signature) {
+    console.log("🔥 Sanity webhook hit");
+    console.log("Secret env present:", Boolean(WEBHOOK_SECRET));
+    console.log("Signature header name:", SIGNATURE_HEADER_NAME);
+    console.log("Signature present:", Boolean(signature));
+    console.log("Body length:", body.length);
+
+    if (!WEBHOOK_SECRET) {
+      console.log("❌ Missing SANITY_WEBHOOK_SECRET env var");
       return NextResponse.json(
-        { success: false, message: "Missing secret or signature" },
-        { status: 401 },
+        { success: false, message: "Missing secret env var" },
+        { status: 401 }
+      );
+    }
+
+    if (!signature) {
+      console.log("❌ Missing Sanity signature header");
+      return NextResponse.json(
+        { success: false, message: "Missing signature" },
+        { status: 401 }
       );
     }
 
     const isValid = await isValidSignature(body, signature, WEBHOOK_SECRET);
 
+    console.log("Signature valid:", isValid);
+
     if (!isValid) {
+      console.log("❌ Invalid Sanity signature");
       return NextResponse.json(
         { success: false, message: "Invalid signature" },
-        { status: 401 },
+        { status: 401 }
       );
     }
 
     const json = JSON.parse(body);
-    const { _type, _id } = json;
-
-    console.log(`Webhook received: ${_type} (${_id})`);
+    console.log("✅ Webhook body:", json);
 
     revalidateTag("sanity");
     revalidatePath("/", "layout");
@@ -42,11 +58,11 @@ export async function POST(request: Request) {
       now: new Date().toISOString(),
     });
   } catch (error) {
-    console.error("Revalidation error:", error);
+    console.error("❌ Revalidation error:", error);
 
     return NextResponse.json(
       { success: false, message: (error as Error).message },
-      { status: 500 },
+      { status: 500 }
     );
   }
 }
