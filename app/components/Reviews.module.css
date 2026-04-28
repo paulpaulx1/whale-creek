@@ -444,3 +444,31 @@
     /* Adjust for smaller header */
   }
 }
+
+.reviewCount {
+  font-size: 0.8rem;
+  color: #5f6368;
+  text-decoration: none;
+}
+
+.reviewCount:hover {
+  text-decoration: underline;
+}
+
+.reviewSource {
+  margin-top: 1rem;
+  padding-top: 0.85rem;
+  border-top: 1px solid #eef0f2;
+  font-size: 0.75rem;
+  color: #6f767d;
+}
+
+.reviewSource a {
+  color: inherit;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.reviewSource a:hover {
+  text-decoration: underline;
+}
