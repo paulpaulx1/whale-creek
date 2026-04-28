@@ -7,13 +7,11 @@ import Link from "next/link";
 import Filter from "../../components/Filter";
 import styles from "./Gallery.module.css";
 
-export default function FilterClient({
-  projects = [],
-  page = 1,
-  totalPages = 1,
-  initialFilter = "all", // ← receive it
-}) {
-  const [activeFilter, setActiveFilter] = useState(initialFilter); // ← use it
+const PAGE_SIZE = 9;
+
+export default function FilterClient({ projects = [], initialFilter = "all" }) {
+  const [activeFilter, setActiveFilter] = useState(initialFilter);
+  const [currentPage, setCurrentPage] = useState(1);
   const gridRefs = useRef([]);
 
   const categories = [
@@ -21,23 +19,41 @@ export default function FilterClient({
     { id: "millwork", label: "Millwork" },
     { id: "residential", label: "Residential" },
     { id: "commercial", label: "Commercial" },
-    // { id: "cabinetry", label: "Cabinetry" },
     { id: "renovation", label: "Renovation" },
   ];
 
   const filteredProjects = useMemo(() => {
     const base = Array.isArray(projects) ? projects : [];
-    return activeFilter === "all"
-      ? base
-      : base.filter((p) => p.category === activeFilter);
+
+    if (activeFilter === "all") return base;
+
+    return base.filter((project) => project.category === activeFilter);
   }, [activeFilter, projects]);
 
-  // ✅ Keep refs aligned with the currently rendered list
-  useEffect(() => {
-    gridRefs.current = gridRefs.current.slice(0, filteredProjects.length);
-  }, [filteredProjects.length]);
+  const totalPages = Math.max(
+    1,
+    Math.ceil(filteredProjects.length / PAGE_SIZE),
+  );
 
-  // ✅ Entrance animation (safe)
+  const visibleProjects = useMemo(() => {
+    const start = (currentPage - 1) * PAGE_SIZE;
+    return filteredProjects.slice(start, start + PAGE_SIZE);
+  }, [filteredProjects, currentPage]);
+
+  useEffect(() => {
+    setCurrentPage(1);
+  }, [activeFilter]);
+
+  useEffect(() => {
+    if (currentPage > totalPages) {
+      setCurrentPage(totalPages);
+    }
+  }, [currentPage, totalPages]);
+
+  useEffect(() => {
+    gridRefs.current = gridRefs.current.slice(0, visibleProjects.length);
+  }, [visibleProjects.length]);
+
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
@@ -59,9 +75,17 @@ export default function FilterClient({
     });
 
     return () => observer.disconnect();
-  }, [filteredProjects]);
+  }, [visibleProjects]);
 
-  const useRowLayout = filteredProjects.length <= 3;
+  const useRowLayout = visibleProjects.length <= 3;
+
+  const goToPreviousPage = () => {
+    setCurrentPage((page) => Math.max(1, page - 1));
+  };
+
+  const goToNextPage = () => {
+    setCurrentPage((page) => Math.min(totalPages, page + 1));
+  };
 
   return (
     <>
@@ -78,37 +102,31 @@ export default function FilterClient({
               useRowLayout ? styles.projectsGridRow : styles.projectsGrid
             }
           >
-            {filteredProjects.map((project, index) => {
-              // ✅ Prefer higher-fidelity grid URL if your paginated query adds it
+            {visibleProjects.map((project, index) => {
               const asset = project.images?.[0]?.asset?.asset;
-
-              // If you updated the paginated GROQ to add urlGrid inside asset->, it'll be here:
               const image = asset?.urlGrid || asset?.url;
 
-              // ✅ Use actual slug string when your paginated query returns "slug": slug.current
               const slug =
                 typeof project.slug === "string"
                   ? project.slug
                   : project.slug?.current;
 
-              // ✅ Prevent broken links
               const href = slug
                 ? `/project-gallery/${slug}`
                 : `/project-gallery/${project._id}`;
 
-              // ✅ Preserve aspect ratio so images don’t look “fucked up”
-              // When using `fill`, your wrapper MUST define an aspect-ratio or fixed height.
-              // We’ll set it inline as a fallback (CSS can override).
-              const w = asset?.metadata?.dimensions?.width;
-              const h = asset?.metadata?.dimensions?.height;
-              const ratio = w && h ? `${w} / ${h}` : "4 / 3";
+              const width = asset?.metadata?.dimensions?.width;
+              const height = asset?.metadata?.dimensions?.height;
+              const ratio = width && height ? `${width} / ${height}` : "4 / 3";
 
               return (
                 <Link
                   href={href}
                   key={project._id}
                   className={styles.projectCard}
-                  ref={(el) => (gridRefs.current[index] = el)}
+                  ref={(el) => {
+                    gridRefs.current[index] = el;
+                  }}
                 >
                   <article>
                     <div
@@ -121,12 +139,8 @@ export default function FilterClient({
                           alt={project.images?.[0]?.alt || project.title}
                           fill
                           className={styles.projectImg}
-                          // ✅ Make sure the browser chooses sane display sizes
                           sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                          // ✅ Use Sanity CDN transforms directly
                           unoptimized
-                          // ✅ Helps prevent weird stretching/letterboxing
-                          // (your CSS should include object-fit: cover)
                         />
                       ) : (
                         <div className={styles.projectImgFallback} />
@@ -143,32 +157,33 @@ export default function FilterClient({
             })}
           </div>
 
-          {/* ✅ Simple pagination (only for "all" — otherwise it’s weird UX) */}
-          {activeFilter === "all" && totalPages > 1 && (
+          {totalPages > 1 && (
             <nav className={styles.pagination} aria-label="Gallery pages">
-              <Link
-                className={`${styles.pageBtn} ${page <= 1 ? styles.disabled : ""}`}
-                href={`/project-gallery?page=${Math.max(1, page - 1)}`}
-                aria-disabled={page <= 1}
-                tabIndex={page <= 1 ? -1 : 0}
+              <button
+                type="button"
+                className={`${styles.pageBtn} ${
+                  currentPage <= 1 ? styles.disabled : ""
+                }`}
+                onClick={goToPreviousPage}
+                disabled={currentPage <= 1}
               >
                 ← Prev
-              </Link>
+              </button>
 
               <div className={styles.pageMeta}>
-                Page {page} / {totalPages}
+                Page {currentPage} / {totalPages}
               </div>
 
-              <Link
+              <button
+                type="button"
                 className={`${styles.pageBtn} ${
-                  page >= totalPages ? styles.disabled : ""
+                  currentPage >= totalPages ? styles.disabled : ""
                 }`}
-                href={`/project-gallery?page=${Math.min(totalPages, page + 1)}`}
-                aria-disabled={page >= totalPages}
-                tabIndex={page >= totalPages ? -1 : 0}
+                onClick={goToNextPage}
+                disabled={currentPage >= totalPages}
               >
                 Next →
-              </Link>
+              </button>
             </nav>
           )}
         </div>

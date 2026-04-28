@@ -12,87 +12,59 @@ const SITE_URL = "https://www.whalecreek.co";
 const PAGE_PATH = "/project-gallery";
 const PAGE_URL = `${SITE_URL}${PAGE_PATH}`;
 
-const PAGE_SIZE = 9;
-
 const galleryQuery = `
-{
-  "total": count(*[
+  *[
     _type == "project" &&
     defined(slug.current) &&
-    category != "underground"
-  ]),
-  "items": *[
-    _type == "project" &&
-    defined(slug.current) &&
-    category != "underground"
+    category != "underground" &&
+    !(_id in path("drafts.**"))
   ]
-    | order(featured desc, completedDate desc)
-    [$start...$end]{
-      _id,
-      category,
-      client,
-      completedDate,
-      description,
-      featured,
-      location,
-      longDescription,
-      materials[],
-      projectValue,
-      "slug": slug.current,
-      tags[],
-      testimonial,
-      title,
-      images[0...1]{
-        _key,
-        alt,
-        caption,
-        asset{
-          asset->{
-            _id,
-            url,
-            "urlGrid": url + "?w=1200&fit=max&auto=format&q=82",
-            "urlLightbox": url + "?w=2200&fit=max&auto=format&q=82",
-            metadata{
-              dimensions
-            }
+  | order(featured desc, completedDate desc) {
+    _id,
+    category,
+    client,
+    completedDate,
+    description,
+    featured,
+    location,
+    longDescription,
+    materials[],
+    projectValue,
+    "slug": slug.current,
+    tags[],
+    testimonial,
+    title,
+    images[0...1]{
+      _key,
+      alt,
+      caption,
+      asset{
+        asset->{
+          _id,
+          url,
+          "urlGrid": url + "?w=1200&fit=max&auto=format&q=82",
+          "urlLightbox": url + "?w=2200&fit=max&auto=format&q=82",
+          metadata{
+            dimensions
           }
         }
       }
     }
-}
+  }
 `;
 
-async function getProjectsPage(page = 1) {
-  const p = Math.max(1, Number(page) || 1);
-  const start = (p - 1) * PAGE_SIZE;
-  const end = start + PAGE_SIZE;
-
+async function getProjects() {
   try {
-    const data = await client.fetch(
+    const projects = await client.fetch(
       galleryQuery,
-      { start, end },
+      {},
       { next: { tags: ["sanity"] } },
     );
 
-    const total = data?.total || 0;
-
-    return {
-      items: data?.items || [],
-      total,
-      page: p,
-      pageSize: PAGE_SIZE,
-      totalPages: Math.max(1, Math.ceil(total / PAGE_SIZE)),
-    };
+    return Array.isArray(projects) ? projects : [];
   } catch (error) {
-    console.error("Error fetching gallery page:", error);
-
-    return {
-      items: [],
-      total: 0,
-      page: 1,
-      pageSize: PAGE_SIZE,
-      totalPages: 1,
-    };
+    console.error("Error fetching gallery projects:", error);
+    return [];
   }
 }
 
@@ -117,39 +89,30 @@ async function getServiceAreas(projects) {
 }
 
 export async function generateMetadata() {
-  const { items } = await getProjectsPage(1);
-  const serviceAreas = await getServiceAreas(items);
+  const projects = await getProjects();
+  const serviceAreas = await getServiceAreas(projects);
 
-  return generateGalleryMetadata(items, serviceAreas);
+  return generateGalleryMetadata(projects, serviceAreas);
 }
 
 export default async function ProjectGallery({ searchParams }) {
   const resolvedSearchParams = await searchParams;
-
-  const page = Number(resolvedSearchParams?.page || 1);
   const category = resolvedSearchParams?.category || "all";
 
-  const data = await getProjectsPage(page);
-  const serviceAreas = await getServiceAreas(data.items);
-
-  const currentUrl = data.page > 1 ? `${PAGE_URL}?page=${data.page}` : PAGE_URL;
+  const projects = await getProjects();
+  const serviceAreas = await getServiceAreas(projects);
 
   return (
     <>
       <SchemaMarkup
         type="gallery"
-        data={data.items}
+        data={projects}
         serviceAreas={serviceAreas}
-        currentUrl={currentUrl}
+        currentUrl={PAGE_URL}
       />
 
       <main className={styles.main}>
-        <FilterClient
-          projects={data.items}
-          page={data.page}
-          totalPages={data.totalPages}
-          initialFilter={category}
-        />
+        <FilterClient projects={projects} initialFilter={category} />
       </main>
     </>
   );
