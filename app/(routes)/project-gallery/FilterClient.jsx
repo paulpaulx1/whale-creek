@@ -12,6 +12,7 @@ const PAGE_SIZE = 9;
 export default function FilterClient({ projects = [], initialFilter = "all" }) {
   const [activeFilter, setActiveFilter] = useState(initialFilter);
   const [currentPage, setCurrentPage] = useState(1);
+  const [searchQuery, setSearchQuery] = useState("");
   const gridRefs = useRef([]);
 
   const categories = [
@@ -24,16 +25,20 @@ export default function FilterClient({ projects = [], initialFilter = "all" }) {
 
   const filteredProjects = useMemo(() => {
     const base = Array.isArray(projects) ? projects : [];
+    const byCategory = activeFilter === "all" ? base : base.filter((p) => p.category === activeFilter);
 
-    if (activeFilter === "all") return base;
+    if (!searchQuery.trim()) return byCategory;
 
-    return base.filter((project) => project.category === activeFilter);
-  }, [activeFilter, projects]);
+    const q = searchQuery.toLowerCase();
+    return byCategory.filter(
+      (p) =>
+        p.title?.toLowerCase().includes(q) ||
+        p.location?.toLowerCase().includes(q) ||
+        p.description?.toLowerCase().includes(q),
+    );
+  }, [activeFilter, searchQuery, projects]);
 
-  const totalPages = Math.max(
-    1,
-    Math.ceil(filteredProjects.length / PAGE_SIZE),
-  );
+  const totalPages = Math.max(1, Math.ceil(filteredProjects.length / PAGE_SIZE));
 
   const visibleProjects = useMemo(() => {
     const start = (currentPage - 1) * PAGE_SIZE;
@@ -42,7 +47,7 @@ export default function FilterClient({ projects = [], initialFilter = "all" }) {
 
   useEffect(() => {
     setCurrentPage(1);
-  }, [activeFilter]);
+  }, [activeFilter, searchQuery]);
 
   useEffect(() => {
     if (currentPage > totalPages) {
@@ -79,16 +84,21 @@ export default function FilterClient({ projects = [], initialFilter = "all" }) {
 
   const useRowLayout = visibleProjects.length <= 3;
 
-  const goToPreviousPage = () => {
-    setCurrentPage((page) => Math.max(1, page - 1));
-  };
-
-  const goToNextPage = () => {
-    setCurrentPage((page) => Math.min(totalPages, page + 1));
-  };
+  const goToPreviousPage = () => setCurrentPage((page) => Math.max(1, page - 1));
+  const goToNextPage = () => setCurrentPage((page) => Math.min(totalPages, page + 1));
 
   return (
     <>
+      <div className={styles.searchWrapper}>
+        <input
+          type="search"
+          placeholder="Search projects..."
+          value={searchQuery}
+          onChange={(e) => setSearchQuery(e.target.value)}
+          className={styles.searchInput}
+        />
+      </div>
+
       <Filter
         categories={categories}
         activeFilter={activeFilter}
@@ -97,11 +107,7 @@ export default function FilterClient({ projects = [], initialFilter = "all" }) {
 
       <section className={styles.gallerySection}>
         <div className={styles.container}>
-          <div
-            className={
-              useRowLayout ? styles.projectsGridRow : styles.projectsGrid
-            }
-          >
+          <div className={useRowLayout ? styles.projectsGridRow : styles.projectsGrid}>
             {visibleProjects.map((project, index) => {
               const asset = project.images?.[0]?.asset?.asset;
               const image = asset?.urlGrid || asset?.url;
@@ -129,10 +135,7 @@ export default function FilterClient({ projects = [], initialFilter = "all" }) {
                   }}
                 >
                   <article>
-                    <div
-                      className={styles.projectImage}
-                      style={{ aspectRatio: ratio }}
-                    >
+                    <div className={styles.projectImage} style={{ aspectRatio: ratio }}>
                       {image ? (
                         <Image
                           src={image}
@@ -161,9 +164,7 @@ export default function FilterClient({ projects = [], initialFilter = "all" }) {
             <nav className={styles.pagination} aria-label="Gallery pages">
               <button
                 type="button"
-                className={`${styles.pageBtn} ${
-                  currentPage <= 1 ? styles.disabled : ""
-                }`}
+                className={`${styles.pageBtn} ${currentPage <= 1 ? styles.disabled : ""}`}
                 onClick={goToPreviousPage}
                 disabled={currentPage <= 1}
               >
@@ -176,9 +177,7 @@ export default function FilterClient({ projects = [], initialFilter = "all" }) {
 
               <button
                 type="button"
-                className={`${styles.pageBtn} ${
-                  currentPage >= totalPages ? styles.disabled : ""
-                }`}
+                className={`${styles.pageBtn} ${currentPage >= totalPages ? styles.disabled : ""}`}
                 onClick={goToNextPage}
                 disabled={currentPage >= totalPages}
               >

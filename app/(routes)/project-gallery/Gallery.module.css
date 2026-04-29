@@ -351,3 +351,33 @@
   line-height: 1.75;
   color: rgba(63, 43, 36, 0.75);
 }
+
+.searchWrapper {
+  max-width: 1300px;
+  margin: 0 auto;
+  padding: 0 2rem 1.5rem;
+  text-align: center;
+}
+
+.searchInput {
+  width: 100%;
+  max-width: 420px;
+  padding: 0.75rem 1.25rem;
+  font-family: var(--font-montserrat);
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--burgundy);
+  background: transparent;
+  border: 2px solid rgba(134, 38, 51, 0.3);
+  border-radius: 4px;
+  outline: none;
+  transition: border-color 0.2s ease;
+}
+
+.searchInput::placeholder {
+  color: rgba(134, 38, 51, 0.45);
+}
+
+.searchInput:focus {
+  border-color: var(--burgundy);
+}
