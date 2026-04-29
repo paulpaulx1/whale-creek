@@ -5,6 +5,7 @@ import HeroCarousel from "./components/home/HeroCarousel";
 import FeaturedProjects from "./components/FeaturedProjects";
 import ServiceCardsSection from "./components/ServiceCardsSection";
 import AboutContent from "./components/AboutContent";
+import { AboutSection } from './components/AboutSection';
 import ClientInteractions from "./components/ClientInteractions";
 import SchemaMarkup from "./components/seo/SchemaMarkup";
 import Reviews from "./components/Reviews";
@@ -186,7 +187,7 @@ export default async function Home() {
 
       <main className={styles.main} role="main">
         <HeroCarousel slides={slides} />
-        <AboutContent />
+        <AboutSection />
         <FeaturedProjects projects={projects} maxProjects={2} />
         <ServiceCardsSection />
         <Reviews reviews={reviews} />
