@@ -53,10 +53,10 @@ const Footer = () => {
             <div className={styles.quickLinks}>
               <p>Quick Links</p>
               <div className={styles.linksList}>
-                <Link href='/about'>About</Link>
+                <Link href='/#about'>About</Link>
                 <Link href='/indianapolis-general-contractor'>Services</Link>
                 <Link href='/project-gallery'>Gallery</Link>
-                <Link href='/contact'>Contact</Link>
+                <Link href='/indianapolis-woodworker-contact'>Contact</Link>
                 <Link href='/blog'>Blog</Link>
               </div>
             </div>
