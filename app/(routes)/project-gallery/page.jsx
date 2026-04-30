@@ -93,11 +93,23 @@ async function getServiceAreas(projects) {
   return [...new Set([...projectLocations, ...hardcodedAreas])];
 }
 
+/** @returns {Promise<import("next").Metadata>} */
 export async function generateMetadata() {
   const projects = await getProjects();
   const serviceAreas = await getServiceAreas(projects);
 
-  return generateGalleryMetadata(projects, serviceAreas);
+  const metadata = generateGalleryMetadata(projects, serviceAreas);
+
+  return {
+    ...metadata,
+    alternates: {
+      canonical: "/project-gallery",
+    },
+    openGraph: {
+      ...metadata.openGraph,
+      url: `${SITE_URL}/project-gallery`,
+    },
+  };
 }
 
 export default async function ProjectGallery({ searchParams }) {

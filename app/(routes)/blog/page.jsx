@@ -90,7 +90,18 @@ export async function generateMetadata() {
   const posts = await getBlogPosts();
   const serviceAreas = await getServiceAreas();
 
-  return generateBlogsMetadata(posts, serviceAreas, PAGE_URL);
+  const metadata = generateBlogsMetadata(posts, serviceAreas);
+
+  return {
+    ...metadata,
+    alternates: {
+      canonical: PAGE_PATH,
+    },
+    openGraph: {
+      ...metadata.openGraph,
+      url: PAGE_URL,
+    },
+  };
 }
 
 export default async function BlogPage() {

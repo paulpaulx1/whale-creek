@@ -87,16 +87,20 @@ export async function generateStaticParams() {
   }));
 }
 
+/** @returns {Promise<import("next").Metadata>} */
 export async function generateMetadata({ params }) {
   const { slug } = await params;
   const project = await getProject(slug);
+
+  const canonicalPath = `${BASE_PATH}/${slug}`;
+  const canonicalUrl = `${SITE_URL}${canonicalPath}`;
 
   if (!project) {
     return {
       title: "Project Not Found | Whale Creek Co.",
       description: "The requested project could not be found.",
       alternates: {
-        canonical: `${SITE_URL}${BASE_PATH}/${slug}`,
+        canonical: canonicalPath,
       },
     };
   }
@@ -108,19 +112,20 @@ export async function generateMetadata({ params }) {
       project.location || "Indiana"
     }`;
 
-  const canonical = `${SITE_URL}${BASE_PATH}/${project.slug.current}`;
+  const projectPath = `${BASE_PATH}/${project.slug.current}`;
+  const projectUrl = `${SITE_URL}${projectPath}`;
   const image = project.images?.[0]?.url;
 
   return {
     title,
     description,
     alternates: {
-      canonical,
+      canonical: projectPath,
     },
     openGraph: {
       title,
       description,
-      url: canonical,
+      url: projectUrl,
       images: image ? [{ url: image }] : [],
       type: "article",
     },

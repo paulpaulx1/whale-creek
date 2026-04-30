@@ -9,6 +9,7 @@ const SITE_URL = "https://whalecreek.co";
 const PAGE_PATH = "/project-gallery/underground";
 const PAGE_URL = `${SITE_URL}${PAGE_PATH}`;
 
+/** @returns {Promise<import("next").Metadata>} */
 export async function generateMetadata() {
   const title = "Whale Creek Underground | Excavation Services";
   const description =
@@ -18,7 +19,7 @@ export async function generateMetadata() {
     title,
     description,
     alternates: {
-      canonical: PAGE_URL,
+      canonical: PAGE_PATH,
     },
     openGraph: {
       title,

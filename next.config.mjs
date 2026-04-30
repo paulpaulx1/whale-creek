@@ -27,7 +27,7 @@ const nextConfig = {
     return [
       {
         source: '/indianapolis-cnc',
-        destination: '/indianapolis-general-contractor', // or /project-gallery
+        destination: '/indianapolis-general-contractor',
         permanent: true,
       },
     ];

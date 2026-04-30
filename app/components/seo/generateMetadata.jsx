@@ -9,6 +9,7 @@ import {
 const SITE_URL = "https://whalecreek.co";
 const DEFAULT_IMAGE = `${SITE_URL}/images/WhaleLogoNew.png`;
 
+/** @returns {Metadata} */
 export function generateBlogsMetadata(posts, serviceAreas = []) {
   const postCount = posts.length;
   const categories = [...new Set(posts.map((p) => p.category).filter(Boolean))];
@@ -68,6 +69,7 @@ export function generateBlogsMetadata(posts, serviceAreas = []) {
   };
 }
 
+/** @typedef {import("next").Metadata} Metadata */
 export function generateBlogMetadata(post, serviceAreas = []) {
   const seoData = generateBlogSEO(post, serviceAreas);
 

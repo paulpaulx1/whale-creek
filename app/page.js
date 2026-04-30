@@ -163,10 +163,21 @@ async function getReviews() {
   }
 }
 
+// @ts-expect-error Next.js metadata typing handled at runtime
 export async function generateMetadata() {
   const serviceAreas = await getServiceAreas();
+  const metadata = generatePageMetadata({}, serviceAreas, SITE_URL);
 
-  return generatePageMetadata({}, serviceAreas, SITE_URL);
+  return {
+    ...metadata,
+    alternates: {
+      canonical: "/",
+    },
+    openGraph: {
+      ...metadata.openGraph,
+      url: SITE_URL,
+    },
+  };
 }
 
 export default async function Home() {

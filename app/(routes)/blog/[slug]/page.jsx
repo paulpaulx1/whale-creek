@@ -104,6 +104,7 @@ async function getServiceAreas() {
   }
 }
 
+/** @returns {Promise<import("next").Metadata>} */
 export async function generateMetadata({ params }) {
   const { slug } = await params;
 
@@ -112,17 +113,31 @@ export async function generateMetadata({ params }) {
     getServiceAreas(),
   ]);
 
+  const path = `/blog/${slug}`;
+  const url = `${SITE_URL}${path}`;
+
   if (!post) {
     return {
       title: "Post Not Found | Whale Creek Construction",
       description: "The requested blog post could not be found.",
       alternates: {
-        canonical: `${SITE_URL}/blog/${slug}`,
+        canonical: path,
       },
     };
   }
 
-  return generateBlogMetadata(post, serviceAreas);
+  const metadata = generateBlogMetadata(post, serviceAreas);
+
+  return {
+    ...metadata,
+    alternates: {
+      canonical: path,
+    },
+    openGraph: {
+      ...metadata.openGraph,
+      url,
+    },
+  };
 }
 
 export default async function BlogPostPage({ params }) {

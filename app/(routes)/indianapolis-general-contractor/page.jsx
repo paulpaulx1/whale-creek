@@ -45,10 +45,21 @@ async function getServiceAreas() {
   }
 }
 
+/** @returns {Promise<import("next").Metadata>} */
 export async function generateMetadata() {
   const servicesConfig = pageConfigs.services;
+  const metadata = generatePageMetadata(servicesConfig, [], PAGE_URL);
 
-  return generatePageMetadata(servicesConfig, [], PAGE_URL);
+  return {
+    ...metadata,
+    alternates: {
+      canonical: PAGE_PATH,
+    },
+    openGraph: {
+      ...metadata.openGraph,
+      url: PAGE_URL,
+    },
+  };
 }
 
 export default async function Services() {

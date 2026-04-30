@@ -73,14 +73,16 @@ const BASE_PATH = "/project-gallery/underground";
 export async function generateMetadata({ params }) {
   const { slug } = await params;
   const project = await getProject(slug);
-  const canonical = `${SITE_URL}${BASE_PATH}/${slug}`;
+
+  const path = `${BASE_PATH}/${slug}`;
+  const url = `${SITE_URL}${path}`;
 
   if (!project) {
     return {
       title: "Project Not Found | Whale Creek Underground",
       description: "The requested underground project could not be found.",
       alternates: {
-        canonical,
+        canonical: path,
       },
     };
   }
@@ -98,12 +100,12 @@ export async function generateMetadata({ params }) {
     title,
     description,
     alternates: {
-      canonical,
+      canonical: path,
     },
     openGraph: {
       title,
       description,
-      url: canonical,
+      url,
       images: image ? [{ url: image }] : [],
       type: "article",
     },
