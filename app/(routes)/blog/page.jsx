@@ -5,7 +5,7 @@ import { client } from "../../lib/sanity";
 import { generateBlogsMetadata } from "../../components/seo/generateMetadata";
 import SchemaMarkup from "../../components/seo/SchemaMarkup";
 
-const SITE_URL = "https://www.whalecreek.co";
+const SITE_URL = "https://whalecreek.co";
 const PAGE_PATH = "/blog";
 const PAGE_URL = `${SITE_URL}${PAGE_PATH}`;
 

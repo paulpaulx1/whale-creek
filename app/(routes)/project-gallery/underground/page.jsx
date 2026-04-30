@@ -5,7 +5,7 @@ import styles from "./Underground.module.css";
 
 export const revalidate = 300;
 
-const SITE_URL = "https://www.whalecreek.co";
+const SITE_URL = "https://whalecreek.co";
 const PAGE_PATH = "/project-gallery/underground";
 const PAGE_URL = `${SITE_URL}${PAGE_PATH}`;
 

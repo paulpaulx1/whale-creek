@@ -35,7 +35,7 @@ const montserrat = Montserrat({
 });
 
 export const metadata = {
-  metadataBase: new URL("https://www.whalecreek.co"),
+  metadataBase: new URL("https://whalecreek.co"),
   title: {
     default: "Whale Creek Construction",
     template: "%s | Whale Creek Construction",

@@ -67,7 +67,7 @@ export async function generateStaticParams() {
   return projects.map((p) => ({ slug: p.slug }));
 }
 
-const SITE_URL = "https://www.whalecreek.co";
+const SITE_URL = "https://whalecreek.co";
 const BASE_PATH = "/project-gallery/underground";
 
 export async function generateMetadata({ params }) {

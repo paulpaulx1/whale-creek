@@ -6,7 +6,7 @@ import {
   generatePageSEO,
 } from "../../lib/seo";
 
-const SITE_URL = "https://www.whalecreek.co";
+const SITE_URL = "https://whalecreek.co";
 const DEFAULT_IMAGE = `${SITE_URL}/images/WhaleLogoNew.png`;
 
 export function generateBlogsMetadata(posts, serviceAreas = []) {
@@ -230,11 +230,9 @@ export function generatePageMetadata(
       description: seoData.description,
       images: [DEFAULT_IMAGE],
     },
-    alternates: canonicalUrl
-      ? {
-          canonical: canonicalUrl,
-        }
-      : undefined,
+    alternates: {
+      canonical: canonicalUrl ? canonicalUrl.replace(SITE_URL, "") : "/",
+    },
     other: {
       "geo.region": "US-IN",
       "geo.placename": "Indianapolis",
