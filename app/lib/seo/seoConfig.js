@@ -184,7 +184,7 @@ export const siteConfig = {
 export const pageConfigs = {
   home: {
     title:
-      "Indianapolis General Contractor | Home Renovation & Kitchen Remodeling | Whale Creek Construction",
+      "Whale Creek Construction | General Contractor Indianapolis | Home Renovation",
     description:
       "Trusted Indianapolis general contractor specializing in home renovation, kitchen remodeling, custom millwork, and outdoor living spaces. Licensed, bonded, insured. Serving Indianapolis, Carmel, Fishers, and surrounding areas.",
     canonical: "/",
