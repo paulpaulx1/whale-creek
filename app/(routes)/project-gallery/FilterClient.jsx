@@ -2,6 +2,7 @@
 "use client";
 
 import { useEffect, useMemo, useRef, useState } from "react";
+import { useSearchParams } from "next/navigation";
 import Image from "next/image";
 import Link from "next/link";
 import Filter from "../../components/Filter";
@@ -9,13 +10,20 @@ import styles from "./Gallery.module.css";
 
 const PAGE_SIZE = 9;
 
-export default function FilterClient({ projects = [], initialFilter = "all" }) {
-  const [activeFilter, setActiveFilter] = useState(initialFilter);
+export default function FilterClient({ projects = [] }) {
+  const searchParams = useSearchParams();
+  const [activeFilter, setActiveFilter] = useState(
+    searchParams.get("filter") ?? "all",
+  );
   const [currentPage, setCurrentPage] = useState(1);
   const [searchQuery, setSearchQuery] = useState("");
   const gridRefs = useRef([]);
   const galleryRef = useRef(null);
   const userPageChangeRef = useRef(false);
+
+  useEffect(() => {
+    setActiveFilter(searchParams.get("filter") ?? "all");
+  }, [searchParams]);
 
   const categories = [
     { id: "all", label: "All" },
@@ -71,7 +79,7 @@ export default function FilterClient({ projects = [], initialFilter = "all" }) {
     if (!userPageChangeRef.current) return;
     userPageChangeRef.current = false;
     const top =
-      galleryRef.current?.getBoundingClientRect().top + window.scrollY - 140;
+      galleryRef.current?.getBoundingClientRect().top + window.scrollY - 40;
     window.scrollTo({ top, behavior: "smooth" });
   }, [currentPage]);
 

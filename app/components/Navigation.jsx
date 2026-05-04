@@ -42,7 +42,7 @@ const navItems = [
     href: "/project-gallery",
     dropdown: [
       { href: "/project-gallery", label: "Construction" },
-      { href: "/project-gallery?category=millwork", label: "Millwork" },
+      { href: "/project-gallery?filter=millwork", label: "Millwork" },
       {
         href: "/project-gallery/underground",
         label: "Underground",

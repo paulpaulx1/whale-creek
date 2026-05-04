@@ -133,7 +133,7 @@ export default async function ProjectGallery({ searchParams }) {
           <div className={styles.container}>
             <p className={styles.kicker}>Project Gallery</p>
             <h1 className={styles.pageTitle}>
-              Indianapolis Home Renovation, Construction & Millwork 
+              Indianapolis Home Renovation, Construction & Millwork
             </h1>
             <p className={styles.pageIntro}>
               Explore completed decks, outdoor living spaces, renovations,
@@ -142,7 +142,7 @@ export default async function ProjectGallery({ searchParams }) {
             </p>
           </div>
         </header>
-        <FilterClient projects={projects} initialFilter={category} />
+        <FilterClient projects={projects} />
       </main>
     </>
   );
