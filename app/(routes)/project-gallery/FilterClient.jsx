@@ -15,6 +15,7 @@ export default function FilterClient({ projects = [], initialFilter = "all" }) {
   const [searchQuery, setSearchQuery] = useState("");
   const gridRefs = useRef([]);
   const galleryRef = useRef(null);
+  const userPageChangeRef = useRef(false);
 
   const categories = [
     { id: "all", label: "All" },
@@ -67,7 +68,11 @@ export default function FilterClient({ projects = [], initialFilter = "all" }) {
   }, [visibleProjects.length]);
 
   useEffect(() => {
-    galleryRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
+    if (!userPageChangeRef.current) return;
+    userPageChangeRef.current = false;
+    const top =
+      galleryRef.current?.getBoundingClientRect().top + window.scrollY - 140;
+    window.scrollTo({ top, behavior: "smooth" });
   }, [currentPage]);
 
   useEffect(() => {
@@ -95,10 +100,14 @@ export default function FilterClient({ projects = [], initialFilter = "all" }) {
 
   const useRowLayout = visibleProjects.length <= 3;
 
-  const goToPreviousPage = () =>
+  const goToPreviousPage = () => {
+    userPageChangeRef.current = true;
     setCurrentPage((page) => Math.max(1, page - 1));
-  const goToNextPage = () =>
+  };
+  const goToNextPage = () => {
+    userPageChangeRef.current = true;
     setCurrentPage((page) => Math.min(totalPages, page + 1));
+  };
 
   return (
     <>
@@ -117,6 +126,12 @@ export default function FilterClient({ projects = [], initialFilter = "all" }) {
         activeFilter={activeFilter}
         onFilterChange={setActiveFilter}
       />
+
+      {totalPages > 1 && (
+        <div className={styles.pageIndicator}>
+          {currentPage} / {totalPages}
+        </div>
+      )}
 
       <section className={styles.gallerySection} ref={galleryRef}>
         <div className={styles.container}>

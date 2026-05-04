@@ -381,3 +381,13 @@
 .searchInput:focus {
   border-color: var(--burgundy);
 }
+
+.pageIndicator {
+  text-align: center;
+  font-family: var(--font-bebas);
+  font-size: 1.3rem;
+  letter-spacing: 0.1em;
+  font-weight: 500;
+  color: rgba(134, 38, 51, 0.55);
+  padding: 2rem 0 .5rem;
+}
