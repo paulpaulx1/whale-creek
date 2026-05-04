@@ -79,7 +79,7 @@ export default function FilterClient({ projects = [] }) {
     if (!userPageChangeRef.current) return;
     userPageChangeRef.current = false;
     const top =
-      galleryRef.current?.getBoundingClientRect().top + window.scrollY - 40;
+      galleryRef.current?.getBoundingClientRect().top + window.scrollY - 140;
     window.scrollTo({ top, behavior: "smooth" });
   }, [currentPage]);
 
