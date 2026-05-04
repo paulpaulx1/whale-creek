@@ -14,6 +14,7 @@ export default function FilterClient({ projects = [], initialFilter = "all" }) {
   const [currentPage, setCurrentPage] = useState(1);
   const [searchQuery, setSearchQuery] = useState("");
   const gridRefs = useRef([]);
+  const galleryRef = useRef(null);
 
   const categories = [
     { id: "all", label: "All" },
@@ -25,7 +26,10 @@ export default function FilterClient({ projects = [], initialFilter = "all" }) {
 
   const filteredProjects = useMemo(() => {
     const base = Array.isArray(projects) ? projects : [];
-    const byCategory = activeFilter === "all" ? base : base.filter((p) => p.category === activeFilter);
+    const byCategory =
+      activeFilter === "all"
+        ? base
+        : base.filter((p) => p.category === activeFilter);
 
     if (!searchQuery.trim()) return byCategory;
 
@@ -38,7 +42,10 @@ export default function FilterClient({ projects = [], initialFilter = "all" }) {
     );
   }, [activeFilter, searchQuery, projects]);
 
-  const totalPages = Math.max(1, Math.ceil(filteredProjects.length / PAGE_SIZE));
+  const totalPages = Math.max(
+    1,
+    Math.ceil(filteredProjects.length / PAGE_SIZE),
+  );
 
   const visibleProjects = useMemo(() => {
     const start = (currentPage - 1) * PAGE_SIZE;
@@ -58,6 +65,10 @@ export default function FilterClient({ projects = [], initialFilter = "all" }) {
   useEffect(() => {
     gridRefs.current = gridRefs.current.slice(0, visibleProjects.length);
   }, [visibleProjects.length]);
+
+  useEffect(() => {
+    galleryRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
+  }, [currentPage]);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -84,8 +95,10 @@ export default function FilterClient({ projects = [], initialFilter = "all" }) {
 
   const useRowLayout = visibleProjects.length <= 3;
 
-  const goToPreviousPage = () => setCurrentPage((page) => Math.max(1, page - 1));
-  const goToNextPage = () => setCurrentPage((page) => Math.min(totalPages, page + 1));
+  const goToPreviousPage = () =>
+    setCurrentPage((page) => Math.max(1, page - 1));
+  const goToNextPage = () =>
+    setCurrentPage((page) => Math.min(totalPages, page + 1));
 
   return (
     <>
@@ -105,9 +118,13 @@ export default function FilterClient({ projects = [], initialFilter = "all" }) {
         onFilterChange={setActiveFilter}
       />
 
-      <section className={styles.gallerySection}>
+      <section className={styles.gallerySection} ref={galleryRef}>
         <div className={styles.container}>
-          <div className={useRowLayout ? styles.projectsGridRow : styles.projectsGrid}>
+          <div
+            className={
+              useRowLayout ? styles.projectsGridRow : styles.projectsGrid
+            }
+          >
             {visibleProjects.map((project, index) => {
               const asset = project.images?.[0]?.asset?.asset;
               const image = asset?.urlGrid || asset?.url;
@@ -135,7 +152,10 @@ export default function FilterClient({ projects = [], initialFilter = "all" }) {
                   }}
                 >
                   <article>
-                    <div className={styles.projectImage} style={{ aspectRatio: ratio }}>
+                    <div
+                      className={styles.projectImage}
+                      style={{ aspectRatio: ratio }}
+                    >
                       {image ? (
                         <Image
                           src={image}
