@@ -3,22 +3,22 @@ const nextConfig = {
   images: {
     remotePatterns: [
       {
-        protocol: 'https',
-        hostname: 'cdn.sanity.io',
-        port: '',
-        pathname: '/**',
+        protocol: "https",
+        hostname: "cdn.sanity.io",
+        port: "",
+        pathname: "/**",
       },
       {
-        protocol: 'https',
-        hostname: 'images.unsplash.com',
-        port: '',
-        pathname: '/**',
+        protocol: "https",
+        hostname: "images.unsplash.com",
+        port: "",
+        pathname: "/**",
       },
       {
-        protocol: 'https',
-        hostname: 'images.squarespace-cdn.com',
-        port: '',
-        pathname: '/**',
+        protocol: "https",
+        hostname: "images.squarespace-cdn.com",
+        port: "",
+        pathname: "/**",
       },
     ],
   },
@@ -26,8 +26,18 @@ const nextConfig = {
   async redirects() {
     return [
       {
-        source: '/indianapolis-cnc',
-        destination: '/indianapolis-general-contractor',
+        source: "/indianapolis-cnc",
+        destination: "/indianapolis-general-contractor",
+        permanent: true,
+      },
+      {
+        source: "/projects",
+        destination: "/project-gallery",
+        permanent: true,
+      },
+      {
+        source: "/contact",
+        destination: "/indianapolis-woodworker-contact",
         permanent: true,
       },
     ];
