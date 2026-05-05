@@ -5,7 +5,7 @@ import { pageConfigs } from "../../lib/seo/seoConfig";
 import { client } from "../../lib/sanity";
 import ServicesClient from "./ServicesClient";
 
-const SITE_URL = "https://whalecreek.co";
+const SITE_URL = "https://www.whalecreek.co";
 const PAGE_PATH = "/indianapolis-general-contractor";
 const PAGE_URL = `${SITE_URL}${PAGE_PATH}`;
 

@@ -8,7 +8,7 @@ import { client } from "../../lib/sanity";
 
 export const revalidate = 300;
 
-const SITE_URL = "https://whalecreek.co";
+const SITE_URL = "https://www.whalecreek.co";
 const PAGE_PATH = "/project-gallery";
 const PAGE_URL = `${SITE_URL}${PAGE_PATH}`;
 

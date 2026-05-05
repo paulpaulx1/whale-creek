@@ -6,10 +6,10 @@ import {
   generatePageSEO,
 } from "../../lib/seo";
 
-const SITE_URL = "https://whalecreek.co";
+const SITE_URL = "https://www.whalecreek.co";
 const DEFAULT_IMAGE = `${SITE_URL}/images/WhaleLogoNew.png`;
 
-/** @returns {Metadata} */
+
 export function generateBlogsMetadata(posts, serviceAreas = []) {
   const postCount = posts.length;
   const categories = [...new Set(posts.map((p) => p.category).filter(Boolean))];

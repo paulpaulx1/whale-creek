@@ -4,7 +4,7 @@ export const siteConfig = {
   name: "Whale Creek Construction",
   description:
     "Indianapolis general contractor specializing in home renovation, kitchen remodeling, custom millwork, and outdoor living spaces. Licensed, bonded, and insured.",
-  url: process.env.NEXT_PUBLIC_SITE_URL || "https://whalecreek.co",
+  url: process.env.NEXT_PUBLIC_SITE_URL || "https://www.whalecreek.co",
   ogImage: "/images/whale-creek-og-image.jpg",
   creator: "Whale Creek Construction",
 

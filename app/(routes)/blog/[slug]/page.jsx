@@ -6,7 +6,7 @@ import { generateBlogMetadata } from "../../../components/seo/generateMetadata";
 import { client } from "../../../lib/sanity";
 import { notFound } from "next/navigation";
 
-const SITE_URL = "https://whalecreek.co";
+const SITE_URL = "https://www.whalecreek.co";
 
 const blogPostQuery = `
   *[

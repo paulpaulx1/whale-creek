@@ -2,7 +2,7 @@
 
 import { client } from "./lib/sanity";
 
-const SITE_URL = "https://whalecreek.co";
+const SITE_URL = "https://www.whalecreek.co";
 
 export default async function sitemap() {
   const [posts, projects] = await Promise.all([

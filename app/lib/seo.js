@@ -142,18 +142,18 @@ export function generateBaseSchema(serviceAreas = []) {
   return {
     "@context": "https://schema.org",
     "@type": "GeneralContractor",
-    "@id": "https://whalecreek.co/#business",
+    "@id": "https://www.whalecreek.co/#business",
     name: businessInfo.name,
     alternateName: businessInfo.alternateName,
     description: businessInfo.description,
-    url: "https://whalecreek.co",
+    url: "https://www.whalecreek.co",
     telephone: businessInfo.phone,
     email: businessInfo.email,
     priceRange: "$$-$$$",
-    image: "https://whalecreek.co/public/images/WhaleLogoNew.png",
+    image: "https://www.whalecreek.co/public/images/WhaleLogoNew.png",
     logo: {
       "@type": "ImageObject",
-      url: "https://whalecreek.co/public/images/WhaleLogoNew.png",
+      url: "https://www.whalecreek.co/public/images/WhaleLogoNew.png",
       width: "200",
       height: "200",
     },
@@ -261,7 +261,7 @@ export function generateBlogSchema(post, currentUrl) {
       "@type": "ImageObject",
       url:
         post.featuredImage?.asset?.url ||
-        "https://whalecreek.co/public/images/WhaleLogoNew.png",
+        "https://www.whalecreek.co/public/images/WhaleLogoNew.png",
       width: post.featuredImage?.asset?.metadata?.dimensions?.width || 1200,
       height: post.featuredImage?.asset?.metadata?.dimensions?.height || 630,
     },
@@ -270,16 +270,16 @@ export function generateBlogSchema(post, currentUrl) {
     author: {
       "@type": "Organization",
       name: businessInfo.name,
-      "@id": "https://whalecreek.co/#business",
+      "@id": "https://www.whalecreek.co/#business",
     },
     publisher: {
       "@type": "Organization",
       name: businessInfo.name,
       logo: {
         "@type": "ImageObject",
-        url: "https://whalecreek.co/public/images/WhaleLogoNew.png",
+        url: "https://www.whalecreek.co/public/images/WhaleLogoNew.png",
       },
-      "@id": "https://whalecreek.co/#business",
+      "@id": "https://www.whalecreek.co/#business",
     },
     mainEntityOfPage: {
       "@type": "WebPage",
@@ -328,7 +328,7 @@ export function generateProjectGallerySchema(projects, currentUrl) {
       image: project.images?.[0]?.asset?.asset?.url,
       creator: {
         "@type": "Organization",
-        "@id": "https://whalecreek.co/#business",
+        "@id": "https://www.whalecreek.co/#business",
       },
       dateCreated: project.completedDate,
       locationCreated: {

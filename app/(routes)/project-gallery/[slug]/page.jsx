@@ -8,7 +8,7 @@ import CTASection from "../../../components/CTASection";
 import MasonryGallery from "./MasonryGallery.client";
 import styles from "./ProjectPage.module.css";
 
-const SITE_URL = "https://whalecreek.co";
+const SITE_URL = "https://www.whalecreek.co";
 const BASE_PATH = "/project-gallery";
 
 const projectQuery = `

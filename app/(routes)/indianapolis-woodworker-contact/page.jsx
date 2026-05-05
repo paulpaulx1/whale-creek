@@ -5,7 +5,7 @@ import SchemaMarkup from "../../components/seo/SchemaMarkup";
 import { generatePageMetadata } from "../../components/seo/generateMetadata";
 import { pageConfigs } from "../../lib/seo/seoConfig";
 
-const SITE_URL = "https://whalecreek.co";
+const SITE_URL = "https://www.whalecreek.co";
 const PAGE_PATH = "/indianapolis-woodworker-contact";
 const PAGE_URL = `${SITE_URL}${PAGE_PATH}`;
 
