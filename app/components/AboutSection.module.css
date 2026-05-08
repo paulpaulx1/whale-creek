@@ -70,8 +70,9 @@
   margin-bottom: 1.5rem;
   line-height: 1.75;
   color: var(--burgundy);
-  font-weight: 500;
+  font-weight: 600;
   margin-top: 10px;
+
 }
 
 /* Image section */
@@ -215,7 +216,8 @@
   font-weight: 600;
   text-decoration: none;
   transition: transform 0.2s ease, background 0.2s ease;
-  background: transparent;
+
+  ;
 }
 
 .secondaryCta:hover {
@@ -281,7 +283,7 @@
   font-size: 3.4rem;
   font-weight: 400;
   margin: 0;
-  color: var(--burgundy);
+  color: #b23b40;
 }
 
 .sectionKicker::after {
@@ -301,7 +303,7 @@
   font-weight: 400;
   line-height: 1.1;
   letter-spacing: 0.02em;
-  color: var(--burgundy);
+  color: #b23b40;
   margin: 1.75rem 0 4rem 0;
   max-width: 520px;
 }

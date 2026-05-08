@@ -36,7 +36,7 @@ const AboutContent = ({ data }) => {
             : styles.sectionHeaderHidden,
         )}
       >
-        <p className={styles.sectionKicker}>{kicker}</p>
+        {/* <p className={styles.sectionKicker}>{kicker}</p> */}
       </header>
 
       <div ref={sectionRef} className={styles.aboutContent}>
