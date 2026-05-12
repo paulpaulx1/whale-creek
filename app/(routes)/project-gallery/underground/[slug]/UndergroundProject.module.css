@@ -1,5 +1,4 @@
 /* UndergroundProject.module.css */
-/* Dark-themed recolor of ProjectPage.module.css for Underground */
 
 .main {
     padding-top: 80px;
@@ -20,25 +19,32 @@
         "sidebar content";
 }
 
-/* Back link */
+/* ============================================
+   BACK LINK
+============================================ */
+
 .backLink {
     grid-area: back;
     display: inline-block;
     font-family: var(--font-montserrat);
-    color: rgba(180, 130, 80, 0.85);
+    color: var(--gold);
     text-decoration: none;
     font-size: 1rem;
-    font-weight: 600;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
     padding: 24px 0;
-    letter-spacing: 0.04em;
     transition: color 0.2s ease;
 }
 
 .backLink:hover {
-    color: rgba(210, 165, 100, 1);
+    color: #fff;
 }
 
-/* Sidebar */
+/* ============================================
+   SIDEBAR
+============================================ */
+
 .sidebar {
     grid-area: sidebar;
     position: sticky;
@@ -46,12 +52,10 @@
     height: calc(100vh - 120px);
     overflow-y: auto;
     padding: 32px 40px 56px 40px;
-    margin: 0 24px 0 0;
+    margin: 0 24px 20px 0;
     background: transparent;
-    margin-bottom: 20px;
 }
 
-/* thin amber scrollbar */
 .sidebar::-webkit-scrollbar {
     width: 3px;
 }
@@ -61,7 +65,7 @@
 }
 
 .sidebar::-webkit-scrollbar-thumb {
-    background: rgba(180, 130, 80, 0.3);
+    background: rgba(234, 169, 0, 0.3);
     border-radius: 2px;
 }
 
@@ -71,15 +75,18 @@
     gap: 28px;
 }
 
+/* Eyebrow */
 .eyebrow {
     font-family: var(--font-bebas);
     font-size: 0.85rem;
     letter-spacing: 0.3em;
     text-transform: uppercase;
-    color: rgba(180, 130, 80, 0.7);
+    color: var(--gold);
+    opacity: 0.75;
     margin: 0;
 }
 
+/* Title */
 .title {
     font-family: var(--font-bebas);
     font-size: 2.75rem;
@@ -89,6 +96,20 @@
     font-weight: 400;
     margin: 0;
     text-transform: uppercase;
+    position: relative;
+    padding-bottom: 0.75rem;
+}
+
+.title::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 48px;
+    height: 3px;
+    background: var(--gold);
+    border-radius: 999px;
+    opacity: 0.7;
 }
 
 .description {
@@ -99,6 +120,10 @@
     font-weight: 400;
     margin: 0;
 }
+
+/* ============================================
+   META
+============================================ */
 
 .meta {
     display: grid;
@@ -117,20 +142,25 @@
     font-size: 0.75rem;
     text-transform: uppercase;
     letter-spacing: 0.08em;
-    color: rgba(180, 130, 80, 0.6);
-    font-weight: 600;
+    color: var(--gold);
+    opacity: 0.6;
+    font-weight: 700;
 }
 
 .metaValue {
     font-family: var(--font-montserrat);
     font-size: 0.9rem;
     color: rgba(232, 221, 208, 0.85);
-    font-weight: 400;
+    font-weight: 500;
 }
+
+/* ============================================
+   SECTIONS
+============================================ */
 
 .section {
     padding-top: 24px;
-    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    border-top: 1px solid rgba(234, 169, 0, 0.15);
 }
 
 .sectionTitle {
@@ -138,10 +168,15 @@
     font-size: 0.75rem;
     text-transform: uppercase;
     letter-spacing: 0.08em;
-    color: rgba(180, 130, 80, 0.6);
-    font-weight: 600;
+    color: var(--gold);
+    opacity: 0.6;
+    font-weight: 700;
     margin: 0 0 12px 0;
 }
+
+/* ============================================
+   TAGS
+============================================ */
 
 .tags {
     display: flex;
@@ -154,11 +189,21 @@
     font-size: 0.8rem;
     font-weight: 500;
     padding: 5px 12px;
-    background: rgba(180, 130, 80, 0.08);
+    background: rgba(234, 169, 0, 0.06);
     color: rgba(232, 221, 208, 0.7);
-    border: 1px solid rgba(180, 130, 80, 0.2);
+    border: 1px solid rgba(234, 169, 0, 0.25);
     border-radius: 4px;
+    transition: all 0.2s ease;
 }
+
+.tag:hover {
+    border-color: var(--gold);
+    color: var(--gold);
+}
+
+/* ============================================
+   PORTABLE TEXT
+============================================ */
 
 .portable {
     font-family: var(--font-montserrat);
@@ -176,11 +221,15 @@
     margin-bottom: 0;
 }
 
+/* ============================================
+   TESTIMONIAL
+============================================ */
+
 .testimonial {
     margin: 0;
     padding: 20px;
-    background: rgba(180, 130, 80, 0.06);
-    border-left: 2px solid rgba(180, 130, 80, 0.4);
+    background: rgba(234, 169, 0, 0.05);
+    border-left: 2px solid rgba(234, 169, 0, 0.4);
     border-radius: 4px;
 }
 
@@ -203,15 +252,20 @@
 
 .testimonialAuthor {
     font-style: normal;
-    font-weight: 600;
+    font-weight: 700;
     display: block;
-    color: rgba(180, 130, 80, 0.8);
+    color: var(--gold);
 }
 
 .testimonialTitle {
     display: block;
     margin-top: 2px;
+    font-weight: 400;
 }
+
+/* ============================================
+   CTAs
+============================================ */
 
 .ctas {
     display: flex;
@@ -220,53 +274,65 @@
     margin-top: 8px;
 }
 
+/* Primary — gold fill, dark text */
 .primaryBtn {
     font-family: var(--font-montserrat);
     display: block;
-    background: rgba(180, 130, 80, 0.9);
+    background: var(--gold);
     color: #080e14;
     font-weight: 700;
     font-size: 0.9rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
     padding: 14px 20px;
     border-radius: 6px;
     text-decoration: none;
     text-align: center;
-    letter-spacing: 0.04em;
-    transition: all 0.2s ease;
+    transition: all 0.25s ease;
 }
 
 .primaryBtn:hover {
-    background: rgba(210, 165, 100, 1);
-    transform: translateY(-1px);
+    background: #fff;
+    transform: translateY(-2px);
+    box-shadow: 0 10px 24px rgba(234, 169, 0, 0.2);
 }
 
+/* Secondary — gold border */
 .secondaryBtn {
     font-family: var(--font-montserrat);
     display: block;
     background: transparent;
     color: rgba(232, 221, 208, 0.6);
-    font-weight: 500;
+    font-weight: 600;
     font-size: 0.9rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
     padding: 14px 20px;
     border-radius: 6px;
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(234, 169, 0, 0.3);
     text-decoration: none;
     text-align: center;
-    transition: all 0.2s ease;
+    transition: all 0.25s ease;
 }
 
 .secondaryBtn:hover {
-    border-color: rgba(180, 130, 80, 0.4);
-    color: rgba(232, 221, 208, 0.9);
+    border-color: var(--gold);
+    color: var(--gold);
 }
 
-/* Content */
+/* ============================================
+   CONTENT
+============================================ */
+
 .content {
     grid-area: content;
     padding: 12px 56px 56px 24px;
 }
 
-/* Responsive */
+/* ============================================
+   RESPONSIVE
+============================================ */
+
 @media (max-width: 1200px) {
     .wrapper {
         grid-template-columns: 380px 1fr;

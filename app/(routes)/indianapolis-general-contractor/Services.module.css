@@ -62,7 +62,7 @@
 }
 
 /* ================================
-   HERO — IMAGE + WHITE TEXT ONLY
+   HERO
 ================================ */
 
 .servicesHero {
@@ -82,17 +82,15 @@
   animation: fadeIn 1s ease-out;
 }
 
-/* dark overlay for readability */
 .servicesHeroOverlay {
   position: absolute;
   inset: 0;
   background: linear-gradient(180deg,
-      rgba(0, 0, 0, 0.35) 0%,
+      rgba(6, 42, 85, 0.45) 0%,
       rgba(0, 0, 0, 0.65) 100%);
   z-index: 2;
 }
 
-/* centered content */
 .servicesHeroContent {
   position: relative;
   z-index: 3;
@@ -110,8 +108,7 @@
   text-transform: uppercase;
   color: #ffffff;
   margin-bottom: 1.5rem;
-  animation: fadeInDown 0.8s ease-out;
-  animation-fill-mode: both;
+  animation: fadeInDown 0.8s ease-out both;
   animation-delay: 0.2s;
 }
 
@@ -121,27 +118,90 @@
   font-size: 1.2rem;
   line-height: 1.7;
   font-weight: 400;
-  color: rgb(255, 255, 255);
-  animation: fadeInDown 0.8s ease-out;
-  animation-fill-mode: both;
+  color: rgba(255, 255, 255, 0.92);
+  animation: fadeInDown 0.8s ease-out both;
   animation-delay: 0.4s;
 }
 
 /* ================================
-   MAIN SERVICES SECTION (VELLUM + GRID CARDS)
+   SERVICES SECTION
 ================================ */
 
 .services {
-  padding: 7rem 2rem 0rem 2rem;
-  background: var(--bg-cream);
-  color: #1e1e1e;
+  padding: 0;
+  background: #fff;
+  background-image: url('/images/horizon.jpg');
+  background-attachment: fixed;
+  background-size: cover;
+  background-position: center 15%;
+  color: var(--ink);
   position: relative;
   overflow: hidden;
+}
+
+.services::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(255, 255, 255, 0.35);
+  z-index: 0;
+  pointer-events: none;
+}
+
+/* Full-bleed cream header — flush to top of section */
+.servicesHeader {
+  text-align: center;
+  width: 100vw;
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 3rem 2rem 5rem;
+  margin-bottom: 0;
+  background: linear-gradient(to bottom,
+      rgba(243, 237, 229, 0.99) 0%,
+      rgba(243, 237, 229, 0.75) 50%,
+      rgba(243, 237, 229, 0.0) 100%);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  border-bottom: none;
+  border-radius: 0;
+  max-width: none;
+  z-index: 2;
+}
+
+.servicesTitle {
+  font-family: var(--font-bebas);
+  font-size: 5rem;
+  font-weight: 400;
+  color: var(--red);
+  margin-bottom: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.servicesTitle::after {
+  content: "";
+  display: block;
+  width: 180px;
+  height: 2px;
+  background: var(--gold);
+  margin: 10px auto 0;
+  border-radius: 999px;
+}
+
+.servicesSubtitle {
+  font-family: var(--font-montserrat);
+  font-size: 1.1rem;
+  max-width: 640px;
+  margin: 1rem auto 0;
+  color: var(--burgundy);
+  font-weight: 700;
 }
 
 .servicesContainer {
   max-width: 1200px;
   margin: 0 auto;
+  padding: 4rem 2rem 4rem;
   position: relative;
   z-index: 2;
 }
@@ -167,49 +227,30 @@
   grid-template-columns: 0.8fr 1.2fr;
   gap: 4rem;
   align-items: center;
-  background: rgba(255, 255, 255, 0.7);
-  border: 1px solid rgba(134, 38, 51, 0.25);
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  border: 2px solid var(--gold);
+  border-radius: 32px;
   padding: 3.5rem;
   position: relative;
   overflow: hidden;
-  transition: transform 0.35s ease, box-shadow 0.35s ease;
+  transition: transform 0.35s ease, box-shadow 0.35s ease, border-color 0.35s ease;
 }
 
 .serviceReverse .serviceContent {
   grid-template-columns: 1.2fr 0.8fr;
 }
 
-/* Burgundy accent dot */
-/* .serviceContent::before {
-  content: '';
-  position: absolute;
-  top: 14px;
-  right: 14px;
-  width: 16px;
-  height: 16px;
-  border: 1px solid var(--burgundy);
-  border-radius: 50%;
-} */
-
-/* Blueprint ref */
-/* .serviceContent::after {
-  content: attr(data-blueprint);
-  position: absolute;
-  bottom: 12px;
-  right: 16px;
-  font-family: var(--font-montserrat);
-  font-size: 0.7rem;
-  opacity: 0.4;
-  color: var(--burgundy);
-} */
-
 .serviceContent:hover {
   transform: translateY(-4px);
-  /* box-shadow: 0 24px 60px rgba(134, 38, 51, 0.15); */
-  border-color: rgba(134, 38, 51, 0.4);
+  border-color: var(--red);
+  background: rgba(255, 255, 255, 0.97);
+  backdrop-filter: blur(0px);
+  -webkit-backdrop-filter: blur(0px);
+  box-shadow: 0 24px 60px rgba(178, 59, 64, 0.12);
 }
 
-/* Reverse layout */
 .serviceReverse .serviceText {
   order: 2;
 }
@@ -234,14 +275,28 @@
   margin-bottom: 1.5rem;
   letter-spacing: 0.05em;
   text-transform: uppercase;
-  color: var(--burgundy);
+  color: var(--red);
+  position: relative;
+  display: inline-block;
+  padding-bottom: 0.75rem;
+}
+
+.serviceText h2::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 48px;
+  height: 3px;
+  background: var(--gold);
+  border-radius: 999px;
 }
 
 .serviceDescription {
   font-family: var(--font-montserrat);
   font-size: 1.05rem;
   margin-bottom: 1.3rem;
-  font-weight: 500;
+  font-weight: 600;
   line-height: 1.7;
   color: var(--burgundy);
 }
@@ -249,20 +304,19 @@
 .serviceDetails {
   font-family: var(--font-montserrat);
   font-size: 1rem;
-  font-weight: 500;
+  font-weight: 600;
   margin-bottom: 1.8rem;
   line-height: 1.7;
   color: var(--burgundy);
 }
 
-/* Additional info paragraph */
 .serviceAdditional {
   font-family: var(--font-montserrat);
   font-size: 1rem;
   margin-top: 1.5rem;
   line-height: 1.7;
   color: var(--burgundy);
-  font-weight: 500;
+  font-weight: 600;
 }
 
 /* ================================
@@ -283,9 +337,8 @@
   margin-bottom: 0.85rem;
   font-size: 0.95rem;
   color: var(--burgundy);
-  font-weight: 500;
-  animation: slideIn 0.5s ease-out;
-  animation-fill-mode: both;
+  font-weight: 600;
+  animation: slideIn 0.5s ease-out both;
 }
 
 .visible .serviceFeatures li:nth-child(1) {
@@ -305,12 +358,13 @@
 }
 
 .serviceFeatures i {
-  color: var(--burgundy);
-  font-size: 1.1rem;
+  color: var(--blue);
+  font-size: 1.2rem;
+  flex-shrink: 0;
 }
 
 /* ================================
-   SERVICE IMAGE (LOGICAL / NATURAL)
+   SERVICE IMAGE
 ================================ */
 
 .serviceImage {
@@ -324,10 +378,8 @@
 
 .serviceImage[data-orientation="portrait"] {
   height: 550px;
-  /* try 440–520 depending on taste */
 }
 
-/* Base image behavior — NEVER distort */
 .serviceImg {
   position: absolute;
   object-fit: contain;
@@ -338,17 +390,14 @@
   will-change: transform;
 }
 
-/* Landscape images → appear larger */
 .serviceImage[data-orientation="landscape"] .serviceImg {
   transform: scale(1.08);
 }
 
-/* Portrait images → slightly restrained */
 .serviceImage[data-orientation="portrait"] .serviceImg {
   transform: scale(0.95);
 }
 
-/* Hover — subtle, proportional */
 .serviceContent:hover .serviceImage[data-orientation="landscape"] .serviceImg {
   transform: scale(1.12);
 }
@@ -358,14 +407,61 @@
 }
 
 /* ================================
-   SERVICE AREAS — VELLUM + BURGUNDY BUTTONS
+   SERVICE CTA
+================================ */
+
+.serviceCta {
+  margin-top: 2rem;
+  padding-top: 1.25rem;
+  border-top: 2px solid rgba(234, 169, 0, 0.4);
+}
+
+.serviceCtaLink {
+  font-family: var(--font-montserrat);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--burgundy);
+  text-decoration: none;
+  font-size: 0.9rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  padding: 0.7rem 1.4rem;
+  border: 2px solid var(--gold);
+  border-radius: 6px;
+  background: transparent;
+  transition: all 0.25s ease;
+}
+
+.serviceCtaLink i {
+  font-size: 1rem;
+  color: var(--gold);
+  transition: transform 0.25s ease, color 0.25s ease;
+}
+
+.serviceCtaLink:hover {
+  background: var(--burgundy);
+  border-color: var(--burgundy);
+  color: #fff;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(113, 75, 75, 0.2);
+}
+
+.serviceCtaLink:hover i {
+  color: var(--gold);
+  transform: translateX(4px);
+}
+
+/* ================================
+   SERVICE AREAS
 ================================ */
 
 .serviceAreasSection {
   position: relative;
-  padding: 2rem 2rem 7rem;
+  padding: 4rem 2rem 7rem;
   background: var(--bg-cream);
-  color: #1e1e1e;
+  color: var(--ink);
   overflow: hidden;
 }
 
@@ -377,22 +473,20 @@
   text-align: center;
 }
 
-/* Description text */
 .serviceAreasContainer>p {
   font-family: var(--font-montserrat);
   margin-top: 2.5rem;
   font-size: 1.05rem;
   line-height: 1.7;
-  color: #2a2a2a;
+  color: var(--burgundy);
+  font-weight: 600;
   max-width: 760px;
   margin-left: auto;
   margin-right: auto;
-  animation: fadeIn 0.8s ease-out;
+  animation: fadeIn 0.8s ease-out both;
   animation-delay: 0.2s;
-  animation-fill-mode: both;
 }
 
-/* Area button grid */
 .serviceAreasList {
   display: flex;
   flex-wrap: wrap;
@@ -403,34 +497,31 @@
 
 .serviceAreaFooter {
   color: var(--burgundy) !important;
-  font-weight: 500;
+  font-weight: 600;
 }
 
-/* Individual area buttons */
 .serviceArea {
   font-family: var(--font-montserrat);
   background: rgba(255, 255, 255, 0.85);
   color: var(--burgundy);
-  border: 1px solid rgba(134, 38, 51, 0.25);
+  border: 2px solid var(--gold);
   padding: 0.75rem 1.5rem;
   font-size: 0.9rem;
-  font-weight: 500;
+  font-weight: 600;
   letter-spacing: 0.04em;
   border-radius: 2px;
   transition: all 0.25s ease;
   white-space: nowrap;
-  animation: fadeInUp 0.5s ease-out;
-  animation-fill-mode: both;
+  animation: fadeInUp 0.5s ease-out both;
   cursor: default;
 }
 
-/* Stagger the area chips */
 .serviceArea:nth-child(1) {
   animation-delay: 0.05s;
 }
 
 .serviceArea:nth-child(2) {
-  animation-delay: 0.1s;
+  animation-delay: 0.10s;
 }
 
 .serviceArea:nth-child(3) {
@@ -438,7 +529,7 @@
 }
 
 .serviceArea:nth-child(4) {
-  animation-delay: 0.2s;
+  animation-delay: 0.20s;
 }
 
 .serviceArea:nth-child(5) {
@@ -446,7 +537,7 @@
 }
 
 .serviceArea:nth-child(6) {
-  animation-delay: 0.3s;
+  animation-delay: 0.30s;
 }
 
 .serviceArea:nth-child(7) {
@@ -454,7 +545,7 @@
 }
 
 .serviceArea:nth-child(8) {
-  animation-delay: 0.4s;
+  animation-delay: 0.40s;
 }
 
 .serviceArea:nth-child(9) {
@@ -462,16 +553,15 @@
 }
 
 .serviceArea:nth-child(10) {
-  animation-delay: 0.5s;
+  animation-delay: 0.50s;
 }
 
-/* Burgundy hover */
 .serviceArea:hover {
-  border-color: var(--burgundy);
-  color: var(--burgundy);
-  background: rgba(134, 38, 51, 0.08);
+  border-color: var(--red);
+  color: var(--red);
+  background: rgba(178, 59, 64, 0.06);
   transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(134, 38, 51, 0.15);
+  box-shadow: 0 4px 12px rgba(178, 59, 64, 0.12);
 }
 
 /* ================================
@@ -482,11 +572,23 @@
   .serviceContent {
     gap: 3rem;
   }
+
+  .servicesTitle {
+    font-size: 3.5rem;
+  }
 }
 
 @media (max-width: 768px) {
   .services {
-    padding: 5rem 1rem 4rem;
+    background-attachment: scroll;
+  }
+
+  .servicesTitle {
+    font-size: 2.8rem;
+  }
+
+  .servicesSubtitle {
+    font-size: 1rem;
   }
 
   .servicesHeroContent h1 {
@@ -498,21 +600,35 @@
   }
 
   .serviceContent {
-    grid-template-columns: 1fr;
-    gap: 2.5rem;
+    grid-template-columns: 1fr !important;
+    gap: 2rem;
     padding: 2.5rem;
+    border-radius: 20px;
   }
 
-  .serviceReverse .serviceText {
-    order: 1;
+  .serviceContent .serviceText {
+    order: 1 !important;
   }
 
-  .serviceReverse .serviceImage {
-    order: 2;
+  .serviceContent .serviceImage {
+    order: 2 !important;
   }
 
   .serviceImage {
-    height: 300px;
+    height: 260px;
+    margin-top: 0.5rem;
+  }
+
+  .serviceImage[data-orientation="portrait"] {
+    height: 340px;
+  }
+
+  .serviceImage[data-orientation="landscape"] .serviceImg {
+    transform: scale(1.02);
+  }
+
+  .serviceImage[data-orientation="portrait"] .serviceImg {
+    transform: scale(1.06);
   }
 
   .serviceText h2 {
@@ -551,120 +667,22 @@
   }
 
   .serviceAreasList {
-    gap: 0.7rem 0.7rem;
+    gap: 0.7rem;
+  }
+
+  .servicesTitle {
+    font-size: 2.2rem;
   }
 }
 
-/* ================================
-   MOBILE STACK: TITLE → TEXT → IMAGE
-   Drop this at the very bottom
-================================ */
+@media (prefers-reduced-motion: reduce) {
 
-@media (max-width: 768px) {
-
-  /* Single column layout */
-  .serviceContent {
-    grid-template-columns: 1fr;
-    gap: 2rem;
+  .serviceSection,
+  .serviceFeatures li,
+  .serviceArea {
+    animation: none;
+    opacity: 1;
+    transform: none;
+    transition: none;
   }
-
-  /* Ignore reverse ordering on mobile */
-  .serviceReverse .serviceText,
-  .serviceText {
-    order: 1;
-  }
-
-  .serviceReverse .serviceImage,
-  .serviceImage {
-    order: 2;
-  }
-
-  /* Image sizing on mobile */
-  .serviceImage {
-    height: 260px;
-    margin-top: 0.5rem;
-  }
-
-  /* Portraits get more room so they don't look tiny */
-  .serviceImage[data-orientation="portrait"] {
-    height: 340px;
-  }
-
-  /* Reduce landscape scale a touch on mobile */
-  .serviceImage[data-orientation="landscape"] .serviceImg {
-    transform: scale(1.02);
-  }
-
-  /* Keep portraits comfortably large */
-  .serviceImage[data-orientation="portrait"] .serviceImg {
-    transform: scale(1.06);
-  }
-}
-
-
-/* ================================
-   MOBILE STACK — FORCE ORDER
-   TITLE → TEXT → IMAGE
-   (Overrides .serviceReverse)
-================================ */
-
-@media (max-width: 768px) {
-
-  /* Force single column */
-  .serviceContent {
-    display: grid;
-    grid-template-columns: 1fr !important;
-    gap: 2rem;
-  }
-
-  /* FORCE text first — even if reversed */
-  .serviceContent .serviceText {
-    order: 1 !important;
-  }
-
-  /* FORCE image last — even if reversed */
-  .serviceContent .serviceImage {
-    order: 2 !important;
-  }
-
-  /* Image sizing */
-  .serviceImage {
-    height: 260px;
-    margin-top: 0.5rem;
-  }
-
-  /* Portraits get more vertical room */
-  .serviceImage[data-orientation="portrait"] {
-    height: 340px;
-  }
-
-  /* Scale tuning */
-  .serviceImage[data-orientation="landscape"] .serviceImg {
-    transform: scale(1.02);
-  }
-
-  .serviceImage[data-orientation="portrait"] .serviceImg {
-    transform: scale(1.06);
-  }
-}
-
-.serviceText h2 {
-  position: relative;
-  display: inline-block;
-  /* keeps underline tight to text */
-  padding-bottom: 0.75rem;
-}
-
-.serviceText h2::after {
-  content: "";
-  position: absolute;
-  left: 0;
-  bottom: 0;
-
-  width: 48px;
-  height: 2px;
-
-  background: var(--burgundy);
-  /* your drafting orange */
-  opacity: 0.85;
 }

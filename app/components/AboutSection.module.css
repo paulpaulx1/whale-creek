@@ -15,7 +15,6 @@
   z-index: 2;
 }
 
-/* About Content Grid */
 .aboutContent {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -24,7 +23,6 @@
   margin: 0 2rem 4rem 2rem;
 }
 
-/* --- Left/Right blocks --- */
 .content {
   background: transparent;
   padding: 0;
@@ -44,18 +42,17 @@
   margin: 0 0 0.75rem 0;
 }
 
-/* ✅ Single source of truth for title */
+/* Large headings → red */
 .title {
   font-family: var(--font-bebas);
   font-size: 3.5rem;
   font-weight: 400;
   letter-spacing: 0.02em;
   margin: 0 0 1.5rem 0;
-  color: var(--burgundy);
+  color: var(--red);
   line-height: 1.1;
 }
 
-/* Copy blocks */
 .contentBlock {
   background: transparent;
   padding: 0;
@@ -64,18 +61,17 @@
   position: relative;
 }
 
+/* Body copy → burgundy, weight bumped */
 .contentBlock p {
   font-family: var(--font-montserrat);
   font-size: 15px;
   margin-bottom: 1.5rem;
   line-height: 1.75;
   color: var(--burgundy);
-  font-weight: 600;
+  font-weight: 700;
   margin-top: 10px;
-
 }
 
-/* Image section */
 .imageSection {
   opacity: 1;
   transform: translateY(0);
@@ -128,25 +124,27 @@
   transform: scale(1.02);
 }
 
-/* --- NEW: How we help card --- */
+/* Help card — gold border accent */
 .helpCard {
   margin-top: 2.25rem;
-  border: 1px solid rgba(38, 50, 56, 0.16);
+  border: 3px solid var(--gold);
   border-radius: 18px;
   padding: 2.25rem 2.25rem 2rem 2.25rem;
   box-shadow: 0 12px 32px rgba(0, 0, 0, 0.06);
 }
 
+/* Help card title → red (it's a heading) */
 .helpTitle {
   font-family: var(--font-bebas);
   margin: 0 0 1rem 0;
   font-weight: 400;
   letter-spacing: 0.05em;
-  color: var(--burgundy);
+  color: var(--red);
   font-size: 1.5rem;
   text-transform: uppercase;
 }
 
+/* Help list → burgundy, heavier weight, gold bullets */
 .helpList {
   font-family: var(--font-montserrat);
   list-style: none;
@@ -155,16 +153,17 @@
   display: grid;
   gap: 0.75rem;
   color: var(--burgundy);
-  font-weight: 400;
+  font-weight: 600;
 }
 
 .helpList li {
   position: relative;
   padding-left: 1.25rem;
   line-height: 1.55;
-  font-weight: 500;
+  font-weight: 600;
 }
 
+/* Gold bullet dots */
 .helpList li::before {
   content: "";
   position: absolute;
@@ -173,17 +172,17 @@
   width: 8px;
   height: 8px;
   border-radius: 999px;
-  background: var(--burgundy);
-  opacity: 0.9;
+  background: var(--gold);
+  opacity: 0.95;
 }
 
-/* CTAs */
 .helpActions {
   display: flex;
   gap: 0.9rem;
   flex-wrap: wrap;
 }
 
+/* Primary CTA → red background */
 .primaryCta {
   font-family: var(--font-montserrat);
   display: inline-flex;
@@ -191,7 +190,7 @@
   justify-content: center;
   padding: 0.85rem 1.2rem;
   border-radius: 12px;
-  background: var(--burgundy);
+  background: var(--red);
   color: #fff;
   font-weight: 600;
   text-decoration: none;
@@ -204,6 +203,7 @@
   filter: brightness(1.05);
 }
 
+/* Secondary CTA — gold border on hover */
 .secondaryCta {
   font-family: var(--font-montserrat);
   display: inline-flex;
@@ -211,18 +211,16 @@
   justify-content: center;
   padding: 0.85rem 1.2rem;
   border-radius: 12px;
-  border: 1px solid rgba(38, 50, 56, 0.35);
+  border: 2px solid var(--gold);
   color: var(--charcoal);
   font-weight: 600;
   text-decoration: none;
   transition: transform 0.2s ease, background 0.2s ease;
-
-  ;
 }
 
 .secondaryCta:hover {
   transform: translateY(-2px);
-  background: rgba(38, 50, 56, 0.06);
+  background: rgba(234, 169, 0, 0.08);
 }
 
 .sectionDivider {
@@ -232,9 +230,7 @@
   margin: 2rem auto;
 }
 
-/* -------------------------------
-   About Section Scroll Animation
--------------------------------- */
+/* Scroll animations */
 .aboutHiddenLeft {
   opacity: 0;
   transform: translateX(-48px);
@@ -258,13 +254,11 @@
   transition-delay: 160ms;
 }
 
-/* Section header above the grid */
 .sectionHeader {
   text-align: center;
   margin-bottom: 12px;
 }
 
-/* Section header animation */
 .sectionHeaderHidden {
   opacity: 0;
   transform: translateY(-24px);
@@ -276,6 +270,7 @@
   transition: opacity 0.7s ease, transform 0.7s ease;
 }
 
+/* Section kicker → red, gold underline */
 .sectionKicker {
   font-family: var(--font-bebas);
   text-transform: uppercase;
@@ -283,7 +278,7 @@
   font-size: 3.4rem;
   font-weight: 400;
   margin: 0;
-  color: #b23b40;
+  color: var(--red);
 }
 
 .sectionKicker::after {
@@ -291,21 +286,31 @@
   display: block;
   width: 56px;
   height: 2px;
-  background: var(--burgundy);
+  background: var(--gold);
   margin: 14px auto 0 auto;
   border-radius: 999px;
 }
 
-/* Headline under the image */
+/* Image headline → red, gold underline */
 .imageHeadline {
   font-family: var(--font-bebas);
   font-size: 3rem;
   font-weight: 400;
   line-height: 1.1;
   letter-spacing: 0.02em;
-  color: #b23b40;
+  color: var(--red);
   margin: 1.75rem 0 4rem 0;
   max-width: 520px;
+}
+
+.imageHeadline::after {
+  content: "";
+  display: block;
+  width: 70%;
+  height: 3px;
+  background: var(--gold);
+  margin-top: 12px;
+  border-radius: 999px;
 }
 
 /* Responsive */
@@ -328,10 +333,8 @@
 }
 
 @media (max-width: 768px) {
-
   .container {
     padding: 1.5rem 1.5rem;
-
   }
 
   .aboutSection {

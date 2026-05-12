@@ -70,6 +70,10 @@ export default async function Services() {
       id: "outdoor-living-spaces",
       title: "Outdoor Living Spaces",
       image: "/images/Pergola.jpg",
+      cta: {
+        text: "View Outdoor Projects",
+        href: "/project-gallery",
+      },
       description:
         "We design and build decks, pergolas, patios, sunrooms, and outdoor structures to extend your living space. From quiet backyard retreats to entertainment-ready decks, our outdoor projects are thoughtfully designed, structurally sound, and built for Indiana's climate.",
       details:
@@ -82,6 +86,10 @@ export default async function Services() {
       id: "residential-renovation-services",
       title: "Residential Renovation Services",
       image: "/images/AvonInside.jpg",
+      cta: {
+        text: "View Residential Work",
+        href: "/project-gallery?filter=residential",
+      },
       description:
         "As experienced general contractors in Indianapolis, we guide homeowners through renovation projects of all kinds. Our renovation work commonly includes:",
       blueprint: "RES_001",
@@ -97,6 +105,10 @@ export default async function Services() {
       id: "commercial-projects",
       title: "Commercial Projects",
       image: "/images/covramirror.webp",
+      cta: {
+        text: "View Commercial Projects",
+        href: "/project-gallery?filter=commercial",
+      },
       description:
         "Whale Creek Co partners with businesses seeking a dependable manufacturing and fabrication shop. Whether you need custom furniture, retail buildouts, or specialty wood products, we're here for you from early prototyping to full-scale production.",
       details:
@@ -114,6 +126,10 @@ export default async function Services() {
       id: "custom-woodworking-millwork",
       title: "Custom Woodworking & Millwork",
       image: "/images/PortholeMirror2.jpg",
+      cta: {
+        text: "View Millwork & Woodworking",
+        href: "/project-gallery?filter=millwork",
+      },
       description:
         "We produce custom woodwork and millwork for commercial and residential applications, ranging from standalone pieces to integrated architectural elements. Our state-of-the-art CNC milling technology allows us to execute complex cuts, intricate patterns, and tight precision across both short runs and larger production volumes.",
       details: "Common projects include:",
@@ -130,6 +146,10 @@ export default async function Services() {
       id: "underground",
       title: "Whale Creek Underground",
       image: "/images/underground.jpg",
+      cta: {
+        text: "View Underground Projects",
+        href: "/project-gallery/underground",
+      },
       description:
         "Excavation, foundation work, and below-grade construction — handled in-house with our own equipment. We self-perform the dig so there's no subcontractor markup and no scheduling gap between groundwork and construction.",
       details: "Common underground and site work includes:",

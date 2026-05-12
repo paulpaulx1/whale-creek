@@ -67,6 +67,15 @@ export default function ServicesClient({ services, serviceAreas }) {
 
       {/* ✅ SERVICES WITH STAGGER */}
       <section className={styles.services}>
+        {/* Fading cream divider header */}
+        <div className={styles.servicesHeader}>
+          <h2 className={`${styles.servicesTitle} `}>What We Do</h2>
+          <p className={`${styles.servicesSubtitle} `}>
+            From custom millwork to complete home renovations, we bring
+            expertise and craftsmanship to every project.
+          </p>
+        </div>
+
         <div className={styles.servicesContainer}>
           {services.map((service, index) => (
             <div
@@ -102,6 +111,17 @@ export default function ServicesClient({ services, serviceAreas }) {
                     <p className={styles.serviceAdditional}>
                       {service.additionalInfo}
                     </p>
+                  )}
+                  {service.cta && (
+                    <div className={styles.serviceCta}>
+                      <a
+                        href={service.cta.href}
+                        className={styles.serviceCtaLink}
+                      >
+                        {service.cta.text}
+                        <i className="ph ph-arrow-right" />
+                      </a>
+                    </div>
                   )}
                 </div>
 

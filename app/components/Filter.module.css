@@ -1,5 +1,3 @@
-/* Filter Section - FIXED */
-
 .container {
   max-width: 1200px;
   margin: 0 auto;
@@ -8,8 +6,8 @@
 
 .filterSection {
   padding: 3rem 2rem;
-  border-top: 1px solid rgba(134, 38, 51, 0.2);
-  border-bottom: 1px solid rgba(134, 38, 51, 0.2);
+  border-top: 2px solid rgba(234, 169, 0, 0.3);
+  border-bottom: 2px solid rgba(234, 169, 0, 0.3);
   background: var(--bg-cream);
 }
 
@@ -22,11 +20,10 @@
 }
 
 .filterBtn {
-  /* Fixed minimum height for consistency */
   min-height: 120px;
   padding: 1.5rem 1rem;
   background: rgba(255, 255, 255, 0.7);
-  border: 2px solid var(--burgundy);
+  border: 2px solid var(--gold);
   color: var(--burgundy);
   font-family: var(--font-montserrat), sans-serif;
   font-weight: 600;
@@ -42,97 +39,65 @@
   justify-content: center;
   gap: 0.8rem;
   text-align: center;
-
-  /* Asymmetrical border radius */
   border-radius: 25px 8px 25px 8px;
-}
-
-.filterBtn:nth-child(2n) {
-  border-radius: 8px 20px 8px 20px;
-}
-
-.filterBtn:nth-child(3n) {
-  border-radius: 30px 0 15px 12px;
-}
-
-.filterBtn span {
-  font-size: 0.85rem;
-  line-height: 1.2;
-  /* Ensure text doesn't break layout */
-  word-wrap: break-word;
-  hyphens: auto;
-}
-
-/* Phosphor Icon Styling */
-.filterIcon {
-  color: var(--burgundy);
-  transition:
-    transform 0.6s cubic-bezier(0.4, 0, 0.2, 1),
-    color 0.25s ease;
-  will-change: transform;
-}
-
-/* Clean hover effect */
-.filterBtn:hover:not(.active) {
-  background: rgba(134, 38, 51, 0.05);
-  transform: translateY(-3px);
-  box-shadow: 0 10px 30px rgba(134, 38, 51, 0.15);
-}
-
-/* Burgundy spin on hover */
-.filterBtn:hover .filterIcon {
-  transform: rotate(360deg) scale(1.1);
-}
-
-/* Active state - burgundy fill */
-.filterBtn.active {
-  background: var(--burgundy);
-  color: var(--bg-cream);
-  border-color: var(--burgundy);
-  transform: translateY(-2px);
-  box-shadow: 0 8px 25px rgba(134, 38, 51, 0.3);
-}
-
-.filterBtn.active .filterIcon {
-  color: var(--bg-cream);
-  transform: scale(1.15);
-}
-
-/* Clean Accessibility */
-.filterBtn:focus {
-  outline: 3px solid var(--burgundy);
-  outline-offset: 2px;
-}
-
-/* Staggered entrance animation */
-.filterBtn {
   opacity: 0;
   transform: translateY(6px);
   animation: filterIn 0.4s ease forwards;
 }
 
-.filterBtn:nth-child(1) {
-  animation-delay: 0.05s;
+.filterBtn:nth-child(2n) { border-radius: 8px 20px 8px 20px; }
+.filterBtn:nth-child(3n) { border-radius: 30px 0 15px 12px; }
+
+.filterBtn:nth-child(1) { animation-delay: 0.05s; }
+.filterBtn:nth-child(2) { animation-delay: 0.10s; }
+.filterBtn:nth-child(3) { animation-delay: 0.15s; }
+.filterBtn:nth-child(4) { animation-delay: 0.20s; }
+.filterBtn:nth-child(5) { animation-delay: 0.25s; }
+.filterBtn:nth-child(6) { animation-delay: 0.30s; }
+
+.filterBtn span {
+  font-size: 0.85rem;
+  line-height: 1.2;
+  word-wrap: break-word;
+  hyphens: auto;
 }
 
-.filterBtn:nth-child(2) {
-  animation-delay: 0.1s;
+.filterIcon {
+  color: var(--red);
+  transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1), color 0.25s ease;
+  will-change: transform;
 }
 
-.filterBtn:nth-child(3) {
-  animation-delay: 0.15s;
+/* Hover — gold border, faint red bg */
+.filterBtn:hover:not(.active) {
+  background: rgba(234, 169, 0, 0.08);
+  border-color: var(--gold);
+  transform: translateY(-3px);
+  box-shadow: 0 10px 30px rgba(234, 169, 0, 0.2);
 }
 
-.filterBtn:nth-child(4) {
-  animation-delay: 0.2s;
+.filterBtn:hover .filterIcon {
+  transform: rotate(360deg) scale(1.1);
+  color: var(--red);
 }
 
-.filterBtn:nth-child(5) {
-  animation-delay: 0.25s;
+/* Active — red fill */
+.filterBtn.active {
+  background: var(--red);
+  color: #fff;
+  border-color: var(--red);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(178, 59, 64, 0.3);
 }
 
-.filterBtn:nth-child(6) {
-  animation-delay: 0.3s;
+.filterBtn.active .filterIcon {
+  color: var(--gold);
+  transform: scale(1.15);
+}
+
+.filterBtn:focus {
+  outline: 3px solid var(--gold);
+  outline-offset: 2px;
 }
 
 @keyframes filterIn {
@@ -142,7 +107,6 @@
   }
 }
 
-/* Responsive Design */
 @media (max-width: 768px) {
   .filterGrid {
     grid-template-columns: repeat(2, 1fr);
@@ -155,20 +119,12 @@
     font-size: 0.85rem;
   }
 
-  .filterBtn span {
-    font-size: 0.75rem;
-  }
-
-  .filterIcon {
-    width: 22px;
-    height: 22px;
-  }
+  .filterBtn span { font-size: 0.75rem; }
+  .filterIcon { width: 22px; height: 22px; }
 }
 
 @media (max-width: 480px) {
-  .container {
-    padding: 0 1rem;
-  }
+  .container { padding: 0 1rem; }
 
   .filterBtn {
     min-height: 80px;
@@ -179,26 +135,16 @@
     padding-left: 1.5rem;
   }
 
-  .filterIcon {
-    width: 20px;
-    height: 20px;
-  }
-
-  .filterBtn span {
-    font-size: 0.75rem;
-  }
+  .filterIcon { width: 20px; height: 20px; }
+  .filterBtn span { font-size: 0.75rem; }
 }
 
-/* Reduced motion */
 @media (prefers-reduced-motion: reduce) {
   .filterBtn,
   .filterIcon {
     transition: none;
     animation: none;
     transform: none !important;
-  }
-
-  .filterBtn {
     opacity: 1;
   }
 }

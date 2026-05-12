@@ -24,12 +24,22 @@
   /* hover */
   --border: rgba(15, 23, 42, 0.14);
 
+  --red: #b23b40;
+  --gold: #eaa900;
+  --blue: #338dd3;
+  --green: #51934a;
+
+  --navy-nav: #062a55;
+  /* base nav bg */
+  --navy-nav-scrolled: #062a55;
+  /* same hue, opacity handled inline */
+
   /* =========================
      MONDRIAN PALETTE (OLD)
   ========================= */
-  --primary-red: #d32f2f;
+  --primary-red: var(--red);
   --primary-blue: #1976d2;
-  --primary-yellow: var(--teal);
+  --primary-yellow: var(--gold);
   --charcoal: #263238;
   --sage-green: #66bb6a;
   --warm-white: #fafafa;

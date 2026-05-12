@@ -1,6 +1,6 @@
 .footer {
   background: linear-gradient(180deg,
-      var(--navy-deep) 0%,
+      var(--navy-nav) 0%,
       #08162b 100%);
   color: rgba(255, 255, 255, 0.92);
   position: relative;
@@ -14,7 +14,6 @@
   padding: 0 2rem;
 }
 
-/* MAIN LAYOUT */
 .mainContent {
   display: grid;
   grid-template-columns: auto 1fr;
@@ -23,7 +22,6 @@
   margin-bottom: 3.5rem;
 }
 
-/* LOGO + BRAND */
 .logoSection {
   display: flex;
   flex-direction: column;
@@ -80,15 +78,12 @@
   opacity: 1;
 }
 
-/* RIGHT SIDE CONTENT */
 .rightContent {
   display: flex;
   flex-direction: column;
   gap: 3rem;
 }
 
-/* CONTACT GRID */
-/* CONTACT GRID */
 .contactGrid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -106,7 +101,7 @@
   font-family: var(--font-bebas);
   font-size: 1.4rem;
   font-weight: 400;
-  color: var(--primary-yellow);
+  color: var(--gold);
   text-transform: uppercase;
   letter-spacing: 0.08em;
   margin: 0;
@@ -127,61 +122,6 @@
   opacity: 1;
 }
 
-/* QUICK LINKS */
-.quickLinks {
-  text-align: left;
-  font-family: var(--font-bebas);
-  font-size: 1.4rem;
-  font-weight: 400;
-}
-
-.quickLinks p {
-  font-family: var(--font-bebas);
-  font-size: 1.4rem;
-  font-weight: 400;
-  color: var(--primary-yellow);
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  margin: 0 0 1.2rem 0;
-  
-}
-
-.linksList {
-  display: flex;
-  gap: 2.5rem;
-  flex-wrap: wrap;
-  justify-content: space-between;
-}
-
-.linksList a {
-  font-family: var(--font-montserrat);
-  color: rgba(250, 250, 250, 0.75);
-  text-decoration: none;
-  font-weight: 500;
-  font-size: 1.05rem;
-  transition: color 0.2s ease;
-}
-
-.linksList a:hover {
-  color: var(--warm-white);
-}
-
-/* QUICK LINKS */
-.quickLinks {
-  text-align: left;
-}
-
-.quickLinks p {
-  font-family: var(--font-bebas);
-  font-size: 0.75rem;
-  font-weight: 600;
-  color: var(--primary-yellow);
-  text-transform: uppercase;
-  letter-spacing: 0.12em;
-  margin: 0 0 1.2rem 0;
-}
-
-/* QUICK LINKS */
 .quickLinks {
   text-align: left;
 }
@@ -190,7 +130,7 @@
   font-family: var(--font-bebas);
   font-size: 1.4rem;
   font-weight: 600;
-  color: var(--primary-yellow);
+  color: var(--gold);
   text-transform: uppercase;
   letter-spacing: 0.12em;
   margin: 0 0 1.2rem 0;
@@ -215,7 +155,6 @@
   color: var(--warm-white);
 }
 
-/* BOTTOM BAR */
 .bottomBar {
   display: flex;
   justify-content: space-between;
@@ -236,7 +175,7 @@
 
 .designedBy a {
   font-family: var(--font-montserrat);
-  color: var(--primary-yellow);
+  color: var(--gold);
   text-decoration: none;
   font-weight: 400;
   transition: color 0.2s ease;

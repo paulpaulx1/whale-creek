@@ -95,7 +95,7 @@ export default function ServiceCardsSection() {
           <h2
             className={`${styles.servicesTitle} ${hasAnimated ? styles.titleVisible : ""}`}
           >
-            What We Build
+            What We Do
           </h2>
           <p
             className={`${styles.servicesSubtitle} ${hasAnimated ? styles.subtitleVisible : ""}`}

@@ -1,32 +1,36 @@
 .serviceCard {
-  background: rgba(255, 255, 255, 0.55);
+
+  background: rgba(255, 255, 255, 0.82);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
   padding: 2.5rem;
-  border: 1px solid var(--burgundy);
+  border: 2px solid var(--gold);
   transition: all 0.35s ease;
   position: relative;
   overflow: hidden;
-  color: #1e1e1e;
+  color: var(--ink);
   border-radius: 8px;
   min-height: 522px;
   display: flex;
   flex-direction: column;
 }
 
-/* Hover */
 .serviceCard:hover {
   transform: scale(1.025);
-  border-color: var(--burgundy);
-  background: rgba(255, 255, 255, 0.75);
-  box-shadow: 0 18px 42px rgba(0, 0, 0, 0.18);
+  border-color: var(--gold);
+  background: rgba(255, 255, 255, 0.96);
+  backdrop-filter: blur(0px);
+  -webkit-backdrop-filter: blur(0px);
+  box-shadow: 0 18px 42px rgba(178, 59, 64, 0.14);
 }
 
 /* Icon */
 .serviceIcon {
   width: 80px;
   height: 80px;
-  background: var(--burgundy);
-  color: #f6f6f4;
-  border: 2px solid var(--burgundy);
+  background: var(--red);
+  color: var(--bg-cream);
+  border: 2px solid var(--gold);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -44,7 +48,7 @@
   width: 12px;
   height: 12px;
   background: var(--bg-cream);
-  border: 1px solid var(--burgundy);
+  border: 2px solid var(--gold);
   border-radius: 50%;
 }
 
@@ -52,30 +56,30 @@
   transform: scale(1.08) rotate(360deg);
 }
 
-/* Title */
+/* Title → red (heading) */
 .serviceCard h3 {
   font-family: var(--font-bebas);
   font-size: 1.8rem;
   font-weight: 400;
   letter-spacing: 0.05em;
   margin-bottom: 1rem;
-  color: var(--burgundy);
+  color: var(--red);
   text-transform: uppercase;
 }
 
-/* Description */
+/* Body → muted, weight up from 300 */
 .serviceCard p {
   font-family: var(--font-montserrat);
   line-height: 1.6;
-  color: #2a2a2a;
-  font-weight: 300;
+  color: var(--muted);
+  font-weight: 500;
 }
 
-/* Link divider */
+/* Link divider → gold */
 .cardLink {
   margin-top: 1.5rem;
   padding-top: 1rem;
-  border-top: 1px solid rgba(0, 0, 0, 0.15);
+  border-top: 2px solid rgba(234, 169, 0, 0.35);
 }
 
 .readMoreLink {
@@ -83,7 +87,7 @@
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
-  color: var(--burgundy);
+  color: var(--red);
   text-decoration: none;
   font-size: 0.9rem;
   font-weight: 600;
@@ -93,22 +97,21 @@
 }
 
 .readMoreLink:hover {
-  color: #000;
+  color: var(--ink);
   transform: translateX(6px);
 }
 
 .readMoreLink i {
   font-size: 1rem;
   transition: transform 0.3s ease;
-  color: var(--burgundy);
+  color: var(--red);
 }
 
 .readMoreLink:hover i {
   transform: translateX(4px);
-  color: #000;
+  color: var(--ink);
 }
 
-/* Spin utility (still works) */
 .spinningIcon {
   animation: spin 22s linear infinite;
 }
@@ -123,7 +126,6 @@
   }
 }
 
-/* Responsive */
 @media (max-width: 768px) {
   .cardLink {
     margin-top: 1rem;
@@ -139,3 +141,18 @@
   }
 }
 
+.serviceCard p {
+  font-family: var(--font-montserrat);
+  line-height: 1.6;
+  color: var(--muted);
+  font-weight: 500;
+  flex: 1;
+  /* ← fills remaining space */
+}
+
+.cardLink {
+  margin-top: auto;
+  /* ← belt and suspenders */
+  padding-top: 1rem;
+  border-top: 2px solid rgba(234, 169, 0, 0.35);
+}
