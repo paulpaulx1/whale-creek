@@ -251,14 +251,33 @@
     opacity: 0;
 }
 
+.navButton {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 30;
+    padding: 0.75rem;
+    border-radius: 9999px;
+    background-color: rgba(178, 59, 64, 0.65);
+    border: 2px solid var(--gold);
+    color: white;
+    cursor: pointer;
+    transition: all 300ms cubic-bezier(0.4, 0, 0.2, 1);
+    display: none;
+    opacity: 0;
+}
+
 .carousel.ready .navButton {
     opacity: 1;
     transition-delay: 1200ms;
 }
 
 .navButton:hover {
-    background-color: rgba(30, 41, 59, 0.4);
-    transform: translateY(-50%) scale(1.1);
+    background-color: var(--red);
+    border-color: var(--gold);
+    /* transform: translateY(-50%) scale(1.1); */
+    box-shadow: 0 8px 20px rgba(178, 59, 64, 0.35);
+    opacity:1;
 }
 
 .navLeft {
@@ -569,21 +588,27 @@
 
 @media (max-width: 767px) {
     .title {
-        font-size: 2.5rem; /* Reduced from 4rem */
+        font-size: 2.5rem;
+        /* Reduced from 4rem */
         margin-bottom: 1.5rem;
     }
 
     .description {
-        font-size: 1rem; /* Slightly smaller */
-        margin-bottom: 2rem; /* Reduced from 3rem to give CTAs more room */
+        font-size: 1rem;
+        /* Slightly smaller */
+        margin-bottom: 2rem;
+        /* Reduced from 3rem to give CTAs more room */
     }
 
     .contentInner {
-        margin-top: 4rem; /* Reduced from 6rem */
-        padding-bottom: 3rem; /* Add bottom padding so CTAs don't touch */
+        margin-top: 4rem;
+        /* Reduced from 6rem */
+        padding-bottom: 3rem;
+        /* Add bottom padding so CTAs don't touch */
     }
 
     .ctas {
-        gap: 1rem; /* Slightly tighter gap on mobile */
+        gap: 1rem;
+        /* Slightly tighter gap on mobile */
     }
 }
