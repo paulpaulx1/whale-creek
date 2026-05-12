@@ -1,614 +1,528 @@
-.carousel {
-    position: relative;
-    height: 100vh;
-    overflow: hidden;
-    background-color: #0f172a;
+/* ================================
+   KEYFRAMES
+================================ */
+
+@keyframes navFadeUp {
+  from {
     opacity: 0;
-    transition: opacity 700ms;
+    transform: translateY(calc(-50% + 50px));
+  }
+  to {
+    opacity: 1;
+    transform: translateY(-50%);
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ================================
+   CAROUSEL
+================================ */
+
+.carousel {
+  position: relative;
+  height: 100vh;
+  overflow: hidden;
+  background-color: #0f172a;
+  opacity: 0;
+  transition: opacity 700ms;
 }
 
 .carousel.ready {
-    opacity: 1;
+  opacity: 1;
 }
 
+/* ================================
+   SLIDES
+================================ */
+
 .slide {
-    position: absolute;
-    inset: 0;
-    opacity: 0;
-    transform: scale(1.05);
-    z-index: 0;
-    pointer-events: none;
-    transition: all 1600ms ease-in-out;
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  transform: scale(1.05);
+  z-index: 0;
+  pointer-events: none;
+  transition: all 1600ms ease-in-out;
 }
 
 .slide.active {
-    opacity: 1;
-    transform: scale(1);
-    z-index: 10;
-    pointer-events: auto;
+  opacity: 1;
+  transform: scale(1);
+  z-index: 10;
+  pointer-events: auto;
 }
 
-/* Video container */
+/* ================================
+   VIDEO
+================================ */
+
 .videoContainer {
-    position: absolute;
-    inset: 0;
-    z-index: 0;
-    overflow: hidden;
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
 }
 
 .video {
-    position: absolute;
-    inset: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    z-index: 0;
-    transition: opacity 1s ease-in-out;
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 0;
+  transition: opacity 1s ease-in-out;
 }
 
-/* Image background - fade in with zoom */
+/* ================================
+   IMAGE
+================================ */
+
+.imageWrapper {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
 .imageBackground {
-    position: absolute;
-    inset: 0;
-    background-size: cover;
-    background-position: center;
-    z-index: 0;
-    transform: scale(1);
-    opacity: 0;
-    transition: opacity 1200ms ease-out, transform 12000ms ease-out;
+  object-fit: cover;
+  object-position: center;
+  transform: scale(1);
+  opacity: 0;
+  transition: opacity 1200ms ease-out, transform 12000ms ease-out;
 }
 
 .imageBackground.fadeIn {
-    opacity: 1;
+  opacity: 1;
 }
 
 .imageBackground.zoom {
-    transform: scale(1.15);
+  transform: scale(1.15);
 }
 
-/* Overlay */
+/* ================================
+   OVERLAY
+================================ */
+
 .overlay {
-    position: absolute;
-    inset: 0;
-    z-index: 10;
-    background: linear-gradient(to bottom,
-            rgba(0, 0, 0, 0.47),
-            rgba(9, 13, 24, 0.54),
-            rgba(8, 12, 21, 0.44));
+  position: absolute;
+  inset: 0;
+  z-index: 10;
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0.47),
+    rgba(9, 13, 24, 0.54),
+    rgba(8, 12, 21, 0.44)
+  );
 }
 
 .overlay.videoOverlay {
-    background: linear-gradient(to bottom,
-            rgba(15, 23, 42, 0.7),
-            rgba(15, 23, 42, 0.75),
-            rgba(15, 23, 42, 0.85));
+  background: linear-gradient(
+    to bottom,
+    rgba(15, 23, 42, 0.7),
+    rgba(15, 23, 42, 0.75),
+    rgba(15, 23, 42, 0.85)
+  );
 }
 
-/* Content */
+/* ================================
+   CONTENT
+================================ */
+
 .content {
-    position: relative;
-    z-index: 20;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 100%;
-    text-align: center;
-    color: white;
-    padding: 0 1.5rem;
+  position: relative;
+  z-index: 20;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  text-align: center;
+  color: white;
+  padding: 0 1.5rem;
 }
 
 .contentInner {
-    max-width: 72rem;
-    margin: 0 auto;
-    margin-top: 6rem;
+  max-width: 72rem;
+  margin: 0 auto;
+  margin-top: 6rem;
 }
 
-/* Title - faster staggered animation */
 .title {
-    font-family: var(--font-bebas);
-    font-size: 4rem;
-    font-weight: 400;
-    letter-spacing: 0.05em;
-    line-height: 1.1;
-    margin-bottom: 2rem;
-    opacity: 0;
-    transform: translateY(2rem);
-    transition: opacity 700ms cubic-bezier(0.4, 0, 0.2, 1),
-        transform 700ms cubic-bezier(0.4, 0, 0.2, 1);
+  font-family: var(--font-bebas);
+  font-size: 4rem;
+  font-weight: 400;
+  letter-spacing: 0.05em;
+  line-height: 1.1;
+  margin-bottom: 2rem;
+  opacity: 0;
+  transform: translateY(2rem);
+  transition: opacity 700ms cubic-bezier(0.4, 0, 0.2, 1),
+    transform 700ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .title.visible {
-    opacity: 1;
-    transform: translateY(0);
-    transition-delay: 200ms;
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: 200ms;
 }
 
-/* Services - slight delay after title */
 .services {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 0.75rem;
-    font-family: var(--font-montserrat);
-    font-size: 1rem;
-    font-weight: 500;
-    letter-spacing: 0.025em;
-    margin-bottom: 2rem;
-    opacity: 0;
-    transform: translateY(2rem);
-    transition: opacity 600ms cubic-bezier(0.4, 0, 0.2, 1),
-        transform 600ms cubic-bezier(0.4, 0, 0.2, 1);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.75rem;
+  font-family: var(--font-montserrat);
+  font-size: 1rem;
+  font-weight: 500;
+  letter-spacing: 0.025em;
+  margin-bottom: 2rem;
+  opacity: 0;
+  transform: translateY(2rem);
+  transition: opacity 600ms cubic-bezier(0.4, 0, 0.2, 1),
+    transform 600ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .services.visible {
-    opacity: 1;
-    transform: translateY(0);
-    transition-delay: 350ms;
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: 350ms;
 }
 
 .service {
-    color: rgba(255, 255, 255, 0.95);
-    font-weight: 500;
+  color: rgba(255, 255, 255, 0.95);
+  font-weight: 500;
 }
 
 .divider {
-    color: rgba(255, 255, 255, 0.6);
-    font-weight: 400;
-    display: none;
+  color: rgba(255, 255, 255, 0.6);
+  font-weight: 400;
+  display: none;
 }
 
-/* Description - cascading effect */
 .description {
-    font-family: var(--font-montserrat);
-    font-size: 1.125rem;
-    font-weight: 300;
-    max-width: 48rem;
-    margin: 0 auto 3rem;
-    color: rgba(255, 255, 255, 1);
-    line-height: 1.75;
-    opacity: 0;
-    transform: translateY(2rem);
-    transition: opacity 600ms cubic-bezier(0.4, 0, 0.2, 1),
-        transform 600ms cubic-bezier(0.4, 0, 0.2, 1);
+  font-family: var(--font-montserrat);
+  font-size: 1.125rem;
+  font-weight: 300;
+  max-width: 48rem;
+  margin: 0 auto 3rem;
+  color: rgba(255, 255, 255, 1);
+  line-height: 1.75;
+  opacity: 0;
+  transform: translateY(2rem);
+  transition: opacity 600ms cubic-bezier(0.4, 0, 0.2, 1),
+    transform 600ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .description.visible {
-    opacity: 1;
-    transform: translateY(0);
-    transition-delay: 500ms;
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: 500ms;
 }
 
-/* CTAs - final element in cascade */
 .ctas {
-    display: flex;
-    flex-direction: column;
-    gap: 1.5rem;
-    justify-content: center;
-    opacity: 0;
-    transform: translateY(2rem);
-    transition: opacity 600ms cubic-bezier(0.4, 0, 0.2, 1),
-        transform 600ms cubic-bezier(0.4, 0, 0.2, 1);
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  justify-content: center;
+  opacity: 0;
+  transform: translateY(2rem);
+  transition: opacity 600ms cubic-bezier(0.4, 0, 0.2, 1),
+    transform 600ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .ctas.visible {
-    opacity: 1;
-    transform: translateY(0);
-    transition-delay: 650ms;
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: 650ms;
 }
 
 .ctaPrimary,
 .ctaSecondary {
-    padding: 1rem 2rem;
-    font-family: var(--font-montserrat);
-    font-weight: 500;
-    letter-spacing: 0.05em;
-    text-align: center;
-    text-decoration: none;
-    transition: all 300ms cubic-bezier(0.4, 0, 0.2, 1);
-    border: 2px solid;
+  padding: 1rem 2rem;
+  font-family: var(--font-montserrat);
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  text-align: center;
+  text-decoration: none;
+  transition: all 300ms cubic-bezier(0.4, 0, 0.2, 1);
+  border: 2px solid;
 }
 
 .ctaPrimary {
-    background-color: #062a55fe;
-    border-color: #334155;
-    color: white;
+  background-color: #062a55fe;
+  border-color: #334155;
+  color: white;
 }
 
 .ctaPrimary:hover {
-    background-color: transparent;
-    border-color: white;
-    transform: scale(1.05) translateY(-0.25rem);
-    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+  background-color: transparent;
+  border-color: white;
+  transform: scale(1.05) translateY(-0.25rem);
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
 }
 
 .ctaSecondary {
-    background-color: transparent;
-    border-color: rgba(255, 255, 255, 0.8);
-    color: white;
+  background-color: transparent;
+  border-color: rgba(255, 255, 255, 0.8);
+  color: white;
 }
 
 .ctaSecondary:hover {
-    background-color: white;
-    color: #0f172a;
-    transform: scale(1.05) translateY(-0.25rem);
-    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+  background-color: white;
+  color: #0f172a;
+  transform: scale(1.05) translateY(-0.25rem);
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
 }
 
-/* Navigation buttons - subtle entrance */
-.navButton {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    z-index: 30;
-    padding: 0.75rem;
-    border-radius: 9999px;
-    background-color: rgba(30, 41, 59, 0.2);
-    color: white;
-    border: none;
-    cursor: pointer;
-    transition: all 300ms cubic-bezier(0.4, 0, 0.2, 1);
-    display: none;
-    opacity: 0;
-}
+/* ================================
+   NAV BUTTONS
+================================ */
 
 .navButton {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    z-index: 30;
-    padding: 0.75rem;
-    border-radius: 9999px;
-    background-color: rgba(178, 59, 64, 0.65);
-    border: 2px solid var(--gold);
-    color: white;
-    cursor: pointer;
-    transition: all 300ms cubic-bezier(0.4, 0, 0.2, 1);
-    display: none;
-    opacity: 0;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 30;
+  padding: 0.75rem;
+  border-radius: 9999px;
+  background-color: rgba(178, 59, 64, 0.55);
+  border: 2px solid var(--gold);
+  color: white;
+  cursor: pointer;
+  display: none; /* shown via media query */
+  opacity: 0;
+  align-items: center;
+  justify-content: center;
 }
 
 .carousel.ready .navButton {
-    opacity: 1;
-    transition-delay: 1200ms;
+  animation: navFadeUp 600ms ease 1200ms forwards;
 }
 
 .navButton:hover {
-    background-color: var(--red);
-    border-color: var(--gold);
-    /* transform: translateY(-50%) scale(1.1); */
-    box-shadow: 0 8px 20px rgba(178, 59, 64, 0.35);
-    opacity:1;
+  background-color: var(--red);
+  border-color: var(--gold);
+  transform: translateY(-50%) scale(1.1);
+  box-shadow: 0 8px 20px rgba(178, 59, 64, 0.35);
 }
 
-.navLeft {
-    left: 1.5rem;
-}
+.navLeft  { left: 1.5rem; }
+.navRight { right: 1.5rem; }
 
-.navRight {
-    right: 1.5rem;
-}
+/* ================================
+   PLAY/PAUSE
+================================ */
 
-/* Play/Pause button - fade in with nav */
 .playPause {
-    position: absolute;
-    bottom: 2rem;
-    right: 2rem;
-    z-index: 30;
-    padding: 1rem;
-    border-radius: 9999px;
-    background-color: rgba(30, 41, 59, 0.3);
-    color: white;
-    border: none;
-    cursor: pointer;
-    transition: all 300ms cubic-bezier(0.4, 0, 0.2, 1);
-    display: none;
-    align-items: center;
-    justify-content: center;
-    opacity: 0;
+  position: absolute;
+  bottom: 2rem;
+  right: 2rem;
+  z-index: 30;
+  padding: 1rem;
+  border-radius: 9999px;
+  background-color: rgba(30, 41, 59, 0.3);
+  color: white;
+  border: none;
+  cursor: pointer;
+  transition: all 300ms cubic-bezier(0.4, 0, 0.2, 1);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
 }
 
 .carousel.ready .playPause {
-    opacity: 1;
-    transition-delay: 1200ms;
+  opacity: 1;
+  transition-delay: 1200ms;
 }
 
 .playPause:hover {
-    background-color: rgba(30, 41, 59, 0.5);
-    transform: scale(1.1);
+  background-color: rgba(30, 41, 59, 0.5);
+  transform: scale(1.1);
 }
 
-/* Project card - slide in from bottom-left with staggered children */
+/* ================================
+   PROJECT CARD
+================================ */
+
 .projectCard {
-    position: absolute;
-    bottom: 2rem;
-    left: 2rem;
-    z-index: 30;
-    max-width: 20rem;
-    padding: 1.5rem;
-    background-color: transparent;
-    color: white;
-    text-decoration: none;
-    transition: all 300ms cubic-bezier(0.4, 0, 0.2, 1);
-    display: none;
-    opacity: 0;
+  position: absolute;
+  bottom: 2rem;
+  left: 2rem;
+  z-index: 30;
+  max-width: 20rem;
+  padding: 1.5rem;
+  background-color: transparent;
+  color: white;
+  text-decoration: none;
+  transition: all 300ms cubic-bezier(0.4, 0, 0.2, 1);
+  display: none;
+  opacity: 0;
+  transform: translateY(10px);
 }
 
 .projectCard.projectCardVisible {
-    opacity: 1;
-    transition-delay: 700ms;
+  animation: fadeInUp 0.6s ease-out forwards;
 }
 
 .projectCard:hover {
-    transform: translateY(-0.25rem);
+  transform: translateY(-0.25rem);
 }
 
 .projectTitle {
-    font-family: var(--font-montserrat);
-    font-size: 0.875rem;
-    font-weight: 600;
-    color: rgba(255, 255, 255, 0.6);
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-    margin-bottom: 0.5rem;
-    opacity: 0;
-    transform: translateY(1rem);
-    transition: opacity 500ms cubic-bezier(0.4, 0, 0.2, 1),
-        transform 500ms cubic-bezier(0.4, 0, 0.2, 1);
+  font-family: var(--font-montserrat);
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.6);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-bottom: 0.5rem;
+  opacity: 0;
+  transform: translateY(10px);
 }
 
 .projectTitle.projectTitleVisible {
-    opacity: 1;
-    transform: translateY(0);
-    transition-delay: 800ms;
+  animation: fadeInUp 0.5s ease-out 0.15s forwards;
 }
 
 .projectName {
-    font-family: var(--font-bebas);
-    font-size: 1.5rem;
-    font-weight: 400;
-    letter-spacing: 0.05em;
-    margin-bottom: 0.25rem;
-    color: white;
-    opacity: 0;
-    transform: translateY(1rem);
-    transition: opacity 500ms cubic-bezier(0.4, 0, 0.2, 1),
-        transform 500ms cubic-bezier(0.4, 0, 0.2, 1);
+  font-family: var(--font-bebas);
+  font-size: 1.5rem;
+  font-weight: 400;
+  letter-spacing: 0.05em;
+  margin-bottom: 0.25rem;
+  color: white;
+  opacity: 0;
+  transform: translateY(10px);
 }
 
 .projectName.projectNameVisible {
-    opacity: 1;
-    transform: translateY(0);
-    transition-delay: 900ms;
+  animation: fadeInUp 0.5s ease-out 0.25s forwards;
 }
 
 .projectLocation {
-    font-family: var(--font-montserrat);
-    font-size: 0.875rem;
-    font-weight: 300;
-    color: rgba(255, 255, 255, 0.7);
-    margin-bottom: 1rem;
-    opacity: 0;
-    transform: translateY(1rem);
-    transition: opacity 500ms cubic-bezier(0.4, 0, 0.2, 1),
-        transform 500ms cubic-bezier(0.4, 0, 0.2, 1);
+  font-family: var(--font-montserrat);
+  font-size: 0.875rem;
+  font-weight: 300;
+  color: rgba(255, 255, 255, 0.7);
+  margin-bottom: 1rem;
+  opacity: 0;
+  transform: translateY(10px);
 }
 
 .projectLocation.projectLocationVisible {
-    opacity: 1;
-    transform: translateY(0);
-    transition-delay: 1000ms;
+  animation: fadeInUp 0.5s ease-out 0.35s forwards;
 }
 
 .projectLink {
-    font-family: var(--font-montserrat);
-    font-size: 0.875rem;
-    font-weight: 400;
-    color: rgba(255, 255, 255, 0.9);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.3);
-    display: inline-block;
-    transition: all 300ms cubic-bezier(0.4, 0, 0.2, 1);
-    opacity: 0;
-    transform: translateY(1rem);
+  font-family: var(--font-montserrat);
+  font-size: 0.875rem;
+  font-weight: 400;
+  color: rgba(255, 255, 255, 0.9);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+  display: inline-block;
+  transition: all 300ms cubic-bezier(0.4, 0, 0.2, 1);
+  opacity: 0;
+  transform: translateY(10px);
 }
 
 .projectLink.projectLinkVisible {
-    opacity: 1;
-    transform: translateY(0);
-    transition-delay: 1100ms;
+  animation: fadeInUp 0.5s ease-out 0.45s forwards;
 }
 
 .projectCard:hover .projectLink {
-    border-color: white;
-    color: white;
+  border-color: white;
+  color: white;
 }
 
-/* Responsive */
+/* ================================
+   RESPONSIVE
+================================ */
+
 @media (min-width: 768px) {
-    .title {
-        font-size: 5rem;
-    }
+  .title      { font-size: 5rem; }
+  .services   { gap: 1.5rem; font-size: 1.125rem; }
+  .divider    { display: inline; }
+  .description { font-size: 1.25rem; }
+  .ctas       { flex-direction: row; }
 
-    .services {
-        gap: 1.5rem;
-        font-size: 1.125rem;
-    }
-
-    .divider {
-        display: inline;
-    }
-
-    .description {
-        font-size: 1.25rem;
-    }
-
-    .ctas {
-        flex-direction: row;
-    }
-
-    .navButton {
-        display: inline-flex;
-    }
+  .navButton {
+    display: inline-flex;
+  }
 }
 
 @media (min-width: 1024px) {
-    .title {
-        font-size: 5rem;
-    }
-
-    .playPause {
-        display: flex;
-    }
-
-    .projectCard {
-        display: block;
-    }
-}
-
-/* Reduced motion preferences */
-@media (prefers-reduced-motion: reduce) {
-
-    .carousel,
-    .slide,
-    .title,
-    .services,
-    .description,
-    .ctas,
-    .navButton,
-    .playPause,
-    .projectCard,
-    .projectTitle,
-    .projectName,
-    .projectLocation,
-    .projectLink,
-    .imageBackground {
-        transition: none;
-        animation: none;
-    }
-
-    .title.visible,
-    .services.visible,
-    .description.visible,
-    .ctas.visible {
-        opacity: 1;
-        transform: none;
-        transition-delay: 0ms;
-    }
-
-    .carousel.ready .navButton,
-    .carousel.ready .playPause {
-        opacity: 1;
-        transform: none;
-        transition-delay: 0ms;
-    }
-
-    .projectCard.projectCardVisible,
-    .projectTitle.projectTitleVisible,
-    .projectName.projectNameVisible,
-    .projectLocation.projectLocationVisible,
-    .projectLink.projectLinkVisible {
-        opacity: 1;
-        transform: none;
-        transition-delay: 0ms;
-    }
-
-    .imageBackground.fadeIn {
-        opacity: 1;
-    }
-}
-
-/* Initial hidden states for project card */
-.projectCard {
-    opacity: 0;
-    transform: translateY(10px);
-}
-
-.projectTitle,
-.projectName,
-.projectLocation,
-.projectLink {
-    opacity: 0;
-    transform: translateY(10px);
-}
-
-/* Visible states with staggered animations */
-.projectCardVisible {
-    animation: fadeInUp 0.6s ease-out forwards;
-}
-
-.projectTitleVisible {
-    animation: fadeInUp 0.5s ease-out 0.15s forwards;
-}
-
-.projectNameVisible {
-    animation: fadeInUp 0.5s ease-out 0.25s forwards;
-}
-
-.projectLocationVisible {
-    animation: fadeInUp 0.5s ease-out 0.35s forwards;
-}
-
-.projectLinkVisible {
-    animation: fadeInUp 0.5s ease-out 0.45s forwards;
-}
-
-/* Animation keyframe */
-@keyframes fadeInUp {
-    from {
-        opacity: 0;
-        transform: translateY(10px);
-    }
-
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-.imageWrapper {
-    position: absolute;
-    inset: 0;
-    z-index: 0;
-}
-
-.imageBackground {
-    object-fit: cover;
-    object-position: center;
-    transform: scale(1);
-    opacity: 0;
-    transition: opacity 1200ms ease-out, transform 12000ms ease-out;
-}
-
-.imageBackground.fadeIn {
-    opacity: 1;
-}
-
-.imageBackground.zoom {
-    transform: scale(1.15);
+  .title    { font-size: 5rem; }
+  .playPause { display: flex; }
+  .projectCard { display: block; }
 }
 
 @media (max-width: 767px) {
-    .title {
-        font-size: 2.5rem;
-        /* Reduced from 4rem */
-        margin-bottom: 1.5rem;
-    }
+  .title        { font-size: 2.5rem; margin-bottom: 1.5rem; }
+  .description  { font-size: 1rem; margin-bottom: 2rem; }
+  .contentInner { margin-top: 4rem; padding-bottom: 3rem; }
+  .ctas         { gap: 1rem; }
+}
 
-    .description {
-        font-size: 1rem;
-        /* Slightly smaller */
-        margin-bottom: 2rem;
-        /* Reduced from 3rem to give CTAs more room */
-    }
+/* ================================
+   REDUCED MOTION
+================================ */
 
-    .contentInner {
-        margin-top: 4rem;
-        /* Reduced from 6rem */
-        padding-bottom: 3rem;
-        /* Add bottom padding so CTAs don't touch */
-    }
+@media (prefers-reduced-motion: reduce) {
+  .carousel,
+  .slide,
+  .title,
+  .services,
+  .description,
+  .ctas,
+  .navButton,
+  .playPause,
+  .projectCard,
+  .projectTitle,
+  .projectName,
+  .projectLocation,
+  .projectLink,
+  .imageBackground {
+    transition: none;
+    animation: none;
+  }
 
-    .ctas {
-        gap: 1rem;
-        /* Slightly tighter gap on mobile */
-    }
+  .title.visible,
+  .services.visible,
+  .description.visible,
+  .ctas.visible {
+    opacity: 1;
+    transform: none;
+    transition-delay: 0ms;
+  }
+
+  .carousel.ready .navButton,
+  .carousel.ready .playPause {
+    opacity: 1;
+    transform: translateY(-50%);
+    transition-delay: 0ms;
+  }
+
+  .projectCard.projectCardVisible,
+  .projectTitle.projectTitleVisible,
+  .projectName.projectNameVisible,
+  .projectLocation.projectLocationVisible,
+  .projectLink.projectLinkVisible {
+    opacity: 1;
+    transform: none;
+    animation: none;
+  }
+
+  .imageBackground.fadeIn {
+    opacity: 1;
+  }
 }
