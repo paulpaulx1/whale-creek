@@ -26,6 +26,13 @@ export default function ServiceCardsSection() {
     return () => observer.disconnect();
   }, []);
 
+  useEffect(() => {
+    const isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
+    if (isSafari && sectionRef.current) {
+      sectionRef.current.classList.add("safari");
+    }
+  }, []);
+
   const services = [
     {
       iconType: "house",
@@ -87,8 +94,6 @@ export default function ServiceCardsSection() {
     },
   ];
   return (
-
-    
     <section ref={sectionRef} className={styles.servicesSection}>
       <div className={styles.container}>
         <div className={styles.servicesHeader}>

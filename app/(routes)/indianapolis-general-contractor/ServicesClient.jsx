@@ -7,8 +7,17 @@ import styles from "./Services.module.css";
 export default function ServicesClient({ services, serviceAreas }) {
   const cardsRef = useRef([]);
   const imageRefs = useRef([]);
+  const servicesRef = useRef(null); // ← add this
 
-  /* ✅ STAGGERED SCROLL-IN */
+  /* SAFARI DETECTION */
+  useEffect(() => {
+    const isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
+    if (isSafari && servicesRef.current) {
+      servicesRef.current.classList.add("safari");
+    }
+  }, []);
+
+  /* STAGGERED SCROLL-IN */
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
@@ -22,11 +31,10 @@ export default function ServicesClient({ services, serviceAreas }) {
     );
 
     cardsRef.current.forEach((el) => el && observer.observe(el));
-
     return () => observer.disconnect();
   }, []);
 
-  /* ✅ PARALLAX DRIFT */
+  /* PARALLAX DRIFT */
   useEffect(() => {
     const onScroll = () => {
       imageRefs.current.forEach((img) => {
@@ -43,7 +51,6 @@ export default function ServicesClient({ services, serviceAreas }) {
 
   return (
     <main className={styles.main}>
-      {/* ✅ HERO */}
       <section className={styles.servicesHero}>
         <Image
           src="/images/Gary4.jpg"
@@ -65,12 +72,11 @@ export default function ServicesClient({ services, serviceAreas }) {
         </div>
       </section>
 
-      {/* ✅ SERVICES WITH STAGGER */}
-      <section className={styles.services}>
-        {/* Fading cream divider header */}
+      {/* ← ref goes here */}
+      <section className={styles.services} ref={servicesRef}>
         <div className={styles.servicesHeader}>
-          <h2 className={`${styles.servicesTitle} `}>What We Do</h2>
-          <p className={`${styles.servicesSubtitle} `}>
+          <h2 className={styles.servicesTitle}>What We Do</h2>
+          <p className={styles.servicesSubtitle}>
             From custom millwork to complete home renovations, we bring
             expertise and craftsmanship to every project.
           </p>
@@ -112,12 +118,10 @@ export default function ServicesClient({ services, serviceAreas }) {
                       {service.additionalInfo}
                     </p>
                   )}
+
                   {service.cta && (
                     <div className={styles.serviceCta}>
-                      <a
-                        href={service.cta.href}
-                        className={styles.serviceCtaLink}
-                      >
+                      <a href={service.cta.href} className={styles.serviceCtaLink}>
                         {service.cta.text}
                         <i className="ph ph-arrow-right" />
                       </a>
@@ -151,7 +155,6 @@ export default function ServicesClient({ services, serviceAreas }) {
         </div>
       </section>
 
-      {/* ✅ SERVICE AREAS */}
       <section className={styles.serviceAreasSection}>
         <div className={styles.serviceAreasContainer}>
           <div className={styles.serviceAreasList}>

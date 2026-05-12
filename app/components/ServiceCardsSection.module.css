@@ -208,3 +208,40 @@
 .cardVisible {
   height: 100%;
 }
+
+/* Safari (iOS + macOS) — background-attachment: fixed is broken */
+@media not all and (min-resolution: .001dpcm) {
+  @supports (-webkit-appearance: none) {
+    .servicesSection {
+      background-image: none;
+      background: var(--bg-cream);
+      background-attachment: scroll;
+    }
+
+    .servicesSection::before {
+      display: none;
+    }
+
+    /* Header gradient can go solid since there's no landscape behind it */
+    .servicesHeader {
+      background: var(--bg-cream);
+      backdrop-filter: none;
+      -webkit-backdrop-filter: none;
+    }
+  }
+}
+
+.servicesSection:global(.safari) {
+  background-image: none;
+  background: var(--bg-cream);
+}
+
+.servicesSection:global(.safari)::before {
+  display: none;
+}
+
+.servicesSection:global(.safari) .servicesHeader {
+  background: var(--bg-cream);
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+}
