@@ -198,7 +198,7 @@ export default function PrivacyPolicyPage() {
             Reach us about anything on this page at{" "}
             {/* TODO: real address, phone, and mailing address */}
             <a className={styles.link} href="mailto:info@whalecreek.co">
-              info@whalecreek.co
+              dave@whalecreek.co
             </a>
             , or through our{" "}
             <Link className={styles.link} href="/contact">
