@@ -1,9 +1,9 @@
-'use client';
+"use client";
 
-import Link from 'next/link';
-import Image from 'next/image';
-import styles from './Footer.module.css';
-import SocialIcons from './SocialIcons';
+import Link from "next/link";
+import Image from "next/image";
+import styles from "./Footer.module.css";
+import SocialIcons from "./SocialIcons";
 
 const Footer = () => {
   return (
@@ -18,8 +18,8 @@ const Footer = () => {
                 className={styles.logoImage}
                 width={120}
                 height={120}
-                src='/images/whaleCreek.png'
-                alt='Whale Creek Logo'
+                src="/images/whaleCreek.png"
+                alt="Whale Creek Logo"
               />
             </div>
             <h2 className={styles.heroTitle}>Whale Creek Co</h2>
@@ -53,11 +53,14 @@ const Footer = () => {
             <div className={styles.quickLinks}>
               <p>Quick Links</p>
               <div className={styles.linksList}>
-                <Link href='/#about'>About</Link>
-                <Link href='/indianapolis-general-contractor'>Services</Link>
-                <Link href='/project-gallery'>Gallery</Link>
-                <Link href='/indianapolis-woodworker-contact'>Contact</Link>
-                <Link href='/blog'>Blog</Link>
+                <Link href="/#about">About</Link>
+                <Link href="/indianapolis-general-contractor">Services</Link>
+                <Link href="/project-gallery">Gallery</Link>
+                <Link href="/indianapolis-woodworker-contact">Contact</Link>
+                <Link href="/blog">Blog</Link>
+                <Link href="/privacy" className={styles.footerLegal}>
+                  Privacy Policy
+                </Link>
               </div>
             </div>
           </div>
@@ -67,11 +70,11 @@ const Footer = () => {
         <div className={styles.bottomBar}>
           <p className={styles.copyright}>© 2025 Whale Creek Co</p>
           <p className={styles.designedBy}>
-            Designed by{' '}
+            Designed by{" "}
             <a
-              href='https://paxmedia.com'
-              target='_blank'
-              rel='noopener noreferrer'
+              href="https://paxmedia.com"
+              target="_blank"
+              rel="noopener noreferrer"
             >
               Pax Media
             </a>

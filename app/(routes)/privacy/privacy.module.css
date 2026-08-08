@@ -1,0 +1,166 @@
+/* Uses the existing Whale Creek tokens:
+   --red #b23b40  headings and large type
+   --gold #eaa900  borders and accents
+   --blue #338dd3  links
+   --navy-nav #062a55
+   Body copy is burgundy at a bumped weight, matching the rest of the site.
+   No new custom properties introduced. */
+
+.page {
+  padding: 80px 24px 120px;
+}
+
+.container {
+  max-width: 720px;
+  margin: 0 auto;
+}
+
+/* ---------- header ---------- */
+
+.header {
+  border-bottom: 3px solid var(--gold);
+  padding-bottom: 20px;
+  margin-bottom: 40px;
+  margin-top: 30px;
+}
+
+.title {
+  color: var(--red);
+  font-size: 44px;
+  line-height: 1.1;
+  margin: 0 0 10px;
+}
+
+.effective {
+  color: #6b4a4c;
+  font-size: 15px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  margin: 0;
+}
+
+/* ---------- summary callout ---------- */
+
+.summary {
+  border-left: 3px solid var(--gold);
+  background: rgba(234, 169, 0, 0.07);
+  padding: 24px 28px;
+  margin-bottom: 52px;
+}
+
+.summaryTitle {
+  color: var(--red);
+  font-size: 20px;
+  margin: 0 0 10px;
+}
+
+.summary p {
+  color: #4a2f31;
+  font-size: 17px;
+  font-weight: 500;
+  line-height: 1.65;
+  margin: 0;
+}
+
+/* ---------- body sections ---------- */
+
+.section {
+  margin-bottom: 44px;
+}
+
+.section:last-child {
+  margin-bottom: 0;
+}
+
+.heading {
+  color: var(--red);
+  font-size: 26px;
+  line-height: 1.25;
+  margin: 0 0 14px;
+}
+
+.subheading {
+  color: var(--navy-nav);
+  font-size: 18px;
+  margin: 26px 0 8px;
+}
+
+.section p {
+  color: #4a2f31;
+  font-size: 17px;
+  font-weight: 500;
+  line-height: 1.7;
+  margin: 0 0 16px;
+}
+
+.section p:last-child {
+  margin-bottom: 0;
+}
+
+.list {
+  color: #4a2f31;
+  font-size: 17px;
+  font-weight: 500;
+  line-height: 1.7;
+  margin: 0 0 16px;
+  padding-left: 22px;
+}
+
+.list li {
+  margin-bottom: 12px;
+}
+
+.list li:last-child {
+  margin-bottom: 0;
+}
+
+.list strong {
+  color: var(--navy-nav);
+  font-weight: 700;
+}
+
+/* ---------- links ---------- */
+
+.link {
+  color: var(--blue);
+  font-weight: 600;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  text-decoration-thickness: 1px;
+}
+
+.link:hover {
+  color: var(--red);
+}
+
+.link:focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: 3px;
+}
+
+/* ---------- mobile ---------- */
+
+@media (max-width: 640px) {
+  .page {
+    padding: 48px 20px 80px;
+  }
+
+  .title {
+    font-size: 34px;
+  }
+
+  .heading {
+    font-size: 22px;
+  }
+
+  .summary {
+    padding: 20px 20px;
+  }
+
+  .section p,
+  .list,
+  .summary p {
+    font-size: 16px;
+  }
+}

@@ -185,6 +185,23 @@
   color: var(--warm-white);
 }
 
+.footerLegal {
+  color: var(--gold);
+  font-size: 14px;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.footerLegal:hover {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.footerLegal:focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: 3px;
+}
+
 /* RESPONSIVE */
 @media (max-width: 1024px) {
   .mainContent {
