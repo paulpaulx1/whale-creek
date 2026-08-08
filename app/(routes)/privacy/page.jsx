@@ -124,12 +124,6 @@ export default function PrivacyPolicyPage() {
             <li>
               <strong>Mux</strong> delivers and measures our video.
             </li>
-            {/* TODO: name the SMTP host the Nodemailer transport points at
-                — Gmail, Resend, SendGrid, or whatever's in the env vars. */}
-            <li>
-              <strong>Our email provider</strong> delivers contact form
-              submissions to our inbox.
-            </li>
           </ul>
         </section>
 
