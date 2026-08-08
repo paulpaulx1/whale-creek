@@ -82,8 +82,8 @@ export default function PrivacyPolicyPage() {
           </p>
           <p>
             We do host video of our job sites and equipment, delivered by a
-            service called Mux. When you load a page containing a video, the
-            player stores two things on your device:
+            service called Mux. The video player stores two things on your
+            device:
           </p>
           <ul className={styles.list}>
             <li>
@@ -124,7 +124,8 @@ export default function PrivacyPolicyPage() {
             <li>
               <strong>Mux</strong> delivers and measures our video.
             </li>
-            {/* TODO: name the actual email provider handling form delivery */}
+            {/* TODO: name the SMTP host the Nodemailer transport points at
+                — Gmail, Resend, SendGrid, or whatever's in the env vars. */}
             <li>
               <strong>Our email provider</strong> delivers contact form
               submissions to our inbox.
@@ -197,7 +198,7 @@ export default function PrivacyPolicyPage() {
             Reach us about anything on this page at{" "}
             {/* TODO: real address, phone, and mailing address */}
             <a className={styles.link} href="mailto:info@whalecreek.co">
-              dave@whalecreek.co
+              info@whalecreek.co
             </a>
             , or through our{" "}
             <Link className={styles.link} href="/contact">
