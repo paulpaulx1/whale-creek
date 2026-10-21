@@ -33,11 +33,15 @@ export default function ContactClient() {
     e.preventDefault();
     setIsSubmitting(true);
 
+    // Read the honeypot straight from the DOM, so it catches bots
+    // that set input values without firing React change events.
+    const ref_source = new FormData(e.currentTarget).get("ref_source") || "";
+
     try {
       const response = await fetch("/api/contact", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(formData),
+        body: JSON.stringify({ ...formData, ref_source }),
       });
 
       const data = await response.json();
@@ -130,6 +134,29 @@ export default function ContactClient() {
               onChange={handleChange}
               required
             />
+
+            {/* Honeypot: hidden from people and screen readers, filled by bots.
+                Uncontrolled on purpose — read from the DOM on submit. */}
+            <div
+              aria-hidden="true"
+              style={{
+                position: "absolute",
+                left: "-9999px",
+                width: 1,
+                height: 1,
+                overflow: "hidden",
+              }}
+            >
+              <label htmlFor="ref_source">Leave this empty</label>
+              <input
+                id="ref_source"
+                name="ref_source"
+                type="text"
+                tabIndex={-1}
+                autoComplete="off"
+                defaultValue=""
+              />
+            </div>
 
             <button disabled={isSubmitting}>
               {isSubmitting ? (
