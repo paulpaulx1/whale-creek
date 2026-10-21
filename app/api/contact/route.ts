@@ -22,7 +22,7 @@ export async function POST(req: NextRequest) {
 
     await transporter.sendMail({
       from: process.env.SMTP_FROM,
-      to: process.env.SMTP_USER,
+      to: process.env.CONTACT_TO,
       replyTo: email,
       subject: `New inquiry from ${name}`,
       html: `
